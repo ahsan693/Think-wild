@@ -138,7 +138,7 @@ export default function Home() {
   const capabilitiesTicker = [...CAPABILITIES_TICKER, ...CAPABILITIES_TICKER, ...CAPABILITIES_TICKER, ...CAPABILITIES_TICKER];
 
   return (
-    <main className="min-h-screen w-full bg-black text-white flex flex-col overflow-x-clip">
+    <main className="home-page min-h-screen w-full bg-black text-white flex flex-col overflow-x-clip">
       <Header />
 
       <section className="w-full max-w-[1380px] mx-auto pt-[155px] flex flex-col items-center pb-[100px]">
@@ -148,15 +148,14 @@ export default function Home() {
         ========================================= */}
         <div className="flex flex-col items-center w-full max-w-[860px] gap-[30px]">
           <div className="flex items-center justify-center h-[35px] rounded-full border border-[#999999]/40 bg-[#1D1D1D] px-[20px] py-[6px]">
-            <span className="text-[14px] font-medium text-white">
+            <span className="type-small-label text-white">
               Creators · Content · Social
             </span>
           </div>
 
           <div className="flex flex-col items-center justify-center w-full max-w-[1214px]">
             <h1 
-              className="flex flex-col items-center font-semibold text-[150px] leading-[118px] tracking-[-0.06em] uppercase whitespace-nowrap"
-              style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+              className="type-page-title flex flex-col items-center uppercase whitespace-nowrap"
             >
               <span className="block">CONTENT THAT</span>
               <span className="flex items-center justify-center gap-[24px] mt-[16px]">
@@ -168,7 +167,7 @@ export default function Home() {
             </h1>
           </div>
 
-          <p className="w-full max-w-[860px] text-center font-medium text-[17.7px] leading-[20.8px] text-[#9F9F9F] mt-[10px]">
+          <p className="type-lead w-full max-w-[860px] text-center text-[#9F9F9F] mt-[10px]">
             We're a Dublin creator marketing agency connecting brands with influencers and making social-first content people want to watch, share and talk about.
           </p>
 
@@ -176,7 +175,7 @@ export default function Home() {
             <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
               <ArrowRight className="w-5 h-5 -rotate-45" strokeWidth={2} />
             </div>
-            <span className="text-[#1D1D1D] font-medium text-[16px]">
+            <span className="type-button-label text-[#1D1D1D]">
               Start a Project
             </span>
           </button>
@@ -226,9 +225,9 @@ export default function Home() {
             SOCIAL TICKER SECTION
         ========================================= */}
         <div className="w-full flex flex-col items-center mt-[40px] pt-[29px]">
-          <h2 className="text-[17.7px] font-medium text-white mb-[20px]">
+          <p className="type-body text-white mb-[20px]">
             Your audience is everywhere. So are we.
-          </h2>
+          </p>
           <div className="relative w-full max-w-[620px] h-[38px] flex items-center overflow-hidden">
             <div className="absolute left-0 top-0 z-10 w-[84px] h-[40px] bg-gradient-to-r from-black to-transparent pointer-events-none" />
             <div className="flex w-max social-platform-marquee items-center gap-[12px]">
@@ -237,7 +236,7 @@ export default function Home() {
                   <div className={`flex items-center justify-center w-[26px] h-[26px] rounded-full ${platform.bgColor}`}>
                     {platform.icon}
                   </div>
-                  <span className="text-[#1D1D1D] font-medium text-[14px]">{platform.name}</span>
+                  <span className="type-small-label text-[#1D1D1D]">{platform.name}</span>
                 </div>
               ))}
             </div>
@@ -250,9 +249,9 @@ export default function Home() {
         ========================================= */}
         <div className="w-full max-w-[860px] flex flex-col items-start mt-[140px]">
           <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#1A1A1A] border border-[#333] mb-[32px]">
-            <span className="text-[14px] font-medium text-white/70">Sound familiar?</span>
+            <span className="type-small-label text-white/70">Sound familiar?</span>
           </div>
-          <div className="text-[35px] font-medium leading-[46.8px] text-white space-y-[40px]">
+          <div className="type-lead text-white space-y-[40px]">
             <p>
               Your content is <span className="inline-block bg-[#FF5C35] text-white px-[12px] py-[2px] rounded-[12px] leading-tight mx-1">showing up. 📈</span> But is anyone actually stopping for it? 👀
             </p>
@@ -315,15 +314,14 @@ export default function Home() {
 
           <div className="flex flex-col items-start w-[610px] gap-[24px]">
             <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#1A1A1A] border border-[#333]">
-              <span className="text-[14px] font-medium text-white/70">Our mission</span>
+              <span className="type-small-label text-white/70">Our mission</span>
             </div>
             <h2 
-              className="w-full text-[70px] leading-[63px] tracking-[-0.03em] font-semibold uppercase text-white"
-              style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+              className="type-section-title w-full uppercase text-white"
             >
               WE TURN CREATORS INTO YOUR BRAND'S STRONGEST STORYTELLERS.
             </h2>
-            <p className="w-full text-[17.7px] leading-[24px] text-[#9F9F9F] font-medium pr-[20px]">
+            <p className="type-lead w-full text-[#9F9F9F] pr-[20px]">
               Think Wild Media is a Dublin influencer marketing and content agency creating UGC, creator campaigns and social content built for the platform.
             </p>
             <button className="flex items-center h-[55px] bg-white rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors mt-[12px]">
@@ -342,8 +340,7 @@ export default function Home() {
         ========================================= */}
         <div className="relative mt-[clamp(8rem,18vw,12.5rem)] flex w-full flex-col items-center">
           <h2 
-            className="mb-[clamp(3rem,8vw,6.25rem)] w-full max-w-[1280px] px-4 text-center text-[clamp(2.5rem,7vw,6rem)] font-semibold uppercase leading-[0.9] tracking-[-0.03em]"
-            style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+            className="type-section-title mb-[clamp(3rem,8vw,6.25rem)] w-full max-w-[1280px] px-4 text-center uppercase"
           >
             HOW WE HELP BRANDS GROW
           </h2>
@@ -361,7 +358,7 @@ export default function Home() {
                     
                     {/* Folder Tab */}
                     <div className={`absolute -top-[32px] ${index % 2 === 0 ? 'left-6 md:left-[40px]' : 'right-6 md:right-[40px]'} flex h-[32px] items-center justify-center rounded-t-[12px] px-5 md:px-[24px] ${service.bgColor}`}>
-                      <span className={`text-[10px] font-bold uppercase tracking-widest md:text-[12px] ${service.textColor}`}>
+                      <span className={`type-small-label uppercase ${service.textColor}`}>
                         SERVICE / {service.id}
                       </span>
                     </div>
@@ -370,23 +367,22 @@ export default function Home() {
                     <div className="flex w-full flex-1 flex-col justify-between p-7 md:h-full md:w-1/2 md:flex-none md:p-[60px]">
                       <div className="flex flex-col gap-[24px]">
                         <h3 
-                          className={`whitespace-pre-line text-[36px] font-bold uppercase leading-[0.9] tracking-[-0.03em] md:text-[56px] ${service.textColor}`}
-                          style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+                          className={`type-service-title whitespace-pre-line uppercase ${service.textColor}`}
                         >
                           {service.title}
                         </h3>
-                        <p className={`max-w-[400px] text-[14px] font-medium leading-[21px] md:text-[16px] md:leading-[24px] ${service.textColor}`}>
+                        <p className={`type-body max-w-[400px] ${service.textColor}`}>
                           {service.desc}
                         </p>
-                        <p className={`mt-2 text-[12px] font-bold tracking-tight md:mt-[16px] md:text-[14px] ${service.textColor}`}>
+                        <p className={`type-small-label mt-2 md:mt-[16px] ${service.textColor}`}>
                           {service.tags}
                         </p>
                       </div>
                       <div className="flex flex-col">
-                        <span className={`text-[60px] font-bold leading-none tracking-[-0.04em] md:text-[80px] ${service.textColor}`}>
+                        <span className={`type-metric ${service.textColor}`}>
                           {service.stat}
                         </span>
-                        <span className={`text-[16px] font-bold ${service.textColor}`}>
+                        <span className={`type-small-label ${service.textColor}`}>
                           {service.statLabel}
                         </span>
                       </div>
@@ -418,21 +414,20 @@ export default function Home() {
         
         {/* Header Pill */}
         <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full border border-white/20 mb-[32px]">
-          <span className="text-[12px] uppercase font-bold tracking-widest text-white">
+          <span className="type-small-label uppercase text-white">
             Content Inspiration
           </span>
         </div>
 
         {/* Heading */}
         <h2 
-          className="text-center text-[70px] leading-[63px] font-semibold uppercase tracking-[-0.03em] max-w-[701px] text-white mb-[24px]"
-          style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+          className="type-section-title text-center uppercase max-w-[701px] text-white mb-[24px]"
         >
           CREATOR CONTENT PEOPLE ACTUALLY WANT TO WATCH
         </h2>
 
         {/* Subtext */}
-        <p className="text-center text-[#9F9F9F] font-medium text-[16px] max-w-[500px] mb-[80px]">
+        <p className="type-lead text-center text-[#9F9F9F] max-w-[500px] mb-[80px]">
           UGC, creator-led videos and social-first content designed to feel native to the platform and relevant to the audience.
         </p>
 
@@ -448,13 +443,12 @@ export default function Home() {
           
           <div className="mb-[50px] flex w-full max-w-[750px] flex-col items-center gap-[24px]">
             <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full border border-white/20">
-              <span className="text-[12px] uppercase font-bold tracking-widest text-white">
+              <span className="type-small-label uppercase text-white">
                 Selected Creative
               </span>
             </div>
             <h2 
-              className="text-[70px] leading-[0.9] font-semibold uppercase tracking-[-0.03em] text-center"
-              style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+              className="type-section-title uppercase text-center"
             >
               WORK THAT SHOWS WHAT WE CAN DO.
             </h2>
@@ -473,22 +467,22 @@ export default function Home() {
             <div className="flex min-h-[327px] flex-1 flex-col justify-between px-[26px] py-[26px] md:min-h-0">
               <div className="flex flex-col gap-[20px]">
                 <div className="flex flex-col gap-[4px]">
-                  <h3 className="text-black font-semibold text-[27.3px] leading-[39.2px]">
+                  <h3 className="type-card-title text-black">
                     Plump'd Beauty
                   </h3>
-                  <p className="text-zinc-800 text-[14px]">
+                  <p className="type-body text-zinc-800">
                     Beauty & Wellness · Social Content
                   </p>
                 </div>
                 
                 <div className="flex flex-col gap-[8px]">
                   <div className="flex flex-col">
-                    <span className="text-black font-bold text-[14px]">What we created</span>
-                    <span className="text-zinc-600 text-[14px] mt-[2px]">Short-form content, social assets</span>
+                    <span className="type-small-label text-black">What we created</span>
+                    <span className="type-body text-zinc-600 mt-[2px]">Short-form content, social assets</span>
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-black font-bold text-[14px]">Platforms</span>
-                    <span className="text-zinc-600 text-[14px] mt-[2px]">Instagram · TikTok</span>
+                    <span className="type-small-label text-black">Platforms</span>
+                    <span className="type-body text-zinc-600 mt-[2px]">Instagram · TikTok</span>
                   </div>
                 </div>
               </div>
@@ -497,7 +491,7 @@ export default function Home() {
                 <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-black rounded-full shrink-0">
                   <ArrowRight className="w-5 h-5" strokeWidth={2} />
                 </div>
-                <span className="text-white font-medium text-[16px]">
+                <span className="type-button-label text-white">
                   View Project
                 </span>
               </button>
@@ -512,14 +506,14 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center gap-[24px] mt-[20px]">
-            <p className="text-center text-[#9F9F9F] font-medium text-[16px] max-w-[460px]">
+            <p className="type-lead text-center text-[#9F9F9F] max-w-[460px]">
               We create across beauty, fashion, food, fitness and more - adapting the idea, format and creator to the brand.
             </p>
             <button className="flex items-center h-[55px] bg-transparent border border-white/30 rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-white/10 transition-colors">
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-black rounded-full shrink-0">
                 <ArrowRight className="w-5 h-5" strokeWidth={2} />
               </div>
-              <span className="text-white font-medium text-[16px]">
+              <span className="type-button-label text-white">
                 View selected work
               </span>
             </button>
@@ -536,11 +530,10 @@ export default function Home() {
 
           <div className="flex flex-col items-center w-full max-w-[858px] gap-[32px] mb-[80px]">
             <div className="flex items-center justify-center w-[202px] h-[35px] border border-black/20 rounded-full bg-transparent">
-              <span className="text-[14px] font-medium text-black">Why Think Wild Media</span>
+              <span className="type-small-label text-black">Why Think Wild Media</span>
             </div>
             <h2
-              className="text-[70px] leading-[0.9] font-semibold text-black uppercase text-center tracking-[-0.03em]"
-              style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+              className="type-section-title text-black uppercase text-center"
             >
               CREATOR CAMPAIGNS, CONTENT AND SOCIAL STRATEGY IN ONE PLACE.
             </h2>
@@ -549,7 +542,7 @@ export default function Home() {
           <div className="flex w-full justify-between items-start">
 
             <div className="flex flex-col w-[334px] pt-[40px]">
-              <h4 className="text-[20px] font-bold text-black mb-[32px]">What you get</h4>
+              <h4 className="type-subheading text-black mb-[32px]">What you get</h4>
               <div className="flex flex-col">
                 {[
                   'Creator matching', 
@@ -559,7 +552,7 @@ export default function Home() {
                   'Reporting', 
                   'Ongoing optimisation'
                 ].map((item, i) => (
-                  <div key={i} className="py-[16px] border-t border-black/10 text-black font-medium text-[16px]">
+                  <div key={i} className="type-body py-[16px] border-t border-black/10 text-black">
                     {item}
                   </div>
                 ))}
@@ -587,7 +580,7 @@ export default function Home() {
                 ].map((text, i) => (
                   <div key={i} className="flex items-start gap-[12px] pb-[20px] border-b border-white/20 last:border-0 last:pb-0">
                     <Check className="w-[18px] h-[18px] text-[#8CFE79] shrink-0 mt-[2px]" strokeWidth={3} />
-                    <span className="text-white font-medium text-[15px] leading-tight">{text}</span>
+                    <span className="type-body text-white">{text}</span>
                   </div>
                 ))}
               </div>
@@ -600,7 +593,7 @@ export default function Home() {
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-black rounded-full shrink-0">
                 <ArrowRight className="w-5 h-5" strokeWidth={2} />
               </div>
-              <span className="text-white font-medium text-[16px] mx-auto">
+              <span className="type-button-label text-white mx-auto">
                 Start a Project
               </span>
             </button>
@@ -618,27 +611,26 @@ export default function Home() {
         
         {/* Top Header Pill */}
         <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full border border-white/20 mb-[32px]">
-          <span className="text-[12px] uppercase font-bold tracking-widest text-white">
+          <span className="type-small-label uppercase text-white">
             How it works
           </span>
         </div>
 
         {/* Heading */}
         <h2 
-          className="flex flex-col items-center text-center text-[clamp(3rem,8vw,114px)] leading-[0.88] font-semibold uppercase tracking-[-0.04em] text-white"
-          style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+          className="type-section-title flex flex-col items-center text-center uppercase text-white"
         >
           <span>FOUR STEPS FROM</span>
           <span>BRIEF TO CONTENT</span>
           
           <span className="flex items-center justify-center gap-[20px] mt-[8px]">
             <span>THAT</span>
-            <span className="flex h-auto min-w-0 items-center justify-center rounded-[100px] bg-[#8763FF] px-[24px] py-[8px] text-[clamp(3rem,8vw,114px)] text-white md:h-[114px] md:min-w-[442px] md:px-[32px] md:pb-[8px]">
+            <span className="flex h-auto min-w-0 items-center justify-center rounded-[100px] bg-[#8763FF] px-[24px] py-[8px] text-white md:h-[63px] md:min-w-[280px] md:px-[32px]">
               CONNECTS
             </span>
           </span>
         </h2>
-        <p className="mt-[24px] text-center text-[18px] font-medium text-white/60">
+        <p className="type-lead mt-[24px] text-center text-white/60">
           From the first brief to content made to connect.
         </p>
           </div>
@@ -654,29 +646,29 @@ export default function Home() {
               <div className="w-full bg-[#1A1A1A] rounded-[16px] p-[12px] flex items-center gap-[12px]">
                 <div className="w-[24px] h-[24px] rounded-full bg-[#22C55E] flex items-center justify-center text-white"><Check size={14} strokeWidth={3} /></div>
                 <div className="flex flex-col">
-                  <span className="text-white font-semibold text-[14px]">Market analysis</span>
-                  <span className="text-[#9F9F9F] text-[12px]">3 brands reviewed</span>
+                  <span className="type-small-label text-white">Market analysis</span>
+                  <span className="type-small-label text-[#9F9F9F]">3 brands reviewed</span>
                 </div>
               </div>
               <div className="w-full bg-[#1A1A1A] rounded-[16px] p-[12px] flex items-center gap-[12px]">
                 <div className="w-[24px] h-[24px] rounded-full bg-[#F97316] flex items-center justify-center text-white"><Check size={14} strokeWidth={3} /></div>
                 <div className="flex flex-col">
-                  <span className="text-white font-semibold text-[14px]">Content strategy</span>
-                  <span className="text-[#9F9F9F] text-[12px]">Building now...</span>
+                  <span className="type-small-label text-white">Content strategy</span>
+                  <span className="type-small-label text-[#9F9F9F]">Building now...</span>
                 </div>
               </div>
               <div className="w-full bg-[#1A1A1A] rounded-[16px] p-[12px] flex items-center gap-[12px]">
                 <div className="w-[24px] h-[24px] rounded-full bg-white/20 flex items-center justify-center text-white/50"><Check size={14} strokeWidth={3} /></div>
                 <div className="flex flex-col">
-                  <span className="text-white font-semibold text-[14px]">Creator brief</span>
-                  <span className="text-[#9F9F9F] text-[12px]">Up next</span>
+                  <span className="type-small-label text-white">Creator brief</span>
+                  <span className="type-small-label text-[#9F9F9F]">Up next</span>
                 </div>
               </div>
             </div>
 
             <div className="flex flex-col text-center gap-[8px]">
-              <h3 className="text-[24px] font-bold text-black leading-tight tracking-tight">Discovery & Strategy</h3>
-              <p className="text-[14px] text-black/80 font-medium leading-snug px-2">We learn your brand, audience and goals.</p>
+              <h3 className="type-card-title text-black">Discovery & Strategy</h3>
+              <p className="type-body text-black/80 px-2">We learn your brand, audience and goals.</p>
             </div>
           </div>
 
@@ -700,8 +692,8 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col text-center gap-[8px]">
-              <h3 className="text-[24px] font-bold text-white leading-tight tracking-tight">Creator & Content<br/>Matching</h3>
-              <p className="text-[14px] text-white/90 font-medium leading-snug px-2">We match the right creators and formats.</p>
+              <h3 className="type-card-title text-white">Creator & Content<br/>Matching</h3>
+              <p className="type-body text-white/90 px-2">We match the right creators and formats.</p>
             </div>
           </div>
 
@@ -717,8 +709,8 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col text-center gap-[8px]">
-              <h3 className="text-[24px] font-bold text-black leading-tight tracking-tight">Content Production</h3>
-              <p className="text-[14px] text-black/80 font-medium leading-snug px-2">We create, review and deliver the content.</p>
+              <h3 className="type-card-title text-black">Content Production</h3>
+              <p className="type-body text-black/80 px-2">We create, review and deliver the content.</p>
             </div>
           </div>
 
@@ -739,8 +731,8 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col text-center gap-[8px]">
-              <h3 className="text-[24px] font-bold text-white leading-tight tracking-tight">Launch, Learn, Grow</h3>
-              <p className="text-[14px] text-white/90 font-medium leading-snug px-2">We launch, learn what works and improve.</p>
+              <h3 className="type-card-title text-white">Launch, Learn, Grow</h3>
+              <p className="type-body text-white/90 px-2">We launch, learn what works and improve.</p>
             </div>
           </div>
 
@@ -751,7 +743,7 @@ export default function Home() {
           <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
             <ArrowRight className="w-5 h-5" strokeWidth={2} />
           </div>
-          <span className="text-[#1D1D1D] font-medium text-[16px]">
+          <span className="type-button-label text-[#1D1D1D]">
             Start a Project
           </span>
         </button>
@@ -773,8 +765,7 @@ export default function Home() {
             />
             <div className="absolute bottom-0 inset-x-0 h-[250px] bg-gradient-to-t from-black to-transparent pointer-events-none" />
             <h3 
-              className="absolute bottom-[40px] left-[40px] w-full max-w-[422px] text-[40px] lg:text-[70px] leading-[1] lg:leading-[57px] font-semibold tracking-[-0.03em] uppercase text-white"
-              style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+              className="type-section-title absolute bottom-[40px] left-[40px] w-full max-w-[422px] uppercase text-white"
             >
               REAL CREATORS.<br />REAL CONTENT.<br />REAL CONNECTION.
             </h3>
@@ -782,30 +773,30 @@ export default function Home() {
 
           <div className="flex-1 lg:w-[675px] h-full bg-[#8CFE79] rounded-[30px] p-[30px] lg:p-[50px] flex flex-col items-center lg:items-end text-black relative shrink-0">
             <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-black mb-[20px] self-end">
-              <span className="text-[12px] font-medium text-white">What we bring</span>
+              <span className="type-small-label text-white">What we bring</span>
             </div>
 
             <div className="flex flex-col items-end mb-[50px]">
-              <span className="text-[80px] lg:text-[110px] font-normal leading-none tracking-tighter">
+              <span className="type-metric font-bold">
                 1,200+
               </span>
-              <span className="text-[14px] font-medium mt-[4px]">
+              <span className="type-small-label mt-[4px]">
                 Videos delivered across our team's experience
               </span>
             </div>
 
             <div className="w-full flex flex-col gap-[20px]">
               <div className="flex w-full justify-between items-start gap-[20px]">
-                <span className="text-[20px] lg:text-[24px] font-bold uppercase leading-tight w-1/2 max-w-[200px]">CREATOR-FIRST THINKING</span>
-                <p className="text-[14px] font-medium leading-snug w-1/2">We match creators by audience, brand fit and the way they make content.</p>
+                <span className="type-subheading uppercase w-1/2 max-w-[200px]">CREATOR-FIRST THINKING</span>
+                <p className="type-body w-1/2">We match creators by audience, brand fit and the way they make content.</p>
               </div>
               <div className="flex w-full justify-between items-start gap-[20px]">
-                <span className="text-[20px] lg:text-[24px] font-bold uppercase leading-tight w-1/2 max-w-[200px]">SOCIAL-FIRST CONTENT</span>
-                <p className="text-[14px] font-medium leading-snug w-1/2">Built for how people actually watch and engage on each platform.</p>
+                <span className="type-subheading uppercase w-1/2 max-w-[200px]">SOCIAL-FIRST CONTENT</span>
+                <p className="type-body w-1/2">Built for how people actually watch and engage on each platform.</p>
               </div>
               <div className="flex w-full justify-between items-start gap-[20px]">
-                <span className="text-[20px] lg:text-[24px] font-bold uppercase leading-tight w-1/2 max-w-[200px]">END-TO-END DELIVERY</span>
-                <p className="text-[14px] font-medium leading-snug w-1/2">From strategy and creator briefs to production, approvals and reporting.</p>
+                <span className="type-subheading uppercase w-1/2 max-w-[200px]">END-TO-END DELIVERY</span>
+                <p className="type-body w-1/2">From strategy and creator briefs to production, approvals and reporting.</p>
               </div>
             </div>
 
@@ -817,7 +808,7 @@ export default function Home() {
             {capabilitiesTicker.map((item, idx) => (
               <div key={idx} className="flex items-center h-[34px] bg-[#1A1A1A] border border-white/10 rounded-full pl-[10px] pr-[16px] py-[6px] gap-[8px] shrink-0">
                 <div className="text-zinc-400">{item.icon}</div>
-                <span className="text-white font-medium text-[13px]">{item.text}</span>
+                <span className="type-small-label text-white">{item.text}</span>
               </div>
             ))}
           </div>
@@ -832,8 +823,7 @@ export default function Home() {
         <div className="w-full max-w-[1440px] flex flex-col items-center">
 
           <h2
-            className="text-center text-[70px] leading-[0.9] font-semibold uppercase tracking-[-0.03em] text-white mb-[80px]"
-            style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+            className="type-section-title text-center uppercase text-white mb-[80px]"
           >
             FREQUENTLY ASKED<br/>QUESTIONS
           </h2>
@@ -845,7 +835,7 @@ export default function Home() {
                 className={`flex flex-col w-full transition-colors duration-300 ${faq.isOpen ? 'bg-[#1A1A1A] rounded-[24px] p-[32px] mb-[16px]' : 'border-b border-white/10 py-[32px]'}`}
               >
                 <div className="flex items-center justify-between gap-[20px] cursor-pointer">
-                  <h3 className="text-white font-medium text-[23.1px] leading-[32px] tracking-[-0.6px]">
+                  <h3 className="type-card-title text-white">
                     {faq.question}
                   </h3>
                   
@@ -855,7 +845,7 @@ export default function Home() {
                 </div>
                 
                 {faq.isOpen && (
-                  <p className="text-[#9F9F9F] text-[16px] leading-[24px] mt-[16px] max-w-[800px]">
+                  <p className="type-body text-[#9F9F9F] mt-[16px] max-w-[800px]">
                     {faq.answer}
                   </p>
                 )}
@@ -882,19 +872,18 @@ export default function Home() {
             
             {/* Tiny Badge */}
             <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#155149] mb-[30px]">
-              <span className="text-[12px] font-medium text-white">Ready?</span>
+              <span className="type-small-label text-white">Ready?</span>
             </div>
 
             {/* Main Headline[cite: 109] */}
             <h2 
-              className="text-[#155149] text-[clamp(2rem,3.6vw,46px)] leading-[0.96] tracking-[-0.05em] font-semibold uppercase mb-[24px]"
-              style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+              className="type-cta-title text-[#155149] uppercase mb-[24px]"
             >
               STOP THE SCROLL.<br/>START THE CONVERSATION
             </h2>
 
             {/* Sub-paragraph[cite: 110] */}
-            <p className="text-[#155149] font-medium text-[17.9px] leading-[20.8px] max-w-[564.9px] mb-[40px]">
+            <p className="type-lead text-[#155149] max-w-[564.9px] mb-[40px]">
               Tell our Dublin team about your brief. We'll shape the right creator campaign, content plan or social strategy for your brand.
             </p>
 
@@ -906,14 +895,14 @@ export default function Home() {
                 <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-[#155149] rounded-full shrink-0">
                   <Calendar className="w-5 h-5" strokeWidth={2} />
                 </div>
-                <span className="text-white font-medium text-[16px]">
+                <span className="type-button-label text-white">
                   Start a Project
                 </span>
               </button>
 
               {/* Secondary Link Button */}
               <button className="flex items-center h-[52px] bg-transparent rounded-full px-[6px] py-[6px] gap-[12px] group">
-                <span className="text-[#155149] font-medium text-[16px] group-hover:opacity-80 transition-opacity">
+                <span className="type-button-label text-[#155149] group-hover:opacity-80 transition-opacity">
                   See our work
                 </span>
                 <div className="flex items-center justify-center w-[32px] h-[32px] bg-[#155149] text-white rounded-full shrink-0 group-hover:scale-105 transition-transform">

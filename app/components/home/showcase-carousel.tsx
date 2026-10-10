@@ -110,7 +110,7 @@ export default function ShowcaseCarousel({ items }: ShowcaseCarouselProps) {
                     <div className="relative w-full flex-1 overflow-hidden">
                       <img src={item.imgUrl} alt={item.username} className="h-full w-full object-cover" />
                       <div className="absolute left-[12px] top-[12px] z-10 flex items-center gap-[4px]">
-                        <span className="text-[12px] font-medium text-white drop-shadow-md">{item.username}</span>
+                        <span className="type-small-label text-white drop-shadow-md">{item.username}</span>
                         <BadgeCheck className="h-[12px] w-[12px] fill-blue-500 text-white" />
                       </div>
                       <div className="pointer-events-none absolute inset-x-0 top-0 h-[40px] bg-gradient-to-b from-black/50 to-transparent" />
@@ -119,11 +119,11 @@ export default function ShowcaseCarousel({ items }: ShowcaseCarouselProps) {
                     <div className="flex h-[48px] shrink-0 items-center justify-between bg-white px-[16px]">
                       <div className="flex items-center gap-[6px]">
                         <Eye className="h-[14px] w-[14px] text-zinc-400" />
-                        <span className="text-[12px] font-bold text-black">{item.views}</span>
+                        <span className="type-small-label text-black">{item.views}</span>
                       </div>
                       <div className="flex items-center gap-[6px]">
                         <ShoppingCart className="h-[14px] w-[14px] text-zinc-400" />
-                        <span className="text-[12px] font-bold text-black">{item.sales}</span>
+                        <span className="type-small-label text-black">{item.sales}</span>
                       </div>
                     </div>
                   </div>
