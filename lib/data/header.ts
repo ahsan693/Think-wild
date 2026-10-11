@@ -11,7 +11,7 @@ export const HEADER_LOGO = {
 export const HEADER_NAVIGATION = [
   { label: 'Services', href: '/services' },
   { label: 'Work', href: '/work' },
-  { label: 'Process', href: '/process' },
+  { label: 'Process', href: '/plumpystudy' },
   { label: 'About', href: '/about' },
 ] as const;
 
