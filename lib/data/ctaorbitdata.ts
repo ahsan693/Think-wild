@@ -47,6 +47,25 @@ export const CTA_ORBIT_DATA = {
       iconForeground: '#EC4037',
     },
   },
+  services: {
+    copy: {
+      eyebrow: 'Ready?',
+      heading: ['MAKE CONTENT', 'PEOPLE WANT TO WATCH.'],
+      description:
+        "Tell our Dublin team what you're planning and we'll shape the right creator campaign, content production or social media approach for your brand.",
+      primaryAction: 'Start a Project',
+      secondaryAction: 'See our work',
+    },
+    images: CTA_ORBIT_IMAGES,
+    colors: {
+      panel: '#BEE9FE',
+      text: '#4A00E0',
+      accent: '#4A00E0',
+      accentText: '#FFFFFF',
+      iconBackground: '#FFFFFF',
+      iconForeground: '#4A00E0',
+    },
+  },
 } as const;
 
 export type CtaOrbitData = (typeof CTA_ORBIT_DATA)[keyof typeof CTA_ORBIT_DATA];
