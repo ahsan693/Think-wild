@@ -448,26 +448,3 @@ export const HOME_FAQ = {
     },
   ],
 } as const;
-
-// Final CTA section: copy and orbit images.
-export const HOME_FINAL_CTA = {
-  copy: {
-    eyebrow: 'Ready?',
-    heading: ['STOP THE SCROLL.', 'START THE CONVERSATION'],
-    description:
-      "Tell our Dublin team about your brief. We'll shape the right creator campaign, content plan or social strategy for your brand.",
-    primaryAction: 'Start a Project',
-    secondaryAction: 'See our work',
-  },
-  images: {
-    orbit: [
-      '/Think-Wild-Media-Developer-Assets/Images/desktop/home/11-final-cta/images/originals/cta-avatar--1404-16104--source.jpg',
-      '/Think-Wild-Media-Developer-Assets/Images/desktop/home/11-final-cta/images/originals/cta-avatar--1404-16106--source.jpg',
-      '/Think-Wild-Media-Developer-Assets/Images/desktop/home/11-final-cta/images/originals/cta-avatar--1404-16109--source.jpg',
-      '/Think-Wild-Media-Developer-Assets/Images/desktop/home/11-final-cta/images/originals/cta-avatar--1404-16112--source.jpg',
-      '/Think-Wild-Media-Developer-Assets/Images/desktop/home/11-final-cta/images/originals/cta-avatar--1404-16120--source.jpg',
-      '/Think-Wild-Media-Developer-Assets/Images/desktop/home/11-final-cta/images/originals/cta-image--1404-16118--source.jpg',
-      '/Think-Wild-Media-Developer-Assets/Images/desktop/home/11-final-cta/images/originals/image-final-cta-01--1404-16115--source.jpg',
-    ],
-  },
-} as const;

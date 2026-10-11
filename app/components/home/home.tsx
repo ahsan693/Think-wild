@@ -2,19 +2,19 @@ import Header from '@/app/components/header/header';
 import Footer from '@/app/components/footer/footer';
 import ShowcaseCarousel from '@/app/components/home/showcase-carousel';
 import ProcessStory from '@/app/components/home/process-story';
-import CtaOrbit from '@/app/components/home/cta-orbit';
+import CtaOrbitSection from '@/app/components/home/cta-orbit-section';
 import Image from 'next/image';
 import { 
   ArrowRight, Heart, MessageCircle, ArrowUpRight, BadgeCheck,
   Check,
   Search, Zap, PieChart, CheckCircle2, Rocket, RefreshCw,
-  Plus, Minus, Calendar
+  Plus, Minus
 } from 'lucide-react';
+import { CTA_ORBIT_DATA } from '@/lib/data/ctaorbitdata';
 import {
   HOME_CAPABILITIES,
   HOME_FAQ,
   HOME_FEATURED_WORK,
-  HOME_FINAL_CTA,
   HOME_HERO,
   HOME_INTRODUCTION,
   HOME_MISSION,
@@ -742,62 +742,7 @@ export default function Home() {
       {/* =========================================
           FINAL CTA SECTION
       ========================================= */}
-      <section className="w-full flex flex-col items-center pt-[250px] pb-[150px] px-4 bg-black overflow-hidden">
-        
-        {/* Main Light Green Container[cite: 103] */}
-        <div className="relative w-full max-w-[1280px] min-h-[733.7px] bg-[#D3FFC4] rounded-[32px] flex flex-col items-center justify-center z-10 py-[100px]">
-          
-          {/* Floating Images Background Layer */}
-          <CtaOrbit images={[...HOME_FINAL_CTA.images.orbit]} />
-
-          {/* Central Content (Needs higher z-index to sit above images) */}
-          <div className="relative z-20 flex flex-col items-center text-center max-w-[597px]">
-            
-            {/* Tiny Badge */}
-            <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#155149] mb-[30px]">
-              <span className="text-[12px] font-medium text-white">              {HOME_FINAL_CTA.copy.eyebrow}</span>
-            </div>
-
-            {/* Main Headline[cite: 109] */}
-            <h2 
-              className="font-bricolage text-[#155149] text-[clamp(2rem,3.6vw,46px)] font-semibold leading-[0.96] tracking-[-0.05em] uppercase mb-[24px]"
-            >
-              {HOME_FINAL_CTA.copy.heading.map((line) => <span key={line} className="block">{line}</span>)}
-            </h2>
-
-            {/* Sub-paragraph[cite: 110] */}
-            <p className="text-[#155149] text-[17.9px] font-medium leading-[20.8px] max-w-[564.9px] mb-[40px]">
-              {HOME_FINAL_CTA.copy.description}
-            </p>
-
-            {/* Buttons Group[cite: 111] */}
-            <div className="flex items-center justify-center gap-[40px] w-full max-w-[407px]">
-              
-              {/* Primary Button */}
-              <button className="flex items-center h-[52px] bg-[#155149] rounded-full pl-[6px] pr-[24px] py-[6px] gap-[12px] hover:bg-[#0c312c] transition-colors">
-                <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-[#155149] rounded-full shrink-0">
-                  <Calendar className="w-5 h-5" strokeWidth={2} />
-                </div>
-                <span className="text-[16px] font-medium text-white">
-                  {HOME_FINAL_CTA.copy.primaryAction}
-                </span>
-              </button>
-
-              {/* Secondary Link Button */}
-              <button className="flex items-center h-[52px] bg-transparent rounded-full px-[6px] py-[6px] gap-[12px] group">
-                <span className="text-[16px] font-medium text-[#155149] group-hover:opacity-80 transition-opacity">
-                  {HOME_FINAL_CTA.copy.secondaryAction}
-                </span>
-                <div className="flex items-center justify-center w-[32px] h-[32px] bg-[#155149] text-white rounded-full shrink-0 group-hover:scale-105 transition-transform">
-                  <ArrowRight className="w-4 h-4" strokeWidth={2} />
-                </div>
-              </button>
-
-            </div>
-          </div>
-        </div>
-
-      </section>
+      <CtaOrbitSection data={CTA_ORBIT_DATA.home} />
 
       <Footer />
 
