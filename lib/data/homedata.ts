@@ -399,7 +399,7 @@ export const HOME_CAPABILITIES = {
     ],
   },
   image: {
-    src: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
+    src: '/Think-Wild-Media-Developer-Assets/Images/desktop/home/09-capabilities/images/originals/image-8--1404-15953--source.png',
     alt: 'Creative team collaborating',
   },
   ticker: [
