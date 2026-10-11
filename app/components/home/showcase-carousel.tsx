@@ -2,7 +2,7 @@
 
 import { useLayoutEffect, useRef, useState } from 'react';
 import { BadgeCheck, ChevronLeft, ChevronRight, Eye, ShoppingCart } from 'lucide-react';
-import { HOME_ACCESSIBILITY } from '@/lib/data/homedata';
+import { HOME_SHOWCASE } from '@/lib/data/homedata';
 
 type ShowcaseItem = {
   readonly id: number;
@@ -84,8 +84,8 @@ export default function ShowcaseCarousel({ items }: ShowcaseCarouselProps) {
           className="flex h-full w-max items-center transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${offset}px)` }}
           role="region"
-          aria-label={HOME_ACCESSIBILITY.showcaseCarousel}
-          aria-roledescription={HOME_ACCESSIBILITY.showcaseCarouselRole}
+          aria-label={HOME_SHOWCASE.accessibility.carousel}
+          aria-roledescription={HOME_SHOWCASE.accessibility.carouselRole}
         >
           {Array.from({ length: REPEATED_SETS }, (_, setIndex) => (
             <div
@@ -139,7 +139,7 @@ export default function ShowcaseCarousel({ items }: ShowcaseCarouselProps) {
         <button
           type="button"
           onClick={() => scrollCards(-1)}
-          aria-label={HOME_ACCESSIBILITY.scrollShowcaseLeft}
+          aria-label={HOME_SHOWCASE.accessibility.scrollLeft}
           className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#1D1D1D] transition-colors hover:bg-zinc-700"
         >
           <ChevronLeft className="h-[20px] w-[20px] text-white" />
@@ -147,7 +147,7 @@ export default function ShowcaseCarousel({ items }: ShowcaseCarouselProps) {
         <button
           type="button"
           onClick={() => scrollCards(1)}
-          aria-label={HOME_ACCESSIBILITY.scrollShowcaseRight}
+          aria-label={HOME_SHOWCASE.accessibility.scrollRight}
           className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#1D1D1D] transition-colors hover:bg-zinc-700"
         >
           <ChevronRight className="h-[20px] w-[20px] text-white" />

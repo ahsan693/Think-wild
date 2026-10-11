@@ -11,22 +11,25 @@ import {
   Plus, Minus, Calendar
 } from 'lucide-react';
 import {
-  HOME_CAPABILITIES_TICKER,
-  HOME_COPY,
-  HOME_CTA_IMAGES,
-  HOME_FAQS,
-  HOME_MEDIA,
+  HOME_CAPABILITIES,
+  HOME_FAQ,
+  HOME_FEATURED_WORK,
+  HOME_FINAL_CTA,
+  HOME_HERO,
+  HOME_INTRODUCTION,
+  HOME_MISSION,
+  HOME_PROCESS,
   HOME_SERVICES,
-  HOME_SHOWCASE_ITEMS,
-  HOME_SOCIAL_PLATFORMS,
-  HOME_CREATOR_ITEMS,
+  HOME_SHOWCASE,
+  HOME_SOCIAL_TICKER,
+  HOME_WHY_US,
 } from '@/lib/data/homedata';
 // import { Bricolage_Grotesque } from 'next/font/google';
 
 export default function Home() {
-  const carouselItems = [...HOME_CREATOR_ITEMS, ...HOME_CREATOR_ITEMS, ...HOME_CREATOR_ITEMS];
-  const tickerItems = Array.from({ length: 5 }, () => HOME_SOCIAL_PLATFORMS).flat();
-  const capabilitiesTicker = Array.from({ length: 4 }, () => HOME_CAPABILITIES_TICKER).flat();
+  const carouselItems = [...HOME_HERO.creators, ...HOME_HERO.creators, ...HOME_HERO.creators];
+  const tickerItems = Array.from({ length: 5 }, () => HOME_SOCIAL_TICKER.platforms).flat();
+  const capabilitiesTicker = Array.from({ length: 4 }, () => HOME_CAPABILITIES.ticker).flat();
   const capabilityIcons = {
     check: CheckCircle2,
     chart: PieChart,
@@ -56,7 +59,7 @@ export default function Home() {
         <div className="flex flex-col items-center w-full max-w-[860px] gap-[30px]">
           <div className="flex items-center justify-center h-[35px] rounded-full border border-[#999999]/40 bg-[#1D1D1D] px-[20px] py-[6px]">
             <span className="text-[14px] font-medium text-white">
-              {HOME_COPY.hero.eyebrow}
+              {HOME_HERO.copy.eyebrow}
             </span>
           </div>
 
@@ -64,18 +67,18 @@ export default function Home() {
             <h1 
               className="font-bricolage flex flex-col items-center text-[clamp(48px,10.42vw,150px)] font-semibold leading-[0.787] tracking-[-0.06em] uppercase whitespace-nowrap"
             >
-              <span className="block">{HOME_COPY.hero.firstLine}</span>
+              <span className="block">{HOME_HERO.copy.firstLine}</span>
               <span className="flex items-center justify-center gap-[24px] mt-[16px]">
-                <span>{HOME_COPY.hero.secondLine}</span>
+                <span>{HOME_HERO.copy.secondLine}</span>
                 <span className="flex items-center justify-center min-w-[418px] px-[40px] h-[129px] bg-[#8CFE79] text-[#1D1D1D] rounded-[66px] pb-[8px]">
-                  {HOME_COPY.hero.highlight}
+                  {HOME_HERO.copy.highlight}
                 </span>
               </span>
             </h1>
           </div>
 
           <p className="w-full max-w-[860px] text-center text-[17.7px] font-medium leading-[20.8px] text-[#9F9F9F] mt-[10px]">
-            {HOME_COPY.hero.description}
+            {HOME_HERO.copy.description}
           </p>
 
           <button className="flex items-center h-[55px] bg-white rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors mt-[12px]">
@@ -83,7 +86,7 @@ export default function Home() {
               <ArrowRight className="w-5 h-5 -rotate-45" strokeWidth={2} />
             </div>
             <span className="text-[16px] font-medium text-[#1D1D1D]">
-              {HOME_COPY.hero.action}
+              {HOME_HERO.copy.action}
             </span>
           </button>
         </div>
@@ -107,7 +110,7 @@ export default function Home() {
                   />
                   <div className="absolute top-0 inset-x-0 h-[60px] bg-gradient-to-b from-black/60 to-transparent pointer-events-none" />
                   <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[50px] h-[16px] bg-black rounded-full" />
-                  <span className="absolute top-8 left-1/2 -translate-x-1/2 text-[10px] font-medium text-white/80">{HOME_COPY.videoCard.platformLabel}</span>
+                  <span className="absolute top-8 left-1/2 -translate-x-1/2 text-[10px] font-medium text-white/80">{HOME_HERO.carousel.platformLabel}</span>
                   <div className="absolute bottom-0 inset-x-0 h-[120px] bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
                   
                   <div className="absolute bottom-[16px] left-[12px] w-[134px] h-[35px] flex flex-col justify-end">
@@ -115,7 +118,7 @@ export default function Home() {
                       <span className="text-white text-[13px] font-semibold tracking-tight">{item.username}</span>
                       <BadgeCheck className="w-[14px] h-[14px] text-blue-500 fill-white" />
                     </div>
-                    <span className="text-white/80 text-[10px] truncate">{item.likes} · {HOME_COPY.videoCard.originalAudioLabel}</span>
+                    <span className="text-white/80 text-[10px] truncate">{item.likes} · {HOME_HERO.carousel.originalAudioLabel}</span>
                   </div>
 
                   <div className="absolute bottom-[24px] right-[12px] w-[18px] h-[78px] flex flex-col items-center justify-between gap-[12px]">
@@ -134,7 +137,7 @@ export default function Home() {
         ========================================= */}
         <div className="w-full flex flex-col items-center mt-[40px] pt-[29px]">
           <p className="text-[17.7px] font-medium text-white mb-[20px]">
-            {HOME_COPY.ticker.heading}
+            {HOME_SOCIAL_TICKER.heading}
           </p>
           <div className="relative w-full max-w-[620px] h-[38px] flex items-center overflow-hidden">
             <div className="absolute left-0 top-0 z-10 w-[84px] h-[40px] bg-gradient-to-r from-black to-transparent pointer-events-none" />
@@ -163,10 +166,10 @@ export default function Home() {
         ========================================= */}
         <div className="w-full max-w-[860px] flex flex-col items-start mt-[140px]">
           <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#1A1A1A] border border-[#333] mb-[32px]">
-            <span className="text-[14px] font-medium text-white/70">{HOME_COPY.introduction.eyebrow}</span>
+            <span className="text-[14px] font-medium text-white/70">{HOME_INTRODUCTION.eyebrow}</span>
           </div>
           <div className="text-[35px] font-medium leading-[46.8px] text-white space-y-[40px]">
-            {HOME_COPY.introduction.paragraphs.map((paragraph, paragraphIndex) => (
+            {HOME_INTRODUCTION.paragraphs.map((paragraph, paragraphIndex) => (
               <p key={paragraphIndex}>
                 {paragraph.map((part, partIndex) => {
                   if (!('highlight' in part)) return part.text;
@@ -194,18 +197,18 @@ export default function Home() {
             <div className="relative w-[297px] h-[390px] shrink-0">
               <div className="w-full h-full rounded-[30px] overflow-hidden bg-zinc-900 border border-[#333]">
                 <img
-                  src={HOME_CREATOR_ITEMS[0].imageUrl}
-                  alt={HOME_COPY.mission.imageAlt}
+                  src={HOME_MISSION.images.creator.src}
+                  alt={HOME_MISSION.copy.imageAlt}
                   className="w-full h-full object-cover opacity-80"
                 />
               </div>
               <div className="absolute -top-[12px] -left-[16px] w-[74px] h-[33px] bg-white rounded-full flex items-center justify-center gap-[4px] rotate-[20deg] shadow-xl z-10">
                 <Heart className="w-[14px] h-[14px] text-red-500 fill-red-500" />
-                <span className="text-black font-bold text-[13px]">{HOME_COPY.mission.imageMetrics[0]}</span>
+                <span className="text-black font-bold text-[13px]">{HOME_MISSION.copy.imageMetrics[0]}</span>
               </div>
               <div className="absolute bottom-[20px] -right-[16px] w-[74px] h-[33px] bg-white rounded-full flex items-center justify-center gap-[4px] rotate-[20deg] shadow-xl z-10">
                 <MessageCircle className="w-[14px] h-[14px] text-blue-500 fill-blue-500" />
-                <span className="text-black font-bold text-[13px]">{HOME_COPY.mission.imageMetrics[1]}</span>
+                <span className="text-black font-bold text-[13px]">{HOME_MISSION.copy.imageMetrics[1]}</span>
               </div>
             </div>
 
@@ -213,8 +216,8 @@ export default function Home() {
             <div className="relative w-[297px] h-[413.45px] mt-[50px] shrink-0">
               <div className="w-full h-full rounded-[30px] overflow-hidden bg-zinc-900 border border-[#333]">
                 <img 
-                  src={HOME_MEDIA.missionFashion.src}
-                  alt={HOME_MEDIA.missionFashion.alt}
+                  src={HOME_MISSION.images.fashion.src}
+                  alt={HOME_MISSION.images.fashion.alt}
                   className="w-full h-full object-cover opacity-80"
                 />
               </div>
@@ -222,29 +225,29 @@ export default function Home() {
                 <div className="w-[14px] h-[14px] rounded-full bg-orange-500 flex items-center justify-center">
                   <div className="w-[6px] h-[6px] bg-white rounded-full" />
                 </div>
-                <span className="text-black font-bold text-[13px]">{HOME_COPY.mission.imageMetrics[2]}</span>
+                <span className="text-black font-bold text-[13px]">{HOME_MISSION.copy.imageMetrics[2]}</span>
               </div>
             </div>
           </div>
 
           <div className="flex flex-col items-start w-[610px] gap-[24px]">
             <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#1A1A1A] border border-[#333]">
-              <span className="text-[14px] font-medium text-white/70">{HOME_COPY.mission.eyebrow}</span>
+              <span className="text-[14px] font-medium text-white/70">{HOME_MISSION.copy.eyebrow}</span>
             </div>
             <h2 
               className="font-bricolage w-full text-[70px] font-semibold leading-[63px] tracking-[-0.03em] uppercase text-white"
             >
-              {HOME_COPY.mission.heading}
+              {HOME_MISSION.copy.heading}
             </h2>
             <p className="w-full text-[17.7px] font-medium leading-[24px] text-[#9F9F9F] pr-[20px]">
-              {HOME_COPY.mission.description}
+              {HOME_MISSION.copy.description}
             </p>
             <button className="flex items-center h-[55px] bg-white rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors mt-[12px]">
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
                 <ArrowRight className="w-5 h-5" strokeWidth={2} />
               </div>
               <span className="text-[#1D1D1D] font-medium text-[16px]">
-                {HOME_COPY.mission.action}
+                {HOME_MISSION.copy.action}
               </span>
             </button>
           </div>
@@ -257,11 +260,11 @@ export default function Home() {
           <h2 
             className="font-bricolage mb-[clamp(3rem,8vw,6.25rem)] w-full max-w-[1280px] px-4 text-center text-[clamp(2.5rem,7vw,6rem)] font-semibold uppercase leading-[0.9] tracking-[-0.03em]"
           >
-            {HOME_COPY.services.heading}
+            {HOME_SERVICES.copy.heading}
           </h2>
 
           <div className="flex w-full max-w-[1270px] flex-col items-center gap-[clamp(7rem,18vh,12rem)] px-4 pb-[20vh]">
-            {HOME_SERVICES.map((service, index) => {
+            {HOME_SERVICES.items.map((service, index) => {
               const topOffset = 96 + (index * 24);
               return (
                 <article
@@ -274,7 +277,7 @@ export default function Home() {
                     {/* Folder Tab */}
                     <div className={`absolute -top-[32px] ${index % 2 === 0 ? 'left-6 md:left-[40px]' : 'right-6 md:right-[40px]'} flex h-[32px] items-center justify-center rounded-t-[12px] px-5 md:px-[24px] ${service.bgColor}`}>
                       <span className={`text-[10px] font-bold uppercase tracking-widest md:text-[12px] ${service.textColor}`}>
-                        {HOME_COPY.services.tabLabel} / {service.id}
+                        {HOME_SERVICES.copy.tabLabel} / {service.id}
                       </span>
                     </div>
 
@@ -330,7 +333,7 @@ export default function Home() {
         {/* Header Pill */}
         <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full border border-white/20 mb-[32px]">
           <span className="text-[12px] font-bold uppercase tracking-widest text-white">
-            {HOME_COPY.showcase.eyebrow}
+            {HOME_SHOWCASE.copy.eyebrow}
           </span>
         </div>
 
@@ -338,15 +341,15 @@ export default function Home() {
         <h2 
           className="font-bricolage text-center text-[70px] font-semibold leading-[63px] uppercase tracking-[-0.03em] max-w-[701px] text-white mb-[24px]"
         >
-          {HOME_COPY.showcase.heading}
+          {HOME_SHOWCASE.copy.heading}
         </h2>
 
         {/* Subtext */}
         <p className="text-center text-[16px] font-medium text-[#9F9F9F] max-w-[500px] mb-[80px]">
-          {HOME_COPY.showcase.description}
+          {HOME_SHOWCASE.copy.description}
         </p>
 
-        <ShowcaseCarousel items={HOME_SHOWCASE_ITEMS} />
+        <ShowcaseCarousel items={HOME_SHOWCASE.items} />
 
       </section>
 
@@ -359,13 +362,13 @@ export default function Home() {
           <div className="mb-[50px] flex w-full max-w-[750px] flex-col items-center gap-[24px]">
             <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full border border-white/20">
               <span className="text-[12px] font-bold uppercase tracking-widest text-white">
-                {HOME_COPY.featuredWork.eyebrow}
+                {HOME_FEATURED_WORK.copy.eyebrow}
               </span>
             </div>
             <h2 
               className="font-bricolage text-[70px] font-semibold leading-[0.9] tracking-[-0.03em] uppercase text-center"
             >
-              {HOME_COPY.featuredWork.heading}
+              {HOME_FEATURED_WORK.copy.heading}
             </h2>
           </div>
 
@@ -373,8 +376,8 @@ export default function Home() {
             
             <div className="h-[260px] w-full shrink-0 overflow-hidden bg-zinc-100 md:h-full md:w-[49.25%]">
               <img 
-                src={HOME_MEDIA.featuredWork.src}
-                alt={HOME_MEDIA.featuredWork.alt}
+                src={HOME_FEATURED_WORK.image.src}
+                alt={HOME_FEATURED_WORK.copy.projectName}
                 className="w-full h-full object-cover" 
               />
             </div>
@@ -383,21 +386,21 @@ export default function Home() {
               <div className="flex flex-col gap-[20px]">
                 <div className="flex flex-col gap-[4px]">
                   <h3 className="text-black font-semibold text-[27.3px] leading-[39.2px]">
-                    {HOME_MEDIA.featuredWork.alt}
+                    {HOME_FEATURED_WORK.copy.projectName}
                   </h3>
                   <p className="text-zinc-800 text-[14px]">
-                    {HOME_COPY.featuredWork.category}
+                    {HOME_FEATURED_WORK.copy.category}
                   </p>
                 </div>
                 
                 <div className="flex flex-col gap-[8px]">
                   <div className="flex flex-col">
-                    <span className="text-black text-[14px] font-bold">{HOME_COPY.featuredWork.createdLabel}</span>
-                    <span className="text-zinc-600 text-[14px] mt-[2px]">{HOME_COPY.featuredWork.created}</span>
+                    <span className="text-black text-[14px] font-bold">{HOME_FEATURED_WORK.copy.createdLabel}</span>
+                    <span className="text-zinc-600 text-[14px] mt-[2px]">{HOME_FEATURED_WORK.copy.created}</span>
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-black text-[14px] font-bold">{HOME_COPY.featuredWork.platformsLabel}</span>
-                    <span className="text-zinc-600 text-[14px] mt-[2px]">{HOME_COPY.featuredWork.platforms}</span>
+                    <span className="text-black text-[14px] font-bold">{HOME_FEATURED_WORK.copy.platformsLabel}</span>
+                    <span className="text-zinc-600 text-[14px] mt-[2px]">{HOME_FEATURED_WORK.copy.platforms}</span>
                   </div>
                 </div>
               </div>
@@ -407,7 +410,7 @@ export default function Home() {
                   <ArrowRight className="w-5 h-5" strokeWidth={2} />
                 </div>
                 <span className="text-[16px] font-medium text-white">
-                  {HOME_COPY.featuredWork.action}
+                  {HOME_FEATURED_WORK.copy.action}
                 </span>
               </button>
 
@@ -422,14 +425,14 @@ export default function Home() {
 
           <div className="flex flex-col items-center gap-[24px] mt-[20px]">
             <p className="text-center text-[16px] font-medium text-[#9F9F9F] max-w-[460px]">
-              {HOME_COPY.featuredWork.summary}
+              {HOME_FEATURED_WORK.copy.summary}
             </p>
             <button className="flex items-center h-[55px] bg-transparent border border-white/30 rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-white/10 transition-colors">
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-black rounded-full shrink-0">
                 <ArrowRight className="w-5 h-5" strokeWidth={2} />
               </div>
               <span className="text-[16px] font-medium text-white">
-                {HOME_COPY.featuredWork.moreAction}
+                {HOME_FEATURED_WORK.copy.moreAction}
               </span>
             </button>
           </div>
@@ -445,21 +448,21 @@ export default function Home() {
 
           <div className="flex flex-col items-center w-full max-w-[858px] gap-[32px] mb-[80px]">
             <div className="flex items-center justify-center w-[202px] h-[35px] border border-black/20 rounded-full bg-transparent">
-              <span className="text-[14px] font-medium text-black">{HOME_COPY.whyUs.eyebrow}</span>
+              <span className="text-[14px] font-medium text-black">{HOME_WHY_US.copy.eyebrow}</span>
             </div>
             <h2
               className="font-bricolage text-black text-[70px] font-semibold leading-[0.9] uppercase tracking-[-0.03em] text-center"
             >
-              {HOME_COPY.whyUs.heading}
+              {HOME_WHY_US.copy.heading}
             </h2>
           </div>
 
           <div className="flex w-full justify-between items-start">
 
             <div className="flex flex-col w-[334px] pt-[40px]">
-              <h4 className="text-black text-[20px] font-bold mb-[32px]">{HOME_COPY.whyUs.listHeading}</h4>
+              <h4 className="text-black text-[20px] font-bold mb-[32px]">{HOME_WHY_US.copy.listHeading}</h4>
               <div className="flex flex-col">
-                {HOME_COPY.whyUs.services.map((item) => (
+                {HOME_WHY_US.copy.services.map((item) => (
                   <div key={item} className="text-[16px] font-medium py-[16px] border-t border-black/10 text-black">
                     {item}
                   </div>
@@ -474,11 +477,11 @@ export default function Home() {
                     <path d="M20 0L24.4903 15.5097L40 20L24.4903 24.4903L20 40L15.5097 24.4903L0 20L15.5097 15.5097L20 0Z" fill="white"/>
                   </svg>
                 </div>
-                <span className="text-[28px] font-bold text-white tracking-tight">{HOME_COPY.whyUs.brandName}</span>
+                <span className="text-[28px] font-bold text-white tracking-tight">{HOME_WHY_US.copy.brandName}</span>
               </div>
 
               <div className="flex flex-col gap-[24px] w-full">
-                {HOME_COPY.whyUs.benefits.map((text) => (
+                {HOME_WHY_US.copy.benefits.map((text) => (
                   <div key={text} className="flex items-start gap-[12px] pb-[20px] border-b border-white/20 last:border-0 last:pb-0">
                     <Check className="w-[18px] h-[18px] text-[#8CFE79] shrink-0 mt-[2px]" strokeWidth={3} />
                     <span className="text-[15px] font-medium leading-tight text-white">{text}</span>
@@ -495,7 +498,7 @@ export default function Home() {
                 <ArrowRight className="w-5 h-5" strokeWidth={2} />
               </div>
               <span className="text-[16px] font-medium text-white mx-auto">
-                {HOME_COPY.whyUs.action}
+                {HOME_WHY_US.copy.action}
               </span>
             </button>
           </div>
@@ -513,7 +516,7 @@ export default function Home() {
         {/* Top Header Pill */}
         <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full border border-white/20 mb-[32px]">
           <span className="text-[12px] font-bold uppercase tracking-widest text-white">
-            {HOME_COPY.process.eyebrow}
+            {HOME_PROCESS.copy.eyebrow}
           </span>
         </div>
 
@@ -521,17 +524,17 @@ export default function Home() {
         <h2 
           className="font-bricolage flex flex-col items-center text-center text-[clamp(3rem,8vw,114px)] font-semibold leading-[0.88] tracking-[-0.04em] uppercase text-white"
         >
-          {HOME_COPY.process.headingLines.map((line) => <span key={line}>{line}</span>)}
+          {HOME_PROCESS.copy.headingLines.map((line) => <span key={line}>{line}</span>)}
           
           <span className="flex items-center justify-center gap-[20px] mt-[8px]">
-            <span>{HOME_COPY.process.headingConnector}</span>
+            <span>{HOME_PROCESS.copy.headingConnector}</span>
             <span className="flex h-auto min-w-0 items-center justify-center rounded-[100px] bg-[#8763FF] px-[24px] py-[8px] text-white md:h-[63px] md:min-w-[280px] md:px-[32px]">
-              {HOME_COPY.process.headingHighlight}
+              {HOME_PROCESS.copy.headingHighlight}
             </span>
           </span>
         </h2>
         <p className="mt-[24px] text-center text-[18px] font-medium text-white/60">
-          {HOME_COPY.process.description}
+          {HOME_PROCESS.copy.description}
         </p>
           </div>
 
@@ -540,10 +543,10 @@ export default function Home() {
           
           {/* CARD 1: Discovery & Strategy */}
           <div data-process-card className="process-story-card bg-[#F1E55C] rounded-[30px] p-[40px] flex flex-col gap-[18px]">
-            <span className="text-center text-black font-bold text-[20px]">{HOME_COPY.process.steps[0].number}</span>
+            <span className="text-center text-black font-bold text-[20px]">{HOME_PROCESS.steps[0].number}</span>
             
             <div className="flex-1 flex flex-col gap-[10px] justify-center w-full">
-              {HOME_COPY.process.steps[0].visual.rows.map((row) => (
+              {HOME_PROCESS.steps[0].visual.rows.map((row) => (
                 <div key={row.label} className="w-full bg-[#1A1A1A] rounded-[16px] p-[12px] flex items-center gap-[12px]">
                   <div className={`w-[24px] h-[24px] rounded-full ${row.accent} flex items-center justify-center text-white`}>
                     <Check size={14} strokeWidth={3} />
@@ -557,81 +560,64 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col text-center gap-[8px]">
-              <h3 className="text-[24px] font-bold text-black leading-tight tracking-tight">{HOME_COPY.process.steps[0].title}</h3>
-              <p className="text-[14px] font-medium text-black/80 leading-snug px-2">{HOME_COPY.process.steps[0].description}</p>
+              <h3 className="text-[24px] font-bold text-black leading-tight tracking-tight">{HOME_PROCESS.steps[0].title}</h3>
+              <p className="text-[14px] font-medium text-black/80 leading-snug px-2">{HOME_PROCESS.steps[0].description}</p>
             </div>
           </div>
 
           {/* CARD 2: Creator Matching */}
           <div data-process-card className="process-story-card bg-[#F56633] rounded-[30px] p-[40px] flex flex-col gap-[18px]">
-            <span className="text-center text-black font-bold text-[20px]">{HOME_COPY.process.steps[1].number}</span>
+            <span className="text-center text-black font-bold text-[20px]">{HOME_PROCESS.steps[1].number}</span>
             
             <div className="flex-1 flex items-center justify-center w-full relative">
-              <div className="w-[140px] h-[140px] rounded-full border border-white/30 flex items-center justify-center relative">
-                <div className="w-[80px] h-[80px] rounded-full border border-white/50 flex items-center justify-center">
-                  <div className="w-[60px] h-[60px] bg-[#1A1A1A] rounded-full flex flex-col items-center justify-center text-white relative z-10">
-                    <span className="font-bold text-[18px]">{HOME_COPY.process.steps[1].visual.score}</span>
-                  </div>
-                </div>
-                <span className="absolute -bottom-6 text-black font-bold text-[12px]">{HOME_COPY.process.steps[1].visual.creator}</span>
-                <div className="absolute top-0 left-4 w-6 h-6 bg-blue-500 rounded-full border-2 border-[#F56633]"></div>
-                <div className="absolute top-4 right-0 w-6 h-6 bg-pink-500 rounded-full border-2 border-[#F56633]"></div>
-                <div className="absolute bottom-2 left-0 w-6 h-6 bg-green-500 rounded-full border-2 border-[#F56633]"></div>
-                <div className="absolute bottom-4 right-4 w-6 h-6 bg-yellow-500 rounded-full border-2 border-[#F56633]"></div>
-              </div>
+              <img
+                src={HOME_PROCESS.images.matching.src}
+                alt={HOME_PROCESS.images.matching.alt}
+                className="h-full max-h-[235px] w-full max-w-[242px] object-contain"
+              />
             </div>
 
             <div className="flex flex-col text-center gap-[8px]">
               <h3 className="text-[24px] font-bold text-white leading-tight tracking-tight">
-                {HOME_COPY.process.steps[1].titleLines.map((line) => <span key={line} className="block">{line}</span>)}
+                {HOME_PROCESS.steps[1].titleLines.map((line) => <span key={line} className="block">{line}</span>)}
               </h3>
-              <p className="text-[14px] font-medium text-white/90 leading-snug px-2">{HOME_COPY.process.steps[1].description}</p>
+              <p className="text-[14px] font-medium text-white/90 leading-snug px-2">{HOME_PROCESS.steps[1].description}</p>
             </div>
           </div>
 
           {/* CARD 3: Content Production */}
           <div data-process-card className="process-story-card bg-[#8CFE79] rounded-[30px] p-[40px] flex flex-col gap-[18px]">
-            <span className="text-center text-black font-bold text-[20px]">{HOME_COPY.process.steps[2].number}</span>
+            <span className="text-center text-black font-bold text-[20px]">{HOME_PROCESS.steps[2].number}</span>
             
             <div className="flex-1 w-full bg-black/10 rounded-[20px] overflow-hidden">
               <img 
-                src={HOME_MEDIA.processProduction.src}
-                alt={HOME_MEDIA.processProduction.alt}
-                className="w-full h-full object-cover mix-blend-multiply opacity-90"
+                src={HOME_PROCESS.images.production.src}
+                alt={HOME_PROCESS.images.production.alt}
+                className="w-full h-full object-cover"
               />
             </div>
 
             <div className="flex flex-col text-center gap-[8px]">
-              <h3 className="text-[24px] font-bold text-black leading-tight tracking-tight">{HOME_COPY.process.steps[2].title}</h3>
-              <p className="text-[14px] font-medium text-black/80 leading-snug px-2">{HOME_COPY.process.steps[2].description}</p>
+              <h3 className="text-[24px] font-bold text-black leading-tight tracking-tight">{HOME_PROCESS.steps[2].title}</h3>
+              <p className="text-[14px] font-medium text-black/80 leading-snug px-2">{HOME_PROCESS.steps[2].description}</p>
             </div>
           </div>
 
           {/* CARD 4: Launch, Learn, Grow */}
           <div data-process-card className="process-story-card bg-[#FF4A5A] rounded-[30px] p-[40px] flex flex-col gap-[18px]">
-            <span className="text-center text-black font-bold text-[20px]">{HOME_COPY.process.steps[3].number}</span>
+            <span className="text-center text-black font-bold text-[20px]">{HOME_PROCESS.steps[3].number}</span>
             
-            <div className="flex-1 flex items-end justify-between w-full px-[10px] pb-[20px] gap-[6px]">
-              {HOME_COPY.process.steps[3].visual.bars.map((bar, index) => (
-                <div key={`${bar.day}-${index}`} className="flex flex-col items-center gap-2">
-                  <div
-                    className={`w-[14px] rounded-full relative ${'dark' in bar && bar.dark ? 'bg-[#1A1A1A]' : 'bg-white'}`}
-                    style={{ height: `${bar.height}px` }}
-                  >
-                    {'showTotal' in bar && bar.showTotal && (
-                      <div className="absolute -top-[30px] left-1/2 -translate-x-1/2 bg-[#1A1A1A] text-white text-[10px] font-bold px-[6px] py-[2px] rounded-[4px]">
-                        {HOME_COPY.process.steps[3].visual.total}
-                      </div>
-                    )}
-                  </div>
-                  <span className="text-white/60 text-[10px] font-bold">{bar.day}</span>
-                </div>
-              ))}
+            <div className="flex-1 flex items-center justify-center w-full">
+              <img
+                src={HOME_PROCESS.images.performance.src}
+                alt={HOME_PROCESS.images.performance.alt}
+                className="h-full max-h-[160px] w-full max-w-[230px] object-contain"
+              />
             </div>
 
             <div className="flex flex-col text-center gap-[8px]">
-              <h3 className="text-[24px] font-bold text-white leading-tight tracking-tight">{HOME_COPY.process.steps[3].title}</h3>
-              <p className="text-[14px] font-medium text-white/90 leading-snug px-2">{HOME_COPY.process.steps[3].description}</p>
+              <h3 className="text-[24px] font-bold text-white leading-tight tracking-tight">{HOME_PROCESS.steps[3].title}</h3>
+              <p className="text-[14px] font-medium text-white/90 leading-snug px-2">{HOME_PROCESS.steps[3].description}</p>
             </div>
           </div>
 
@@ -643,7 +629,7 @@ export default function Home() {
             <ArrowRight className="w-5 h-5" strokeWidth={2} />
           </div>
           <span className="text-[16px] font-medium text-[#1D1D1D]">
-            {HOME_COPY.process.action}
+            {HOME_PROCESS.copy.action}
           </span>
         </button>
 
@@ -659,34 +645,34 @@ export default function Home() {
           
           <div className="relative w-full lg:w-[575px] h-[400px] lg:h-full rounded-[30px] overflow-hidden shrink-0">
             <img 
-              src={HOME_MEDIA.capabilitiesTeam.src}
-              alt={HOME_MEDIA.capabilitiesTeam.alt}
+              src={HOME_CAPABILITIES.image.src}
+              alt={HOME_CAPABILITIES.image.alt}
               className="w-full h-full object-cover opacity-80"
             />
             <div className="absolute bottom-0 inset-x-0 h-[250px] bg-gradient-to-t from-black to-transparent pointer-events-none" />
             <h3 
               className="font-bricolage absolute bottom-[40px] left-[40px] w-full max-w-[422px] text-[40px] font-semibold leading-[1] tracking-[-0.03em] uppercase text-white lg:text-[70px] lg:leading-[57px]"
             >
-              {HOME_COPY.capabilities.imageHeading.map((line) => <span key={line} className="block">{line}</span>)}
+              {HOME_CAPABILITIES.copy.imageHeading.map((line) => <span key={line} className="block">{line}</span>)}
             </h3>
           </div>
 
           <div className="flex-1 lg:w-[675px] h-full bg-[#8CFE79] rounded-[30px] p-[30px] lg:p-[50px] flex flex-col items-center lg:items-end text-black relative shrink-0">
             <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-black mb-[20px] self-end">
-              <span className="text-[12px] font-medium text-white">{HOME_COPY.capabilities.eyebrow}</span>
+              <span className="text-[12px] font-medium text-white">              {HOME_CAPABILITIES.copy.eyebrow}</span>
             </div>
 
             <div className="flex flex-col items-end mb-[50px]">
               <span className="text-[80px] font-normal leading-none tracking-tighter lg:text-[110px]">
-                {HOME_COPY.capabilities.metric}
+                {HOME_CAPABILITIES.copy.metric}
               </span>
               <span className="text-[14px] font-medium mt-[4px]">
-                {HOME_COPY.capabilities.metricLabel}
+                {HOME_CAPABILITIES.copy.metricLabel}
               </span>
             </div>
 
             <div className="w-full flex flex-col gap-[20px]">
-              {HOME_COPY.capabilities.items.map((item) => (
+              {HOME_CAPABILITIES.copy.items.map((item) => (
                 <div key={item.heading} className="flex w-full justify-between items-start gap-[20px]">
                   <span className="text-[20px] font-bold uppercase leading-tight w-1/2 max-w-[200px] lg:text-[24px]">{item.heading}</span>
                   <p className="text-[14px] font-medium leading-snug w-1/2">{item.description}</p>
@@ -722,11 +708,11 @@ export default function Home() {
           <h2
             className="font-bricolage text-center text-[70px] font-semibold leading-[0.9] uppercase tracking-[-0.03em] text-white mb-[80px]"
           >
-            {HOME_COPY.faq.heading.map((line) => <span key={line} className="block">{line}</span>)}
+            {HOME_FAQ.heading.map((line) => <span key={line} className="block">{line}</span>)}
           </h2>
 
           <div className="flex flex-col w-full max-w-[916.84px]">
-            {HOME_FAQS.map((faq, index) => (
+            {HOME_FAQ.items.map((faq, index) => (
               <div
                 key={index}
                 className={`flex flex-col w-full transition-colors duration-300 ${faq.isOpen ? 'bg-[#1A1A1A] rounded-[24px] p-[32px] mb-[16px]' : 'border-b border-white/10 py-[32px]'}`}
@@ -762,26 +748,26 @@ export default function Home() {
         <div className="relative w-full max-w-[1280px] min-h-[733.7px] bg-[#D3FFC4] rounded-[32px] flex flex-col items-center justify-center z-10 py-[100px]">
           
           {/* Floating Images Background Layer */}
-          <CtaOrbit images={[...HOME_CTA_IMAGES]} />
+          <CtaOrbit images={[...HOME_FINAL_CTA.images.orbit]} />
 
           {/* Central Content (Needs higher z-index to sit above images) */}
           <div className="relative z-20 flex flex-col items-center text-center max-w-[597px]">
             
             {/* Tiny Badge */}
             <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#155149] mb-[30px]">
-              <span className="text-[12px] font-medium text-white">{HOME_COPY.finalCta.eyebrow}</span>
+              <span className="text-[12px] font-medium text-white">              {HOME_FINAL_CTA.copy.eyebrow}</span>
             </div>
 
             {/* Main Headline[cite: 109] */}
             <h2 
               className="font-bricolage text-[#155149] text-[clamp(2rem,3.6vw,46px)] font-semibold leading-[0.96] tracking-[-0.05em] uppercase mb-[24px]"
             >
-              {HOME_COPY.finalCta.heading.map((line) => <span key={line} className="block">{line}</span>)}
+              {HOME_FINAL_CTA.copy.heading.map((line) => <span key={line} className="block">{line}</span>)}
             </h2>
 
             {/* Sub-paragraph[cite: 110] */}
             <p className="text-[#155149] text-[17.9px] font-medium leading-[20.8px] max-w-[564.9px] mb-[40px]">
-              {HOME_COPY.finalCta.description}
+              {HOME_FINAL_CTA.copy.description}
             </p>
 
             {/* Buttons Group[cite: 111] */}
@@ -793,14 +779,14 @@ export default function Home() {
                   <Calendar className="w-5 h-5" strokeWidth={2} />
                 </div>
                 <span className="text-[16px] font-medium text-white">
-                  {HOME_COPY.finalCta.primaryAction}
+                  {HOME_FINAL_CTA.copy.primaryAction}
                 </span>
               </button>
 
               {/* Secondary Link Button */}
               <button className="flex items-center h-[52px] bg-transparent rounded-full px-[6px] py-[6px] gap-[12px] group">
                 <span className="text-[16px] font-medium text-[#155149] group-hover:opacity-80 transition-opacity">
-                  {HOME_COPY.finalCta.secondaryAction}
+                  {HOME_FINAL_CTA.copy.secondaryAction}
                 </span>
                 <div className="flex items-center justify-center w-[32px] h-[32px] bg-[#155149] text-white rounded-full shrink-0 group-hover:scale-105 transition-transform">
                   <ArrowRight className="w-4 h-4" strokeWidth={2} />
