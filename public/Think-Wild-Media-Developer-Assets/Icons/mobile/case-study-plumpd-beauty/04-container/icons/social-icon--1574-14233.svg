@@ -1,0 +1,16 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Social Icon" clip-path="url(#clip0_1574_14233)">
+<g id="Component 1" clip-path="url(#clip1_1574_14233)">
+<path id="Vector" d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="#1877F2"/>
+<path id="Vector_2" d="M14.3074 23.2003V16.4434H12.543V14.0106H14.3074V11.9327C14.3074 10.2998 15.3497 8.80029 17.7513 8.80029C18.7238 8.80029 19.4428 8.8947 19.4428 8.8947L19.3862 11.1665C19.3862 11.1665 18.6528 11.1593 17.8527 11.1593C16.9865 11.1593 16.8478 11.5634 16.8478 12.2342V14.0106H19.455L19.3415 16.4434H16.8478V23.2003H14.3074Z" fill="white"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_1574_14233">
+<rect width="32" height="32" fill="white"/>
+</clipPath>
+<clipPath id="clip1_1574_14233">
+<rect width="32" height="32" fill="white"/>
+</clipPath>
+</defs>
+</svg>

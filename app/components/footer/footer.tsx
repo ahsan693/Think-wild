@@ -3,7 +3,7 @@ import Link from 'next/link';
 export default function Footer() {
   return (
     // Outer container: Full width, top border (1px white 12% opacity), top padding 64px[cite: 112]
-    <footer className="site-footer w-full bg-black border-t border-white/10 pt-[64px] flex flex-col items-center overflow-hidden relative z-10">
+    <footer className="site-footer w-full bg-black border-t border-white/10 pt-[64px] flex flex-col items-center overflow-hidden relative z-10 font-[family-name:var(--font-saans)]">
       
       {/* Inner Container: 1200px max-width, horizontal padding for responsiveness[cite: 114] */}
       <div className="w-full max-w-[1200px] px-[20px] flex flex-col z-20">
@@ -24,7 +24,7 @@ export default function Footer() {
             </div>
             
             {/* Description Text */}
-            <p className="type-body text-[#9F9F9F] max-w-[400px]">
+            <p className="text-[#9F9F9F] text-[16px] leading-[24px] max-w-[400px]">
               Creator-led campaigns, social content and influencer marketing built for brands that want to be noticed.
             </p>
           </div>
@@ -34,9 +34,9 @@ export default function Footer() {
             
             {/* Column 1: Company */}
             <div className="flex flex-col gap-[16px]">
-              <span className="type-small-label text-white uppercase tracking-wider mb-[4px]">Company</span>
+              <span className="text-[14px] font-bold text-white uppercase tracking-wider mb-[4px]">Company</span>
               {['About', 'Services', 'Creators', 'Work'].map((link) => (
-                <Link key={link} href="#" className="type-body text-[#9F9F9F] hover:text-white transition-colors">
+                <Link key={link} href="#" className="text-[#9F9F9F] text-[15px] hover:text-white transition-colors">
                   {link}
                 </Link>
               ))}
@@ -44,14 +44,14 @@ export default function Footer() {
 
             {/* Column 2: Services */}
             <div className="flex flex-col gap-[16px]">
-              <span className="type-small-label text-white uppercase tracking-wider mb-[4px]">Services</span>
+              <span className="text-[14px] font-bold text-white uppercase tracking-wider mb-[4px]">Services</span>
               {[
                 'Creator & Influencer Campaigns', 
                 'Content Production', 
                 'Social Media Management', 
                 'Social Creative Strategy'
               ].map((link) => (
-                <Link key={link} href="#" className="type-body text-[#9F9F9F] hover:text-white transition-colors">
+                <Link key={link} href="#" className="text-[#9F9F9F] text-[15px] hover:text-white transition-colors">
                   {link}
                 </Link>
               ))}
@@ -59,9 +59,9 @@ export default function Footer() {
 
             {/* Column 3: Resources */}
             <div className="flex flex-col gap-[16px]">
-              <span className="type-small-label text-white uppercase tracking-wider mb-[4px]">Resources</span>
+              <span className="text-[14px] font-bold text-white uppercase tracking-wider mb-[4px]">Resources</span>
               {['FAQs', 'Work', 'Contact'].map((link) => (
-                <Link key={link} href="#" className="type-body text-[#9F9F9F] hover:text-white transition-colors">
+                <Link key={link} href="#" className="text-[#9F9F9F] text-[15px] hover:text-white transition-colors">
                   {link}
                 </Link>
               ))}
@@ -72,12 +72,12 @@ export default function Footer() {
 
         {/* Bottom Copyright Row: 1160px max width inside the 1200px container, Top Border 12% opacity, 24px padding[cite: 117] */}
         <div className="w-full border-t border-white/10 py-[24px] flex flex-col md:flex-row items-center justify-between gap-[20px] md:gap-0">
-          <span className="type-body text-[#9F9F9F]">
+          <span className="text-[#9F9F9F] text-[14px]">
             © 2026 Think Wild Media. All rights reserved.
           </span>
           <div className="flex items-center gap-[24px]">
             {['Instagram', 'TikTok', 'YouTube', 'LinkedIn'].map((social) => (
-              <Link key={social} href="#" className="type-body text-[#9F9F9F] underline hover:text-white transition-colors">
+              <Link key={social} href="#" className="text-[#9F9F9F] text-[14px] underline hover:text-white transition-colors">
                 {social}
               </Link>
             ))}

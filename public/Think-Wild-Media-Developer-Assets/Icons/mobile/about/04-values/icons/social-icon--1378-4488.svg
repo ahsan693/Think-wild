@@ -1,0 +1,25 @@
+<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Social Icon">
+<g clip-path="url(#clip0_1378_4488)">
+<g id="Icon &#194;&#183; Values 01" clip-path="url(#clip1_1378_4488)">
+<path id="Vector" d="M7.5 15C11.6421 15 15 11.6421 15 7.5C15 3.35786 11.6421 0 7.5 0C3.35786 0 0 3.35786 0 7.5C0 11.6421 3.35786 15 7.5 15Z" fill="black"/>
+<g id="Vector_2">
+<use xlink:href="#stroke0_1378_4488" fill="white"/>
+<mask id="stroke1_1378_4488" fill="white">
+<use xlink:href="#stroke0_1378_4488"/>
+</mask>
+<path d="M8.10582 6.92573L10.8378 3.75H10.1904L7.81824 6.50747L5.92356 3.75H3.73828L6.60338 7.91977L3.73828 11.25H4.38571L6.89082 8.33803L8.89173 11.25H11.077L8.10582 6.92573ZM7.21909 7.95647L6.92879 7.5413L4.619 4.23738H5.61343L7.47742 6.90375L7.76771 7.31892L10.1907 10.7848H9.19632L7.21909 7.95647Z" stroke-width="0.9375" stroke="white" mask="url(#stroke1_1378_4488)"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_1378_4488">
+<rect width="15" height="15" rx="7.5" fill="white"/>
+</clipPath>
+<clipPath id="clip1_1378_4488">
+<rect width="15" height="15" fill="white"/>
+</clipPath>
+<path id="stroke0_1378_4488" d="M8.10582 6.92573L10.8378 3.75H10.1904L7.81824 6.50747L5.92356 3.75H3.73828L6.60338 7.91977L3.73828 11.25H4.38571L6.89082 8.33803L8.89173 11.25H11.077L8.10582 6.92573ZM7.21909 7.95647L6.92879 7.5413L4.619 4.23738H5.61343L7.47742 6.90375L7.76771 7.31892L10.1907 10.7848H9.19632L7.21909 7.95647Z"/>
+</defs>
+</svg>

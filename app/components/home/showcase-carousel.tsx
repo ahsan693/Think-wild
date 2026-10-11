@@ -2,17 +2,18 @@
 
 import { useLayoutEffect, useRef, useState } from 'react';
 import { BadgeCheck, ChevronLeft, ChevronRight, Eye, ShoppingCart } from 'lucide-react';
+import { HOME_ACCESSIBILITY } from '@/lib/data/homedata';
 
 type ShowcaseItem = {
-  id: number;
-  username: string;
-  views: string;
-  sales: string;
-  imgUrl: string;
+  readonly id: number;
+  readonly username: string;
+  readonly views: string;
+  readonly sales: string;
+  readonly imageUrl: string;
 };
 
 type ShowcaseCarouselProps = {
-  items: ShowcaseItem[];
+  items: readonly ShowcaseItem[];
 };
 
 const REPEATED_SETS = 7;
@@ -76,15 +77,15 @@ export default function ShowcaseCarousel({ items }: ShowcaseCarouselProps) {
     <>
       <div
         ref={viewportRef}
-        className="relative h-[302px] w-full max-w-[100vw] overflow-hidden"
+        className="relative h-[302px] w-full max-w-[100vw] overflow-hidden font-[family-name:var(--font-saans)]"
       >
         <div
           onTransitionEnd={recenterIfNeeded}
           className="flex h-full w-max items-center transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${offset}px)` }}
           role="region"
-          aria-label="Creator content examples"
-          aria-roledescription="carousel"
+          aria-label={HOME_ACCESSIBILITY.showcaseCarousel}
+          aria-roledescription={HOME_ACCESSIBILITY.showcaseCarouselRole}
         >
           {Array.from({ length: REPEATED_SETS }, (_, setIndex) => (
             <div
@@ -108,9 +109,9 @@ export default function ShowcaseCarousel({ items }: ShowcaseCarouselProps) {
                     } ${alignClass}`}
                   >
                     <div className="relative w-full flex-1 overflow-hidden">
-                      <img src={item.imgUrl} alt={item.username} className="h-full w-full object-cover" />
+                      <img src={item.imageUrl} alt={item.username} className="h-full w-full object-cover" />
                       <div className="absolute left-[12px] top-[12px] z-10 flex items-center gap-[4px]">
-                        <span className="type-small-label text-white drop-shadow-md">{item.username}</span>
+                        <span className="text-[13px] font-semibold tracking-tight text-white drop-shadow-md">{item.username}</span>
                         <BadgeCheck className="h-[12px] w-[12px] fill-blue-500 text-white" />
                       </div>
                       <div className="pointer-events-none absolute inset-x-0 top-0 h-[40px] bg-gradient-to-b from-black/50 to-transparent" />
@@ -119,11 +120,11 @@ export default function ShowcaseCarousel({ items }: ShowcaseCarouselProps) {
                     <div className="flex h-[48px] shrink-0 items-center justify-between bg-white px-[16px]">
                       <div className="flex items-center gap-[6px]">
                         <Eye className="h-[14px] w-[14px] text-zinc-400" />
-                        <span className="type-small-label text-black">{item.views}</span>
+                        <span className="text-[12px] font-medium text-black">{item.views}</span>
                       </div>
                       <div className="flex items-center gap-[6px]">
                         <ShoppingCart className="h-[14px] w-[14px] text-zinc-400" />
-                        <span className="type-small-label text-black">{item.sales}</span>
+                        <span className="text-[12px] font-medium text-black">{item.sales}</span>
                       </div>
                     </div>
                   </div>
@@ -138,7 +139,7 @@ export default function ShowcaseCarousel({ items }: ShowcaseCarouselProps) {
         <button
           type="button"
           onClick={() => scrollCards(-1)}
-          aria-label="Scroll creator content left"
+          aria-label={HOME_ACCESSIBILITY.scrollShowcaseLeft}
           className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#1D1D1D] transition-colors hover:bg-zinc-700"
         >
           <ChevronLeft className="h-[20px] w-[20px] text-white" />
@@ -146,7 +147,7 @@ export default function ShowcaseCarousel({ items }: ShowcaseCarouselProps) {
         <button
           type="button"
           onClick={() => scrollCards(1)}
-          aria-label="Scroll creator content right"
+          aria-label={HOME_ACCESSIBILITY.scrollShowcaseRight}
           className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#1D1D1D] transition-colors hover:bg-zinc-700"
         >
           <ChevronRight className="h-[20px] w-[20px] text-white" />

@@ -4,7 +4,7 @@ import { ArrowRight, Sparkles } from 'lucide-react'; // Or your preferred icon l
 export default function Header() {
   return (
     // Main wrapper limiting width to 1200px
-    <header className="w-full max-w-[1200px] mx-auto px-[16px] pt-4">
+    <header className="w-full max-w-[1200px] mx-auto px-[16px] pt-4 font-[family-name:var(--font-saans)]">
       
       {/* Inner navbar container with border, pill shape, and space-between layout */}
       <nav className="flex items-center justify-between h-[66px] w-full rounded-full border border-[#161616] bg-black/50 backdrop-blur-md py-[10px] px-[16px]">
@@ -22,7 +22,7 @@ export default function Header() {
               key={item} 
               href={`/${item.toLowerCase()}`}
               // Nav text: 14px size, 500 weight, 20px line-height, #B6B6B6 color
-              className="type-small-label text-[#B6B6B6] hover:text-white px-3 py-2 transition-colors"
+              className="text-[14px] font-medium leading-[20px] text-[#B6B6B6] hover:text-white px-3 py-2 transition-colors"
             >
               {item}
             </Link>
@@ -35,7 +35,7 @@ export default function Header() {
           className="flex items-center h-[44px] bg-white rounded-full pl-[16px] pr-[8px] py-[8px] gap-[8px] hover:bg-gray-100 transition-colors"
         >
           {/* Button text: 14px size, #161616 color[cite: 7] */}
-          <span className="type-button-label text-[#161616]">
+          <span className="text-[14px] font-medium leading-[20px] text-[#161616]">
             Start a Project
           </span>
           

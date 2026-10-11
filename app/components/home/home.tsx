@@ -3,142 +3,49 @@ import Footer from '@/app/components/footer/footer';
 import ShowcaseCarousel from '@/app/components/home/showcase-carousel';
 import ProcessStory from '@/app/components/home/process-story';
 import CtaOrbit from '@/app/components/home/cta-orbit';
+import Image from 'next/image';
 import { 
-  ArrowRight, Heart, MessageCircle, ArrowUpRight, 
-  BadgeCheck, Play, Camera, Ghost, Music, 
+  ArrowRight, Heart, MessageCircle, ArrowUpRight, BadgeCheck,
   Check,
   Search, Zap, PieChart, CheckCircle2, Rocket, RefreshCw,
   Plus, Minus, Calendar
 } from 'lucide-react';
+import {
+  HOME_CAPABILITIES_TICKER,
+  HOME_COPY,
+  HOME_CTA_IMAGES,
+  HOME_FAQS,
+  HOME_MEDIA,
+  HOME_SERVICES,
+  HOME_SHOWCASE_ITEMS,
+  HOME_SOCIAL_PLATFORMS,
+  HOME_CREATOR_ITEMS,
+} from '@/lib/data/homedata';
 // import { Bricolage_Grotesque } from 'next/font/google';
 
-// =========================================
-// MOCK DATA
-// =========================================
-const MOCK_VIDEOS = [
-  { id: 1, username: '@mila.creates', likes: '2.4M likes', videoUrl: 'https://videos.pexels.com/video-files/4259169/4259169-hd_1080_1920_30fps.mp4' },
-  { id: 2, username: '@nikoflips', likes: '890K likes', videoUrl: 'https://videos.pexels.com/video-files/5896379/5896379-hd_1080_1920_24fps.mp4' },
-  { id: 3, username: '@thewildjune', likes: '5.1M likes', videoUrl: 'https://videos.pexels.com/video-files/8055998/8055998-hd_1080_1920_25fps.mp4' },
-  { id: 4, username: '@dro.visuals', likes: '420K likes', videoUrl: 'https://videos.pexels.com/video-files/7568580/7568580-hd_1080_1920_25fps.mp4' },
-  { id: 5, username: '@saskia.reels', likes: '1.2M likes', videoUrl: 'https://videos.pexels.com/video-files/4434242/4434242-hd_1080_1920_24fps.mp4' }
-];
-
-const SOCIAL_PLATFORMS = [
-  { name: 'Tiktok', icon: <Music className="w-4 h-4 text-white" />, bgColor: 'bg-black' },
-  { name: 'Instagram', icon: <Camera className="w-4 h-4 text-white" />, bgColor: 'bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-500' },
-  { name: 'Youtube', icon: <Play className="w-4 h-4 text-white fill-white" />, bgColor: 'bg-red-600' },
-  { name: 'Snapchat', icon: <Ghost className="w-4 h-4 text-black" />, bgColor: 'bg-[#FFFC00]' },
-];
-
-const SERVICES_DATA = [
-  {
-    id: '01',
-    title: 'CREATOR &\nINFLUENCER\nCAMPAIGNS',
-    desc: 'We find creators who fit your audience and manage influencer campaigns from outreach and briefs to content delivery and reporting.',
-    tags: 'Creator sourcing · UGC · Influencer partnerships',
-    stat: '21+',
-    statLabel: 'Creators activated',
-    bgColor: 'bg-[#FFD6E8]', // Pink
-    textColor: 'text-[#FF4A5A]',
-    imgUrl: 'https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=800'
-  },
-  {
-    id: '02',
-    title: 'CONTENT\nPRODUCTION',
-    desc: 'We produce social-first video, UGC, photography, edits, motion graphics and selected CGI creative for brands that want to stand out.',
-    tags: 'Short-form video · UGC · CGI/VFX · Social content',
-    stat: '450+',
-    statLabel: 'Content assets produced',
-    bgColor: 'bg-[#CBEBFF]', // Light Blue
-    textColor: 'text-[#4A00E0]',
-    imgUrl: 'https://images.pexels.com/photos/2036646/pexels-photo-2036646.jpeg?auto=compress&cs=tinysrgb&w=800'
-  },
-  {
-    id: '03',
-    title: 'SOCIAL MEDIA\nMANAGEMENT',
-    desc: 'We plan, publish and optimise your social content, helping your brand stay consistent, relevant and part of the conversation.',
-    tags: 'Strategy · Content planning · Publishing · Reporting',
-    stat: '8.4M',
-    statLabel: 'Organic views generated',
-    bgColor: 'bg-[#FDF05B]', // Yellow
-    textColor: 'text-[#1A1A1A]',
-    imgUrl: 'https://images.pexels.com/photos/5053846/pexels-photo-5053846.jpeg?auto=compress&cs=tinysrgb&w=800'
-  },
-  {
-    id: '04',
-    title: 'SOCIAL CREATIVE\nSTRATEGY',
-    desc: 'We build campaign concepts, creator briefs, hooks and content formats around your audience, brand goals and the platforms that matter.',
-    tags: 'Campaign concepts · Creative direction · Content strategy',
-    stat: '42%',
-    statLabel: 'Increase in Engagement',
-    bgColor: 'bg-[#76F773]', // Green
-    textColor: 'text-[#065F46]',
-    imgUrl: 'https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800'
-  }
-];
-
-const SHOWCASE_DATA = [
-  { id: 1, username: '@fitcorelab', views: '1.6M views', sales: '$14k sales', imgUrl: 'https://images.pexels.com/photos/5348252/pexels-photo-5348252.jpeg?auto=compress&cs=tinysrgb&w=400' },
-  { id: 2, username: '@wearnova', views: '3.7M views', sales: '$49k sales', imgUrl: 'https://images.pexels.com/photos/4427906/pexels-photo-4427906.jpeg?auto=compress&cs=tinysrgb&w=400' },
-  { id: 3, username: '@wearnova', views: '1.9M views', sales: '$27k sales', imgUrl: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400' },
-  { id: 4, username: '@brandnatalya', views: '2.1M views', sales: '$39k sales', imgUrl: 'https://images.pexels.com/photos/8863636/pexels-photo-8863636.jpeg?auto=compress&cs=tinysrgb&w=400' },
-  { id: 5, username: '@motionworks', views: '2.1M views', sales: '$27k sales', imgUrl: 'https://images.pexels.com/photos/10368551/pexels-photo-10368551.jpeg?auto=compress&cs=tinysrgb&w=400' },
-];
-
-const CAPABILITIES_TICKER = [
-  { text: 'Creator sourcing', icon: <Search size={14} /> },
-  { text: 'UGC & short-form content', icon: <Zap size={14} /> },
-  { text: 'Social-first strategy', icon: <PieChart size={14} /> },
-  { text: 'Content approvals', icon: <CheckCircle2 size={14} /> },
-  { text: 'Campaign reporting', icon: <Rocket size={14} /> },
-  { text: 'Creative revisions', icon: <RefreshCw size={14} /> },
-];
-
-const FAQ_DATA = [
-  {
-    question: "What does Think Wild Media do?",
-    answer: "Think Wild Media is a Dublin creator and influencer marketing agency offering UGC, content production, social media management and creative strategy.",
-    isOpen: true
-  },
-  {
-    question: "How do you choose the right creators?",
-    answer: "We carefully vet creators based on audience demographics, engagement rates, brand affinity, and content quality to ensure the perfect match for your campaign.",
-    isOpen: false
-  },
-  {
-    question: "Can you manage an influencer campaign from start to finish?",
-    answer: "Yes, we handle everything from creator sourcing and contracting to brief creation, content review, and final performance reporting.",
-    isOpen: false
-  },
-  {
-    question: "Do you create UGC and short-form content?",
-    answer: "Absolutely. We specialize in producing native, engaging short-form video content tailored for TikTok, Instagram Reels, and YouTube Shorts.",
-    isOpen: false
-  },
-  {
-    question: "Do you manage social media accounts?",
-    answer: "Yes, we offer comprehensive social media management services including content planning, posting, community engagement, and growth strategy.",
-    isOpen: false
-  }
-];
-
-// Mock data for floating images in the CTA section
-const CTA_FLOATING_IMAGES = [
-  'https://images.pexels.com/photos/1752806/pexels-photo-1752806.jpeg?auto=compress&cs=tinysrgb&w=400',
-  'https://images.pexels.com/photos/28997086/pexels-photo-28997086.jpeg?auto=compress&cs=tinysrgb&w=400',
-  'https://images.pexels.com/photos/5348252/pexels-photo-5348252.jpeg?auto=compress&cs=tinysrgb&w=400',
-  'https://images.pexels.com/photos/4427906/pexels-photo-4427906.jpeg?auto=compress&cs=tinysrgb&w=400',
-  'https://images.pexels.com/photos/3373736/pexels-photo-3373736.jpeg?auto=compress&cs=tinysrgb&w=400',
-  'https://images.pexels.com/photos/10368551/pexels-photo-10368551.jpeg?auto=compress&cs=tinysrgb&w=400',
-];
-
 export default function Home() {
-  const carouselItems = [...MOCK_VIDEOS, ...MOCK_VIDEOS, ...MOCK_VIDEOS];
-  const tickerItems = [...SOCIAL_PLATFORMS, ...SOCIAL_PLATFORMS, ...SOCIAL_PLATFORMS, ...SOCIAL_PLATFORMS, ...SOCIAL_PLATFORMS];
-  const capabilitiesTicker = [...CAPABILITIES_TICKER, ...CAPABILITIES_TICKER, ...CAPABILITIES_TICKER, ...CAPABILITIES_TICKER];
+  const carouselItems = [...HOME_CREATOR_ITEMS, ...HOME_CREATOR_ITEMS, ...HOME_CREATOR_ITEMS];
+  const tickerItems = Array.from({ length: 5 }, () => HOME_SOCIAL_PLATFORMS).flat();
+  const capabilitiesTicker = Array.from({ length: 4 }, () => HOME_CAPABILITIES_TICKER).flat();
+  const capabilityIcons = {
+    check: CheckCircle2,
+    chart: PieChart,
+    refresh: RefreshCw,
+    rocket: Rocket,
+    search: Search,
+    zap: Zap,
+  };
+  const highlightClasses = {
+    blue: 'bg-[#3B82F6] text-white',
+    green: 'bg-[#22C55E] text-white',
+    lime: 'bg-[#8CFE79] text-[#1D1D1D]',
+    orange: 'bg-[#FF5C35] text-white',
+    pink: 'bg-[#EC4899] text-white',
+    red: 'bg-[#EF4444] text-white',
+  };
 
   return (
-    <main className="home-page min-h-screen w-full bg-black text-white flex flex-col overflow-x-clip">
+    <main className="min-h-screen w-full bg-black text-white flex flex-col overflow-x-clip font-[family-name:var(--font-saans)]">
       <Header />
 
       <section className="w-full max-w-[1380px] mx-auto pt-[155px] flex flex-col items-center pb-[100px]">
@@ -148,35 +55,35 @@ export default function Home() {
         ========================================= */}
         <div className="flex flex-col items-center w-full max-w-[860px] gap-[30px]">
           <div className="flex items-center justify-center h-[35px] rounded-full border border-[#999999]/40 bg-[#1D1D1D] px-[20px] py-[6px]">
-            <span className="type-small-label text-white">
-              Creators · Content · Social
+            <span className="text-[14px] font-medium text-white">
+              {HOME_COPY.hero.eyebrow}
             </span>
           </div>
 
           <div className="flex flex-col items-center justify-center w-full max-w-[1214px]">
             <h1 
-              className="type-page-title flex flex-col items-center uppercase whitespace-nowrap"
+              className="font-bricolage flex flex-col items-center text-[clamp(48px,10.42vw,150px)] font-semibold leading-[0.787] tracking-[-0.06em] uppercase whitespace-nowrap"
             >
-              <span className="block">CONTENT THAT</span>
+              <span className="block">{HOME_COPY.hero.firstLine}</span>
               <span className="flex items-center justify-center gap-[24px] mt-[16px]">
-                <span>STOPS THE</span>
+                <span>{HOME_COPY.hero.secondLine}</span>
                 <span className="flex items-center justify-center min-w-[418px] px-[40px] h-[129px] bg-[#8CFE79] text-[#1D1D1D] rounded-[66px] pb-[8px]">
-                  SCROLL
+                  {HOME_COPY.hero.highlight}
                 </span>
               </span>
             </h1>
           </div>
 
-          <p className="type-lead w-full max-w-[860px] text-center text-[#9F9F9F] mt-[10px]">
-            We're a Dublin creator marketing agency connecting brands with influencers and making social-first content people want to watch, share and talk about.
+          <p className="w-full max-w-[860px] text-center text-[17.7px] font-medium leading-[20.8px] text-[#9F9F9F] mt-[10px]">
+            {HOME_COPY.hero.description}
           </p>
 
           <button className="flex items-center h-[55px] bg-white rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors mt-[12px]">
             <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
               <ArrowRight className="w-5 h-5 -rotate-45" strokeWidth={2} />
             </div>
-            <span className="type-button-label text-[#1D1D1D]">
-              Start a Project
+            <span className="text-[16px] font-medium text-[#1D1D1D]">
+              {HOME_COPY.hero.action}
             </span>
           </button>
         </div>
@@ -193,13 +100,14 @@ export default function Home() {
                   key={`${item.id}-${index}`}
                   className={`relative w-[186px] h-[393px] rounded-[25.6px] border border-[#262626] bg-black overflow-hidden shrink-0 transition-transform ${isDown ? 'mt-[48px]' : 'mt-0'}`}
                 >
-                  <video 
-                    src={item.videoUrl} autoPlay loop muted playsInline
+                  <img
+                    src={item.imageUrl}
+                    alt={item.username}
                     className="absolute inset-0 w-full h-full object-cover opacity-80"
                   />
                   <div className="absolute top-0 inset-x-0 h-[60px] bg-gradient-to-b from-black/60 to-transparent pointer-events-none" />
                   <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[50px] h-[16px] bg-black rounded-full" />
-                  <span className="absolute top-8 left-1/2 -translate-x-1/2 text-[10px] font-medium text-white/80">Reels</span>
+                  <span className="absolute top-8 left-1/2 -translate-x-1/2 text-[10px] font-medium text-white/80">{HOME_COPY.videoCard.platformLabel}</span>
                   <div className="absolute bottom-0 inset-x-0 h-[120px] bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
                   
                   <div className="absolute bottom-[16px] left-[12px] w-[134px] h-[35px] flex flex-col justify-end">
@@ -207,7 +115,7 @@ export default function Home() {
                       <span className="text-white text-[13px] font-semibold tracking-tight">{item.username}</span>
                       <BadgeCheck className="w-[14px] h-[14px] text-blue-500 fill-white" />
                     </div>
-                    <span className="text-white/80 text-[10px] truncate">{item.likes} · Original audio</span>
+                    <span className="text-white/80 text-[10px] truncate">{item.likes} · {HOME_COPY.videoCard.originalAudioLabel}</span>
                   </div>
 
                   <div className="absolute bottom-[24px] right-[12px] w-[18px] h-[78px] flex flex-col items-center justify-between gap-[12px]">
@@ -225,20 +133,26 @@ export default function Home() {
             SOCIAL TICKER SECTION
         ========================================= */}
         <div className="w-full flex flex-col items-center mt-[40px] pt-[29px]">
-          <p className="type-body text-white mb-[20px]">
-            Your audience is everywhere. So are we.
+          <p className="text-[17.7px] font-medium text-white mb-[20px]">
+            {HOME_COPY.ticker.heading}
           </p>
           <div className="relative w-full max-w-[620px] h-[38px] flex items-center overflow-hidden">
             <div className="absolute left-0 top-0 z-10 w-[84px] h-[40px] bg-gradient-to-r from-black to-transparent pointer-events-none" />
             <div className="flex w-max social-platform-marquee items-center gap-[12px]">
-              {tickerItems.map((platform, idx) => (
-                <div key={idx} className="social-platform-capsule flex items-center h-[38px] bg-white rounded-full pl-[6px] pr-[16px] py-[6px] gap-[8px] shrink-0">
-                  <div className={`flex items-center justify-center w-[26px] h-[26px] rounded-full ${platform.bgColor}`}>
-                    {platform.icon}
+              {tickerItems.map((platform, idx) => {
+                return (
+                  <div key={`${platform.name}-${idx}`} className="social-platform-capsule flex items-center h-[38px] bg-white rounded-full pl-[6px] pr-[16px] py-[6px] gap-[8px] shrink-0">
+                    <Image
+                      src={platform.iconUrl}
+                      alt=""
+                      width={26}
+                      height={26}
+                      className="w-[26px] h-[26px] rounded-full shrink-0"
+                    />
+                    <span className="text-[14px] font-medium text-[#1D1D1D]">{platform.name}</span>
                   </div>
-                  <span className="type-small-label text-[#1D1D1D]">{platform.name}</span>
-                </div>
-              ))}
+                );
+              })}
             </div>
             <div className="absolute right-0 top-0 z-10 w-[76px] h-[38px] bg-gradient-to-l from-black to-transparent pointer-events-none" />
           </div>
@@ -249,21 +163,25 @@ export default function Home() {
         ========================================= */}
         <div className="w-full max-w-[860px] flex flex-col items-start mt-[140px]">
           <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#1A1A1A] border border-[#333] mb-[32px]">
-            <span className="type-small-label text-white/70">Sound familiar?</span>
+            <span className="text-[14px] font-medium text-white/70">{HOME_COPY.introduction.eyebrow}</span>
           </div>
-          <div className="type-lead text-white space-y-[40px]">
-            <p>
-              Your content is <span className="inline-block bg-[#FF5C35] text-white px-[12px] py-[2px] rounded-[12px] leading-tight mx-1">showing up. 📈</span> But is anyone actually stopping for it? 👀
-            </p>
-            <p>
-              Brands don't need more posts 📱 for the sake of posting. They need <span className="inline-block bg-[#3B82F6] text-white px-[12px] py-[2px] rounded-[12px] leading-tight mx-1">ideas 💡</span> people want to watch, <span className="inline-block bg-[#EF4444] text-white px-[12px] py-[2px] rounded-[12px] leading-tight mx-1">creators 👥</span> people trust, 🤝 and content that feels native 🌱 to the platform.
-            </p>
-            <p>
-              If your feed looks polished ✨ but still feels forgettable, 😔 the problem usually isn't <span className="inline-block bg-[#FF5C35] text-white px-[12px] py-[2px] rounded-[12px] leading-tight mx-1">consistency. 🚫</span> It's the concept, 🎯 the <span className="inline-block bg-[#EC4899] text-white px-[12px] py-[2px] rounded-[12px] leading-tight mx-1">creator fit, 👤</span> or the <span className="inline-block bg-[#22C55E] text-white px-[12px] py-[2px] rounded-[12px] leading-tight mx-1">strategy ♟️</span> behind it.
-            </p>
-            <p>
-              That's where <span className="inline-block bg-[#8CFE79] text-[#1D1D1D] px-[12px] py-[2px] rounded-[12px] leading-tight mx-1">Think Wild Media</span> comes in – turning creators, 🎬 content 📝, and social strategy 📊 into work people actually want to watch. 🚀
-            </p>
+          <div className="text-[35px] font-medium leading-[46.8px] text-white space-y-[40px]">
+            {HOME_COPY.introduction.paragraphs.map((paragraph, paragraphIndex) => (
+              <p key={paragraphIndex}>
+                {paragraph.map((part, partIndex) => {
+                  if (!('highlight' in part)) return part.text;
+
+                  return (
+                    <span
+                      key={partIndex}
+                      className={`inline-block px-[12px] py-[2px] rounded-[12px] leading-tight mx-1 ${highlightClasses[part.highlight]}`}
+                    >
+                      {part.text}
+                    </span>
+                  );
+                })}
+              </p>
+            ))}
           </div>
         </div>
 
@@ -275,23 +193,19 @@ export default function Home() {
             {/* Left Video */}
             <div className="relative w-[297px] h-[390px] shrink-0">
               <div className="w-full h-full rounded-[30px] overflow-hidden bg-zinc-900 border border-[#333]">
-                <video
-                  src={MOCK_VIDEOS[0].videoUrl}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  aria-label="Creator video"
+                <img
+                  src={HOME_CREATOR_ITEMS[0].imageUrl}
+                  alt={HOME_COPY.mission.imageAlt}
                   className="w-full h-full object-cover opacity-80"
                 />
               </div>
               <div className="absolute -top-[12px] -left-[16px] w-[74px] h-[33px] bg-white rounded-full flex items-center justify-center gap-[4px] rotate-[20deg] shadow-xl z-10">
                 <Heart className="w-[14px] h-[14px] text-red-500 fill-red-500" />
-                <span className="text-black font-bold text-[13px]">12M</span>
+                <span className="text-black font-bold text-[13px]">{HOME_COPY.mission.imageMetrics[0]}</span>
               </div>
               <div className="absolute bottom-[20px] -right-[16px] w-[74px] h-[33px] bg-white rounded-full flex items-center justify-center gap-[4px] rotate-[20deg] shadow-xl z-10">
                 <MessageCircle className="w-[14px] h-[14px] text-blue-500 fill-blue-500" />
-                <span className="text-black font-bold text-[13px]">82+</span>
+                <span className="text-black font-bold text-[13px]">{HOME_COPY.mission.imageMetrics[1]}</span>
               </div>
             </div>
 
@@ -299,37 +213,38 @@ export default function Home() {
             <div className="relative w-[297px] h-[413.45px] mt-[50px] shrink-0">
               <div className="w-full h-full rounded-[30px] overflow-hidden bg-zinc-900 border border-[#333]">
                 <img 
-                  src="https://images.pexels.com/photos/28997086/pexels-photo-28997086.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Fashion" className="w-full h-full object-cover opacity-80"
+                  src={HOME_MEDIA.missionFashion.src}
+                  alt={HOME_MEDIA.missionFashion.alt}
+                  className="w-full h-full object-cover opacity-80"
                 />
               </div>
               <div className="absolute -top-[12px] -right-[16px] w-[87px] h-[33px] bg-white rounded-full flex items-center justify-center gap-[4px] -rotate-[19deg] shadow-xl z-10">
                 <div className="w-[14px] h-[14px] rounded-full bg-orange-500 flex items-center justify-center">
                   <div className="w-[6px] h-[6px] bg-white rounded-full" />
                 </div>
-                <span className="text-black font-bold text-[13px]">18.8M</span>
+                <span className="text-black font-bold text-[13px]">{HOME_COPY.mission.imageMetrics[2]}</span>
               </div>
             </div>
           </div>
 
           <div className="flex flex-col items-start w-[610px] gap-[24px]">
             <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#1A1A1A] border border-[#333]">
-              <span className="type-small-label text-white/70">Our mission</span>
+              <span className="text-[14px] font-medium text-white/70">{HOME_COPY.mission.eyebrow}</span>
             </div>
             <h2 
-              className="type-section-title w-full uppercase text-white"
+              className="font-bricolage w-full text-[70px] font-semibold leading-[63px] tracking-[-0.03em] uppercase text-white"
             >
-              WE TURN CREATORS INTO YOUR BRAND'S STRONGEST STORYTELLERS.
+              {HOME_COPY.mission.heading}
             </h2>
-            <p className="type-lead w-full text-[#9F9F9F] pr-[20px]">
-              Think Wild Media is a Dublin influencer marketing and content agency creating UGC, creator campaigns and social content built for the platform.
+            <p className="w-full text-[17.7px] font-medium leading-[24px] text-[#9F9F9F] pr-[20px]">
+              {HOME_COPY.mission.description}
             </p>
             <button className="flex items-center h-[55px] bg-white rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors mt-[12px]">
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
                 <ArrowRight className="w-5 h-5" strokeWidth={2} />
               </div>
               <span className="text-[#1D1D1D] font-medium text-[16px]">
-                See our process
+                {HOME_COPY.mission.action}
               </span>
             </button>
           </div>
@@ -340,13 +255,13 @@ export default function Home() {
         ========================================= */}
         <div className="relative mt-[clamp(8rem,18vw,12.5rem)] flex w-full flex-col items-center">
           <h2 
-            className="type-section-title mb-[clamp(3rem,8vw,6.25rem)] w-full max-w-[1280px] px-4 text-center uppercase"
+            className="font-bricolage mb-[clamp(3rem,8vw,6.25rem)] w-full max-w-[1280px] px-4 text-center text-[clamp(2.5rem,7vw,6rem)] font-semibold uppercase leading-[0.9] tracking-[-0.03em]"
           >
-            HOW WE HELP BRANDS GROW
+            {HOME_COPY.services.heading}
           </h2>
 
           <div className="flex w-full max-w-[1270px] flex-col items-center gap-[clamp(7rem,18vh,12rem)] px-4 pb-[20vh]">
-            {SERVICES_DATA.map((service, index) => {
+            {HOME_SERVICES.map((service, index) => {
               const topOffset = 96 + (index * 24);
               return (
                 <article
@@ -358,8 +273,8 @@ export default function Home() {
                     
                     {/* Folder Tab */}
                     <div className={`absolute -top-[32px] ${index % 2 === 0 ? 'left-6 md:left-[40px]' : 'right-6 md:right-[40px]'} flex h-[32px] items-center justify-center rounded-t-[12px] px-5 md:px-[24px] ${service.bgColor}`}>
-                      <span className={`type-small-label uppercase ${service.textColor}`}>
-                        SERVICE / {service.id}
+                      <span className={`text-[10px] font-bold uppercase tracking-widest md:text-[12px] ${service.textColor}`}>
+                        {HOME_COPY.services.tabLabel} / {service.id}
                       </span>
                     </div>
 
@@ -367,22 +282,22 @@ export default function Home() {
                     <div className="flex w-full flex-1 flex-col justify-between p-7 md:h-full md:w-1/2 md:flex-none md:p-[60px]">
                       <div className="flex flex-col gap-[24px]">
                         <h3 
-                          className={`type-service-title whitespace-pre-line uppercase ${service.textColor}`}
+                          className={`font-bricolage whitespace-pre-line text-[36px] font-bold uppercase leading-[0.9] tracking-[-0.03em] md:text-[56px] ${service.textColor}`}
                         >
                           {service.title}
                         </h3>
-                        <p className={`type-body max-w-[400px] ${service.textColor}`}>
-                          {service.desc}
+                        <p className={`max-w-[400px] text-[14px] font-medium leading-[21px] md:text-[16px] md:leading-[24px] ${service.textColor}`}>
+                          {service.description}
                         </p>
-                        <p className={`type-small-label mt-2 md:mt-[16px] ${service.textColor}`}>
+                        <p className={`mt-2 text-[12px] font-bold tracking-tight md:mt-[16px] md:text-[14px] ${service.textColor}`}>
                           {service.tags}
                         </p>
                       </div>
                       <div className="flex flex-col">
-                        <span className={`type-metric ${service.textColor}`}>
+                        <span className={`text-[60px] font-bold leading-none tracking-[-0.04em] md:text-[80px] ${service.textColor}`}>
                           {service.stat}
                         </span>
-                        <span className={`type-small-label ${service.textColor}`}>
+                        <span className={`text-[16px] font-bold ${service.textColor}`}>
                           {service.statLabel}
                         </span>
                       </div>
@@ -392,7 +307,7 @@ export default function Home() {
                     <div className="flex h-[240px] w-full items-center justify-end p-4 pt-0 md:h-full md:w-1/2 md:p-[24px] md:pl-0">
                       <div className="w-full h-full rounded-[24px] overflow-hidden bg-black/10">
                         <img 
-                          src={service.imgUrl} 
+                          src={service.imageUrl}
                           alt={service.title}
                           className="w-full h-full object-cover"
                         />
@@ -414,24 +329,24 @@ export default function Home() {
         
         {/* Header Pill */}
         <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full border border-white/20 mb-[32px]">
-          <span className="type-small-label uppercase text-white">
-            Content Inspiration
+          <span className="text-[12px] font-bold uppercase tracking-widest text-white">
+            {HOME_COPY.showcase.eyebrow}
           </span>
         </div>
 
         {/* Heading */}
         <h2 
-          className="type-section-title text-center uppercase max-w-[701px] text-white mb-[24px]"
+          className="font-bricolage text-center text-[70px] font-semibold leading-[63px] uppercase tracking-[-0.03em] max-w-[701px] text-white mb-[24px]"
         >
-          CREATOR CONTENT PEOPLE ACTUALLY WANT TO WATCH
+          {HOME_COPY.showcase.heading}
         </h2>
 
         {/* Subtext */}
-        <p className="type-lead text-center text-[#9F9F9F] max-w-[500px] mb-[80px]">
-          UGC, creator-led videos and social-first content designed to feel native to the platform and relevant to the audience.
+        <p className="text-center text-[16px] font-medium text-[#9F9F9F] max-w-[500px] mb-[80px]">
+          {HOME_COPY.showcase.description}
         </p>
 
-        <ShowcaseCarousel items={SHOWCASE_DATA} />
+        <ShowcaseCarousel items={HOME_SHOWCASE_ITEMS} />
 
       </section>
 
@@ -443,14 +358,14 @@ export default function Home() {
           
           <div className="mb-[50px] flex w-full max-w-[750px] flex-col items-center gap-[24px]">
             <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full border border-white/20">
-              <span className="type-small-label uppercase text-white">
-                Selected Creative
+              <span className="text-[12px] font-bold uppercase tracking-widest text-white">
+                {HOME_COPY.featuredWork.eyebrow}
               </span>
             </div>
             <h2 
-              className="type-section-title uppercase text-center"
+              className="font-bricolage text-[70px] font-semibold leading-[0.9] tracking-[-0.03em] uppercase text-center"
             >
-              WORK THAT SHOWS WHAT WE CAN DO.
+              {HOME_COPY.featuredWork.heading}
             </h2>
           </div>
 
@@ -458,8 +373,8 @@ export default function Home() {
             
             <div className="h-[260px] w-full shrink-0 overflow-hidden bg-zinc-100 md:h-full md:w-[49.25%]">
               <img 
-                src="https://images.pexels.com/photos/2720447/pexels-photo-2720447.jpeg?auto=compress&cs=tinysrgb&w=1000" 
-                alt="Plump'd Beauty" 
+                src={HOME_MEDIA.featuredWork.src}
+                alt={HOME_MEDIA.featuredWork.alt}
                 className="w-full h-full object-cover" 
               />
             </div>
@@ -467,22 +382,22 @@ export default function Home() {
             <div className="flex min-h-[327px] flex-1 flex-col justify-between px-[26px] py-[26px] md:min-h-0">
               <div className="flex flex-col gap-[20px]">
                 <div className="flex flex-col gap-[4px]">
-                  <h3 className="type-card-title text-black">
-                    Plump'd Beauty
+                  <h3 className="text-black font-semibold text-[27.3px] leading-[39.2px]">
+                    {HOME_MEDIA.featuredWork.alt}
                   </h3>
-                  <p className="type-body text-zinc-800">
-                    Beauty & Wellness · Social Content
+                  <p className="text-zinc-800 text-[14px]">
+                    {HOME_COPY.featuredWork.category}
                   </p>
                 </div>
                 
                 <div className="flex flex-col gap-[8px]">
                   <div className="flex flex-col">
-                    <span className="type-small-label text-black">What we created</span>
-                    <span className="type-body text-zinc-600 mt-[2px]">Short-form content, social assets</span>
+                    <span className="text-black text-[14px] font-bold">{HOME_COPY.featuredWork.createdLabel}</span>
+                    <span className="text-zinc-600 text-[14px] mt-[2px]">{HOME_COPY.featuredWork.created}</span>
                   </div>
                   <div className="flex flex-col">
-                    <span className="type-small-label text-black">Platforms</span>
-                    <span className="type-body text-zinc-600 mt-[2px]">Instagram · TikTok</span>
+                    <span className="text-black text-[14px] font-bold">{HOME_COPY.featuredWork.platformsLabel}</span>
+                    <span className="text-zinc-600 text-[14px] mt-[2px]">{HOME_COPY.featuredWork.platforms}</span>
                   </div>
                 </div>
               </div>
@@ -491,8 +406,8 @@ export default function Home() {
                 <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-black rounded-full shrink-0">
                   <ArrowRight className="w-5 h-5" strokeWidth={2} />
                 </div>
-                <span className="type-button-label text-white">
-                  View Project
+                <span className="text-[16px] font-medium text-white">
+                  {HOME_COPY.featuredWork.action}
                 </span>
               </button>
 
@@ -506,15 +421,15 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center gap-[24px] mt-[20px]">
-            <p className="type-lead text-center text-[#9F9F9F] max-w-[460px]">
-              We create across beauty, fashion, food, fitness and more - adapting the idea, format and creator to the brand.
+            <p className="text-center text-[16px] font-medium text-[#9F9F9F] max-w-[460px]">
+              {HOME_COPY.featuredWork.summary}
             </p>
             <button className="flex items-center h-[55px] bg-transparent border border-white/30 rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-white/10 transition-colors">
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-black rounded-full shrink-0">
                 <ArrowRight className="w-5 h-5" strokeWidth={2} />
               </div>
-              <span className="type-button-label text-white">
-                View selected work
+              <span className="text-[16px] font-medium text-white">
+                {HOME_COPY.featuredWork.moreAction}
               </span>
             </button>
           </div>
@@ -530,29 +445,22 @@ export default function Home() {
 
           <div className="flex flex-col items-center w-full max-w-[858px] gap-[32px] mb-[80px]">
             <div className="flex items-center justify-center w-[202px] h-[35px] border border-black/20 rounded-full bg-transparent">
-              <span className="type-small-label text-black">Why Think Wild Media</span>
+              <span className="text-[14px] font-medium text-black">{HOME_COPY.whyUs.eyebrow}</span>
             </div>
             <h2
-              className="type-section-title text-black uppercase text-center"
+              className="font-bricolage text-black text-[70px] font-semibold leading-[0.9] uppercase tracking-[-0.03em] text-center"
             >
-              CREATOR CAMPAIGNS, CONTENT AND SOCIAL STRATEGY IN ONE PLACE.
+              {HOME_COPY.whyUs.heading}
             </h2>
           </div>
 
           <div className="flex w-full justify-between items-start">
 
             <div className="flex flex-col w-[334px] pt-[40px]">
-              <h4 className="type-subheading text-black mb-[32px]">What you get</h4>
+              <h4 className="text-black text-[20px] font-bold mb-[32px]">{HOME_COPY.whyUs.listHeading}</h4>
               <div className="flex flex-col">
-                {[
-                  'Creator matching', 
-                  'Campaign strategy', 
-                  'Content production', 
-                  'Platform fit', 
-                  'Reporting', 
-                  'Ongoing optimisation'
-                ].map((item, i) => (
-                  <div key={i} className="type-body py-[16px] border-t border-black/10 text-black">
+                {HOME_COPY.whyUs.services.map((item) => (
+                  <div key={item} className="text-[16px] font-medium py-[16px] border-t border-black/10 text-black">
                     {item}
                   </div>
                 ))}
@@ -566,21 +474,14 @@ export default function Home() {
                     <path d="M20 0L24.4903 15.5097L40 20L24.4903 24.4903L20 40L15.5097 24.4903L0 20L15.5097 15.5097L20 0Z" fill="white"/>
                   </svg>
                 </div>
-                <span className="text-[28px] font-bold text-white tracking-tight">Think Wild</span>
+                <span className="text-[28px] font-bold text-white tracking-tight">{HOME_COPY.whyUs.brandName}</span>
               </div>
 
               <div className="flex flex-col gap-[24px] w-full">
-                {[
-                  'Matched by audience, niche and brand fit',
-                  'Campaign strategy built around your goals',
-                  'Creator-led, social-first content',
-                  'Built for the platform from day one',
-                  'Clear reporting and useful insights',
-                  'Learn, refine and improve over time'
-                ].map((text, i) => (
-                  <div key={i} className="flex items-start gap-[12px] pb-[20px] border-b border-white/20 last:border-0 last:pb-0">
+                {HOME_COPY.whyUs.benefits.map((text) => (
+                  <div key={text} className="flex items-start gap-[12px] pb-[20px] border-b border-white/20 last:border-0 last:pb-0">
                     <Check className="w-[18px] h-[18px] text-[#8CFE79] shrink-0 mt-[2px]" strokeWidth={3} />
-                    <span className="type-body text-white">{text}</span>
+                    <span className="text-[15px] font-medium leading-tight text-white">{text}</span>
                   </div>
                 ))}
               </div>
@@ -593,8 +494,8 @@ export default function Home() {
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-black rounded-full shrink-0">
                 <ArrowRight className="w-5 h-5" strokeWidth={2} />
               </div>
-              <span className="type-button-label text-white mx-auto">
-                Start a Project
+              <span className="text-[16px] font-medium text-white mx-auto">
+                {HOME_COPY.whyUs.action}
               </span>
             </button>
           </div>
@@ -611,27 +512,26 @@ export default function Home() {
         
         {/* Top Header Pill */}
         <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full border border-white/20 mb-[32px]">
-          <span className="type-small-label uppercase text-white">
-            How it works
+          <span className="text-[12px] font-bold uppercase tracking-widest text-white">
+            {HOME_COPY.process.eyebrow}
           </span>
         </div>
 
         {/* Heading */}
         <h2 
-          className="type-section-title flex flex-col items-center text-center uppercase text-white"
+          className="font-bricolage flex flex-col items-center text-center text-[clamp(3rem,8vw,114px)] font-semibold leading-[0.88] tracking-[-0.04em] uppercase text-white"
         >
-          <span>FOUR STEPS FROM</span>
-          <span>BRIEF TO CONTENT</span>
+          {HOME_COPY.process.headingLines.map((line) => <span key={line}>{line}</span>)}
           
           <span className="flex items-center justify-center gap-[20px] mt-[8px]">
-            <span>THAT</span>
+            <span>{HOME_COPY.process.headingConnector}</span>
             <span className="flex h-auto min-w-0 items-center justify-center rounded-[100px] bg-[#8763FF] px-[24px] py-[8px] text-white md:h-[63px] md:min-w-[280px] md:px-[32px]">
-              CONNECTS
+              {HOME_COPY.process.headingHighlight}
             </span>
           </span>
         </h2>
-        <p className="type-lead mt-[24px] text-center text-white/60">
-          From the first brief to content made to connect.
+        <p className="mt-[24px] text-center text-[18px] font-medium text-white/60">
+          {HOME_COPY.process.description}
         </p>
           </div>
 
@@ -640,50 +540,40 @@ export default function Home() {
           
           {/* CARD 1: Discovery & Strategy */}
           <div data-process-card className="process-story-card bg-[#F1E55C] rounded-[30px] p-[40px] flex flex-col gap-[18px]">
-            <span className="text-center text-black font-bold text-[20px]">01</span>
+            <span className="text-center text-black font-bold text-[20px]">{HOME_COPY.process.steps[0].number}</span>
             
             <div className="flex-1 flex flex-col gap-[10px] justify-center w-full">
-              <div className="w-full bg-[#1A1A1A] rounded-[16px] p-[12px] flex items-center gap-[12px]">
-                <div className="w-[24px] h-[24px] rounded-full bg-[#22C55E] flex items-center justify-center text-white"><Check size={14} strokeWidth={3} /></div>
-                <div className="flex flex-col">
-                  <span className="type-small-label text-white">Market analysis</span>
-                  <span className="type-small-label text-[#9F9F9F]">3 brands reviewed</span>
+              {HOME_COPY.process.steps[0].visual.rows.map((row) => (
+                <div key={row.label} className="w-full bg-[#1A1A1A] rounded-[16px] p-[12px] flex items-center gap-[12px]">
+                  <div className={`w-[24px] h-[24px] rounded-full ${row.accent} flex items-center justify-center text-white`}>
+                    <Check size={14} strokeWidth={3} />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[14px] font-semibold text-white">{row.label}</span>
+                    <span className="text-[12px] text-[#9F9F9F]">{row.detail}</span>
+                  </div>
                 </div>
-              </div>
-              <div className="w-full bg-[#1A1A1A] rounded-[16px] p-[12px] flex items-center gap-[12px]">
-                <div className="w-[24px] h-[24px] rounded-full bg-[#F97316] flex items-center justify-center text-white"><Check size={14} strokeWidth={3} /></div>
-                <div className="flex flex-col">
-                  <span className="type-small-label text-white">Content strategy</span>
-                  <span className="type-small-label text-[#9F9F9F]">Building now...</span>
-                </div>
-              </div>
-              <div className="w-full bg-[#1A1A1A] rounded-[16px] p-[12px] flex items-center gap-[12px]">
-                <div className="w-[24px] h-[24px] rounded-full bg-white/20 flex items-center justify-center text-white/50"><Check size={14} strokeWidth={3} /></div>
-                <div className="flex flex-col">
-                  <span className="type-small-label text-white">Creator brief</span>
-                  <span className="type-small-label text-[#9F9F9F]">Up next</span>
-                </div>
-              </div>
+              ))}
             </div>
 
             <div className="flex flex-col text-center gap-[8px]">
-              <h3 className="type-card-title text-black">Discovery & Strategy</h3>
-              <p className="type-body text-black/80 px-2">We learn your brand, audience and goals.</p>
+              <h3 className="text-[24px] font-bold text-black leading-tight tracking-tight">{HOME_COPY.process.steps[0].title}</h3>
+              <p className="text-[14px] font-medium text-black/80 leading-snug px-2">{HOME_COPY.process.steps[0].description}</p>
             </div>
           </div>
 
           {/* CARD 2: Creator Matching */}
           <div data-process-card className="process-story-card bg-[#F56633] rounded-[30px] p-[40px] flex flex-col gap-[18px]">
-            <span className="text-center text-black font-bold text-[20px]">02</span>
+            <span className="text-center text-black font-bold text-[20px]">{HOME_COPY.process.steps[1].number}</span>
             
             <div className="flex-1 flex items-center justify-center w-full relative">
               <div className="w-[140px] h-[140px] rounded-full border border-white/30 flex items-center justify-center relative">
                 <div className="w-[80px] h-[80px] rounded-full border border-white/50 flex items-center justify-center">
                   <div className="w-[60px] h-[60px] bg-[#1A1A1A] rounded-full flex flex-col items-center justify-center text-white relative z-10">
-                    <span className="font-bold text-[18px]">92%</span>
+                    <span className="font-bold text-[18px]">{HOME_COPY.process.steps[1].visual.score}</span>
                   </div>
                 </div>
-                <span className="absolute -bottom-6 text-black font-bold text-[12px]">nikoflips</span>
+                <span className="absolute -bottom-6 text-black font-bold text-[12px]">{HOME_COPY.process.steps[1].visual.creator}</span>
                 <div className="absolute top-0 left-4 w-6 h-6 bg-blue-500 rounded-full border-2 border-[#F56633]"></div>
                 <div className="absolute top-4 right-0 w-6 h-6 bg-pink-500 rounded-full border-2 border-[#F56633]"></div>
                 <div className="absolute bottom-2 left-0 w-6 h-6 bg-green-500 rounded-full border-2 border-[#F56633]"></div>
@@ -692,47 +582,56 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col text-center gap-[8px]">
-              <h3 className="type-card-title text-white">Creator & Content<br/>Matching</h3>
-              <p className="type-body text-white/90 px-2">We match the right creators and formats.</p>
+              <h3 className="text-[24px] font-bold text-white leading-tight tracking-tight">
+                {HOME_COPY.process.steps[1].titleLines.map((line) => <span key={line} className="block">{line}</span>)}
+              </h3>
+              <p className="text-[14px] font-medium text-white/90 leading-snug px-2">{HOME_COPY.process.steps[1].description}</p>
             </div>
           </div>
 
           {/* CARD 3: Content Production */}
           <div data-process-card className="process-story-card bg-[#8CFE79] rounded-[30px] p-[40px] flex flex-col gap-[18px]">
-            <span className="text-center text-black font-bold text-[20px]">03</span>
+            <span className="text-center text-black font-bold text-[20px]">{HOME_COPY.process.steps[2].number}</span>
             
             <div className="flex-1 w-full bg-black/10 rounded-[20px] overflow-hidden">
               <img 
-                src="https://images.pexels.com/photos/8348981/pexels-photo-8348981.jpeg?auto=compress&cs=tinysrgb&w=400" 
-                alt="Production" className="w-full h-full object-cover mix-blend-multiply opacity-90"
+                src={HOME_MEDIA.processProduction.src}
+                alt={HOME_MEDIA.processProduction.alt}
+                className="w-full h-full object-cover mix-blend-multiply opacity-90"
               />
             </div>
 
             <div className="flex flex-col text-center gap-[8px]">
-              <h3 className="type-card-title text-black">Content Production</h3>
-              <p className="type-body text-black/80 px-2">We create, review and deliver the content.</p>
+              <h3 className="text-[24px] font-bold text-black leading-tight tracking-tight">{HOME_COPY.process.steps[2].title}</h3>
+              <p className="text-[14px] font-medium text-black/80 leading-snug px-2">{HOME_COPY.process.steps[2].description}</p>
             </div>
           </div>
 
           {/* CARD 4: Launch, Learn, Grow */}
           <div data-process-card className="process-story-card bg-[#FF4A5A] rounded-[30px] p-[40px] flex flex-col gap-[18px]">
-            <span className="text-center text-black font-bold text-[20px]">04</span>
+            <span className="text-center text-black font-bold text-[20px]">{HOME_COPY.process.steps[3].number}</span>
             
             <div className="flex-1 flex items-end justify-between w-full px-[10px] pb-[20px] gap-[6px]">
-              <div className="flex flex-col items-center gap-2"><div className="w-[14px] h-[40px] bg-white rounded-full"></div><span className="text-white/60 text-[10px] font-bold">M</span></div>
-              <div className="flex flex-col items-center gap-2"><div className="w-[14px] h-[60px] bg-white rounded-full"></div><span className="text-white/60 text-[10px] font-bold">T</span></div>
-              <div className="flex flex-col items-center gap-2"><div className="w-[14px] h-[50px] bg-white rounded-full"></div><span className="text-white/60 text-[10px] font-bold">W</span></div>
-              <div className="flex flex-col items-center gap-2"><div className="w-[14px] h-[90px] bg-white rounded-full relative">
-                <div className="absolute -top-[30px] left-1/2 -translate-x-1/2 bg-[#1A1A1A] text-white text-[10px] font-bold px-[6px] py-[2px] rounded-[4px]">100</div>
-              </div><span className="text-white/60 text-[10px] font-bold">T</span></div>
-              <div className="flex flex-col items-center gap-2"><div className="w-[14px] h-[80px] bg-[#1A1A1A] rounded-full"></div><span className="text-white/60 text-[10px] font-bold">F</span></div>
-              <div className="flex flex-col items-center gap-2"><div className="w-[14px] h-[100px] bg-white rounded-full"></div><span className="text-white/60 text-[10px] font-bold">S</span></div>
-              <div className="flex flex-col items-center gap-2"><div className="w-[14px] h-[70px] bg-white rounded-full"></div><span className="text-white/60 text-[10px] font-bold">S</span></div>
+              {HOME_COPY.process.steps[3].visual.bars.map((bar, index) => (
+                <div key={`${bar.day}-${index}`} className="flex flex-col items-center gap-2">
+                  <div
+                    className={`w-[14px] rounded-full relative ${'dark' in bar && bar.dark ? 'bg-[#1A1A1A]' : 'bg-white'}`}
+                    style={{ height: `${bar.height}px` }}
+                  >
+                    {'showTotal' in bar && bar.showTotal && (
+                      <div className="absolute -top-[30px] left-1/2 -translate-x-1/2 bg-[#1A1A1A] text-white text-[10px] font-bold px-[6px] py-[2px] rounded-[4px]">
+                        {HOME_COPY.process.steps[3].visual.total}
+                      </div>
+                    )}
+                  </div>
+                  <span className="text-white/60 text-[10px] font-bold">{bar.day}</span>
+                </div>
+              ))}
             </div>
 
             <div className="flex flex-col text-center gap-[8px]">
-              <h3 className="type-card-title text-white">Launch, Learn, Grow</h3>
-              <p className="type-body text-white/90 px-2">We launch, learn what works and improve.</p>
+              <h3 className="text-[24px] font-bold text-white leading-tight tracking-tight">{HOME_COPY.process.steps[3].title}</h3>
+              <p className="text-[14px] font-medium text-white/90 leading-snug px-2">{HOME_COPY.process.steps[3].description}</p>
             </div>
           </div>
 
@@ -743,8 +642,8 @@ export default function Home() {
           <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
             <ArrowRight className="w-5 h-5" strokeWidth={2} />
           </div>
-          <span className="type-button-label text-[#1D1D1D]">
-            Start a Project
+          <span className="text-[16px] font-medium text-[#1D1D1D]">
+            {HOME_COPY.process.action}
           </span>
         </button>
 
@@ -760,44 +659,39 @@ export default function Home() {
           
           <div className="relative w-full lg:w-[575px] h-[400px] lg:h-full rounded-[30px] overflow-hidden shrink-0">
             <img 
-              src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800" 
-              alt="Team" className="w-full h-full object-cover opacity-80"
+              src={HOME_MEDIA.capabilitiesTeam.src}
+              alt={HOME_MEDIA.capabilitiesTeam.alt}
+              className="w-full h-full object-cover opacity-80"
             />
             <div className="absolute bottom-0 inset-x-0 h-[250px] bg-gradient-to-t from-black to-transparent pointer-events-none" />
             <h3 
-              className="type-section-title absolute bottom-[40px] left-[40px] w-full max-w-[422px] uppercase text-white"
+              className="font-bricolage absolute bottom-[40px] left-[40px] w-full max-w-[422px] text-[40px] font-semibold leading-[1] tracking-[-0.03em] uppercase text-white lg:text-[70px] lg:leading-[57px]"
             >
-              REAL CREATORS.<br />REAL CONTENT.<br />REAL CONNECTION.
+              {HOME_COPY.capabilities.imageHeading.map((line) => <span key={line} className="block">{line}</span>)}
             </h3>
           </div>
 
           <div className="flex-1 lg:w-[675px] h-full bg-[#8CFE79] rounded-[30px] p-[30px] lg:p-[50px] flex flex-col items-center lg:items-end text-black relative shrink-0">
             <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-black mb-[20px] self-end">
-              <span className="type-small-label text-white">What we bring</span>
+              <span className="text-[12px] font-medium text-white">{HOME_COPY.capabilities.eyebrow}</span>
             </div>
 
             <div className="flex flex-col items-end mb-[50px]">
-              <span className="type-metric font-bold">
-                1,200+
+              <span className="text-[80px] font-normal leading-none tracking-tighter lg:text-[110px]">
+                {HOME_COPY.capabilities.metric}
               </span>
-              <span className="type-small-label mt-[4px]">
-                Videos delivered across our team's experience
+              <span className="text-[14px] font-medium mt-[4px]">
+                {HOME_COPY.capabilities.metricLabel}
               </span>
             </div>
 
             <div className="w-full flex flex-col gap-[20px]">
-              <div className="flex w-full justify-between items-start gap-[20px]">
-                <span className="type-subheading uppercase w-1/2 max-w-[200px]">CREATOR-FIRST THINKING</span>
-                <p className="type-body w-1/2">We match creators by audience, brand fit and the way they make content.</p>
-              </div>
-              <div className="flex w-full justify-between items-start gap-[20px]">
-                <span className="type-subheading uppercase w-1/2 max-w-[200px]">SOCIAL-FIRST CONTENT</span>
-                <p className="type-body w-1/2">Built for how people actually watch and engage on each platform.</p>
-              </div>
-              <div className="flex w-full justify-between items-start gap-[20px]">
-                <span className="type-subheading uppercase w-1/2 max-w-[200px]">END-TO-END DELIVERY</span>
-                <p className="type-body w-1/2">From strategy and creator briefs to production, approvals and reporting.</p>
-              </div>
+              {HOME_COPY.capabilities.items.map((item) => (
+                <div key={item.heading} className="flex w-full justify-between items-start gap-[20px]">
+                  <span className="text-[20px] font-bold uppercase leading-tight w-1/2 max-w-[200px] lg:text-[24px]">{item.heading}</span>
+                  <p className="text-[14px] font-medium leading-snug w-1/2">{item.description}</p>
+                </div>
+              ))}
             </div>
 
           </div>
@@ -805,12 +699,15 @@ export default function Home() {
 
         <div className="w-full max-w-[100vw] overflow-hidden relative h-[38px] mb-[40px]">
           <div className="flex w-max animate-marquee items-center gap-[16px] h-full px-4">
-            {capabilitiesTicker.map((item, idx) => (
-              <div key={idx} className="flex items-center h-[34px] bg-[#1A1A1A] border border-white/10 rounded-full pl-[10px] pr-[16px] py-[6px] gap-[8px] shrink-0">
-                <div className="text-zinc-400">{item.icon}</div>
-                <span className="type-small-label text-white">{item.text}</span>
-              </div>
-            ))}
+            {capabilitiesTicker.map((item, idx) => {
+              const Icon = capabilityIcons[item.icon];
+              return (
+                <div key={`${item.text}-${idx}`} className="flex items-center h-[34px] bg-[#1A1A1A] border border-white/10 rounded-full pl-[10px] pr-[16px] py-[6px] gap-[8px] shrink-0">
+                  <div className="text-zinc-400"><Icon size={14} /></div>
+                  <span className="text-[14px] font-medium text-white">{item.text}</span>
+                </div>
+              );
+            })}
           </div>
         </div>
 
@@ -823,19 +720,19 @@ export default function Home() {
         <div className="w-full max-w-[1440px] flex flex-col items-center">
 
           <h2
-            className="type-section-title text-center uppercase text-white mb-[80px]"
+            className="font-bricolage text-center text-[70px] font-semibold leading-[0.9] uppercase tracking-[-0.03em] text-white mb-[80px]"
           >
-            FREQUENTLY ASKED<br/>QUESTIONS
+            {HOME_COPY.faq.heading.map((line) => <span key={line} className="block">{line}</span>)}
           </h2>
 
           <div className="flex flex-col w-full max-w-[916.84px]">
-            {FAQ_DATA.map((faq, index) => (
+            {HOME_FAQS.map((faq, index) => (
               <div
                 key={index}
                 className={`flex flex-col w-full transition-colors duration-300 ${faq.isOpen ? 'bg-[#1A1A1A] rounded-[24px] p-[32px] mb-[16px]' : 'border-b border-white/10 py-[32px]'}`}
               >
                 <div className="flex items-center justify-between gap-[20px] cursor-pointer">
-                  <h3 className="type-card-title text-white">
+                  <h3 className="text-[24px] font-bold text-white leading-tight tracking-tight">
                     {faq.question}
                   </h3>
                   
@@ -845,7 +742,7 @@ export default function Home() {
                 </div>
                 
                 {faq.isOpen && (
-                  <p className="type-body text-[#9F9F9F] mt-[16px] max-w-[800px]">
+                  <p className="text-[16px] font-medium text-[#9F9F9F] mt-[16px] max-w-[800px]">
                     {faq.answer}
                   </p>
                 )}
@@ -865,26 +762,26 @@ export default function Home() {
         <div className="relative w-full max-w-[1280px] min-h-[733.7px] bg-[#D3FFC4] rounded-[32px] flex flex-col items-center justify-center z-10 py-[100px]">
           
           {/* Floating Images Background Layer */}
-          <CtaOrbit images={CTA_FLOATING_IMAGES} />
+          <CtaOrbit images={[...HOME_CTA_IMAGES]} />
 
           {/* Central Content (Needs higher z-index to sit above images) */}
           <div className="relative z-20 flex flex-col items-center text-center max-w-[597px]">
             
             {/* Tiny Badge */}
             <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#155149] mb-[30px]">
-              <span className="type-small-label text-white">Ready?</span>
+              <span className="text-[12px] font-medium text-white">{HOME_COPY.finalCta.eyebrow}</span>
             </div>
 
             {/* Main Headline[cite: 109] */}
             <h2 
-              className="type-cta-title text-[#155149] uppercase mb-[24px]"
+              className="font-bricolage text-[#155149] text-[clamp(2rem,3.6vw,46px)] font-semibold leading-[0.96] tracking-[-0.05em] uppercase mb-[24px]"
             >
-              STOP THE SCROLL.<br/>START THE CONVERSATION
+              {HOME_COPY.finalCta.heading.map((line) => <span key={line} className="block">{line}</span>)}
             </h2>
 
             {/* Sub-paragraph[cite: 110] */}
-            <p className="type-lead text-[#155149] max-w-[564.9px] mb-[40px]">
-              Tell our Dublin team about your brief. We'll shape the right creator campaign, content plan or social strategy for your brand.
+            <p className="text-[#155149] text-[17.9px] font-medium leading-[20.8px] max-w-[564.9px] mb-[40px]">
+              {HOME_COPY.finalCta.description}
             </p>
 
             {/* Buttons Group[cite: 111] */}
@@ -895,15 +792,15 @@ export default function Home() {
                 <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-[#155149] rounded-full shrink-0">
                   <Calendar className="w-5 h-5" strokeWidth={2} />
                 </div>
-                <span className="type-button-label text-white">
-                  Start a Project
+                <span className="text-[16px] font-medium text-white">
+                  {HOME_COPY.finalCta.primaryAction}
                 </span>
               </button>
 
               {/* Secondary Link Button */}
               <button className="flex items-center h-[52px] bg-transparent rounded-full px-[6px] py-[6px] gap-[12px] group">
-                <span className="type-button-label text-[#155149] group-hover:opacity-80 transition-opacity">
-                  See our work
+                <span className="text-[16px] font-medium text-[#155149] group-hover:opacity-80 transition-opacity">
+                  {HOME_COPY.finalCta.secondaryAction}
                 </span>
                 <div className="flex items-center justify-center w-[32px] h-[32px] bg-[#155149] text-white rounded-full shrink-0 group-hover:scale-105 transition-transform">
                   <ArrowRight className="w-4 h-4" strokeWidth={2} />

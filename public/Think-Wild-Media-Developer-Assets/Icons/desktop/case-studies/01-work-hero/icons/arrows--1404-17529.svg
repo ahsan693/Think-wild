@@ -1,0 +1,16 @@
+<svg width="84" height="36" viewBox="0 0 84 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="arrows">
+<g id="arrow-left">
+<rect x="0.5" y="0.5" width="35" height="35" rx="17.5" stroke="white" stroke-opacity="0.14902"/>
+<g id="chevron-left">
+<path id="Vector" d="M20 22L16 18L20 14" stroke-width="2" stroke-linecap="round" stroke="white"/>
+</g>
+</g>
+<g id="arrow-right">
+<rect x="48.5" y="0.5" width="35" height="35" rx="17.5" stroke="white" stroke-opacity="0.14902"/>
+<g id="chevron-right">
+<path id="Vector_2" d="M64 22L68 18L64 14" stroke-width="2" stroke-linecap="round" stroke="white"/>
+</g>
+</g>
+</g>
+</svg>
