@@ -66,6 +66,25 @@ export const CTA_ORBIT_DATA = {
       iconForeground: '#4A00E0',
     },
   },
+  work: {
+    copy: {
+      eyebrow: 'Ready?',
+      heading: ['HAVE A PROJECT IN MIND?'],
+      description:
+        "Tell us what you're planning and we'll shape the right creator, content or social approach around it.",
+      primaryAction: 'Start a Project',
+      secondaryAction: 'Explore Services',
+    },
+    images: CTA_ORBIT_IMAGES,
+    colors: {
+      panel: '#F1E55C',
+      text: '#F56633',
+      accent: '#F56633',
+      accentText: '#FFFFFF',
+      iconBackground: '#FFFFFF',
+      iconForeground: '#F56633',
+    },
+  },
 } as const;
 
 export type CtaOrbitData = (typeof CTA_ORBIT_DATA)[keyof typeof CTA_ORBIT_DATA];

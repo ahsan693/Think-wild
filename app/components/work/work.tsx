@@ -4,6 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/app/components/header/header';
 import Footer from '@/app/components/footer/footer';
+import CtaOrbitSection from '@/app/components/home/cta-orbit-section';
+import { CTA_ORBIT_DATA } from '@/lib/data/ctaorbitdata';
 import { Eye, Scissors, TrendingUp, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 
 // =========================================
@@ -198,7 +200,7 @@ export default function WorkPage() {
       ========================================= */}
       <section className="w-full flex flex-col items-center pt-[60px] pb-[150px] px-4">
         
-        {/* Filter Bar[cite: 110] */}
+        {/* Filter Bar */}
         <div className="flex items-center justify-center bg-[#1A1A1A] rounded-full p-[8px] gap-[4px] mb-[60px] overflow-x-auto max-w-full">
           {WORK_GRID_DATA.filters.map((filter) => {
             const isActive = activeFilter === filter;
@@ -220,14 +222,12 @@ export default function WorkPage() {
 
         {/* Grid Container */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-[30px] w-full max-w-[1280px]">
-          
           {filteredProjects.map((project) => (
             <Link 
               href="/plumpstudy"
               key={project.id} 
               className="flex w-full xl:w-[625px] h-auto md:h-[350px] bg-white rounded-[30px] overflow-hidden shrink-0 text-black shadow-xl group transition-transform hover:-translate-y-1 justify-self-center"
             >
-              {/* Left Text Block */}
               <div className="flex flex-col justify-between w-full md:w-[342.5px] h-full pt-[29px] px-[30px] pb-[30px] shrink-0">
                 <div className="flex flex-col">
                   <h3 className="font-bricolage text-[40px] font-semibold leading-tight tracking-[-0.03em] uppercase text-black mb-[4px] group-hover:text-blue-600 transition-colors">
@@ -252,7 +252,6 @@ export default function WorkPage() {
                 </div>
               </div>
 
-              {/* Right Image Block */}
               <div className="hidden md:block w-[282.5px] h-full shrink-0 overflow-hidden">
                 <img 
                   src={project.imageSrc} 
@@ -262,10 +261,32 @@ export default function WorkPage() {
               </div>
             </Link>
           ))}
+        </div>
 
+        {/* =========================================
+            PAGINATION / NAVIGATION BAR
+        ========================================= */}
+        {/* 1280px wide grid with 3 columns, 10px gap, 55.59px height[cite: 118] */}
+        <div className="grid grid-cols-3 gap-[10px] w-full max-w-[1280px] mt-[60px] h-[55.59px]">
+          
+          {/* Previous Button Placeholder (Empty to match design) */}
+          <div className="w-full h-full rounded-[100px] border border-white/10 bg-[#161616]"></div>
+          
+          {/* Page Indicator */}
+          <div className="flex items-center justify-center w-full h-full rounded-[100px] border border-white/10 bg-[#161616]">
+            <span className="text-white text-[14px] font-medium tracking-wide">1 / 2</span>
+          </div>
+
+          {/* Next Button: #161616 bg, #CCCCCC/30 border, 100px radius[cite: 119] */}
+          <button className="flex items-center justify-center w-full h-full rounded-[100px] border border-[#CCCCCC]/30 bg-[#161616] hover:bg-zinc-800 transition-colors">
+            <span className="text-white text-[14px] font-medium tracking-wide">Next ›</span>
+          </button>
+          
         </div>
 
       </section>
+
+      <CtaOrbitSection data={CTA_ORBIT_DATA.work} />
 
       {/* Put the footer as the very last item inside main */}
       <Footer />
