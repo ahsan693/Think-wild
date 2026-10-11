@@ -449,7 +449,7 @@ export const HOME_FAQ = {
   ],
 } as const;
 
-// Final CTA section: copy and orbit images. Reuse the mission fashion image rather than duplicating its URL.
+// Final CTA section: copy and orbit images.
 export const HOME_FINAL_CTA = {
   copy: {
     eyebrow: 'Ready?',
@@ -461,12 +461,13 @@ export const HOME_FINAL_CTA = {
   },
   images: {
     orbit: [
-      'https://images.pexels.com/photos/1752806/pexels-photo-1752806.jpeg?auto=compress&cs=tinysrgb&w=400',
-      HOME_MISSION.images.fashion.src,
-      'https://images.pexels.com/photos/5348252/pexels-photo-5348252.jpeg?auto=compress&cs=tinysrgb&w=400',
-      'https://images.pexels.com/photos/4427906/pexels-photo-4427906.jpeg?auto=compress&cs=tinysrgb&w=400',
-      'https://images.pexels.com/photos/3373736/pexels-photo-3373736.jpeg?auto=compress&cs=tinysrgb&w=400',
-      'https://images.pexels.com/photos/10368551/pexels-photo-10368551.jpeg?auto=compress&cs=tinysrgb&w=400',
+      '/Think-Wild-Media-Developer-Assets/Images/desktop/home/11-final-cta/images/originals/cta-avatar--1404-16104--source.jpg',
+      '/Think-Wild-Media-Developer-Assets/Images/desktop/home/11-final-cta/images/originals/cta-avatar--1404-16106--source.jpg',
+      '/Think-Wild-Media-Developer-Assets/Images/desktop/home/11-final-cta/images/originals/cta-avatar--1404-16109--source.jpg',
+      '/Think-Wild-Media-Developer-Assets/Images/desktop/home/11-final-cta/images/originals/cta-avatar--1404-16112--source.jpg',
+      '/Think-Wild-Media-Developer-Assets/Images/desktop/home/11-final-cta/images/originals/cta-avatar--1404-16120--source.jpg',
+      '/Think-Wild-Media-Developer-Assets/Images/desktop/home/11-final-cta/images/originals/cta-image--1404-16118--source.jpg',
+      '/Think-Wild-Media-Developer-Assets/Images/desktop/home/11-final-cta/images/originals/image-final-cta-01--1404-16115--source.jpg',
     ],
   },
 } as const;
