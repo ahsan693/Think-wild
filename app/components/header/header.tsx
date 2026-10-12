@@ -7,7 +7,11 @@ const headerIcons = {
   arrowRight: ArrowRight,
 } as const;
 
-export default function Header() {
+type HeaderProps = {
+  arrowIconSrc?: string;
+};
+
+export default function Header({ arrowIconSrc }: HeaderProps = {}) {
   const CtaIcon = headerIcons[HEADER_CTA.icon];
 
   return (
@@ -54,7 +58,11 @@ export default function Header() {
           
           {/* Arrow Icon Wrapper - 28x28px, #161616 background */}
           <div className="flex items-center justify-center w-[28px] h-[28px] bg-[#161616] rounded-full text-white">
-            <CtaIcon className="w-4 h-4" strokeWidth={2} />
+            {arrowIconSrc ? (
+              <Image src={arrowIconSrc} alt="" aria-hidden="true" width={18} height={13} />
+            ) : (
+              <CtaIcon className="w-4 h-4" strokeWidth={2} />
+            )}
           </div>
         </Link>
 

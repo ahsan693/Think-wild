@@ -307,7 +307,6 @@ export const HOME_WHY_US = {
       'Reporting',
       'Ongoing optimisation',
     ],
-    brandName: 'Think Wild',
     benefits: [
       'Matched by audience, niche and brand fit',
       'Campaign strategy built around your goals',

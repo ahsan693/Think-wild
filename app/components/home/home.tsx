@@ -1,16 +1,18 @@
 import Header from '@/app/components/header/header';
 import Footer from '@/app/components/footer/footer';
+import Image from 'next/image';
 import ShowcaseCarousel from '@/app/components/home/showcase-carousel';
 import ProcessStory from '@/app/components/home/process-story';
 import CtaOrbitSection from '@/app/components/home/cta-orbit-section';
 import SocialTicker from '@/app/components/social-ticker';
 import { 
-  ArrowRight, Heart, MessageCircle, ArrowUpRight, BadgeCheck,
+  Heart, MessageCircle, ArrowUpRight, BadgeCheck,
   Check,
   Search, Zap, PieChart, CheckCircle2, Rocket, RefreshCw,
   Plus, Minus
 } from 'lucide-react';
 import { CTA_ORBIT_DATA } from '@/lib/data/ctaorbitdata';
+import { HEADER_LOGO } from '@/lib/data/header';
 import {
   HOME_CAPABILITIES,
   HOME_FAQ,
@@ -24,6 +26,22 @@ import {
   HOME_WHY_US,
 } from '@/lib/data/homedata';
 // import { Bricolage_Grotesque } from 'next/font/google';
+
+const HOME_ARROW_ICON_SRC =
+  '/Think-Wild-Media-Developer-Assets/Icons/desktop/home/01-hero-creator-marketing/icons/icon-hero-creator-marketing-01--1404-14978.svg';
+
+function HomeArrowIcon({ color = 'white' }: { color?: 'white' | 'black' }) {
+  return (
+    <Image
+      src={HOME_ARROW_ICON_SRC}
+      alt=""
+      aria-hidden="true"
+      width={18}
+      height={13}
+      className={color === 'black' ? 'invert' : undefined}
+    />
+  );
+}
 
 export default function Home() {
   const carouselItems = [...HOME_HERO.creators, ...HOME_HERO.creators, ...HOME_HERO.creators];
@@ -47,7 +65,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen w-full bg-black text-white flex flex-col overflow-x-clip font-[family-name:var(--font-saans)]">
-      <Header />
+      <Header arrowIconSrc={HOME_ARROW_ICON_SRC} />
 
       <section className="w-full max-w-[1380px] mx-auto pt-[155px] flex flex-col items-center pb-[100px]">
         
@@ -81,7 +99,7 @@ export default function Home() {
 
           <button className="flex items-center h-[55px] bg-white rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors mt-[12px]">
             <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
-              <ArrowRight className="w-5 h-5 -rotate-45" strokeWidth={2} />
+              <HomeArrowIcon />
             </div>
             <span className="text-[16px] font-medium text-[#1D1D1D]">
               {HOME_HERO.copy.action}
@@ -218,7 +236,7 @@ export default function Home() {
             </p>
             <button className="flex items-center h-[55px] bg-white rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors mt-[12px]">
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
-                <ArrowRight className="w-5 h-5" strokeWidth={2} />
+                <HomeArrowIcon />
               </div>
               <span className="text-[#1D1D1D] font-medium text-[16px]">
                 {HOME_MISSION.copy.action}
@@ -381,7 +399,7 @@ export default function Home() {
 
               <button className="flex h-[52px] w-[174px] items-center gap-[10px] rounded-full bg-black py-[6px] pl-[6px] pr-[24px] transition-colors hover:bg-zinc-800">
                 <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-black rounded-full shrink-0">
-                  <ArrowRight className="w-5 h-5" strokeWidth={2} />
+                  <HomeArrowIcon color="black" />
                 </div>
                 <span className="text-[16px] font-medium text-white">
                   {HOME_FEATURED_WORK.copy.action}
@@ -403,7 +421,7 @@ export default function Home() {
             </p>
             <button className="flex items-center h-[55px] bg-transparent border border-white/30 rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-white/10 transition-colors">
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-black rounded-full shrink-0">
-                <ArrowRight className="w-5 h-5" strokeWidth={2} />
+                <HomeArrowIcon color="black" />
               </div>
               <span className="text-[16px] font-medium text-white">
                 {HOME_FEATURED_WORK.copy.moreAction}
@@ -445,13 +463,13 @@ export default function Home() {
             </div>
 
             <div className="w-[538px] h-[539px] bg-[#155149] rounded-[32px] p-[48px] flex flex-col items-start justify-center shadow-xl">
-              <div className="flex items-center gap-[12px] mb-[48px]">
-                <div className="text-white">
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 0L24.4903 15.5097L40 20L24.4903 24.4903L20 40L15.5097 24.4903L0 20L15.5097 15.5097L20 0Z" fill="white"/>
-                  </svg>
-                </div>
-                <span className="text-[28px] font-bold text-white tracking-tight">{HOME_WHY_US.copy.brandName}</span>
+              <div className="mb-[48px] flex items-center">
+                <Image
+                  src={HEADER_LOGO.src}
+                  alt={HEADER_LOGO.alt}
+                  width={180}
+                  height={51}
+                />
               </div>
 
               <div className="flex flex-col gap-[24px] w-full">
@@ -469,7 +487,7 @@ export default function Home() {
           <div className="w-full flex justify-center mt-[60px]">
             <button className="flex items-center w-[202px] h-[52px] bg-black rounded-full pl-[6px] pr-[24px] py-[6px] gap-[12px] hover:bg-zinc-800 transition-colors">
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-black rounded-full shrink-0">
-                <ArrowRight className="w-5 h-5" strokeWidth={2} />
+                <HomeArrowIcon color="black" />
               </div>
               <span className="text-[16px] font-medium text-white mx-auto">
                 {HOME_WHY_US.copy.action}
@@ -600,7 +618,7 @@ export default function Home() {
         {/* Global CTA Button */}
         <button data-process-cta className="process-story-cta flex items-center h-[55px] bg-white rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors">
           <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
-            <ArrowRight className="w-5 h-5" strokeWidth={2} />
+            <HomeArrowIcon />
           </div>
           <span className="text-[16px] font-medium text-[#1D1D1D]">
             {HOME_PROCESS.copy.action}
@@ -716,7 +734,10 @@ export default function Home() {
       {/* =========================================
           FINAL CTA SECTION
       ========================================= */}
-      <CtaOrbitSection data={CTA_ORBIT_DATA.home} />
+      <CtaOrbitSection
+        data={CTA_ORBIT_DATA.home}
+        arrowIconSrc={HOME_ARROW_ICON_SRC}
+      />
 
       <Footer />
 

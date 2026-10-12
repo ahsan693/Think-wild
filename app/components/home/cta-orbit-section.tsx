@@ -1,12 +1,14 @@
+import Image from 'next/image';
 import { ArrowRight, Calendar } from 'lucide-react';
 import CtaOrbit from '@/app/components/home/cta-orbit';
 import type { CtaOrbitData } from '@/lib/data/ctaorbitdata';
 
 type CtaOrbitSectionProps = {
   data: CtaOrbitData;
+  arrowIconSrc?: string;
 };
 
-export default function CtaOrbitSection({ data }: CtaOrbitSectionProps) {
+export default function CtaOrbitSection({ data, arrowIconSrc }: CtaOrbitSectionProps) {
   return (
     <section className="w-full flex flex-col items-center pt-[250px] pb-[150px] px-4 bg-black overflow-hidden">
       <div
@@ -71,7 +73,11 @@ export default function CtaOrbitSection({ data }: CtaOrbitSectionProps) {
                 className="flex h-[32px] w-[32px] shrink-0 items-center justify-center rounded-full transition-transform group-hover:scale-105"
                 style={{ backgroundColor: data.colors.accent, color: data.colors.accentText }}
               >
-                <ArrowRight className="h-4 w-4" strokeWidth={2} />
+                {arrowIconSrc ? (
+                  <Image src={arrowIconSrc} alt="" aria-hidden="true" width={18} height={13} />
+                ) : (
+                  <ArrowRight className="h-4 w-4" strokeWidth={2} />
+                )}
               </span>
             </button>
           </div>
