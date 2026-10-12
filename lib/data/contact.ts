@@ -162,7 +162,7 @@ export const CONTACT_BOOKING_DATA = {
   weekdayHeadings: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
   weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
   availableTimes: ['9:00 am', '9:30 am', '10:15 am', '11:45 am', '1:00 pm', '2:30 pm', '4:00 pm'],
-  timeFormats: ['12h', '24h'],
+  timeFormats: ['12h', '24h'] as const,
   confirmLabel: 'Confirm Time',
   provider: 'Cal.com',
 };

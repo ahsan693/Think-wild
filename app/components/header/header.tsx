@@ -15,7 +15,7 @@ export default function Header() {
     <header className="w-full max-w-[1200px] mx-auto px-[16px] pt-4 font-[family-name:var(--font-saans)]">
       
       {/* Inner navbar container with border, pill shape, and space-between layout */}
-      <nav className="flex items-center justify-between h-[66px] w-full rounded-full border border-[#161616] bg-black/50 backdrop-blur-md py-[10px] px-[16px]">
+      <nav className="flex items-center justify-between h-[66px] w-full rounded-full border border-[#161616] bg-[#161616]/80 backdrop-blur-md py-[10px] px-[16px]">
         
         {/* Logo Section - 34px height[cite: 3] */}
         <Link href={HEADER_LOGO.href} className="flex items-center gap-[10px] h-[34px] text-white">

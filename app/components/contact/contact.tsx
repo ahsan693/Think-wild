@@ -19,6 +19,7 @@ export default function ContactPage() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [timeFormat, setTimeFormat] = useState<'12h' | '24h'>('12h');
   
   // --- FAQ State ---
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0); // First item open by default
@@ -27,30 +28,44 @@ export default function ContactPage() {
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth(); 
   
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
   const firstDayOfMonth = new Date(year, month, 1).getDay();
+  const calendarDays = Array.from(
+    { length: 42 },
+    (_, index) => new Date(year, month, index - firstDayOfMonth + 1),
+  );
 
   const handlePrevMonth = () => setCurrentDate(new Date(year, month - 1, 1));
   const handleNextMonth = () => setCurrentDate(new Date(year, month + 1, 1));
 
-  const isPastDay = (day: number) => {
+  const isPastDay = (date: Date) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    const dateToCheck = new Date(year, month, day);
+    const dateToCheck = new Date(date);
+    dateToCheck.setHours(0, 0, 0, 0);
     return dateToCheck < today;
   };
 
-  const isSelected = (day: number) => {
-    return selectedDate.getDate() === day && 
-           selectedDate.getMonth() === month && 
-           selectedDate.getFullYear() === year;
+  const isSelected = (date: Date) => {
+    return selectedDate.toDateString() === date.toDateString();
   };
 
-  const handleDateClick = (day: number) => {
-    if (!isPastDay(day)) {
-      setSelectedDate(new Date(year, month, day));
-      setSelectedTime(null);
+  const handleDateClick = (date: Date) => {
+    if (isPastDay(date)) return;
+
+    setSelectedDate(date);
+    setSelectedTime(null);
+    if (date.getMonth() !== month || date.getFullYear() !== year) {
+      setCurrentDate(new Date(date.getFullYear(), date.getMonth(), 1));
     }
+  };
+
+  const formatTime = (time: string) => {
+    const [clock, period] = time.toLowerCase().split(' ');
+    if (timeFormat === '12h') return `${clock}${period}`;
+
+    const [hour, minute] = clock.split(':');
+    const hour24 = (Number(hour) % 12) + (period === 'pm' ? 12 : 0);
+    return `${String(hour24).padStart(2, '0')}:${minute}`;
   };
 
   const getOrdinalSuffix = (i: number) => {
@@ -84,12 +99,11 @@ export default function ContactPage() {
                   </div>
                 ))}
               </div>
-              <span className="text-[14px] font-medium text-white">{CONTACT_HERO_DATA.tagline}</span>
+              <span className="type-113 text-white">{CONTACT_HERO_DATA.tagline}</span>
             </div>
 
             <h1 
-              className="flex flex-col text-[100px] leading-[90px] font-bold uppercase tracking-[-0.04em] text-white"
-              style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+              className="type-010 flex flex-col text-white"
             >
               {CONTACT_HERO_DATA.headingLines.map((line) => <span key={line}>{line}</span>)}
               <span className="inline-flex items-center justify-center bg-[#155149] text-[#8CFE79] rounded-[100px] px-[24px] pb-[8px] mt-[10px] w-max">
@@ -101,18 +115,18 @@ export default function ContactPage() {
           {/* RIGHT COLUMN (Form) */}
           <div className="flex flex-col w-full lg:w-[615px] shrink-0">
             <div className="w-full bg-[#155149] rounded-t-[30px] px-[40px] pt-[19px] pb-[40px] -mb-[20px] z-0">
-              <h2 className="text-[#8CFE79] text-[24px] font-bold">
+              <h2 className="font-heading text-[24px] font-bold text-[#8CFE79]">
                 {CONTACT_FORM_DATA.heading}
               </h2>
             </div>
 
-            <div className="w-full bg-white rounded-[30px] p-[40px] z-10 relative shadow-2xl flex flex-col gap-[24px] text-black">
+            <div className="w-full bg-white rounded-[30px] p-[40px] z-10 relative shadow-2xl flex min-h-[1068.03px] flex-col justify-between gap-[20px] text-black">
               {CONTACT_FORM_DATA.fields.map((field) => (
-                <div key={field.name} className="flex flex-col gap-[8px]">
-                  <label className="text-[14px] font-bold text-black">{field.label}</label>
+                <div key={field.name} className="flex flex-col gap-[10px]">
+                  <label className="type-106 text-black">{field.label}</label>
                   {field.type === 'select' ? (
                     <div className="relative">
-                      <select defaultValue="" className="w-full h-[52px] rounded-[12px] border border-black/20 px-[16px] text-[15px] appearance-none focus:outline-none focus:border-black/50 transition-colors bg-white text-black/60">
+                      <select defaultValue="" className="type-106 w-full h-[50px] rounded-[6px] border border-[#4B4B4B] bg-[#F5F5F5] py-[14px] pl-[20px] pr-[48px] text-[#4B4B4B] appearance-none focus:outline-none focus:border-black transition-colors">
                         <option value="" disabled>{field.placeholder}</option>
                         {field.options.map((option) => (
                           <option key={option.value} value={option.value}>{option.label}</option>
@@ -123,28 +137,28 @@ export default function ContactPage() {
                   ) : field.type === 'textarea' ? (
                     <textarea
                       placeholder={field.placeholder}
-                      className="w-full h-[120px] rounded-[12px] border border-black/20 p-[16px] text-[15px] focus:outline-none focus:border-black/50 transition-colors placeholder:text-black/40 resize-none"
+                      className="type-106 w-full h-[120px] rounded-[6px] border border-[#4B4B4B] bg-[#F5F5F5] px-[20px] py-[14px] text-[#4B4B4B] focus:outline-none focus:border-black transition-colors placeholder:text-[#4B4B4B] resize-none"
                     />
                   ) : (
                     <input
                       type={field.type}
                       placeholder={field.placeholder}
-                      className="w-full h-[52px] rounded-[12px] border border-black/20 px-[16px] text-[15px] focus:outline-none focus:border-black/50 transition-colors placeholder:text-black/40"
+                      className="type-106 w-full h-[50px] rounded-[6px] border border-[#4B4B4B] bg-[#F5F5F5] px-[20px] py-[14px] text-[#4B4B4B] focus:outline-none focus:border-black transition-colors placeholder:text-[#4B4B4B]"
                     />
                   )}
                 </div>
               ))}
 
-              <div className="mt-[10px] flex flex-col gap-[16px]">
+              <div className="flex flex-col gap-[20px]">
                 <button className="flex items-center justify-between w-max h-[52px] bg-black rounded-full pl-[6px] pr-[24px] py-[6px] gap-[12px] hover:bg-zinc-800 transition-colors">
                   <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-black rounded-full shrink-0">
                     <ArrowRight className="w-5 h-5" strokeWidth={2} />
                   </div>
-                  <span className="text-white font-medium text-[16px]">
+                  <span className="type-087 text-white">
                     {CONTACT_FORM_DATA.submitLabel}
                   </span>
                 </button>
-                <span className="text-[12px] text-black/60 font-medium">
+                <span className="type-136 text-black/60">
                   {CONTACT_FORM_DATA.privacyNote}
                 </span>
               </div>
@@ -163,32 +177,32 @@ export default function ContactPage() {
           <div className="flex flex-col items-center text-center gap-[16px] mb-[40px]">
             <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full border border-white/20 gap-[6px]">
               <div className="w-[6px] h-[6px] rounded-full bg-[#8CFE79] shadow-[0_0_8px_#8CFE79]"></div>
-              <span className="text-[12px] uppercase font-bold tracking-widest text-white">{CONTACT_BOOKING_DATA.eyebrow}</span>
+              <span className="type-139 font-bold text-white">{CONTACT_BOOKING_DATA.eyebrow}</span>
             </div>
             <h2 
-              className="text-[70px] leading-[0.9] font-semibold uppercase tracking-[-0.03em] text-white"
-              style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+              className="type-015 text-white"
             >
               {CONTACT_BOOKING_DATA.heading}
             </h2>
-            <p className="text-[#9F9F9F] text-[16px] font-medium max-w-[500px]">
+            <p className="type-087 max-w-[500px] text-[#9F9F9F]">
               {CONTACT_BOOKING_DATA.description}
             </p>
           </div>
 
-          <div className="w-full max-w-[1040px] h-auto md:h-[489.78px] bg-white rounded-[8px] border border-[#E5E7EB] flex flex-col md:flex-row overflow-hidden text-black shadow-xl">
+          <div className="flex w-full max-w-[1200px] flex-col items-center overflow-hidden rounded-[24px] bg-white px-[12px] pt-[16px] pb-[20px] lg:h-[625.78px] lg:px-0 lg:pt-[56px] lg:pb-0">
+          <div className="flex w-full max-w-[1040px] flex-col overflow-hidden rounded-[8px] border border-[#E5E7EB] bg-white text-black lg:h-[489.78px] lg:flex-row">
             
             {/* Col 1: Details */}
-            <div className="w-full md:w-[30%] md:min-w-[280px] p-[30px] border-b md:border-b-0 md:border-r border-[#E5E7EB] flex flex-col">
-              <div className="w-[24px] h-[24px] rounded-full bg-zinc-200 mb-[16px]"></div>
-              <span className="text-[14px] font-semibold text-zinc-500 mb-[4px]">{CONTACT_BOOKING_DATA.businessName}</span>
+            <div className="flex w-full flex-col border-b border-[#E5E7EB] p-[24px] lg:w-[280px] lg:flex-none lg:border-b-0 lg:border-r">
+              <div className="mb-[12px] h-[24px] w-[24px] rounded-full bg-zinc-200"></div>
+              <span className="type-113 mb-[4px] text-zinc-500">{CONTACT_BOOKING_DATA.businessName}</span>
               <h3 className="text-[24px] font-bold text-black mb-[24px]">{CONTACT_BOOKING_DATA.eventName}</h3>
               
               <div className="flex flex-col gap-[16px]">
                 {CONTACT_BOOKING_DATA.details.map((detail) => (
                   <div key={detail.label} className="flex items-center gap-[8px] text-zinc-600">
                     <detail.icon size={16} />
-                    <span className="text-[14px] font-medium">
+                    <span className="type-113">
                       {detail.label}
                       {detail.hasTimezoneChevron && <ChevronDown size={14} className="inline ml-1" />}
                     </span>
@@ -198,65 +212,90 @@ export default function ContactPage() {
             </div>
 
             {/* Col 2: Dynamic Calendar Grid */}
-            <div className="flex-1 p-[30px] border-b md:border-b-0 md:border-r border-[#E5E7EB] flex flex-col">
-              <div className="flex items-center justify-between mb-[30px]">
-                <span className="text-[16px] font-bold">
+            <div className="flex w-full min-w-0 flex-col border-b border-[#E5E7EB] p-[20px] lg:flex-1 lg:border-b-0 lg:border-r">
+              <div className="mb-[20px] flex items-center justify-between">
+                <span className="text-[18px] font-semibold leading-[24px]">
                   {CONTACT_BOOKING_DATA.monthNames[month]} <span className="text-zinc-400">{year}</span>
                 </span>
-                <div className="flex items-center gap-[16px]">
-                  <button onClick={handlePrevMonth} className="p-1 hover:bg-zinc-100 rounded transition-colors">
-                    <ChevronLeftIcon size={20} className="text-zinc-600 cursor-pointer" />
+                <div className="flex items-center gap-[8px]">
+                  <button type="button" aria-label="Previous month" onClick={handlePrevMonth} className="rounded-full p-1 text-zinc-600 transition-colors hover:bg-zinc-100">
+                    <ChevronLeftIcon size={16} />
                   </button>
-                  <button onClick={handleNextMonth} className="p-1 hover:bg-zinc-100 rounded transition-colors">
-                    <ChevronRightIcon size={20} className="text-zinc-600 cursor-pointer" />
+                  <button type="button" aria-label="Next month" onClick={handleNextMonth} className="rounded-full p-1 text-zinc-600 transition-colors hover:bg-zinc-100">
+                    <ChevronRightIcon size={16} />
                   </button>
                 </div>
               </div>
               
-              <div className="grid grid-cols-7 mb-[16px] text-center">
+              <div className="mb-[12px] grid grid-cols-7 text-center">
                 {CONTACT_BOOKING_DATA.weekdayHeadings.map(day => (
-                  <span key={day} className="text-[11px] font-bold text-zinc-500">{day}</span>
+                  <span key={day} className="type-144 font-semibold text-[#171717]">{day}</span>
                 ))}
               </div>
               
-              <div className="grid grid-cols-7 gap-y-[8px] gap-x-[4px] text-center">
-                {Array.from({ length: firstDayOfMonth }).map((_, i) => (
-                  <div key={`empty-${i}`} className="w-full aspect-square"></div>
-                ))}
-                
-                {Array.from({ length: daysInMonth }).map((_, i) => {
-                  const day = i + 1;
-                  const past = isPastDay(day);
-                  const selected = isSelected(day);
+              <div className="grid grid-cols-7 gap-x-0 gap-y-[4px] text-center">
+                {calendarDays.map((date) => {
+                  const past = isPastDay(date);
+                  const selected = isSelected(date);
+                  const outsideMonth = date.getMonth() !== month;
+                  const dateLabel = date.toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric',
+                  });
 
                   return (
-                    <div 
-                      key={day}
-                      onClick={() => handleDateClick(day)}
-                      className={`w-full aspect-square flex flex-col items-center justify-center text-[15px] rounded-lg transition-colors
-                        ${past ? 'text-zinc-300 cursor-not-allowed font-medium' : 'text-zinc-800 font-semibold cursor-pointer'}
-                        ${selected ? 'bg-zinc-800 text-white shadow-md' : (!past ? 'hover:bg-zinc-100 bg-zinc-50/50' : '')}
+                    <button
+                      key={date.toISOString()}
+                      type="button"
+                      aria-label={dateLabel}
+                      aria-pressed={selected}
+                      disabled={past}
+                      onClick={() => handleDateClick(date)}
+                      className={`type-100 relative mx-auto flex aspect-square w-full max-w-[56px] min-w-0 flex-col items-center justify-center rounded-[8px] transition-colors
+                        ${
+                          past && outsideMonth
+                            ? 'cursor-not-allowed bg-transparent text-transparent'
+                            : past
+                              ? 'cursor-not-allowed bg-transparent text-[#171717]'
+                            : selected
+                              ? 'cursor-pointer bg-[#292929] text-white hover:bg-[#292929]'
+                              : 'cursor-pointer bg-[#E5E7EB] text-[#171717] hover:bg-[#D1D5DB]'
+                        }
                       `}
                     >
-                      <span className="relative">{day}</span>
-                      {selected && <div className="w-[4px] h-[4px] rounded-full bg-white mt-1 absolute bottom-1"></div>}
-                    </div>
+                      {outsideMonth && date.getDate() === 1 && (
+                        <span aria-hidden="true" className="absolute inset-x-0 top-[4px] text-[7px] font-bold leading-none tracking-[0.02em] text-zinc-500">
+                          {CONTACT_BOOKING_DATA.monthNames[date.getMonth()].slice(0, 3).toUpperCase()}
+                        </span>
+                      )}
+                      <span>{date.getDate()}</span>
+                      {selected && <span aria-hidden="true" className="absolute bottom-[6px] h-[4px] w-[4px] rounded-full bg-white" />}
+                    </button>
                   );
                 })}
               </div>
             </div>
 
             {/* Col 3: Dynamic Time Slots */}
-            <div className="w-full md:w-[30%] md:min-w-[240px] p-[30px] flex flex-col">
-              <div className="flex items-center justify-between mb-[24px]">
-                <span className="text-[16px] font-bold text-black">
+            <div className="flex w-full flex-col p-[20px] pt-[12px] lg:w-[280px] lg:flex-none">
+              <div className="mb-[16px] flex items-center justify-between gap-[8px]">
+                <span className="type-084 text-black">
                   {CONTACT_BOOKING_DATA.weekdays[selectedDate.getDay()]} {getOrdinalSuffix(selectedDate.getDate())}
                 </span>
-                <div className="flex border border-zinc-200 rounded-md overflow-hidden bg-zinc-100">
-                  {CONTACT_BOOKING_DATA.timeFormats.map((format, index) => (
+                <div className="flex shrink-0 items-center rounded-full border border-[#E5E7EB] bg-[#F8F9FA] p-[2px]">
+                  {CONTACT_BOOKING_DATA.timeFormats.map((format) => (
                     <button
                       key={format}
-                      className={`px-[8px] py-[4px] text-[12px] font-semibold m-[2px] ${index === 0 ? 'bg-white rounded shadow-sm border border-zinc-200' : 'text-zinc-500'}`}
+                      type="button"
+                      aria-pressed={timeFormat === format}
+                      onClick={() => setTimeFormat(format)}
+                      className={`type-136 rounded-full px-[7px] py-[2px] transition-colors ${
+                        timeFormat === format
+                          ? 'bg-white font-semibold text-black shadow-sm'
+                          : 'text-zinc-500 hover:text-black'
+                      }`}
                     >
                       {format}
                     </button>
@@ -264,28 +303,29 @@ export default function ContactPage() {
                 </div>
               </div>
               
-              <div className="flex flex-col gap-[10px] overflow-y-auto pr-2 custom-scrollbar">
+              <div className="flex flex-col gap-[8px]">
                 {CONTACT_BOOKING_DATA.availableTimes.map((time) => {
                   const isTimeSelected = selectedTime === time;
                   return (
                     <button 
                       key={time} 
+                      type="button"
                       onClick={() => setSelectedTime(time)}
-                      className={`w-full py-[10px] rounded-md border text-[14px] font-semibold transition-all duration-200
+                      className={`type-136 flex h-[36px] w-full items-center justify-center rounded-[8px] border font-medium transition-colors
                         ${isTimeSelected 
-                          ? 'border-black bg-black text-white shadow-md scale-[0.98]' 
-                          : 'border-[#E5E7EB] text-zinc-800 hover:border-black hover:bg-zinc-50'
+                          ? 'border-[#292929] bg-[#292929] text-white'
+                          : 'border-[#D9DEE5] text-zinc-800 hover:border-[#292929] hover:bg-zinc-50'
                         }
                       `}
                     >
-                      {time}
+                      {formatTime(time)}
                     </button>
                   );
                 })}
               </div>
 
               {selectedTime && (
-                <button className="w-full mt-[16px] py-[12px] bg-blue-600 hover:bg-blue-700 text-white rounded-md font-bold transition-colors shadow-lg">
+                <button type="button" className="type-084 mt-[16px] w-full rounded-[8px] bg-[#292929] py-[12px] text-white transition-colors hover:bg-black">
                   {CONTACT_BOOKING_DATA.confirmLabel}
                 </button>
               )}
@@ -293,7 +333,10 @@ export default function ContactPage() {
 
           </div>
           
-          <div className="mt-[20px] font-bold text-[14px] text-zinc-500 tracking-tight">{CONTACT_BOOKING_DATA.provider}</div>
+          <div className="flex h-[80px] w-[84.86px] items-center justify-center text-[12px] font-medium text-black">
+            {CONTACT_BOOKING_DATA.provider}
+          </div>
+          </div>
 
         </div>
       </section>
@@ -311,13 +354,13 @@ export default function ContactPage() {
             {/* Header Block */}
             <div className="flex flex-col items-center w-full mb-[70px]">
               <div className="flex items-center justify-center px-[20px] py-[6px] rounded-full border border-white/20 mb-[32px]">
-                <span className="text-[14px] font-medium text-white uppercase tracking-widest">
+                <span className="type-113 text-white uppercase tracking-widest">
                   {CONTACT_FAQ_DATA.eyebrow}
                 </span>
               </div>
               
               <h2
-                className="font-bricolage text-center text-[70px] leading-[63px] font-semibold uppercase tracking-[-0.03em] text-white"
+                className="type-015 text-center text-white"
               >
                 {CONTACT_FAQ_DATA.heading}
               </h2>
@@ -341,7 +384,7 @@ export default function ContactPage() {
                       className="flex items-center justify-between gap-[20px] cursor-pointer px-[20px] lg:px-[73.42px]"
                       onClick={() => setOpenFaqIndex(isOpen ? null : index)}
                     >
-                      <h3 className="text-white font-medium text-[23.1px] leading-[32px] tracking-[-0.6px]">
+                      <h3 className="type-038 text-white">
                         {faq.question}
                       </h3>
                       
@@ -352,7 +395,7 @@ export default function ContactPage() {
                     
                     {isOpen && (
                       <div className="w-full px-[20px] lg:px-[73.42px] mt-[16px]">
-                        <p className="text-[#9F9F9F] text-[16px] leading-[24px]">
+                        <p className="type-088 text-[#9F9F9F]">
                           {faq.answer}
                         </p>
                       </div>
