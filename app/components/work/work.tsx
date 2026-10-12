@@ -6,102 +6,17 @@ import Header from '@/app/components/header/header';
 import Footer from '@/app/components/footer/footer';
 import CtaOrbitSection from '@/app/components/home/cta-orbit-section';
 import { CTA_ORBIT_DATA } from '@/lib/data/ctaorbitdata';
-import { Eye, Scissors, TrendingUp, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
-
-// =========================================
-// MOCK DATA (Move to data.ts later)
-// =========================================
-const WORK_HERO_DATA = {
-  heading: "SELECTED\nWORK",
-  description: "Explore creator campaigns, UGC, social content, branding and video projects from Think Wild Media and the team behind it.",
-  backgroundImage: "https://images.pexels.com/photos/3373736/pexels-photo-3373736.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  stats: [
-    { label: "UGC", sublabel: "Creative", icon: <Eye size={14} className="text-white" /> },
-    { label: "Reels", sublabel: "Format", icon: <Scissors size={14} className="text-white" /> },
-    { label: "Social", sublabel: "Focus", icon: <TrendingUp size={14} className="text-white" /> }
-  ],
-  carouselCards: [
-    {
-      id: 1,
-      title: "PLUMP'D",
-      subtitle: "MODERN WISDOM",
-      image: "https://images.pexels.com/photos/4427906/pexels-photo-4427906.jpeg?auto=compress&cs=tinysrgb&w=400"
-    },
-    {
-      id: 2,
-      title: "ROUTINE STORIES",
-      subtitle: "DEEP DIVE",
-      image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400"
-    },
-    {
-      id: 3,
-      title: "CREATOR VOICES",
-      subtitle: "REELS CLIP",
-      image: "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=400"
-    }
-  ]
-};
-
-const WORK_GRID_DATA = {
-  filters: ["All", "Branding", "Content", "Creator Campaigns", "Social", "Video"],
-  projects: [
-    {
-      id: 1,
-      title: "PLUMP'D BEAUTY",
-      category: "Beauty & Wellness",
-      service: "Product content",
-      stats: [
-        { number: "03", label: "Product story pillars" },
-        { number: "02", label: "Short-form formats" }
-      ],
-      imageSrc: "https://images.pexels.com/photos/3373736/pexels-photo-3373736.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tags: ["Content", "Video", "Social"]
-    },
-    {
-      id: 2,
-      title: "ORALYN SKINCARE",
-      category: "Beauty & Wellness",
-      service: "Social strategy",
-      stats: [
-        { number: "03", label: "Creator angles" },
-        { number: "02", label: "Social channels" }
-      ],
-      imageSrc: "https://images.pexels.com/photos/4427906/pexels-photo-4427906.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tags: ["Social", "Creator Campaigns", "Branding"]
-    },
-    {
-      id: 3,
-      title: "TEXTURE STUDIES",
-      category: "Beauty & Wellness",
-      service: "Visual direction",
-      stats: [
-        { number: "03", label: "Visual routes" },
-        { number: "02", label: "Product scenes" }
-      ],
-      imageSrc: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tags: ["Branding", "Content"]
-    },
-    {
-      id: 4,
-      title: "CREATOR VOICES",
-      category: "Fashion",
-      service: "Reels clip",
-      stats: [
-        { number: "04", label: "Creator scripts" },
-        { number: "01", label: "Master edit" }
-      ],
-      imageSrc: "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tags: ["Creator Campaigns", "Video", "Social"]
-    }
-  ]
-};
+import { WORK_GRID_DATA, WORK_HERO_DATA } from '@/lib/data/workdata';
 
 export default function WorkPage() {
-  const [activeFilter, setActiveFilter] = useState("All");
+  const [activeFilter, setActiveFilter] = useState(WORK_GRID_DATA.filters[0]);
+  const [CarouselPreviousIcon, CarouselNextIcon] =
+    WORK_HERO_DATA.carouselNavigationIcons;
+  const ProjectActionIcon = WORK_GRID_DATA.projectAction.icon;
 
   // Filter projects based on active pill
-  const filteredProjects = WORK_GRID_DATA.projects.filter(project => 
-    activeFilter === "All" || project.tags.includes(activeFilter)
+  const filteredProjects = WORK_GRID_DATA.projects.filter(project =>
+    activeFilter === WORK_GRID_DATA.filters[0] || project.tags.includes(activeFilter)
   );
 
   return (
@@ -111,18 +26,18 @@ export default function WorkPage() {
       {/* =========================================
           WORK HERO SECTION
       ========================================= */}
-      <section className="w-full flex justify-center bg-black">
-        <div className="relative w-full max-w-[1440px] h-[778px] px-[80px] pt-[85px] pb-[47px] flex items-end justify-between overflow-hidden">
-          
-          <div className="absolute inset-0 w-full h-full z-0">
-            <img 
-              src={WORK_HERO_DATA.backgroundImage} 
-              alt="Selected Work Background" 
-              className="w-full h-full object-cover opacity-80"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-transparent"></div>
-          </div>
+      <section className="relative w-full overflow-hidden bg-black">
+        <div className="absolute inset-0 z-0">
+          <img
+            src={WORK_HERO_DATA.backgroundImage}
+            alt={WORK_HERO_DATA.backgroundImageAlt}
+            className="h-full w-full object-cover opacity-80"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-transparent"></div>
+        </div>
+
+        <div className="relative z-10 mx-auto flex h-[778px] w-full max-w-[1440px] items-end justify-between overflow-hidden px-[80px] pt-[85px] pb-[47px]">
 
           {/* Left Content Block */}
           <div className="relative z-10 flex flex-col w-[500px] gap-[24px]">
@@ -135,15 +50,19 @@ export default function WorkPage() {
             </p>
 
             <div className="flex items-center gap-[40px] w-[260px] h-[47px] mt-[10px]">
-              {WORK_HERO_DATA.stats.map((stat, idx) => (
-                <div key={idx} className="flex flex-col justify-between h-full">
-                  <span className="text-[20px] font-bold leading-none">{stat.label}</span>
-                  <div className="flex items-center gap-[6px] text-white/80">
-                    {stat.icon}
-                    <span className="text-[12px] font-medium leading-none">{stat.sublabel}</span>
+              {WORK_HERO_DATA.stats.map((stat, idx) => {
+                const Icon = stat.icon;
+
+                return (
+                  <div key={idx} className="flex flex-col justify-between h-full">
+                    <span className="text-[20px] font-bold leading-none">{stat.label}</span>
+                    <div className="flex items-center gap-[6px] text-white/80">
+                      <Icon size={14} className="text-white" />
+                      <span className="text-[12px] font-medium leading-none">{stat.sublabel}</span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -178,10 +97,10 @@ export default function WorkPage() {
               <div className="flex items-center justify-between w-[248px] h-[36px]">
                 <div className="flex items-center gap-[12px]">
                   <button className="flex items-center justify-center w-[32px] h-[32px] rounded-full border border-white/30 hover:bg-white/10 transition-colors">
-                    <ChevronLeft size={16} className="text-white" />
+                    <CarouselPreviousIcon size={16} className="text-white" />
                   </button>
                   <button className="flex items-center justify-center w-[32px] h-[32px] rounded-full border border-white/30 hover:bg-white/10 transition-colors">
-                    <ChevronRight size={16} className="text-white" />
+                    <CarouselNextIcon size={16} className="text-white" />
                   </button>
                 </div>
                 
@@ -224,32 +143,41 @@ export default function WorkPage() {
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-[30px] w-full max-w-[1280px]">
           {filteredProjects.map((project) => (
             <Link 
-              href="/plumpstudy"
+              href={project.href}
               key={project.id} 
               className="flex w-full xl:w-[625px] h-auto md:h-[350px] bg-white rounded-[30px] overflow-hidden shrink-0 text-black shadow-xl group transition-transform hover:-translate-y-1 justify-self-center"
             >
-              <div className="flex flex-col justify-between w-full md:w-[342.5px] h-full pt-[29px] px-[30px] pb-[30px] shrink-0">
+              <div className="flex h-full w-full shrink-0 flex-col justify-between pt-[29px] px-[30px] pb-[30px] md:w-[342.5px]">
                 <div className="flex flex-col">
-                  <h3 className="font-bricolage text-[40px] font-semibold leading-tight tracking-[-0.03em] uppercase text-black mb-[4px] group-hover:text-blue-600 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-[14px] text-zinc-600 font-medium tracking-tight">
-                    {project.category} <span className="mx-1 font-bold">·</span> {project.service}
-                  </p>
+                  <div className="flex flex-col">
+                    <h3 className="font-bricolage text-[40px] font-semibold leading-tight tracking-[-0.03em] uppercase text-black mb-[4px] group-hover:text-blue-600 transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-[14px] text-zinc-600 font-medium tracking-tight">
+                      {project.category} <span className="mx-1 font-bold">{WORK_GRID_DATA.projectMetadataSeparator}</span> {project.service}
+                    </p>
+                  </div>
+
+                  <div className="mt-[12px] flex items-center gap-[40px]">
+                    {project.stats.map((stat, idx) => (
+                      <div key={idx} className="flex flex-col">
+                        <span className="font-bricolage text-[26px] font-bold text-black leading-none mb-[4px]">
+                          {stat.number}
+                        </span>
+                        <span className="text-[13px] text-zinc-600 font-medium tracking-tight">
+                          {stat.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-[40px] mt-6 md:mt-0">
-                  {project.stats.map((stat, idx) => (
-                    <div key={idx} className="flex flex-col">
-                      <span className="font-bricolage text-[26px] font-bold text-black leading-none mb-[4px]">
-                        {stat.number}
-                      </span>
-                      <span className="text-[13px] text-zinc-600 font-medium tracking-tight">
-                        {stat.label}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+                <span className="flex h-[52px] w-[176px] items-center gap-[8px] rounded-full bg-black px-[6px] text-white">
+                  <span className="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-white text-black">
+                    <ProjectActionIcon size={16} />
+                  </span>
+                  <span className="text-[14px] font-medium">{WORK_GRID_DATA.projectAction.label}</span>
+                </span>
               </div>
 
               <div className="hidden md:block w-[282.5px] h-full shrink-0 overflow-hidden">
@@ -274,12 +202,12 @@ export default function WorkPage() {
           
           {/* Page Indicator */}
           <div className="flex items-center justify-center w-full h-full rounded-[100px] border border-white/10 bg-[#161616]">
-            <span className="text-white text-[14px] font-medium tracking-wide">1 / 2</span>
+            <span className="text-white text-[14px] font-medium tracking-wide">{WORK_GRID_DATA.pagination.pageIndicator}</span>
           </div>
 
           {/* Next Button: #161616 bg, #CCCCCC/30 border, 100px radius[cite: 119] */}
           <button className="flex items-center justify-center w-full h-full rounded-[100px] border border-[#CCCCCC]/30 bg-[#161616] hover:bg-zinc-800 transition-colors">
-            <span className="text-white text-[14px] font-medium tracking-wide">Next ›</span>
+            <span className="text-white text-[14px] font-medium tracking-wide">{WORK_GRID_DATA.pagination.nextLabel}</span>
           </button>
           
         </div>
