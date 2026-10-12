@@ -6,7 +6,7 @@ export const PLUMPD_STUDY_DATA = {
     backText: "All Work",
     title: "PLUMPD\nBEAUTY",
     description: "A playful beauty content concept for\nsocial-first video.",
-    imageSrc: "https://images.pexels.com/photos/3373736/pexels-photo-3373736.jpeg?auto=compress&cs=tinysrgb&w=800",
+    imageSrc: "/Think-Wild-Media-Developer-Assets/Images/desktop/case-study-plumpd-beauty/02-plumpd-story/images/originals/image-plumpd-story-02--1404-17926--source.png",
     tags: {
       left: "SOCIAL / PRODUCT DIRECTION",
       right: "Social content concept - Plump'd Beauty"
