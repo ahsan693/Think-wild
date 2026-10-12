@@ -1,103 +1,11 @@
+"use client";
+
+import { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/app/components/header/header';
 import Footer from '@/app/components/footer/footer';
-import { ArrowLeft, ArrowRight, Play, Camera, ArrowUpRight, Heart, MessageCircle, BadgeCheck } from 'lucide-react';
-
-// =========================================
-// MOCK DATA (Move to data.ts later)
-// =========================================
-const PLUMPD_STUDY_DATA = {
-  hero: {
-    backText: "All Work",
-    title: "PLUMPD\nBEAUTY",
-    description: "A playful beauty content concept for\nsocial-first video.",
-    imageSrc: "https://images.pexels.com/photos/3373736/pexels-photo-3373736.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: {
-      left: "SOCIAL / PRODUCT DIRECTION",
-      right: "Social content concept - Plump'd Beauty"
-    },
-    metadata: [
-      {
-        label: "Category",
-        value: "Beauty & Wellness",
-        type: "text"
-      },
-      {
-        label: "Platforms",
-        value: "social",
-        type: "icons"
-      },
-      {
-        label: "Project type / scope",
-        value: "90 Days",
-        type: "text"
-      },
-      {
-        label: "Key focus",
-        value: "Product + Social",
-        type: "text"
-      }
-    ]
-  },
-  content: {
-    opportunity: {
-      heading: "THE OPPORTUNITY",
-      paragraphs: [
-        "Plump'd's bright packaging offers a strong visual starting point. This concept explores how that product energy could move beyond a static beauty image and become content that people pause for, understand quickly and remember in a busy social feed.",
-        "The creative opportunity is to make the product the star without losing a human point of view. Tactile close-ups, everyday use and lively edits could carry the playful identity through short-form video and social assets. This is a proposed direction, not a report on a live campaign."
-      ]
-    },
-    strategy: {
-      heading: "THE CREATIVE STRATEGY",
-      paragraphs: [
-        "The proposed system has three content pillars: tactile product detail, everyday beauty use and playful motion. Two short-form formats carry them into social feeds: creator-style demonstrations and product-led edits. Each starts with a visual hook and keeps Plump'd recognisable.",
-        "Format 01 — Creator-style demonstrations show the product in use. Format 02 — Product-led edits focus on colour, texture and movement. Each can be tested with different hooks and captions.",
-        "Testing plan: Compare opening hooks, saves, shares and useful actions if the concept launches. Paid adaptation: Turn proven organic ideas into ads only when real performance data is available."
-      ]
-    },
-    concept: {
-      heading: "THE CONCEPT",
-      imageSrc: "https://images.pexels.com/photos/8348981/pexels-photo-8348981.jpeg?auto=compress&cs=tinysrgb&w=800",
-      paragraphs: [
-        "A bold product story, ready to test.",
-        "This Plump'd concept shows a proposed social content system. It does not present verified campaign results or a client testimonial."
-      ],
-      quoteCard: {
-        text: "The Plump'd direction uses product details, playful motion and clear demonstrations to turn a distinctive beauty identity into a flexible library of social-first content.",
-        author: "Think Wild Media",
-        role: "Plump'd creative concept"
-      }
-    }
-  },
-  exploreMore: {
-    heading: "EXPLORE MORE WORK",
-    action: "View All Work",
-    cards: [
-      {
-        id: 1,
-        title: "ORALYN SKINCARE",
-        category: "Beauty & Wellness",
-        service: "Social strategy",
-        stats: [
-          { number: "03", label: "Creator angles" },
-          { number: "02", label: "Social channels" }
-        ],
-        imageSrc: "https://images.pexels.com/photos/4427906/pexels-photo-4427906.jpeg?auto=compress&cs=tinysrgb&w=800"
-      },
-      {
-        id: 2,
-        title: "TEXTURE STUDIES",
-        category: "Beauty & Wellness",
-        service: "Visual direction",
-        stats: [
-          { number: "03", label: "Visual routes" },
-          { number: "02", label: "Product scenes" }
-        ],
-        imageSrc: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=800" 
-      }
-    ]
-  }
-};
+import { ArrowLeft, ArrowRight, Play, Camera } from 'lucide-react';
+import { PLUMPD_STUDY_DATA } from '@/lib/data/plumpstudydata'; // Adjust path if needed
 
 export default function PlumpdStudyPage() {
   return (
@@ -263,31 +171,25 @@ export default function PlumpdStudyPage() {
       {/* =========================================
           EXPLORE MORE WORK SECTION
       ========================================= */}
-      {/* Outer Wrapper: 1340px width, 30px side padding, 80px bottom padding[cite: 144] */}
       <section className="w-full flex flex-col items-center pt-[30px] pb-[80px] px-4">
         <div className="w-full max-w-[1340px] px-[30px] flex flex-col items-center gap-[50px]">
           
-          {/* Main Headline: 70px Bricolage, -3% tracking, 63px leading[cite: 145] */}
           <h2 
             className="font-bricolage text-[70px] font-semibold leading-[63px] tracking-[-0.03em] uppercase text-white text-center"
           >
             {PLUMPD_STUDY_DATA.exploreMore.heading}
           </h2>
 
-          {/* Cards Container: Flex row to hold the 625px wide cards[cite: 146] */}
           <div className="flex flex-col lg:flex-row w-full justify-center gap-[30px]">
             
             {PLUMPD_STUDY_DATA.exploreMore.cards.map((card) => (
               <div 
                 key={card.id} 
-                // Card Wrapper: 625x350px, White bg, 30px radius[cite: 147, 150]
-                className="flex w-full lg:w-[625px] h-[350px] bg-white rounded-[30px] overflow-hidden shrink-0 text-black shadow-xl"
+                className="flex w-full lg:w-[625px] h-[350px] bg-white rounded-[30px] overflow-hidden shrink-0 text-black shadow-xl group transition-transform hover:-translate-y-1 cursor-pointer"
               >
-                {/* Left Text Block: 342.5px wide, Top padding 29px, Right/Left/Bottom 30px[cite: 148, 152, 153] */}
                 <div className="flex flex-col justify-between w-[342.5px] h-full pt-[29px] px-[30px] pb-[30px] shrink-0">
                   <div className="flex flex-col">
-                    {/* Title: 40px, -3% tracking[cite: 149] */}
-                    <h3 className="font-bricolage text-[40px] font-semibold leading-tight tracking-[-0.03em] uppercase text-black mb-[4px]">
+                    <h3 className="font-bricolage text-[40px] font-semibold leading-tight tracking-[-0.03em] uppercase text-black mb-[4px] group-hover:text-blue-600 transition-colors">
                       {card.title}
                     </h3>
                     <p className="text-[14px] text-zinc-600 font-medium tracking-tight">
@@ -309,12 +211,11 @@ export default function PlumpdStudyPage() {
                   </div>
                 </div>
 
-                {/* Right Image Block: 282.5px wide[cite: 151] */}
-                <div className="w-[282.5px] h-full shrink-0">
+                <div className="w-[282.5px] h-full shrink-0 overflow-hidden">
                   <img 
                     src={card.imageSrc} 
                     alt={card.title} 
-                    className="w-full h-full object-cover" 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                   />
                 </div>
               </div>
@@ -322,15 +223,16 @@ export default function PlumpdStudyPage() {
 
           </div>
 
-          {/* Action Button */}
-          <button className="flex items-center h-[52px] bg-white rounded-full pl-[6px] pr-[24px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors mt-[10px]">
-            <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
-              <ArrowRight className="w-5 h-5" strokeWidth={2} />
-            </div>
-            <span className="text-[#1D1D1D] font-medium text-[16px]">
-              {PLUMPD_STUDY_DATA.exploreMore.action}
-            </span>
-          </button>
+          <Link href="/work">
+            <button className="flex items-center h-[52px] bg-white rounded-full pl-[6px] pr-[24px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors mt-[10px]">
+              <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
+                <ArrowRight className="w-5 h-5" strokeWidth={2} />
+              </div>
+              <span className="text-[#1D1D1D] font-medium text-[16px]">
+                {PLUMPD_STUDY_DATA.exploreMore.action}
+              </span>
+            </button>
+          </Link>
 
         </div>
       </section>

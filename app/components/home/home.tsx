@@ -65,7 +65,7 @@ export default function Home() {
 
           <div className="flex flex-col items-center justify-center w-full max-w-[1214px]">
             <h1 
-              className="font-bricolage flex flex-col items-center text-[clamp(48px,10.42vw,150px)] font-semibold leading-[0.787] tracking-[-0.06em] uppercase whitespace-nowrap"
+              className="home-hero-title type-002 flex flex-col items-center text-[clamp(48px,10.42vw,150px)] font-semibold leading-[0.787] tracking-[-0.06em] uppercase whitespace-nowrap"
             >
               <span className="block">{HOME_HERO.copy.firstLine}</span>
               <span className="flex items-center justify-center gap-[24px] mt-[16px]">
@@ -168,7 +168,7 @@ export default function Home() {
           <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#1A1A1A] border border-[#333] mb-[32px]">
             <span className="text-[14px] font-medium text-white/70">{HOME_INTRODUCTION.eyebrow}</span>
           </div>
-          <div className="text-[35px] font-medium leading-[46.8px] text-white space-y-[40px]">
+          <div className="type-026 text-white space-y-[40px]">
             {HOME_INTRODUCTION.paragraphs.map((paragraph, paragraphIndex) => (
               <p key={paragraphIndex}>
                 {paragraph.map((part, partIndex) => {
@@ -235,7 +235,7 @@ export default function Home() {
               <span className="text-[14px] font-medium text-white/70">{HOME_MISSION.copy.eyebrow}</span>
             </div>
             <h2 
-              className="font-bricolage w-full text-[70px] font-semibold leading-[63px] tracking-[-0.03em] uppercase text-white"
+              className="type-015 w-full text-white"
             >
               {HOME_MISSION.copy.heading}
             </h2>
@@ -258,7 +258,7 @@ export default function Home() {
         ========================================= */}
         <div className="relative mt-[clamp(8rem,18vw,12.5rem)] flex w-full flex-col items-center">
           <h2 
-            className="font-bricolage mb-[clamp(3rem,8vw,6.25rem)] w-full max-w-[1280px] px-4 text-center text-[clamp(2.5rem,7vw,6rem)] font-semibold uppercase leading-[0.9] tracking-[-0.03em]"
+            className="home-services-heading type-010 mb-[clamp(3rem,8vw,6.25rem)] w-full max-w-[1280px] px-4 text-center"
           >
             {HOME_SERVICES.copy.heading}
           </h2>
@@ -285,7 +285,7 @@ export default function Home() {
                     <div className="flex w-full flex-1 flex-col justify-between p-7 md:h-full md:w-1/2 md:flex-none md:p-[60px]">
                       <div className="flex flex-col gap-[24px]">
                         <h3 
-                          className={`font-bricolage whitespace-pre-line text-[36px] font-bold uppercase leading-[0.9] tracking-[-0.03em] md:text-[56px] ${service.textColor}`}
+                          className={`home-service-card-heading type-012 whitespace-pre-line ${service.textColor}`}
                         >
                           {service.title}
                         </h3>

@@ -3,35 +3,18 @@
 import { useState } from 'react';
 import Header from '@/app/components/header/header';
 import Footer from '@/app/components/footer/footer';
-import { ArrowRight, ChevronDown, Clock, Video, Globe, ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, Plus, Minus } from 'lucide-react';
-
-// =========================================
-// MOCK DATA
-// =========================================
-const CONTACT_FAQ_DATA = [
-  {
-    question: "What services does Think Wild Media offer?",
-    answer: "We offer influencer campaigns, UGC, social content production, social media management and creative strategy from Dublin.",
-  },
-  {
-    question: "How much does a project cost?",
-    answer: "Project costs vary depending on scope, creator requirements, and production needs. We offer custom quoting after our initial discovery call.",
-  },
-  {
-    question: "Do you work with brands outside Ireland?",
-    answer: "Yes, while we are based in Dublin, we work with international brands and have a global network of creators.",
-  },
-  {
-    question: "Can you manage an influencer campaign from start to finish?",
-    answer: "Absolutely. We handle everything from creator sourcing and contracting to brief creation, content review, and final performance reporting.",
-  },
-  {
-    question: "What happens after I get in touch?",
-    answer: "We'll review your brief and set up a discovery call to understand your goals in detail before presenting a tailored proposal.",
-  }
-];
+import { CONTACT_BOOKING_DATA, CONTACT_FAQ_DATA, CONTACT_FORM_DATA, CONTACT_HERO_DATA, CONTACT_ICONS } from '@/lib/data/contact';
 
 export default function ContactPage() {
+  const {
+    ArrowRight,
+    ChevronDown,
+    ChevronLeft: ChevronLeftIcon,
+    ChevronRight: ChevronRightIcon,
+    Minus,
+    Plus,
+  } = CONTACT_ICONS;
+
   // --- Dynamic Calendar State ---
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -46,10 +29,6 @@ export default function ContactPage() {
   
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const firstDayOfMonth = new Date(year, month, 1).getDay();
-
-  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  const dayNamesShort = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-  const dayNamesMap = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   const handlePrevMonth = () => setCurrentDate(new Date(year, month - 1, 1));
   const handleNextMonth = () => setCurrentDate(new Date(year, month + 1, 1));
@@ -82,8 +61,6 @@ export default function ContactPage() {
     return i + "th";
   };
 
-  const availableTimes = ['9:00 am', '9:30 am', '10:15 am', '11:45 am', '1:00 pm', '2:30 pm', '4:00 pm'];
-
   return (
     <main className="min-h-screen w-full bg-black text-white flex flex-col font-[family-name:var(--font-saans)] overflow-x-clip">
       <Header />
@@ -98,30 +75,25 @@ export default function ContactPage() {
           <div className="flex flex-col w-full lg:w-[615px] shrink-0">
             <div className="flex flex-col gap-[10px] mb-[40px]">
               <div className="flex items-center">
-                <div className="w-[32px] h-[32px] rounded-full border-2 border-black overflow-hidden relative z-40 bg-zinc-800">
-                  <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100" alt="team" className="w-full h-full object-cover" />
-                </div>
-                <div className="w-[32px] h-[32px] rounded-full border-2 border-black overflow-hidden relative z-30 -ml-[12px] bg-zinc-700">
-                  <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=100" alt="team" className="w-full h-full object-cover" />
-                </div>
-                <div className="w-[32px] h-[32px] rounded-full border-2 border-black overflow-hidden relative z-20 -ml-[12px] bg-zinc-600">
-                  <img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=100" alt="team" className="w-full h-full object-cover" />
-                </div>
-                <div className="w-[32px] h-[32px] rounded-full border-2 border-black overflow-hidden relative z-10 -ml-[12px] bg-zinc-500">
-                  <img src="https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?auto=compress&cs=tinysrgb&w=100" alt="team" className="w-full h-full object-cover" />
-                </div>
+                {CONTACT_HERO_DATA.creatorImages.map((image) => (
+                  <div
+                    key={image.src}
+                    className={`w-[32px] h-[32px] rounded-full border-2 border-black overflow-hidden relative ${image.className}`}
+                  >
+                    <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />
+                  </div>
+                ))}
               </div>
-              <span className="text-[14px] font-medium text-white">Creators · Content · Social</span>
+              <span className="text-[14px] font-medium text-white">{CONTACT_HERO_DATA.tagline}</span>
             </div>
 
             <h1 
               className="flex flex-col text-[100px] leading-[90px] font-bold uppercase tracking-[-0.04em] text-white"
               style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
             >
-              <span>LET'S BUILD</span>
-              <span>SOMETHING</span>
+              {CONTACT_HERO_DATA.headingLines.map((line) => <span key={line}>{line}</span>)}
               <span className="inline-flex items-center justify-center bg-[#155149] text-[#8CFE79] rounded-[100px] px-[24px] pb-[8px] mt-[10px] w-max">
-                WILD.
+                {CONTACT_HERO_DATA.highlight}
               </span>
             </h1>
           </div>
@@ -130,91 +102,38 @@ export default function ContactPage() {
           <div className="flex flex-col w-full lg:w-[615px] shrink-0">
             <div className="w-full bg-[#155149] rounded-t-[30px] px-[40px] pt-[19px] pb-[40px] -mb-[20px] z-0">
               <h2 className="text-[#8CFE79] text-[24px] font-bold">
-                Tell us what you're working on.
+                {CONTACT_FORM_DATA.heading}
               </h2>
             </div>
 
             <div className="w-full bg-white rounded-[30px] p-[40px] z-10 relative shadow-2xl flex flex-col gap-[24px] text-black">
-              
-              <div className="flex flex-col gap-[8px]">
-                <label className="text-[14px] font-bold text-black">Full name*</label>
-                <input 
-                  type="text" 
-                  placeholder="Enter your full name" 
-                  className="w-full h-[52px] rounded-[12px] border border-black/20 px-[16px] text-[15px] focus:outline-none focus:border-black/50 transition-colors placeholder:text-black/40"
-                />
-              </div>
-
-              <div className="flex flex-col gap-[8px]">
-                <label className="text-[14px] font-bold text-black">Email address*</label>
-                <input 
-                  type="email" 
-                  placeholder="hello@yourbrand.com" 
-                  className="w-full h-[52px] rounded-[12px] border border-black/20 px-[16px] text-[15px] focus:outline-none focus:border-black/50 transition-colors placeholder:text-black/40"
-                />
-              </div>
-
-              <div className="flex flex-col gap-[8px]">
-                <label className="text-[14px] font-bold text-black">Company or brand name*</label>
-                <input 
-                  type="text" 
-                  placeholder="Enter your company or brand name" 
-                  className="w-full h-[52px] rounded-[12px] border border-black/20 px-[16px] text-[15px] focus:outline-none focus:border-black/50 transition-colors placeholder:text-black/40"
-                />
-              </div>
-
-              <div className="flex flex-col gap-[8px]">
-                <label className="text-[14px] font-bold text-black">Website or social profile (optional)</label>
-                <input 
-                  type="text" 
-                  placeholder="Enter your website or social profile" 
-                  className="w-full h-[52px] rounded-[12px] border border-black/20 px-[16px] text-[15px] focus:outline-none focus:border-black/50 transition-colors placeholder:text-black/40"
-                />
-              </div>
-
-              <div className="flex flex-col gap-[8px]">
-                <label className="text-[14px] font-bold text-black">What do you need help with?</label>
-                <div className="relative">
-                  <select defaultValue="" className="w-full h-[52px] rounded-[12px] border border-black/20 px-[16px] text-[15px] appearance-none focus:outline-none focus:border-black/50 transition-colors bg-white text-black/60">
-                    <option value="" disabled>Select a service</option>
-                    <option value="campaigns">Creator & Influencer Campaigns</option>
-                    <option value="production">Content Production</option>
-                    <option value="management">Social Media Management</option>
-                  </select>
-                  <ChevronDown className="absolute right-[16px] top-1/2 -translate-y-1/2 w-5 h-5 text-black/40 pointer-events-none" />
+              {CONTACT_FORM_DATA.fields.map((field) => (
+                <div key={field.name} className="flex flex-col gap-[8px]">
+                  <label className="text-[14px] font-bold text-black">{field.label}</label>
+                  {field.type === 'select' ? (
+                    <div className="relative">
+                      <select defaultValue="" className="w-full h-[52px] rounded-[12px] border border-black/20 px-[16px] text-[15px] appearance-none focus:outline-none focus:border-black/50 transition-colors bg-white text-black/60">
+                        <option value="" disabled>{field.placeholder}</option>
+                        {field.options.map((option) => (
+                          <option key={option.value} value={option.value}>{option.label}</option>
+                        ))}
+                      </select>
+                      <ChevronDown className="absolute right-[16px] top-1/2 -translate-y-1/2 w-5 h-5 text-black/40 pointer-events-none" />
+                    </div>
+                  ) : field.type === 'textarea' ? (
+                    <textarea
+                      placeholder={field.placeholder}
+                      className="w-full h-[120px] rounded-[12px] border border-black/20 p-[16px] text-[15px] focus:outline-none focus:border-black/50 transition-colors placeholder:text-black/40 resize-none"
+                    />
+                  ) : (
+                    <input
+                      type={field.type}
+                      placeholder={field.placeholder}
+                      className="w-full h-[52px] rounded-[12px] border border-black/20 px-[16px] text-[15px] focus:outline-none focus:border-black/50 transition-colors placeholder:text-black/40"
+                    />
+                  )}
                 </div>
-              </div>
-
-              <div className="flex flex-col gap-[8px]">
-                <label className="text-[14px] font-bold text-black">Budget range (optional)</label>
-                <div className="relative">
-                  <select defaultValue="" className="w-full h-[52px] rounded-[12px] border border-black/20 px-[16px] text-[15px] appearance-none focus:outline-none focus:border-black/50 transition-colors bg-white text-black/60">
-                    <option value="" disabled>Select a budget range</option>
-                    <option value="under5k">Under $5k</option>
-                    <option value="5k-10k">$5k - $10k</option>
-                    <option value="10k-25k">$10k - $25k</option>
-                    <option value="over25k">$25k+</option>
-                  </select>
-                  <ChevronDown className="absolute right-[16px] top-1/2 -translate-y-1/2 w-5 h-5 text-black/40 pointer-events-none" />
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-[8px]">
-                <label className="text-[14px] font-bold text-black">Timeline (optional)</label>
-                <input 
-                  type="text" 
-                  placeholder="When do you want to launch?" 
-                  className="w-full h-[52px] rounded-[12px] border border-black/20 px-[16px] text-[15px] focus:outline-none focus:border-black/50 transition-colors placeholder:text-black/40"
-                />
-              </div>
-
-              <div className="flex flex-col gap-[8px]">
-                <label className="text-[14px] font-bold text-black">Tell us a little about the project</label>
-                <textarea 
-                  placeholder="Share your goals, audience, channels and any details that will help us understand your project." 
-                  className="w-full h-[120px] rounded-[12px] border border-black/20 p-[16px] text-[15px] focus:outline-none focus:border-black/50 transition-colors placeholder:text-black/40 resize-none"
-                ></textarea>
-              </div>
+              ))}
 
               <div className="mt-[10px] flex flex-col gap-[16px]">
                 <button className="flex items-center justify-between w-max h-[52px] bg-black rounded-full pl-[6px] pr-[24px] py-[6px] gap-[12px] hover:bg-zinc-800 transition-colors">
@@ -222,11 +141,11 @@ export default function ContactPage() {
                     <ArrowRight className="w-5 h-5" strokeWidth={2} />
                   </div>
                   <span className="text-white font-medium text-[16px]">
-                    Send your brief
+                    {CONTACT_FORM_DATA.submitLabel}
                   </span>
                 </button>
                 <span className="text-[12px] text-black/60 font-medium">
-                  Your details will be used to respond to this enquiry.
+                  {CONTACT_FORM_DATA.privacyNote}
                 </span>
               </div>
 
@@ -244,16 +163,16 @@ export default function ContactPage() {
           <div className="flex flex-col items-center text-center gap-[16px] mb-[40px]">
             <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full border border-white/20 gap-[6px]">
               <div className="w-[6px] h-[6px] rounded-full bg-[#8CFE79] shadow-[0_0_8px_#8CFE79]"></div>
-              <span className="text-[12px] uppercase font-bold tracking-widest text-white">LET'S GET STARTED</span>
+              <span className="text-[12px] uppercase font-bold tracking-widest text-white">{CONTACT_BOOKING_DATA.eyebrow}</span>
             </div>
             <h2 
               className="text-[70px] leading-[0.9] font-semibold uppercase tracking-[-0.03em] text-white"
               style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
             >
-              BOOK A DISCOVERY CALL
+              {CONTACT_BOOKING_DATA.heading}
             </h2>
             <p className="text-[#9F9F9F] text-[16px] font-medium max-w-[500px]">
-              A quick call to understand your goals, your project and where Think Wild Media can help.
+              {CONTACT_BOOKING_DATA.description}
             </p>
           </div>
 
@@ -262,22 +181,19 @@ export default function ContactPage() {
             {/* Col 1: Details */}
             <div className="w-full md:w-[30%] md:min-w-[280px] p-[30px] border-b md:border-b-0 md:border-r border-[#E5E7EB] flex flex-col">
               <div className="w-[24px] h-[24px] rounded-full bg-zinc-200 mb-[16px]"></div>
-              <span className="text-[14px] font-semibold text-zinc-500 mb-[4px]">Think Wild Media</span>
-              <h3 className="text-[24px] font-bold text-black mb-[24px]">Discovery Call</h3>
+              <span className="text-[14px] font-semibold text-zinc-500 mb-[4px]">{CONTACT_BOOKING_DATA.businessName}</span>
+              <h3 className="text-[24px] font-bold text-black mb-[24px]">{CONTACT_BOOKING_DATA.eventName}</h3>
               
               <div className="flex flex-col gap-[16px]">
-                <div className="flex items-center gap-[8px] text-zinc-600">
-                  <Clock size={16} />
-                  <span className="text-[14px] font-medium">15m</span>
-                </div>
-                <div className="flex items-center gap-[8px] text-zinc-600">
-                  <Video size={16} />
-                  <span className="text-[14px] font-medium">Cal Video</span>
-                </div>
-                <div className="flex items-center gap-[8px] text-zinc-600">
-                  <Globe size={16} />
-                  <span className="text-[14px] font-medium">Asia/Karachi <ChevronDown size={14} className="inline ml-1" /></span>
-                </div>
+                {CONTACT_BOOKING_DATA.details.map((detail) => (
+                  <div key={detail.label} className="flex items-center gap-[8px] text-zinc-600">
+                    <detail.icon size={16} />
+                    <span className="text-[14px] font-medium">
+                      {detail.label}
+                      {detail.hasTimezoneChevron && <ChevronDown size={14} className="inline ml-1" />}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -285,7 +201,7 @@ export default function ContactPage() {
             <div className="flex-1 p-[30px] border-b md:border-b-0 md:border-r border-[#E5E7EB] flex flex-col">
               <div className="flex items-center justify-between mb-[30px]">
                 <span className="text-[16px] font-bold">
-                  {monthNames[month]} <span className="text-zinc-400">{year}</span>
+                  {CONTACT_BOOKING_DATA.monthNames[month]} <span className="text-zinc-400">{year}</span>
                 </span>
                 <div className="flex items-center gap-[16px]">
                   <button onClick={handlePrevMonth} className="p-1 hover:bg-zinc-100 rounded transition-colors">
@@ -298,7 +214,7 @@ export default function ContactPage() {
               </div>
               
               <div className="grid grid-cols-7 mb-[16px] text-center">
-                {dayNamesShort.map(day => (
+                {CONTACT_BOOKING_DATA.weekdayHeadings.map(day => (
                   <span key={day} className="text-[11px] font-bold text-zinc-500">{day}</span>
                 ))}
               </div>
@@ -334,16 +250,22 @@ export default function ContactPage() {
             <div className="w-full md:w-[30%] md:min-w-[240px] p-[30px] flex flex-col">
               <div className="flex items-center justify-between mb-[24px]">
                 <span className="text-[16px] font-bold text-black">
-                  {dayNamesMap[selectedDate.getDay()]} {getOrdinalSuffix(selectedDate.getDate())}
+                  {CONTACT_BOOKING_DATA.weekdays[selectedDate.getDay()]} {getOrdinalSuffix(selectedDate.getDate())}
                 </span>
                 <div className="flex border border-zinc-200 rounded-md overflow-hidden bg-zinc-100">
-                  <button className="px-[8px] py-[4px] text-[12px] font-semibold bg-white rounded shadow-sm border border-zinc-200 m-[2px]">12h</button>
-                  <button className="px-[8px] py-[4px] text-[12px] font-semibold text-zinc-500 m-[2px]">24h</button>
+                  {CONTACT_BOOKING_DATA.timeFormats.map((format, index) => (
+                    <button
+                      key={format}
+                      className={`px-[8px] py-[4px] text-[12px] font-semibold m-[2px] ${index === 0 ? 'bg-white rounded shadow-sm border border-zinc-200' : 'text-zinc-500'}`}
+                    >
+                      {format}
+                    </button>
+                  ))}
                 </div>
               </div>
               
               <div className="flex flex-col gap-[10px] overflow-y-auto pr-2 custom-scrollbar">
-                {availableTimes.map((time) => {
+                {CONTACT_BOOKING_DATA.availableTimes.map((time) => {
                   const isTimeSelected = selectedTime === time;
                   return (
                     <button 
@@ -364,14 +286,14 @@ export default function ContactPage() {
 
               {selectedTime && (
                 <button className="w-full mt-[16px] py-[12px] bg-blue-600 hover:bg-blue-700 text-white rounded-md font-bold transition-colors shadow-lg">
-                  Confirm Time
+                  {CONTACT_BOOKING_DATA.confirmLabel}
                 </button>
               )}
             </div>
 
           </div>
           
-          <div className="mt-[20px] font-bold text-[14px] text-zinc-500 tracking-tight">Cal.com</div>
+          <div className="mt-[20px] font-bold text-[14px] text-zinc-500 tracking-tight">{CONTACT_BOOKING_DATA.provider}</div>
 
         </div>
       </section>
@@ -390,20 +312,20 @@ export default function ContactPage() {
             <div className="flex flex-col items-center w-full mb-[70px]">
               <div className="flex items-center justify-center px-[20px] py-[6px] rounded-full border border-white/20 mb-[32px]">
                 <span className="text-[14px] font-medium text-white uppercase tracking-widest">
-                  FAQS
+                  {CONTACT_FAQ_DATA.eyebrow}
                 </span>
               </div>
               
               <h2
                 className="font-bricolage text-center text-[70px] leading-[63px] font-semibold uppercase tracking-[-0.03em] text-white"
               >
-                BEFORE WE GET STARTED
+                {CONTACT_FAQ_DATA.heading}
               </h2>
             </div>
 
             {/* FAQs List Items */}
             <div className="flex flex-col w-full">
-              {CONTACT_FAQ_DATA.map((faq, index) => {
+              {CONTACT_FAQ_DATA.items.map((faq, index) => {
                 const isOpen = openFaqIndex === index;
                 
                 return (

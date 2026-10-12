@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./typography.css";
 
 @font-face {
   font-family: "Bricolage Grotesque";
@@ -73,6 +74,16 @@
 body {
   background: var(--background);
   color: var(--foreground);
+  font-family: var(--font-saans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Bricolage Grotesque 24pt Condensed", sans-serif !important;
 }
 
 .social-platform-marquee {
