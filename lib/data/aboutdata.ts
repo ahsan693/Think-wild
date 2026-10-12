@@ -76,6 +76,37 @@ export const ABOUT_HERO_DATA = {
   ],
 } as const;
 
+export const ABOUT_TEAM_EXPERIENCE_DATA = {
+  eyebrow: 'Our story',
+  heading: 'ACROSS OUR TEAM’S\nEXPERIENCE',
+  cards: [
+    {
+      label: 'Creators worked with',
+      value: '21+',
+      backgroundColor: 'bg-[#BDEBFF]',
+      textColor: 'text-[#5F00A6]',
+    },
+    {
+      label: 'Videos briefed, reviewed and delivered',
+      value: '1,100+',
+      backgroundColor: 'bg-[#F03B36]',
+      textColor: 'text-white',
+    },
+    {
+      label: 'Campaigns & content projects',
+      value: '350+',
+      backgroundColor: 'bg-[#F5E95B]',
+      textColor: 'text-[#F56633]',
+    },
+    {
+      label: 'Combined views & impressions',
+      value: '10M+',
+      backgroundColor: 'bg-[#7FFA72]',
+      textColor: 'text-[#155149]',
+    },
+  ],
+} as const;
+
 export const ABOUT_STORY_DATA = {
   eyebrow: 'Our story',
   heading: 'BUILT AROUND CREATORS.\nMADE FOR BRANDS.',

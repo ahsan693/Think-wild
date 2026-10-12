@@ -4,6 +4,7 @@ import CtaOrbitSection from '@/app/components/home/cta-orbit-section';
 import { ArrowRight, BadgeCheck } from 'lucide-react';
 import {
   ABOUT_HERO_DATA,
+  ABOUT_TEAM_EXPERIENCE_DATA,
   ABOUT_STORY_DATA,
   ABOUT_VALUES_DATA,
   CREATIVE_PARTNERSHIP_DATA,
@@ -25,26 +26,26 @@ export default function AboutPage() {
           
           <div className="flex flex-col items-start w-full lg:w-[600px] shrink-0">
             <div className="flex items-center justify-center px-[20px] py-[6px] rounded-full border border-white/20 mb-[40px]">
-              <span className="text-[14px] font-medium text-white">
+              <span className="type-113 text-white">
                 {ABOUT_HERO_DATA.eyebrow}
               </span>
             </div>
 
             <h1 
-              className="font-bricolage text-[120px] font-semibold leading-[90px] tracking-[-0.06em] uppercase text-white whitespace-pre-line mb-[12px]"
+              className="type-004 mb-[12px] whitespace-pre-line text-white"
             >
               {ABOUT_HERO_DATA.heading}
             </h1>
 
             <div className={`flex items-center justify-center ${ABOUT_HERO_DATA.highlightBackground} w-[460px] h-[120px] rounded-[100px] mb-[30px]`}>
               <span 
-                className="font-bricolage text-[120px] font-semibold leading-[120px] tracking-[-0.06em] uppercase text-white translate-y-[4px]"
+                className="type-005 translate-y-[4px] text-white"
               >
                 {ABOUT_HERO_DATA.highlight}
               </span>
             </div>
 
-            <p className="text-[#9F9F9F] text-[17.7px] font-medium leading-[20.8px] max-w-[612px] mb-[40px]">
+            <p className="type-060 mb-[40px] max-w-[612px] text-[#9F9F9F]">
               {ABOUT_HERO_DATA.description}
             </p>
 
@@ -52,7 +53,7 @@ export default function AboutPage() {
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
                 <ArrowRight className="w-5 h-5" strokeWidth={2} />
               </div>
-              <span className="text-[#1D1D1D] font-medium text-[16px]">
+              <span className="type-087 text-[#1D1D1D]">
                 {ABOUT_HERO_DATA.action}
               </span>
             </button>
@@ -130,6 +131,37 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section
+        aria-labelledby="about-team-experience-heading"
+        className="flex w-full justify-center px-4 pb-[50px]"
+      >
+        <div className="flex w-full max-w-[1280px] flex-col items-center gap-[80px]">
+          <div className="flex flex-col items-center gap-[20px] text-center">
+            <span className="type-087 rounded-full border border-white/40 px-[20px] py-[6px] text-white">
+              {ABOUT_TEAM_EXPERIENCE_DATA.eyebrow}
+            </span>
+            <h2
+              id="about-team-experience-heading"
+              className="type-015 whitespace-pre-line text-white"
+            >
+              {ABOUT_TEAM_EXPERIENCE_DATA.heading}
+            </h2>
+          </div>
+
+          <div className="grid w-full grid-cols-1 gap-[30px] sm:grid-cols-2 lg:grid-cols-4">
+            {ABOUT_TEAM_EXPERIENCE_DATA.cards.map((card) => (
+              <div
+                key={card.value}
+                className={`flex h-[225.59px] flex-col justify-between rounded-[20px] p-[30px] ${card.backgroundColor} ${card.textColor}`}
+              >
+                <p className="type-136">{card.label}</p>
+                <p className="type-014 self-end text-right">{card.value}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* =========================================
           OUR STORY SECTION
       ========================================= */}
@@ -137,42 +169,42 @@ export default function AboutPage() {
         <div className="relative flex flex-col items-center justify-center w-full max-w-[1340px] h-[430.02px] px-[30px]">
           
           <div className={`absolute left-0 top-[20%] w-[180px] h-[180px] rounded-[30px] p-[30px] flex flex-col items-center justify-center gap-[29px] rotate-[16deg] shadow-2xl ${ABOUT_STORY_DATA.cards.left.bgColor} ${ABOUT_STORY_DATA.cards.left.textColor} pointer-events-none`}>
-            <span className="font-bricolage text-[70px] font-bold leading-none tracking-[-0.04em]">
+            <span className="type-014">
               {ABOUT_STORY_DATA.cards.left.stat}
             </span>
-            <span className="text-[16px] font-medium text-center leading-snug whitespace-pre-line">
+            <span className="type-087 whitespace-pre-line text-center">
               {ABOUT_STORY_DATA.cards.left.label}
             </span>
           </div>
 
           <div className={`absolute right-0 top-[30%] w-[180px] h-[180px] rounded-[30px] p-[30px] flex flex-col items-center justify-center gap-[29px] -rotate-[16deg] shadow-2xl ${ABOUT_STORY_DATA.cards.right.bgColor} ${ABOUT_STORY_DATA.cards.right.textColor} pointer-events-none`}>
             <div className="flex items-center gap-[8px]">
-              <span className="font-bricolage text-[70px] font-bold leading-none tracking-[-0.04em]">
+              <span className="type-014">
                 {ABOUT_STORY_DATA.cards.right.stat}
               </span>
               <ABOUT_STORY_DATA.cards.right.icon className={`w-[32px] h-[32px] ${ABOUT_STORY_DATA.cards.right.iconClassName}`} />
             </div>
-            <span className="text-[16px] font-medium text-center leading-snug whitespace-pre-line mt-[-10px]">
+            <span className="type-087 mt-[-10px] whitespace-pre-line text-center">
               {ABOUT_STORY_DATA.cards.right.label}
             </span>
           </div>
 
           <div className="flex flex-col items-center text-center w-full max-w-[752px] gap-[30px] z-10">
             <div className="flex items-center justify-center px-[20px] py-[6px] rounded-full border border-white/20">
-              <span className="text-[14px] font-medium text-white">
+              <span className="type-113 text-white">
                 {ABOUT_STORY_DATA.eyebrow}
               </span>
             </div>
 
             <h2
-              className="font-bricolage text-[70px] font-semibold leading-[63px] tracking-[-0.03em] uppercase text-white whitespace-pre-line"
+              className="type-015 whitespace-pre-line text-white"
             >
               {ABOUT_STORY_DATA.heading}
             </h2>
 
             <div className="flex flex-col gap-[16px]">
               {ABOUT_STORY_DATA.paragraphs.map((text, idx) => (
-                <p key={idx} className="text-[#9F9F9F] text-[17.6px] font-medium leading-[20.8px]">
+                <p key={idx} className="type-066 text-[#9F9F9F]">
                   {text}
                 </p>
               ))}
@@ -182,7 +214,7 @@ export default function AboutPage() {
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
                 <ArrowRight className="w-5 h-5" strokeWidth={2} />
               </div>
-              <span className="text-[#1D1D1D] font-medium text-[16px]">
+              <span className="type-087 text-[#1D1D1D]">
                 {ABOUT_STORY_DATA.action}
               </span>
             </button>
@@ -199,14 +231,13 @@ export default function AboutPage() {
 
           <div className="flex flex-col items-center w-full max-w-[900px]">
             <div className="flex items-center justify-center px-[20px] py-[6px] rounded-full border border-white/20 mb-[40px]">
-              <span className="text-[14px] font-medium text-white">
+              <span className="type-113 text-white">
                 {ABOUT_VALUES_DATA.eyebrow}
               </span>
             </div>
 
             <h2
-              className="flex flex-col items-center text-center text-[70px] leading-[63px] font-semibold uppercase tracking-[-0.03em] text-white mb-[30px]"
-              style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+              className="type-015 mb-[30px] flex flex-col items-center text-center text-white"
             >
               {ABOUT_VALUES_DATA.headingRows.map((row, rowIndex) => (
                 <span
@@ -233,7 +264,7 @@ export default function AboutPage() {
                   <div className={`flex items-center justify-center w-[20px] h-[20px] rounded-full ${platform.bgColor}`}>
                     <platform.icon className={`w-3 h-3 ${platform.iconClassName}`} />
                   </div>
-                  <span className="text-white font-medium text-[12px]">{platform.name}</span>
+                  <span className="type-136 text-white">{platform.name}</span>
                 </div>
               ))}
             </div>
@@ -251,10 +282,10 @@ export default function AboutPage() {
                   <div className="w-[48px] h-[48px] bg-[#1D1D1D] rounded-[12px] flex items-center justify-center text-white mb-[24px] shrink-0">
                     <card.icon size={20} strokeWidth={2.5} />
                   </div>
-                  <h3 className="font-bricolage text-[28px] font-bold text-black mb-[12px] leading-[1]">
+                  <h3 className="font-heading mb-[12px] text-[28px] font-bold leading-[1] text-black">
                     {card.title}
                   </h3>
-                  <p className="text-[15px] font-medium text-black/80 leading-[22px] max-w-[280px]">
+                  <p className="type-101 max-w-[280px] text-black/80">
                     {card.desc}
                   </p>
                 </div>
@@ -276,13 +307,13 @@ export default function AboutPage() {
           <div className="flex flex-col w-full md:w-[481px] shrink-0">
             {/* Heading: 70px font, 63px line-height, -3% tracking[cite: 119] */}
             <h2
-              className="font-bricolage text-[70px] font-semibold leading-[63px] tracking-[-0.03em] uppercase text-white whitespace-pre-line mb-[24px]"
+              className="type-015 mb-[24px] whitespace-pre-line text-white"
             >
               {CREATIVE_PARTNERSHIP_DATA.heading}
             </h2>
 
             {/* Description: 17.6px font, 20.8px line-height[cite: 120] */}
-            <p className="text-[#9F9F9F] text-[17.6px] font-medium leading-[20.8px] mb-[40px]">
+            <p className="type-066 mb-[40px] text-[#9F9F9F]">
               {CREATIVE_PARTNERSHIP_DATA.description}
             </p>
 
@@ -291,7 +322,7 @@ export default function AboutPage() {
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
                 <ArrowRight className="w-5 h-5" strokeWidth={2} />
               </div>
-              <span className="text-[#1D1D1D] font-medium text-[16px]">
+              <span className="type-087 text-[#1D1D1D]">
                 {CREATIVE_PARTNERSHIP_DATA.action}
               </span>
             </button>
@@ -311,10 +342,10 @@ export default function AboutPage() {
                 </span>
 
                 {/* Title & Desc */}
-                <h3 className="font-bricolage text-[32px] font-bold uppercase text-white leading-tight mb-[12px]">
+                <h3 className="type-027 mb-[12px] text-white">
                   {item.title}
                 </h3>
-                <p className="text-[#9F9F9F] text-[16px] font-medium leading-snug">
+                <p className="type-087 text-[#9F9F9F]">
                   {item.desc}
                 </p>
               </div>
