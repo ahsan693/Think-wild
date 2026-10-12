@@ -23,7 +23,7 @@ export const SERVICE_CARDS_DATA = [
     ],
     action: "Start a Project",
     bgColor: "bg-[#8CFE79]", // Green
-    imageSrc: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
+    imageSrc: "/Think-Wild-Media-Developer-Assets/Images/desktop/services/02-service-cards/images/originals/image-37--1404-16716--source.png",
     imageRight: true
   },
   {
@@ -41,7 +41,7 @@ export const SERVICE_CARDS_DATA = [
     ],
     action: "Start a Project",
     bgColor: "bg-[#F1E55C]", // Yellow
-    imageSrc: "https://images.pexels.com/photos/5053846/pexels-photo-5053846.jpeg?auto=compress&cs=tinysrgb&w=800",
+    imageSrc: "/Think-Wild-Media-Developer-Assets/Images/desktop/services/02-service-cards/images/originals/image-38--1404-16720--source.png",
     imageRight: false
   },
   {
@@ -59,7 +59,7 @@ export const SERVICE_CARDS_DATA = [
     ],
     action: "Start a Project",
     bgColor: "bg-[#FFD9FB]", // Pink
-    imageSrc: "https://images.pexels.com/photos/2036646/pexels-photo-2036646.jpeg?auto=compress&cs=tinysrgb&w=800",
+    imageSrc: "/Think-Wild-Media-Developer-Assets/Images/desktop/services/02-service-cards/images/originals/image-39--1404-16778--source.png",
     imageRight: true
   },
   {
@@ -77,7 +77,7 @@ export const SERVICE_CARDS_DATA = [
     ],
     action: "Start a Project",
     bgColor: "bg-[#BEE9FE]", // Light Blue
-    imageSrc: "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800",
+    imageSrc: "/Think-Wild-Media-Developer-Assets/Images/desktop/services/02-service-cards/images/originals/image-40--1404-16782--source.png",
     imageRight: false
   }
 ];
@@ -120,17 +120,17 @@ export const OUR_APPROACH_DATA = {
     {
       title: "Be recognisably you.",
       description: "From creator-led UGC to full content production, we keep your brand recognisable while making the content feel native to social.",
-      imageSrc: "https://images.pexels.com/photos/28997086/pexels-photo-28997086.jpeg?auto=compress&cs=tinysrgb&w=800"
+      imageSrc: "/Think-Wild-Media-Developer-Assets/Images/desktop/services/04-connected-creative/images/originals/image-28--1404-16873--source.png"
     },
     {
       title: "Find your people.",
       description: "We match brands with creators based on audience, niche, content style and brand fit - not follower count alone.",
-      imageSrc: "https://images.pexels.com/photos/1752806/pexels-photo-1752806.jpeg?auto=compress&cs=tinysrgb&w=800"
+      imageSrc: "/Think-Wild-Media-Developer-Assets/Images/desktop/services/04-connected-creative/images/originals/image-26--1404-16881--source.png"
     },
     {
       title: "Keep making it better.",
       description: "We review content performance, test formats and use what we learn to improve future social campaigns.",
-      imageSrc: "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800"
+      imageSrc: "/Think-Wild-Media-Developer-Assets/Images/desktop/services/04-connected-creative/images/originals/image-30--1404-16889--source.png"
     }
   ]
 };

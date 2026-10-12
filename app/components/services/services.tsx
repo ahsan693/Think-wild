@@ -68,29 +68,29 @@ export default function ServicesPage() {
           {SERVICE_CARDS_DATA.map((card) => (
             <div 
               key={card.id} 
-              className={`flex flex-col lg:flex-row w-full rounded-[24px] p-[30px] lg:p-[60px] gap-[40px] lg:gap-[60px] ${card.bgColor} text-black`}
+              className={`flex flex-col lg:min-h-[772px] lg:flex-row w-full rounded-[24px] p-[30px] lg:gap-[46px] lg:p-[60px] gap-[40px] ${card.bgColor} text-black`}
             >
-              <div className={`flex flex-col w-full lg:max-w-[482px] ${!card.imageRight ? 'lg:order-2' : ''}`}>
-                <span className="text-[14px] font-medium mb-[12px]">{card.eyebrow}</span>
-                <h2 className="type-017 mb-[24px] whitespace-pre-line">
+              <div className={`flex flex-col w-full lg:min-h-[652px] lg:max-w-[518px] ${!card.imageRight ? 'lg:order-2' : ''}`}>
+                <span className="text-[14px] font-medium mb-[12px] lg:mb-[8px]">{card.eyebrow}</span>
+                <h2 className="type-017 mb-[24px] whitespace-pre-line lg:mb-[20px]">
                   {card.title}
                 </h2>
-                <p className="type-088 mb-[40px] max-w-[402px]">
+                <p className="type-088 mb-[40px] max-w-[402px] lg:mb-[32px]">
                   {card.description}
                 </p>
 
                 <div className="flex flex-col w-full lg:max-w-[410px]">
-                  <h3 className="text-[18px] font-bold mb-[16px]">{card.listHeading}</h3>
+                  <h3 className="text-[18px] font-bold mb-[16px] lg:mb-[8px]">{card.listHeading}</h3>
                   <div className="flex flex-col">
                     {card.listItems.map((item, i) => (
-                      <div key={i} className="type-099 border-b border-black/10 py-[16px] last:border-0">
+                      <div key={i} className="type-099 border-b border-black/10 py-[16px] last:border-0 lg:py-[10px]">
                         {item}
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <button className="flex items-center h-[52px] w-[194px] bg-black rounded-full pl-[6px] pr-[32px] py-[6px] gap-[10px] hover:bg-zinc-800 transition-colors mt-[40px]">
+                <button className="flex items-center h-[52px] w-[194px] bg-black rounded-full pl-[6px] pr-[32px] py-[6px] gap-[10px] hover:bg-zinc-800 transition-colors mt-[40px] lg:mt-[22px]">
                   <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-black rounded-full shrink-0">
                     <ArrowRight className="w-5 h-5" strokeWidth={2} />
                   </div>
@@ -100,8 +100,8 @@ export default function ServicesPage() {
                 </button>
               </div>
 
-              <div className={`flex-1 flex items-center justify-center w-full min-h-[400px] lg:min-h-[531px] ${!card.imageRight ? 'lg:order-1' : ''}`}>
-                <div className="w-full max-w-[516px] h-full rounded-[20px] overflow-hidden bg-black/5">
+              <div className={`flex-1 flex items-center justify-center w-full min-h-[400px] lg:min-h-[652px] ${!card.imageRight ? 'lg:order-1' : ''}`}>
+                <div className="w-full max-w-[516px] h-[400px] lg:h-[531px] rounded-[20px] overflow-hidden bg-black/5">
                   <img 
                     src={card.imageSrc} 
                     alt={card.eyebrow} 
