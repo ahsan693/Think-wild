@@ -1,18 +1,13 @@
 import {
   ArrowRight,
   ArrowUpRight,
-  Camera,
-  Ghost,
   Handshake,
   Heart,
   MessageCircle,
   MessageSquare,
-  Music,
-  Play,
   Star,
   Users,
   Zap,
-  type LucideIcon,
 } from 'lucide-react';
 
 export const ABOUT_HERO_DATA = {
@@ -25,11 +20,11 @@ export const ABOUT_HERO_DATA = {
   action: 'See our work',
   images: {
     phoneVideo:
-      'https://images.pexels.com/photos/8348981/pexels-photo-8348981.jpeg?auto=compress&cs=tinysrgb&w=800',
+      '/Think-Wild-Media-Developer-Assets/Images/desktop/about/01-about-hero/images/originals/1.jpg',
     bgLeft:
-      'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
+      '/Think-Wild-Media-Developer-Assets/Images/desktop/about/01-about-hero/images/originals/6a018c163190c0cf03857405-2f6a113c1d45457fc67c98ca7e-about3-mp4-m--1404-16267--source.jpg',
     bgRight:
-      'https://images.pexels.com/photos/5348252/pexels-photo-5348252.jpeg?auto=compress&cs=tinysrgb&w=800',
+      '/Think-Wild-Media-Developer-Assets/Images/desktop/about/01-about-hero/images/originals/6a018c163190c0cf03857405-2f6a113c5c9b30e5440636007e-about1-mp4-m--1404-16283--source.jpg',
     author: '@daniel_foster',
     caption:
       'The best headphones for music with noise cancelling blend of superior sound, comfort in 2026.',
@@ -133,8 +128,6 @@ export const ABOUT_STORY_DATA = {
   },
 } as const;
 
-type AboutIcon = LucideIcon;
-
 export const ABOUT_VALUES_DATA = {
   eyebrow: 'What we stand for',
   headingRows: [
@@ -180,37 +173,6 @@ export const ABOUT_VALUES_DATA = {
       icon: Handshake,
     },
   ],
-  ticker: [
-    {
-      name: 'Tiktok',
-      icon: Music,
-      iconClassName: 'text-white',
-      bgColor: 'bg-black',
-    },
-    {
-      name: 'Instagram',
-      icon: Camera,
-      iconClassName: 'text-white',
-      bgColor: 'bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-500',
-    },
-    {
-      name: 'Youtube',
-      icon: Play,
-      iconClassName: 'text-white fill-white',
-      bgColor: 'bg-red-600',
-    },
-    {
-      name: 'Snapchat',
-      icon: Ghost,
-      iconClassName: 'text-black',
-      bgColor: 'bg-[#FFFC00]',
-    },
-  ] satisfies {
-    name: string;
-    icon: AboutIcon;
-    iconClassName: string;
-    bgColor: string;
-  }[],
 } as const;
 
 export const CREATIVE_PARTNERSHIP_DATA = {

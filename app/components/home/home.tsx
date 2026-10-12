@@ -3,7 +3,7 @@ import Footer from '@/app/components/footer/footer';
 import ShowcaseCarousel from '@/app/components/home/showcase-carousel';
 import ProcessStory from '@/app/components/home/process-story';
 import CtaOrbitSection from '@/app/components/home/cta-orbit-section';
-import Image from 'next/image';
+import SocialTicker from '@/app/components/social-ticker';
 import { 
   ArrowRight, Heart, MessageCircle, ArrowUpRight, BadgeCheck,
   Check,
@@ -21,14 +21,12 @@ import {
   HOME_PROCESS,
   HOME_SERVICES,
   HOME_SHOWCASE,
-  HOME_SOCIAL_TICKER,
   HOME_WHY_US,
 } from '@/lib/data/homedata';
 // import { Bricolage_Grotesque } from 'next/font/google';
 
 export default function Home() {
   const carouselItems = [...HOME_HERO.creators, ...HOME_HERO.creators, ...HOME_HERO.creators];
-  const tickerItems = Array.from({ length: 5 }, () => HOME_SOCIAL_TICKER.platforms).flat();
   const capabilitiesTicker = Array.from({ length: 4 }, () => HOME_CAPABILITIES.ticker).flat();
   const capabilityIcons = {
     check: CheckCircle2,
@@ -135,31 +133,7 @@ export default function Home() {
         {/* =========================================
             SOCIAL TICKER SECTION
         ========================================= */}
-        <div className="w-full flex flex-col items-center mt-[40px] pt-[29px]">
-          <p className="text-[17.7px] font-medium text-white mb-[20px]">
-            {HOME_SOCIAL_TICKER.heading}
-          </p>
-          <div className="relative w-full max-w-[620px] h-[38px] flex items-center overflow-hidden">
-            <div className="absolute left-0 top-0 z-10 w-[84px] h-[40px] bg-gradient-to-r from-black to-transparent pointer-events-none" />
-            <div className="flex w-max social-platform-marquee items-center gap-[12px]">
-              {tickerItems.map((platform, idx) => {
-                return (
-                  <div key={`${platform.name}-${idx}`} className="social-platform-capsule flex items-center h-[38px] bg-white rounded-full pl-[6px] pr-[16px] py-[6px] gap-[8px] shrink-0">
-                    <Image
-                      src={platform.iconUrl}
-                      alt=""
-                      width={26}
-                      height={26}
-                      className="w-[26px] h-[26px] rounded-full shrink-0"
-                    />
-                    <span className="text-[14px] font-medium text-[#1D1D1D]">{platform.name}</span>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="absolute right-0 top-0 z-10 w-[76px] h-[38px] bg-gradient-to-l from-black to-transparent pointer-events-none" />
-          </div>
-        </div>
+        <SocialTicker className="mt-[40px] pt-[29px]" />
 
         {/* =========================================
             CONTENT PARAGRAPH SECTION

@@ -1,5 +1,6 @@
 import Header from '@/app/components/header/header';
 import Footer from '@/app/components/footer/footer';
+import SocialTicker from '@/app/components/social-ticker';
 import CtaOrbitSection from '@/app/components/home/cta-orbit-section';
 import { ArrowRight, BadgeCheck } from 'lucide-react';
 import {
@@ -12,8 +13,6 @@ import {
 import { CTA_ORBIT_DATA } from '@/lib/data/ctaorbitdata';
 
 export default function AboutPage() {
-  const valuesTickerItems = [...ABOUT_VALUES_DATA.ticker, ...ABOUT_VALUES_DATA.ticker, ...ABOUT_VALUES_DATA.ticker];
-
   return (
     <main className="min-h-screen w-full bg-black text-white flex flex-col overflow-x-clip font-[family-name:var(--font-saans)]">
       <Header />
@@ -258,16 +257,7 @@ export default function AboutPage() {
               ))}
             </h2>
 
-            <div className="flex items-center justify-center gap-[12px] flex-wrap">
-              {valuesTickerItems.map((platform, idx) => (
-                <div key={idx} className="flex items-center h-[32px] bg-[#1A1A1A] border border-white/10 rounded-full pl-[8px] pr-[14px] py-[4px] gap-[6px] shrink-0">
-                  <div className={`flex items-center justify-center w-[20px] h-[20px] rounded-full ${platform.bgColor}`}>
-                    <platform.icon className={`w-3 h-3 ${platform.iconClassName}`} />
-                  </div>
-                  <span className="type-136 text-white">{platform.name}</span>
-                </div>
-              ))}
-            </div>
+            <SocialTicker />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[15px] gap-y-[17px] w-full max-w-[860px]">
