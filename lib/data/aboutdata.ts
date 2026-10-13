@@ -135,7 +135,7 @@ export const ABOUT_VALUES_DATA = {
       { text: 'THE', className: '' },
       {
         text: 'VALUES',
-        className: 'bg-[#FF8C9D] text-[#1D1D1D]',
+        className: 'bg-[#FFD9FA] text-[#EC4037]',
       },
       { text: 'BEHIND', className: '' },
     ],
@@ -143,7 +143,7 @@ export const ABOUT_VALUES_DATA = {
       { text: 'EVERYTHING', className: '' },
       {
         text: 'WE CREATE',
-        className: 'bg-[#8CFE79] text-[#1D1D1D]',
+        className: 'bg-[#83FF83] text-[#155149]',
       },
     ],
   ],
@@ -163,13 +163,13 @@ export const ABOUT_VALUES_DATA = {
     {
       title: 'Straight talking',
       desc: 'Clear advice, honest feedback and no unnecessary jargon.',
-      bgColor: 'bg-[#FA94FF]',
+      bgColor: 'bg-[#FFD9FA]',
       icon: MessageSquare,
     },
     {
       title: 'Real partnerships',
       desc: 'We build lasting relationships with brands and creators, with clear briefs and shared goals.',
-      bgColor: 'bg-[#8CFE79]',
+      bgColor: 'bg-[#83FF83]',
       icon: Handshake,
     },
   ],
