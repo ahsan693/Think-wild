@@ -17,7 +17,7 @@ export default function CtaOrbitSection({ data, arrowIconSrc }: CtaOrbitSectionP
       >
         <CtaOrbit images={[...data.images]} />
 
-        <div className="relative z-20 flex max-w-[597px] flex-col items-center text-center">
+        <div className="relative z-20 flex w-full max-w-[650px] flex-col items-center text-center">
           <div
             className="mb-[30px] flex items-center justify-center rounded-full px-[16px] py-[6px]"
             style={{ backgroundColor: data.colors.accent }}
@@ -26,7 +26,7 @@ export default function CtaOrbitSection({ data, arrowIconSrc }: CtaOrbitSectionP
           </div>
 
           <h2
-            className="font-bricolage mb-[24px] text-[clamp(2rem,3.6vw,46px)] font-semibold uppercase leading-[0.96] tracking-[-0.05em]"
+            className="font-bricolage mb-[30px] w-full text-[clamp(2rem,3.6vw,50px)] font-semibold uppercase leading-[0.96] tracking-[-0.05em]"
             style={{ color: data.colors.text }}
           >
             {data.copy.heading.map((line) => (
@@ -37,7 +37,7 @@ export default function CtaOrbitSection({ data, arrowIconSrc }: CtaOrbitSectionP
           </h2>
 
           <p
-            className="mb-[40px] max-w-[564.9px] text-[17.9px] font-medium leading-[20.8px]"
+            className="mb-[40px] w-full max-w-[628px] text-[17.9px] font-medium leading-[20.8px]"
             style={{ color: data.colors.text }}
           >
             {data.copy.description}
