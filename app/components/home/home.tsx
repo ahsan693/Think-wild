@@ -45,7 +45,6 @@ function HomeArrowIcon({ color = 'white' }: { color?: 'white' | 'black' }) {
 
 export default function Home() {
   const carouselItems = [...HOME_HERO.creators, ...HOME_HERO.creators, ...HOME_HERO.creators];
-  const capabilitiesTicker = Array.from({ length: 4 }, () => HOME_CAPABILITIES.ticker).flat();
   const capabilityIcons = {
     check: CheckCircle2,
     chart: PieChart,
@@ -693,17 +692,43 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-full max-w-[100vw] overflow-hidden relative h-[38px] mb-[40px]">
-          <div className="flex w-max animate-marquee items-center gap-[16px] h-full px-4">
-            {capabilitiesTicker.map((item, idx) => {
-              const Icon = capabilityIcons[item.icon];
-              return (
-                <div key={`${item.text}-${idx}`} className="flex items-center h-[34px] bg-[#1A1A1A] border border-white/10 rounded-full pl-[10px] pr-[16px] py-[6px] gap-[8px] shrink-0">
-                  <div className="text-zinc-400"><Icon size={14} /></div>
-                  <span className="text-[14px] font-medium text-white">{item.text}</span>
-                </div>
-              );
-            })}
+        <div
+          aria-label="Capabilities"
+          className="relative mx-auto mb-[40px] h-[38px] w-full max-w-[1280px] overflow-hidden"
+        >
+          <div className="flex h-full w-max animate-marquee motion-reduce:animate-none">
+            {[0, 1].map((copy) => (
+              <div
+                key={`capability-set-${copy}`}
+                aria-hidden={copy === 1}
+                className="flex h-full shrink-0 items-center gap-[6px] pr-[6px]"
+              >
+                {HOME_CAPABILITIES.ticker.map((item) => {
+                  const Icon = capabilityIcons[item.icon];
+                  const iconClassName =
+                    item.icon === 'check' ? 'fill-white text-[#1A1A1A]' : 'text-white';
+
+                  return (
+                    <div
+                      key={`${copy}-${item.text}`}
+                      className="flex h-[38px] shrink-0 items-center gap-[6px] rounded-full bg-[#373737]/[0.49] py-[4px] pl-[4px] pr-[16px]"
+                    >
+                      <span className="flex h-[14px] w-[14px] shrink-0 items-center justify-center">
+                        <Icon
+                          size={14}
+                          strokeWidth={2}
+                          className={iconClassName}
+                          fill={item.icon === 'zap' || item.icon === 'chart' ? 'currentColor' : undefined}
+                        />
+                      </span>
+                      <span className="text-[12px] font-medium leading-[18px] text-white">
+                        {item.text}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
           </div>
         </div>
 
