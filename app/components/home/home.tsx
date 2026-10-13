@@ -526,7 +526,7 @@ export default function Home() {
           
           <span className="flex items-center justify-center gap-[20px] mt-[8px]">
             <span>{HOME_PROCESS.copy.headingConnector}</span>
-            <span className="flex h-auto min-w-0 items-center justify-center rounded-[100px] bg-[#8763FF] px-[24px] py-[8px] text-white md:h-[63px] md:min-w-[280px] md:px-[32px]">
+            <span className="flex h-[clamp(58px,8vw,114px)] w-[clamp(250px,31vw,442px)] items-center justify-center rounded-[100px] bg-[#8763FF] px-[20px] text-white">
               {HOME_PROCESS.copy.headingHighlight}
             </span>
           </span>

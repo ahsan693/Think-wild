@@ -156,8 +156,7 @@ export const HOME_SERVICES = {
       description:
         'We find creators who fit your audience and manage influencer campaigns from outreach and briefs to content delivery and reporting.',
       tags: 'Creator sourcing · UGC · Influencer partnerships',
-      stat: '21+',
-      statLabel: 'Creators activated',
+       statLabel: 'Creators activated',
       bgColor: 'bg-[#FFD6E8]',
       textColor: 'text-[#FF4A5A]',
       imageUrl:
