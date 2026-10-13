@@ -66,7 +66,7 @@ export default function Footer() {
       {/* Giant Background Text: 298.47px font size, 268.62px line height, -3% tracking[cite: 118] */}
       <div className="w-full flex justify-center pointer-events-none mt-[-20px] pb-[10px]">
         <h2 
-          className="text-[#151515] font-semibold text-[150px] md:text-[298.47px] leading-[1] md:leading-[268.62px] tracking-[-0.03em] uppercase whitespace-nowrap select-none"
+          className="text-[#151515] font-semibold text-[clamp(40px,15.5vw,298.47px)] leading-none tracking-[-0.03em] uppercase whitespace-nowrap select-none"
           style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
         >
           {FOOTER_DATA.backgroundText}
