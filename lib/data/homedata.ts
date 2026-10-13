@@ -21,7 +21,7 @@ export const HOME_HERO = {
       username: '@mila.creates',
       likes: '2.4M likes',
       imageUrl:
-        '/Think-Wild-Media-Developer-Assets/Images/desktop/home/01-hero-creator-marketing/images/originals/1.jpg',
+        '/Think-Wild-Media-Developer-Assets/Images/desktop/home/01-hero-creator-marketing/images/originals/3.jpg',
     },
     {
       id: 2,
@@ -56,7 +56,7 @@ export const HOME_HERO = {
       username: '@lina.creates',
       likes: '760K likes',
       imageUrl:
-        '/Think-Wild-Media-Developer-Assets/Images/desktop/home/01-hero-creator-marketing/images/originals/6.jpg',
+        '/Think-Wild-Media-Developer-Assets/Images/desktop/home/01-hero-creator-marketing/images/originals/lina-creates.jpg',
     },
   ],
 } as const;
