@@ -1,0 +1,17 @@
+<svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Arrow Group 02" clip-path="url(#clip0_1549_7945)">
+<g id="Arrow Arrow 02" clip-path="url(#clip1_1549_7945)">
+<path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M17.5504 6.24792H0V7.75229H17.5504V6.24792Z" fill="#161616"/>
+<path id="Vector_2" fill-rule="evenodd" clip-rule="evenodd" d="M16.7997 7.75219C13.262 7.75219 10.3711 4.64106 10.3711 1.32358V0.571411H11.8754V1.32358C11.8754 3.84243 14.1246 6.24784 16.7997 6.24784H17.552V7.75219H16.7997Z" fill="#161616"/>
+<path id="Vector_3" fill-rule="evenodd" clip-rule="evenodd" d="M16.7997 6.24792C13.262 6.24792 10.3711 9.35898 10.3711 12.6764V13.4287H11.8754V12.6764C11.8754 10.1577 14.1246 7.75229 16.7997 7.75229H17.552V6.24792H16.7997Z" fill="#161616"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_1549_7945">
+<rect width="18" height="14" fill="white"/>
+</clipPath>
+<clipPath id="clip1_1549_7945">
+<rect width="18" height="12.8571" fill="white" transform="translate(0 0.571411)"/>
+</clipPath>
+</defs>
+</svg>

@@ -1,0 +1,16 @@
+<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Mission Icon" clip-path="url(#clip0_1404_15359)">
+<g id="Mission Icon 02" clip-path="url(#clip1_1404_15359)">
+<path id="Vector" d="M3.98843 1.49999C3.98843 0.671569 3.38328 0 2.63679 0C1.8903 0 1.28516 0.671569 1.28516 1.49999V10.4999C1.28516 11.3283 1.8903 11.9999 2.63679 11.9999C3.38328 11.9999 3.98843 11.3283 3.98843 10.4999V1.49999Z" fill="#1D1D1D"/>
+<path id="Vector_2" d="M10.1212 1.49999C10.1212 0.671569 9.51609 0 8.76961 0C8.02311 0 7.41797 0.671569 7.41797 1.49999V10.4999C7.41797 11.3283 8.02311 11.9999 8.76961 11.9999C9.51609 11.9999 10.1212 11.3283 10.1212 10.4999V1.49999Z" fill="#1D1D1D"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_1404_15359">
+<rect width="12" height="12" fill="white"/>
+</clipPath>
+<clipPath id="clip1_1404_15359">
+<rect width="9.42857" height="12" fill="white" transform="translate(1.28516)"/>
+</clipPath>
+</defs>
+</svg>

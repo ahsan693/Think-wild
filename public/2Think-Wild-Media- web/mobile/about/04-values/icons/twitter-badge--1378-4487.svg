@@ -1,0 +1,22 @@
+<svg width="34" height="19" viewBox="0 0 34 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Twitter Badge">
+<rect width="34" height="19" rx="9.5" fill="white"/>
+<g id="Twitter Icon">
+<g clip-path="url(#clip0_1378_4487)">
+<g id="Values Icon" clip-path="url(#clip1_1378_4487)">
+<path id="Vector" d="M9.5 17C13.6421 17 17 13.6421 17 9.5C17 5.35786 13.6421 2 9.5 2C5.35786 2 2 5.35786 2 9.5C2 13.6421 5.35786 17 9.5 17Z" fill="black"/>
+<path id="Vector_2" d="M8.73633 9.67578L9.02734 10.0908L11.0039 12.9189L11.0713 13.0156H11.0156L9.08398 10.2051L8.91211 9.9541L8.71289 10.1855L6.27734 13.0156H6.24902L8.78125 10.0723L8.89844 9.93555L8.79688 9.78711L7.80371 8.3418L8.73633 9.67578ZM7.7998 5.98438L9.625 8.64062L9.79785 8.89062L9.99609 8.66016L12.2988 5.98438H12.3262L9.92773 8.77246L9.81055 8.91016L9.91309 9.05859L12.2559 12.4688L9.95996 9.18457L9.66992 8.76953L7.80566 6.10352L7.73535 6.00293H6.19629L6.18359 5.98438H7.7998Z" fill="white" stroke="white" stroke-width="0.46875"/>
+</g>
+</g>
+</g>
+<path id="X Label" d="M19.9209 12L22.0786 8.57227L20.1538 5.50928H21.3052L22.6543 7.65381L24.0034 5.50928H25.1372L23.2212 8.55469L25.3833 12H24.2407L22.6455 9.45996L21.0459 12H19.9209Z" fill="black"/>
+</g>
+<defs>
+<clipPath id="clip0_1378_4487">
+<rect x="2" y="2" width="15" height="15" rx="7.5" fill="white"/>
+</clipPath>
+<clipPath id="clip1_1378_4487">
+<rect width="15" height="15" fill="white" transform="translate(2 2)"/>
+</clipPath>
+</defs>
+</svg>
