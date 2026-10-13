@@ -649,31 +649,43 @@ export default function Home() {
             />
             <div className="absolute bottom-0 inset-x-0 h-[250px] bg-gradient-to-t from-black to-transparent pointer-events-none" />
             <h3 
-              className="font-bricolage absolute bottom-[40px] left-[40px] w-full max-w-[422px] text-[40px] font-semibold leading-[1] tracking-[-0.03em] uppercase text-white lg:text-[70px] lg:leading-[57px]"
+              className="font-bricolage absolute bottom-[40px] left-[40px] right-[40px] w-auto max-w-none text-[clamp(32px,4.3vw,62px)] font-semibold leading-[1] tracking-[-0.03em] uppercase text-white lg:leading-[57px]"
             >
-              {HOME_CAPABILITIES.copy.imageHeading.map((line) => <span key={line} className="block">{line}</span>)}
+              {HOME_CAPABILITIES.copy.imageHeading.map((line) => <span key={line} className="block whitespace-nowrap">{line}</span>)}
             </h3>
           </div>
 
-          <div className="flex-1 lg:w-[675px] h-full bg-[#8CFE79] rounded-[30px] p-[30px] lg:p-[50px] flex flex-col items-center lg:items-end text-black relative shrink-0">
-            <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-black mb-[20px] self-end">
-              <span className="text-[12px] font-medium text-white">              {HOME_CAPABILITIES.copy.eyebrow}</span>
-            </div>
+          <div className="relative flex h-full w-full shrink-0 flex-col gap-[40px] rounded-[30px] bg-[#8CFE79] p-[30px] text-black lg:h-[640px] lg:w-[675px] lg:flex-none lg:gap-[60px] lg:p-[50px]">
+            <div className="flex w-full flex-col items-center gap-[20px] lg:h-[188.8px] lg:justify-between lg:gap-0">
+              <div className="flex h-[35px] w-[146px] items-center justify-center rounded-full bg-black">
+                <span className="text-[12px] font-medium text-white">
+                  {HOME_CAPABILITIES.copy.eyebrow}
+                </span>
+              </div>
 
-            <div className="flex flex-col items-end mb-[50px]">
-              <span className="text-[80px] font-normal leading-none tracking-tighter lg:text-[110px]">
-                {HOME_CAPABILITIES.copy.metric}
-              </span>
-              <span className="text-[14px] font-medium mt-[4px]">
+              <div className="flex h-[93px] w-full items-center justify-center">
+                <span className="text-[80px] font-semibold leading-[93px] tracking-[-0.04em]">
+                  {HOME_CAPABILITIES.copy.metric}
+                </span>
+              </div>
+
+              <span className="w-full text-center text-[14px] font-medium leading-[21.8px]">
                 {HOME_CAPABILITIES.copy.metricLabel}
               </span>
             </div>
 
-            <div className="w-full flex flex-col gap-[20px]">
+            <div className="flex w-full flex-col gap-[20px] lg:h-[291px] lg:flex-none">
               {HOME_CAPABILITIES.copy.items.map((item) => (
-                <div key={item.heading} className="flex w-full justify-between items-start gap-[20px]">
-                  <span className="text-[20px] font-bold uppercase leading-tight w-1/2 max-w-[200px] lg:text-[24px]">{item.heading}</span>
-                  <p className="text-[14px] font-medium leading-snug w-1/2">{item.description}</p>
+                <div
+                  key={item.heading}
+                  className="grid w-full grid-cols-[1.4fr_1fr] items-start gap-[20px] border-b border-black/10 pb-[12px] last:border-b-0 last:pb-0 lg:flex-1"
+                >
+                  <h3 className="text-[20px] font-bold uppercase leading-[1] lg:text-[24px]">
+                    {item.heading}
+                  </h3>
+                  <p className="text-[14px] font-medium leading-[18px]">
+                    {item.description}
+                  </p>
                 </div>
               ))}
             </div>
