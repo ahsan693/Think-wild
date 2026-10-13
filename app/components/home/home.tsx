@@ -44,7 +44,12 @@ function HomeArrowIcon({ color = 'white' }: { color?: 'white' | 'black' }) {
 }
 
 export default function Home() {
-  const carouselItems = [...HOME_HERO.creators, ...HOME_HERO.creators, ...HOME_HERO.creators];
+  const creatorEdgeCard = HOME_HERO.creators[4];
+  const creatorCards = [
+    creatorEdgeCard,
+    ...HOME_HERO.creators.filter((item) => item.id !== creatorEdgeCard.id),
+    creatorEdgeCard,
+  ];
   const capabilityIcons = {
     check: CheckCircle2,
     chart: PieChart,
@@ -66,7 +71,7 @@ export default function Home() {
     <main className="min-h-screen w-full bg-black text-white flex flex-col overflow-x-clip font-[family-name:var(--font-saans)]">
       <Header arrowIconSrc={HOME_ARROW_ICON_SRC} />
 
-      <section className="w-full max-w-[1380px] mx-auto pt-[155px] flex flex-col items-center pb-[100px]">
+      <section className="w-full max-w-[1381px] mx-auto pt-[155px] flex flex-col items-center pb-[100px]">
         
         {/* =========================================
             HERO SECTION
@@ -109,43 +114,54 @@ export default function Home() {
         {/* =========================================
             VIDEO CAROUSEL SECTION
         ========================================= */}
-        <div className="w-full max-w-[1381px] h-[441px] mx-auto overflow-hidden relative mt-[80px]">
-          <div className="flex w-max animate-marquee items-start gap-[16px]">
-            {carouselItems.map((item, index) => {
-              const isDown = index % 2 === 0;
+        <div className="relative mx-auto mt-[80px] h-[441px] w-full max-w-[1381px] overflow-hidden">
+          <div className="flex h-full w-full items-start justify-between">
+            {creatorCards.map((item, index) => {
+              const isLeftEdge = index === 0;
+              const isRightEdge = index === creatorCards.length - 1;
+              const isEdgeCard = isLeftEdge || isRightEdge;
+              const isDown = index % 2 === 1;
               return (
-                <div 
+                <div
                   key={`${item.id}-${index}`}
-                  className={`relative w-[186px] h-[393px] rounded-[25.6px] border border-[#262626] bg-black overflow-hidden shrink-0 transition-transform ${isDown ? 'mt-[48px]' : 'mt-0'}`}
+                  className={`relative h-[407px] shrink-0 ${isEdgeCard ? 'w-[100px] overflow-hidden' : 'w-[200px]'} ${isDown ? 'mt-[20px]' : 'mt-0'}`}
                 >
-                  <img
-                    src={item.imageUrl}
-                    alt={item.username}
-                    className="absolute inset-0 w-full h-full object-cover opacity-80"
-                  />
-                  <div className="absolute top-0 inset-x-0 h-[60px] bg-gradient-to-b from-black/60 to-transparent pointer-events-none" />
-                  <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[50px] h-[16px] bg-black rounded-full" />
-                  <span className="absolute top-8 left-1/2 -translate-x-1/2 text-[10px] font-medium text-white/80">{HOME_HERO.carousel.platformLabel}</span>
-                  <div className="absolute bottom-0 inset-x-0 h-[120px] bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
-                  
-                  <div className="absolute bottom-[16px] left-[12px] w-[134px] h-[35px] flex flex-col justify-end">
-                    <div className="flex items-center gap-[4px]">
-                      <span className="text-white text-[13px] font-semibold tracking-tight">{item.username}</span>
-                      <Image
-                        src="/Think-Wild-Media-Developer-Assets/Icons/desktop/home/01-hero-creator-marketing/icons/verifiedbadge--1404-15100.svg"
-                        alt=""
-                        aria-hidden="true"
-                        width={14}
-                        height={14}
-                      />
-                    </div>
-                    <span className="text-white/80 text-[10px] truncate">{item.likes} · {HOME_HERO.carousel.originalAudioLabel}</span>
-                  </div>
+                  <div
+                    className={`absolute top-[7px] h-[393px] w-[186px] overflow-hidden rounded-[25.6px] border border-[#262626] bg-black ${isLeftEdge ? 'left-[-93px]' : isRightEdge ? 'left-0' : 'left-[7px]'}`}
+                  >
+                    <img
+                      src={item.imageUrl}
+                      alt={item.username}
+                      className="absolute inset-0 h-full w-full object-cover opacity-80"
+                    />
+                    <div className="pointer-events-none absolute inset-x-0 top-0 h-[60px] bg-gradient-to-b from-black/60 to-transparent" />
+                    <div className="absolute left-1/2 top-3 h-[16px] w-[50px] -translate-x-1/2 rounded-full bg-black" />
+                    <span className="absolute left-1/2 top-8 -translate-x-1/2 text-[10px] font-medium text-white/80">
+                      {HOME_HERO.carousel.platformLabel}
+                    </span>
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[120px] bg-gradient-to-t from-black/80 to-transparent" />
 
-                  <div className="absolute bottom-[24px] right-[12px] w-[18px] h-[78px] flex flex-col items-center justify-between gap-[12px]">
-                    <Heart className="w-[18px] h-[18px] text-white fill-red-500 stroke-none" />
-                    <MessageCircle className="w-[18px] h-[18px] text-white fill-white" />
-                    <ArrowUpRight className="w-[18px] h-[18px] text-white" strokeWidth={3} />
+                    <div className="absolute bottom-[16px] left-[12px] flex h-[35px] w-[134px] flex-col justify-end">
+                      <div className="flex items-center gap-[4px]">
+                        <span className="text-[13px] font-semibold tracking-tight text-white">{item.username}</span>
+                        <Image
+                          src="/Think-Wild-Media-Developer-Assets/Icons/desktop/home/01-hero-creator-marketing/icons/verifiedbadge--1404-15100.svg"
+                          alt=""
+                          aria-hidden="true"
+                          width={14}
+                          height={14}
+                        />
+                      </div>
+                      <span className="truncate text-[10px] text-white/80">
+                        {item.likes} · {HOME_HERO.carousel.originalAudioLabel}
+                      </span>
+                    </div>
+
+                    <div className="absolute bottom-[24px] right-[12px] flex h-[78px] w-[18px] flex-col items-center justify-between gap-[12px]">
+                      <Heart className="h-[18px] w-[18px] fill-red-500 text-white stroke-none" />
+                      <MessageCircle className="h-[18px] w-[18px] fill-white text-white" />
+                      <ArrowUpRight className="h-[18px] w-[18px] text-white" strokeWidth={3} />
+                    </div>
                   </div>
                 </div>
               );
