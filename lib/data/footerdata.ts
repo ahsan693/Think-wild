@@ -1,10 +1,10 @@
 export const FOOTER_DATA = {
   logo: {
     href: '/',
-    src: '/Think-Wild-Media-Developer-Assets/Icons/desktop/home/13-nav/icons/logo--1404-16214.svg',
+    src: '/Think-Wild-Media-Developer-Assets/Icons/mobile/home/12-footer/icons/logo--I1565-28939_1435-6793.svg',
     alt: 'Think Wild Media',
-    width: 121,
-    height: 34,
+    width: 350,
+    height: 65,
   },
   description:
     'Creator-led campaigns, social content and influencer marketing built for brands that want to be noticed.',

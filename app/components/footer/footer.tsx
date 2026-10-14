@@ -14,12 +14,13 @@ export default function Footer() {
         <div className="mb-[32px] flex w-full flex-col justify-between gap-[32px] lg:mb-[60px] lg:flex-row lg:gap-0">
           
           <div className="flex flex-col w-full lg:max-w-[589px]">
-            <Link href={FOOTER_DATA.logo.href} className="mb-[24px] w-fit">
+            <Link href={FOOTER_DATA.logo.href} className="mb-[24px] w-fit max-w-full">
               <Image
                 src={FOOTER_DATA.logo.src}
                 alt={FOOTER_DATA.logo.alt}
                 width={FOOTER_DATA.logo.width}
                 height={FOOTER_DATA.logo.height}
+                className="h-auto max-w-full"
               />
             </Link>
             
