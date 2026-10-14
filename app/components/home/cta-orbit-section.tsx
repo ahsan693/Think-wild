@@ -12,7 +12,7 @@ export default function CtaOrbitSection({ data, arrowIconSrc }: CtaOrbitSectionP
   return (
     <section className="w-full flex flex-col items-center pt-[250px] pb-[150px] px-4 bg-black overflow-hidden">
       <div
-        className="relative z-10 flex min-h-[503.37px] w-full max-w-[355px] flex-col items-center justify-center rounded-[27.31px] py-[32px] md:min-h-[733.7px] md:max-w-[1280px] md:rounded-[32px] md:py-[100px]"
+        className="relative z-10 flex min-h-[580px] w-full max-w-[355px] flex-col items-center justify-center rounded-[27.31px] py-[56px] md:min-h-[733.7px] md:max-w-[1280px] md:rounded-[32px] md:py-[100px]"
         style={{ backgroundColor: data.colors.panel }}
       >
         <CtaOrbit images={[...data.images]} />
