@@ -14,7 +14,7 @@ export const ABOUT_HERO_DATA = {
   eyebrow: 'About us',
   heading: 'WE MAKE\nBRANDS WORTH',
   highlight: 'FOLLOWING',
-  highlightBackground: 'bg-[#FF742E]',
+  highlightBackground: 'bg-[#8CFE79] md:bg-[#FF742E]',
   description:
     'Think Wild Media is a Dublin influencer marketing and content agency creating creator campaigns, UGC and social-first content that feels relevant and worth following.',
   action: 'See our work',
@@ -105,6 +105,7 @@ export const ABOUT_TEAM_EXPERIENCE_DATA = {
 export const ABOUT_STORY_DATA = {
   eyebrow: 'Our story',
   heading: 'BUILT AROUND CREATORS.\nMADE FOR BRANDS.',
+  mobileHeading: ['BUILT AROUND', 'CREATORS. MADE', 'FOR BRANDS.'],
   paragraphs: [
     'Think Wild Media began with a simple idea: brands need creator-led content that feels at home on the platforms people use every day.',
     'Our Dublin team brings creators, content production and social strategy together to help brands reach people with work worth watching and sharing.',
