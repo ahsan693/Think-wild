@@ -4,18 +4,17 @@ import Image from 'next/image';
 import ShowcaseCarousel from '@/app/components/home/showcase-carousel';
 import ProcessStory from '@/app/components/home/process-story';
 import CtaOrbitSection from '@/app/components/home/cta-orbit-section';
+import HomeFaq from '@/app/components/home/home-faq';
 import SocialTicker from '@/app/components/social-ticker';
 import { 
   Heart, MessageCircle, ArrowUpRight,
   Check,
   Search, Zap, PieChart, CheckCircle2, Rocket, RefreshCw,
-  Plus, Minus
 } from 'lucide-react';
 import { CTA_ORBIT_DATA } from '@/lib/data/ctaorbitdata';
 import { HEADER_LOGO } from '@/lib/data/header';
 import {
   HOME_CAPABILITIES,
-  HOME_FAQ,
   HOME_FEATURED_WORK,
   HOME_HERO,
   HOME_INTRODUCTION,
@@ -740,45 +739,7 @@ export default function Home() {
 
       </section>
 
-      {/* =========================================
-          FAQ SECTION
-      ========================================= */}
-      <section className="flex min-h-[873.5px] w-full flex-col items-center overflow-x-clip bg-black px-5 pb-[48px] pt-[48px] md:min-h-0 md:px-4 md:pb-[150px] md:pt-[150px]">
-        <div className="flex w-full max-w-[1440px] flex-col items-center">
-
-          <h2
-            className="mb-[56px] w-full px-[8px] text-center font-bricolage text-[40px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] text-white md:mb-[80px] md:px-0 md:text-[70px]"
-          >
-            {HOME_FAQ.heading.map((line) => <span key={line} className="block">{line}</span>)}
-          </h2>
-
-          <div className="flex w-full max-w-[916.84px] flex-col gap-[20px] md:gap-0">
-            {HOME_FAQ.items.map((faq, index) => (
-              <div
-                key={index}
-                className={`flex w-full flex-col transition-colors duration-300 ${faq.isOpen ? 'rounded-[20px] bg-[#1A1A1A] p-[20px] md:mb-[16px] md:rounded-[24px] md:p-[32px]' : 'border-b border-white/10 py-[32px] md:py-[32px]'}`}
-              >
-                <div className="flex items-center justify-between gap-[20px] cursor-pointer">
-                  <h3 className="text-[18px] font-bold leading-tight tracking-tight text-white md:text-[24px]">
-                    {faq.question}
-                  </h3>
-                  
-                  <div className="flex items-center justify-center w-[32px] h-[32px] rounded-full border border-white/30 shrink-0 text-white transition-transform">
-                    {faq.isOpen ? <Minus size={16} /> : <Plus size={16} />}
-                  </div>
-                </div>
-                
-                {faq.isOpen && (
-                  <p className="mt-[12px] max-w-[800px] text-[14px] font-medium text-[#9F9F9F] md:mt-[16px] md:text-[16px]">
-                    {faq.answer}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
+      <HomeFaq />
 
       {/* =========================================
           FINAL CTA SECTION

@@ -418,31 +418,31 @@ export const HOME_FAQ = {
     {
       question: 'What does Think Wild Media do?',
       answer:
-        'Think Wild Media is a Dublin creator and influencer marketing agency offering UGC, content production, social media management and creative strategy.',
+        "We help brands find the right creators, make UGC and social content, and build a strategy that connects it all. We're a Dublin team working with brands near and far.",
       isOpen: true,
     },
     {
       question: 'How do you choose the right creators?',
       answer:
-        'We carefully vet creators based on audience demographics, engagement rates, brand affinity, and content quality to ensure the perfect match for your campaign.',
+        "We start with your audience and what you want them to do—not just follower counts. Then we look at each creator's style, engagement and fit for your brief, so the partnership feels natural to their community and right for your brand.",
       isOpen: false,
     },
     {
       question: 'Can you manage an influencer campaign from start to finish?',
       answer:
-        'Yes, we handle everything from creator sourcing and contracting to brief creation, content review, and final performance reporting.',
+        "Absolutely. If you have a goal but aren't sure where to start, we'll guide the campaign from creator sourcing and contracting through briefs, content reviews and reporting. You'll know what's happening at each step without having to chase every detail yourself.",
       isOpen: false,
     },
     {
       question: 'Do you create UGC and short-form content?',
       answer:
-        'Absolutely. We specialize in producing native, engaging short-form video content tailored for TikTok, Instagram Reels, and YouTube Shorts.',
+        "Yes. We make UGC and short-form videos for TikTok, Instagram Reels and YouTube Shorts—content that feels at home in the feed, not like an ad dropped into it. We'll shape the ideas around your audience, platform and goals.",
       isOpen: false,
     },
     {
       question: 'Do you manage social media accounts?',
       answer:
-        'Yes, we offer comprehensive social media management services including content planning, posting, community engagement, and growth strategy.',
+        "Yes. We can help plan your content calendar, create and post content, and keep up with community conversations. If posting feels inconsistent or your team is stretched, we'll build a routine and strategy that fits your goals and brand voice.",
       isOpen: false,
     },
   ],
