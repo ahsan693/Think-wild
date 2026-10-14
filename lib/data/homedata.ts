@@ -134,10 +134,10 @@ export const HOME_MISSION = {
   },
   images: {
     creator: {
-      src: HOME_HERO.creators[0].imageUrl,
+      src: '/Think-Wild-Media-Developer-Assets/Images/desktop/home/03-mission/images/originals/6a018c163190c0cf03857405-2f6a11322c6704e9bc494241f5-about-mp4-mp--1404-15357--source.jpg',
     },
     fashion: {
-      src: 'https://images.pexels.com/photos/28997086/pexels-photo-28997086.jpeg?auto=compress&cs=tinysrgb&w=800',
+      src: '/Think-Wild-Media-Developer-Assets/Images/desktop/home/03-mission/images/originals/image-mission-01--1404-15362--source.png',
       alt: 'Fashion creator',
     },
   },
