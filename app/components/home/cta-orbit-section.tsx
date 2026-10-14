@@ -12,21 +12,21 @@ export default function CtaOrbitSection({ data, arrowIconSrc }: CtaOrbitSectionP
   return (
     <section className="w-full flex flex-col items-center pt-[250px] pb-[150px] px-4 bg-black overflow-hidden">
       <div
-        className="relative z-10 flex min-h-[733.7px] w-full max-w-[1280px] flex-col items-center justify-center rounded-[32px] py-[100px]"
+        className="relative z-10 flex min-h-[503.37px] w-full max-w-[355px] flex-col items-center justify-center rounded-[27.31px] py-[32px] md:min-h-[733.7px] md:max-w-[1280px] md:rounded-[32px] md:py-[100px]"
         style={{ backgroundColor: data.colors.panel }}
       >
         <CtaOrbit images={[...data.images]} />
 
-        <div className="relative z-20 flex w-full max-w-[650px] flex-col items-center text-center">
+        <div className="relative z-20 flex w-full max-w-[300px] flex-col items-center text-center md:max-w-[650px]">
           <div
-            className="mb-[30px] flex items-center justify-center rounded-full px-[16px] py-[6px]"
+            className="mb-[16px] flex items-center justify-center rounded-full px-[16px] py-[6px] md:mb-[30px]"
             style={{ backgroundColor: data.colors.accent }}
           >
             <span className="text-[12px] font-medium text-white">{data.copy.eyebrow}</span>
           </div>
 
           <h2
-            className="font-bricolage mb-[30px] w-full text-[clamp(2rem,3.6vw,50px)] font-semibold uppercase leading-[0.96] tracking-[-0.05em]"
+            className="font-bricolage mb-[16px] w-full text-[36px] font-semibold uppercase leading-[0.96] tracking-[-0.05em] md:mb-[30px] md:text-[clamp(2rem,3.6vw,50px)]"
             style={{ color: data.colors.text }}
           >
             {data.copy.heading.map((line) => (
@@ -37,13 +37,13 @@ export default function CtaOrbitSection({ data, arrowIconSrc }: CtaOrbitSectionP
           </h2>
 
           <p
-            className="mb-[40px] w-full max-w-[628px] text-[17.9px] font-medium leading-[20.8px]"
+            className="mb-[20px] w-full max-w-[628px] text-[14px] font-medium leading-[18px] md:mb-[40px] md:text-[17.9px] md:leading-[20.8px]"
             style={{ color: data.colors.text }}
           >
             {data.copy.description}
           </p>
 
-          <div className="flex w-full max-w-[407px] items-center justify-center gap-[40px]">
+          <div className="flex w-full max-w-[407px] flex-col items-center justify-center gap-[8px] md:flex-row md:gap-[40px]">
             <button
               type="button"
               className="flex h-[52px] items-center gap-[12px] rounded-full py-[6px] pl-[6px] pr-[24px] transition-colors hover:brightness-90"

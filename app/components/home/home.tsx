@@ -71,41 +71,41 @@ export default function Home() {
     <main className="min-h-screen w-full bg-black text-white flex flex-col overflow-x-clip font-[family-name:var(--font-saans)]">
       <Header arrowIconSrc={HOME_ARROW_ICON_SRC} />
 
-      <section className="w-full max-w-[1381px] mx-auto pt-[155px] flex flex-col items-center pb-[100px]">
+      <section className="mx-auto flex w-full max-w-[1381px] flex-col items-center pb-[64px] pt-[24px] md:pb-[100px] md:pt-[155px]">
         
         {/* =========================================
             HERO SECTION
         ========================================= */}
-        <div className="flex flex-col items-center w-full max-w-[860px] gap-[30px]">
-          <div className="flex items-center justify-center h-[35px] rounded-full border border-[#999999]/40 bg-[#1D1D1D] px-[20px] py-[6px]">
+        <div className="flex w-full max-w-[860px] flex-col items-center gap-[24px] px-[20px] md:gap-[30px] md:px-0">
+          <div className="flex h-[35px] items-center justify-center rounded-full border border-[#999999]/40 bg-[#1D1D1D] px-[20px] py-[6px]">
             <span className="text-[14px] font-medium text-white">
               {HOME_HERO.copy.eyebrow}
             </span>
           </div>
 
-          <div className="flex flex-col items-center justify-center w-full max-w-[1214px]">
+          <div className="flex w-full max-w-[1214px] flex-col items-center justify-center px-[8px] md:px-0">
             <h1 
-              className="home-hero-title type-002 flex flex-col items-center text-[clamp(48px,10.42vw,150px)] font-semibold leading-[0.787] tracking-[-0.06em] uppercase whitespace-nowrap"
+              className="home-hero-title type-002 flex w-full flex-col items-center text-center font-semibold tracking-[-0.06em] uppercase md:w-auto md:whitespace-nowrap"
             >
-              <span className="block">{HOME_HERO.copy.firstLine}</span>
-              <span className="flex items-center justify-center gap-[24px] mt-[16px]">
+              <span className="block whitespace-nowrap">{HOME_HERO.copy.firstLine}</span>
+              <span className="mt-[4px] flex flex-col items-center justify-center gap-[8px] md:mt-[16px] md:flex-row md:gap-[24px]">
                 <span>{HOME_HERO.copy.secondLine}</span>
-                <span className="flex items-center justify-center min-w-[418px] px-[40px] h-[129px] bg-[#8CFE79] text-[#1D1D1D] rounded-[66px] pb-[8px]">
+                <span className="flex h-[64px] min-w-0 items-center justify-center rounded-full bg-[#8CFE79] px-[32px] pb-[4px] text-[#1D1D1D] md:h-[129px] md:min-w-[418px] md:rounded-[66px] md:px-[40px] md:pb-[8px]">
                   {HOME_HERO.copy.highlight}
                 </span>
               </span>
             </h1>
           </div>
 
-          <p className="w-full max-w-[860px] text-center text-[17.7px] font-medium leading-[20.8px] text-[#9F9F9F] mt-[10px]">
+          <p className="mt-0 w-full max-w-[860px] px-[2px] text-center text-[14px] font-medium leading-[18px] text-[#9F9F9F] md:mt-[10px] md:px-0 md:text-[17.7px] md:leading-[20.8px]">
             {HOME_HERO.copy.description}
           </p>
 
-          <button className="flex items-center h-[55px] bg-white rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors mt-[12px]">
-            <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
+          <button className="mt-0 flex h-[50px] w-[194px] items-center justify-between gap-[12px] rounded-full bg-white py-[5px] pl-[6px] pr-[16px] transition-colors hover:bg-gray-200 md:mt-[12px] md:h-[55px] md:w-auto md:justify-start md:py-[6px] md:pr-[20px]">
+            <div className="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#1D1D1D] text-white">
               <HomeArrowIcon />
             </div>
-            <span className="text-[16px] font-medium text-[#1D1D1D]">
+            <span className="text-[14px] font-medium text-[#1D1D1D] md:text-[16px]">
               {HOME_HERO.copy.action}
             </span>
           </button>
@@ -115,7 +115,7 @@ export default function Home() {
             VIDEO CAROUSEL SECTION
         ========================================= */}
         <div className="relative mx-auto mt-[80px] h-[441px] w-full max-w-[1381px] overflow-hidden">
-          <div className="flex h-full w-full items-start justify-between">
+          <div className="ml-[-22px] flex h-full w-max items-start gap-[12px] md:ml-0 md:w-full md:justify-between md:gap-0">
             {creatorCards.map((item, index) => {
               const isLeftEdge = index === 0;
               const isRightEdge = index === creatorCards.length - 1;
@@ -124,10 +124,10 @@ export default function Home() {
               return (
                 <div
                   key={`${item.id}-${index}`}
-                  className={`relative h-[407px] shrink-0 ${isEdgeCard ? 'w-[100px] overflow-hidden' : 'w-[200px]'} ${isDown ? 'mt-[20px]' : 'mt-0'}`}
+                  className={`relative h-[407px] w-[186px] shrink-0 ${isEdgeCard ? 'md:w-[100px] md:overflow-hidden' : 'md:w-[200px]'} ${isDown ? 'mt-[20px]' : 'mt-0'}`}
                 >
                   <div
-                    className={`absolute top-[7px] h-[393px] w-[186px] overflow-hidden rounded-[25.6px] border border-[#262626] bg-black ${isLeftEdge ? 'left-[-93px]' : isRightEdge ? 'left-0' : 'left-[7px]'}`}
+                    className={`absolute left-0 top-[7px] h-[393px] w-[186px] overflow-hidden rounded-[25.6px] border border-[#262626] bg-black ${isLeftEdge ? 'md:left-[-93px]' : isRightEdge ? 'md:left-0' : 'md:left-[7px]'}`}
                   >
                     <img
                       src={item.imageUrl}
@@ -172,16 +172,16 @@ export default function Home() {
         {/* =========================================
             SOCIAL TICKER SECTION
         ========================================= */}
-        <SocialTicker className="mt-[40px] pt-[29px]" />
+        <SocialTicker className="mt-[28px] w-full px-[20px] pt-[16px] md:mt-[40px] md:px-0 md:pt-[29px]" />
 
         {/* =========================================
             CONTENT PARAGRAPH SECTION
         ========================================= */}
-        <div className="w-full max-w-[860px] flex flex-col items-start mt-[140px]">
+        <div className="mt-[80px] flex w-full max-w-[860px] flex-col items-start px-0 md:mt-[140px]">
           <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#1A1A1A] border border-[#333] mb-[32px]">
             <span className="text-[14px] font-medium text-white/70">{HOME_INTRODUCTION.eyebrow}</span>
           </div>
-          <div className="type-026 text-white space-y-[40px]">
+          <div className="home-introduction-copy type-026 space-y-[40px] text-white">
             {HOME_INTRODUCTION.paragraphs.map((paragraph, paragraphIndex) => (
               <p key={paragraphIndex}>
                 {paragraph.map((part, partIndex) => {
@@ -190,7 +190,7 @@ export default function Home() {
                   return (
                     <span
                       key={partIndex}
-                      className={`inline-block px-[12px] py-[2px] rounded-[12px] leading-tight mx-1 ${highlightClasses[part.highlight]}`}
+                      className={`mx-[2px] inline-block rounded-[9px] px-[8px] py-[1px] leading-tight md:mx-1 md:rounded-[12px] md:px-[12px] md:py-[2px] ${highlightClasses[part.highlight]}`}
                     >
                       {part.text}
                     </span>
@@ -204,10 +204,10 @@ export default function Home() {
         {/* =========================================
             MISSION SECTION
         ========================================= */}
-        <div className="flex w-full max-w-[1280px] gap-[60px] items-center mt-[160px]">
-          <div className="flex items-start gap-[16px] w-[610px] h-[463.45px]">
+        <div className="mt-[80px] flex w-full max-w-[1280px] flex-col items-center gap-[40px] px-[20px] md:mt-[160px] md:flex-row md:gap-[60px] md:px-0">
+          <div className="flex h-auto w-full max-w-[610px] items-start gap-[12px] md:h-[463.45px] md:w-[610px] md:shrink-0 md:gap-[16px]">
             {/* Left Video */}
-            <div className="relative w-[297px] h-[390px] shrink-0">
+            <div className="relative h-[280px] min-w-0 flex-1 md:h-[390px] md:w-[297px] md:flex-none">
               <div className="w-full h-full rounded-[30px] overflow-hidden bg-zinc-900 border border-[#333]">
                 <img
                   src={HOME_MISSION.images.creator.src}
@@ -226,7 +226,7 @@ export default function Home() {
             </div>
 
             {/* Right Image */}
-            <div className="relative w-[297px] h-[413.45px] mt-[50px] shrink-0">
+            <div className="relative mt-[28px] h-[300px] min-w-0 flex-1 md:mt-[50px] md:h-[413.45px] md:w-[297px] md:flex-none">
               <div className="w-full h-full rounded-[30px] overflow-hidden bg-zinc-900 border border-[#333]">
                 <img 
                   src={HOME_MISSION.images.fashion.src}
@@ -243,16 +243,14 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col items-start w-[610px] gap-[24px]">
+          <div className="flex w-full max-w-[610px] flex-col items-start gap-[24px]">
             <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#1A1A1A] border border-[#333]">
               <span className="text-[14px] font-medium text-white/70">{HOME_MISSION.copy.eyebrow}</span>
             </div>
-            <h2 
-              className="type-015 w-full text-white"
-            >
+            <h2 className="home-mission-heading type-015 w-full text-white">
               {HOME_MISSION.copy.heading}
             </h2>
-            <p className="w-full text-[17.7px] font-medium leading-[24px] text-[#9F9F9F] pr-[20px]">
+            <p className="w-full pr-0 text-[15px] font-medium leading-[22px] text-[#9F9F9F] md:pr-[20px] md:text-[17.7px] md:leading-[24px]">
               {HOME_MISSION.copy.description}
             </p>
             <button className="flex items-center h-[55px] bg-white rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors mt-[12px]">
@@ -341,24 +339,22 @@ export default function Home() {
       {/* =========================================
           CREATOR CONTENT SHOWCASE SECTION
       ========================================= */}
-      <section className="w-full flex flex-col items-center pt-[100px] pb-[120px] bg-black overflow-x-clip">
+      <section className="flex min-h-[940px] w-full flex-col items-center overflow-x-clip bg-black pb-[64px] pt-[64px] md:min-h-0 md:pb-[120px] md:pt-[100px]">
         
         {/* Header Pill */}
-        <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full border border-white/20 mb-[32px]">
+        <div className="mb-[32px] flex items-center justify-center rounded-full border border-white/20 px-[16px] py-[6px] md:mb-[32px]">
           <span className="text-[12px] font-bold uppercase tracking-widest text-white">
             {HOME_SHOWCASE.copy.eyebrow}
           </span>
         </div>
 
         {/* Heading */}
-        <h2 
-          className="font-bricolage text-center text-[70px] font-semibold leading-[63px] uppercase tracking-[-0.03em] max-w-[701px] text-white mb-[24px]"
-        >
+        <h2 className="home-showcase-heading mb-[16px] w-full max-w-[300px] px-[20px] text-center font-bricolage text-[42px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] text-white md:mb-[24px] md:max-w-[701px] md:px-0 md:text-[70px] md:leading-[63px]">
           {HOME_SHOWCASE.copy.heading}
         </h2>
 
         {/* Subtext */}
-        <p className="text-center text-[16px] font-medium text-[#9F9F9F] max-w-[500px] mb-[80px]">
+        <p className="mb-[40px] max-w-[330px] px-[20px] text-center text-[14px] font-medium text-[#9F9F9F] md:mb-[80px] md:max-w-[500px] md:px-0 md:text-[16px]">
           {HOME_SHOWCASE.copy.description}
         </p>
 
@@ -369,25 +365,23 @@ export default function Home() {
       {/* =========================================
           FEATURED WORK SECTION
       ========================================= */}
-      <section className="w-full flex flex-col items-center pt-[120px] pb-[100px] bg-black text-white">
-        <div className="flex w-full max-w-[860px] flex-col items-center">
+      <section className="flex min-h-[942px] w-full flex-col items-center bg-black pb-[32px] pt-[64px] text-white md:min-h-0 md:pb-[100px] md:pt-[120px]">
+        <div className="flex w-full max-w-[860px] flex-col items-center px-[20px] md:px-0">
           
-          <div className="mb-[50px] flex w-full max-w-[750px] flex-col items-center gap-[24px]">
+          <div className="mb-[24px] flex w-full max-w-[750px] flex-col items-center gap-[16px] md:mb-[50px] md:gap-[24px]">
             <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full border border-white/20">
               <span className="text-[12px] font-bold uppercase tracking-widest text-white">
                 {HOME_FEATURED_WORK.copy.eyebrow}
               </span>
             </div>
-            <h2 
-              className="font-bricolage text-[70px] font-semibold leading-[0.9] tracking-[-0.03em] uppercase text-center"
-            >
+            <h2 className="max-w-[240px] text-center font-bricolage text-[42px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] md:max-w-none md:text-[70px]">
               {HOME_FEATURED_WORK.copy.heading}
             </h2>
           </div>
 
           <div className="flex w-full max-w-[804px] flex-col overflow-hidden rounded-[32px] bg-white text-black md:h-[387px] md:flex-row">
             
-            <div className="h-[260px] w-full shrink-0 overflow-hidden bg-zinc-100 md:h-full md:w-[49.25%]">
+            <div className="h-[200px] w-full shrink-0 overflow-hidden bg-zinc-100 md:h-full md:w-[49.25%]">
               <img 
                 src={HOME_FEATURED_WORK.image.src}
                 alt={HOME_FEATURED_WORK.copy.projectName}
@@ -395,7 +389,7 @@ export default function Home() {
               />
             </div>
             
-            <div className="flex min-h-[327px] flex-1 flex-col justify-between px-[26px] py-[26px] md:min-h-0">
+            <div className="flex min-h-[306px] flex-1 flex-col justify-between px-[26px] py-[26px] md:min-h-0">
               <div className="flex flex-col gap-[20px]">
                 <div className="flex flex-col gap-[4px]">
                   <h3 className="text-black font-semibold text-[27.3px] leading-[39.2px]">
@@ -430,13 +424,13 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-[16px] flex items-center gap-[12px]">
+          <div className="mt-[16px] hidden items-center gap-[12px] md:flex">
             <div className="w-[8px] h-[8px] rounded-full bg-white"></div>
             <div className="w-[8px] h-[8px] rounded-full bg-white/30"></div>
             <div className="w-[8px] h-[8px] rounded-full bg-white/30"></div>
           </div>
 
-          <div className="flex flex-col items-center gap-[24px] mt-[20px]">
+          <div className="mt-[12px] flex flex-col items-center gap-[16px] md:mt-[20px] md:gap-[24px]">
             <p className="text-center text-[16px] font-medium text-[#9F9F9F] max-w-[460px]">
               {HOME_FEATURED_WORK.copy.summary}
             </p>
@@ -456,35 +450,33 @@ export default function Home() {
       {/* =========================================
           WHY THINK WILD SECTION
       ========================================= */}
-      <section className="w-full flex flex-col items-center pt-[150px] pb-[100px] px-4 bg-black">
-        <div className="w-full max-w-[1280px] bg-[#F5F5F5] rounded-[48px] flex flex-col items-center py-[80px] px-[40px] md:px-[80px]">
+      <section className="flex min-h-[1568px] w-full flex-col items-center bg-black px-5 pb-[64px] pt-[64px] md:min-h-0 md:px-4 md:pb-[100px] md:pt-[150px]">
+        <div className="flex w-full max-w-[1280px] flex-col items-center rounded-[32px] bg-[#F5F5F5] px-[20px] py-[48px] md:rounded-[48px] md:px-[80px] md:py-[80px]">
 
-          <div className="flex flex-col items-center w-full max-w-[858px] gap-[32px] mb-[80px]">
+          <div className="mb-[48px] flex w-full max-w-[858px] flex-col items-center gap-[24px] md:mb-[80px] md:gap-[32px]">
             <div className="flex items-center justify-center w-[202px] h-[35px] border border-black/20 rounded-full bg-transparent">
               <span className="text-[14px] font-medium text-black">{HOME_WHY_US.copy.eyebrow}</span>
             </div>
-            <h2
-              className="font-bricolage text-black text-[70px] font-semibold leading-[0.9] uppercase tracking-[-0.03em] text-center"
-            >
+            <h2 className="max-w-[210px] text-center font-bricolage text-[38px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] text-black md:max-w-none md:text-[70px]">
               {HOME_WHY_US.copy.heading}
             </h2>
           </div>
 
-          <div className="flex w-full justify-between items-start">
+          <div className="flex w-full flex-col items-stretch gap-[36px] md:flex-row md:items-start md:justify-between md:gap-0">
 
-            <div className="flex flex-col w-[334px] pt-[40px]">
-              <h4 className="text-black text-[20px] font-bold mb-[32px]">{HOME_WHY_US.copy.listHeading}</h4>
+            <div className="flex w-full flex-col pt-0 md:w-[334px] md:pt-[40px]">
+              <h4 className="mb-[24px] text-[18px] font-bold text-black md:mb-[32px] md:text-[20px]">{HOME_WHY_US.copy.listHeading}</h4>
               <div className="flex flex-col">
                 {HOME_WHY_US.copy.services.map((item) => (
-                  <div key={item} className="text-[16px] font-medium py-[16px] border-t border-black/10 text-black">
+                  <div key={item} className="border-t border-black/10 py-[20px] text-[14px] font-medium text-black md:py-[16px] md:text-[16px]">
                     {item}
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="w-[538px] h-[539px] bg-[#155149] rounded-[32px] p-[48px] flex flex-col items-start justify-center shadow-xl">
-              <div className="mb-[48px] flex items-center">
+            <div className="flex h-auto w-full flex-col items-start justify-center rounded-[24px] bg-[#155149] p-[24px] shadow-xl md:h-[539px] md:w-[538px] md:rounded-[32px] md:p-[48px]">
+              <div className="mb-[24px] flex items-center md:mb-[48px]">
                 <Image
                   src={HEADER_LOGO.src}
                   alt={HEADER_LOGO.alt}
@@ -493,11 +485,11 @@ export default function Home() {
                 />
               </div>
 
-              <div className="flex flex-col gap-[24px] w-full">
+              <div className="flex w-full flex-col gap-[20px] md:gap-[24px]">
                 {HOME_WHY_US.copy.benefits.map((text) => (
-                  <div key={text} className="flex items-start gap-[12px] pb-[20px] border-b border-white/20 last:border-0 last:pb-0">
+                  <div key={text} className="flex items-start gap-[12px] border-b border-white/20 pb-[20px] last:border-0 last:pb-0 md:pb-[20px]">
                     <Check className="w-[18px] h-[18px] text-[#8CFE79] shrink-0 mt-[2px]" strokeWidth={3} />
-                    <span className="text-[15px] font-medium leading-tight text-white">{text}</span>
+                    <span className="text-[14px] font-medium leading-tight text-white md:text-[15px]">{text}</span>
                   </div>
                 ))}
               </div>
@@ -505,7 +497,7 @@ export default function Home() {
 
           </div>
 
-          <div className="w-full flex justify-center mt-[60px]">
+          <div className="mt-[40px] flex w-full justify-center md:mt-[60px]">
             <button className="flex items-center w-[202px] h-[52px] bg-black rounded-full pl-[6px] pr-[24px] py-[6px] gap-[12px] hover:bg-zinc-800 transition-colors">
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-black rounded-full shrink-0">
                 <HomeArrowIcon color="black" />
@@ -534,14 +526,12 @@ export default function Home() {
         </div>
 
         {/* Heading */}
-        <h2 
-          className="font-bricolage flex flex-col items-center text-center text-[clamp(3rem,8vw,114px)] font-semibold leading-[0.88] tracking-[-0.04em] uppercase text-white"
-        >
+        <h2 className="home-process-heading flex w-full flex-col items-center text-center font-bricolage text-[38px] font-semibold uppercase leading-[0.88] tracking-[-0.04em] text-white md:w-auto md:text-[clamp(3rem,8vw,114px)]">
           {HOME_PROCESS.copy.headingLines.map((line) => <span key={line}>{line}</span>)}
           
-          <span className="flex items-center justify-center gap-[20px] mt-[8px]">
+          <span className="mt-[4px] flex items-center justify-center gap-[8px] md:mt-[8px] md:gap-[20px]">
             <span>{HOME_PROCESS.copy.headingConnector}</span>
-            <span className="flex h-[clamp(58px,8vw,114px)] w-[clamp(250px,31vw,442px)] items-center justify-center rounded-[100px] bg-[#8763FF] px-[20px] text-white">
+            <span className="flex h-[52px] w-[210px] items-center justify-center rounded-[100px] bg-[#8763FF] px-[12px] text-white md:h-[clamp(58px,8vw,114px)] md:w-[clamp(250px,31vw,442px)] md:px-[20px]">
               {HOME_PROCESS.copy.headingHighlight}
             </span>
           </span>
@@ -753,23 +743,23 @@ export default function Home() {
       {/* =========================================
           FAQ SECTION
       ========================================= */}
-      <section className="w-full flex flex-col items-center pt-[150px] pb-[150px] px-4 bg-black overflow-x-clip">
-        <div className="w-full max-w-[1440px] flex flex-col items-center">
+      <section className="flex min-h-[873.5px] w-full flex-col items-center overflow-x-clip bg-black px-5 pb-[48px] pt-[48px] md:min-h-0 md:px-4 md:pb-[150px] md:pt-[150px]">
+        <div className="flex w-full max-w-[1440px] flex-col items-center">
 
           <h2
-            className="font-bricolage text-center text-[70px] font-semibold leading-[0.9] uppercase tracking-[-0.03em] text-white mb-[80px]"
+            className="mb-[56px] w-full px-[8px] text-center font-bricolage text-[40px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] text-white md:mb-[80px] md:px-0 md:text-[70px]"
           >
             {HOME_FAQ.heading.map((line) => <span key={line} className="block">{line}</span>)}
           </h2>
 
-          <div className="flex flex-col w-full max-w-[916.84px]">
+          <div className="flex w-full max-w-[916.84px] flex-col gap-[20px] md:gap-0">
             {HOME_FAQ.items.map((faq, index) => (
               <div
                 key={index}
-                className={`flex flex-col w-full transition-colors duration-300 ${faq.isOpen ? 'bg-[#1A1A1A] rounded-[24px] p-[32px] mb-[16px]' : 'border-b border-white/10 py-[32px]'}`}
+                className={`flex w-full flex-col transition-colors duration-300 ${faq.isOpen ? 'rounded-[20px] bg-[#1A1A1A] p-[20px] md:mb-[16px] md:rounded-[24px] md:p-[32px]' : 'border-b border-white/10 py-[32px] md:py-[32px]'}`}
               >
                 <div className="flex items-center justify-between gap-[20px] cursor-pointer">
-                  <h3 className="text-[24px] font-bold text-white leading-tight tracking-tight">
+                  <h3 className="text-[18px] font-bold leading-tight tracking-tight text-white md:text-[24px]">
                     {faq.question}
                   </h3>
                   
@@ -779,7 +769,7 @@ export default function Home() {
                 </div>
                 
                 {faq.isOpen && (
-                  <p className="text-[16px] font-medium text-[#9F9F9F] mt-[16px] max-w-[800px]">
+                  <p className="mt-[12px] max-w-[800px] text-[14px] font-medium text-[#9F9F9F] md:mt-[16px] md:text-[16px]">
                     {faq.answer}
                   </p>
                 )}

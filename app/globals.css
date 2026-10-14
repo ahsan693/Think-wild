@@ -336,8 +336,59 @@ h6 {
   }
 }
 
-@media (max-width: 639px) {
+@media (max-width: 767px) {
+  .process-story {
+    min-height: 1938px;
+    padding: 64px 20px;
+  }
+
+  .process-story-intro {
+    margin-bottom: 32px;
+  }
+
+  .process-story-intro > p {
+    margin-top: 16px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
   .process-story-cards {
     grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+
+  .process-story-card {
+    height: 344px;
+    padding: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-hero-title.type-002 {
+    font-size: clamp(58px, 17.8vw, 66px);
+    line-height: 0.787;
+    white-space: normal;
+  }
+
+  .home-introduction-copy.type-026 {
+    font-size: 32px;
+    line-height: 44px;
+  }
+
+  .home-mission-heading.type-015 {
+    font-size: 40px;
+    line-height: 0.92;
+  }
+
+  .home-services-heading.type-010 {
+    font-size: clamp(40px, 11.2vw, 48px);
+    line-height: 0.9;
+  }
+
+  .home-service-card-heading.type-012 {
+    font-size: 40px;
+    line-height: 0.9;
+    letter-spacing: -2px;
   }
 }

@@ -17,6 +17,12 @@ export const FOOTER_DATA = {
         { label: 'Creators', href: '#' },
         { label: 'Work', href: '#' },
       ],
+      mobileLinks: [
+        { label: 'About', href: '#' },
+        { label: 'Services', href: '#' },
+        { label: 'Our approach', href: '#' },
+        { label: 'Contact', href: '#' },
+      ],
     },
     {
       heading: 'Services',
@@ -26,6 +32,7 @@ export const FOOTER_DATA = {
         { label: 'Social Media Management', href: '#' },
         { label: 'Social Creative Strategy', href: '#' },
       ],
+      mobileLinks: undefined,
     },
     {
       heading: 'Resources',
@@ -34,6 +41,7 @@ export const FOOTER_DATA = {
         { label: 'Work', href: '#' },
         { label: 'Contact', href: '#' },
       ],
+      mobileLinks: undefined,
     },
   ],
   copyright: '© 2026 Think Wild Media. All rights reserved.',
