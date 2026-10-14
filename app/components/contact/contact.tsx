@@ -361,7 +361,7 @@ export default function ContactPage() {
           <div className="contact-faq-group flex flex-col w-full max-w-[916.84px] items-center">
             
             {/* Header Block */}
-            <div className="contact-faq-header flex flex-col items-center w-full mb-[70px]">
+            <div className="contact-faq-header flex flex-col items-center w-full mb-[64px]">
               <div className="contact-faq-eyebrow flex items-center justify-center px-[20px] py-[6px] rounded-full border border-white/20 mb-[32px]">
                 <span className="type-113 text-white uppercase tracking-widest">
                   {CONTACT_FAQ_DATA.eyebrow}
@@ -376,39 +376,47 @@ export default function ContactPage() {
             </div>
 
             {/* FAQs List Items */}
-            <div className="flex flex-col w-full">
+            <div className="contact-faq-list flex flex-col w-full gap-[20px] md:gap-0">
               {CONTACT_FAQ_DATA.items.map((faq, index) => {
                 const isOpen = openFaqIndex === index;
+                const answerId = `contact-faq-answer-${index}`;
                 
                 return (
                   <div
-                    key={index}
-                    // Height adjusts dynamically: open ~195px, closed ~94px[cite: 129]
-                    className={`contact-faq-item flex flex-col w-full transition-all duration-300 ${
-                      isOpen ? 'contact-faq-open bg-[#1A1A1A] rounded-[24px] py-[32px] mb-[16px]' : 'border-b border-white/10 py-[32px]'
+                    key={faq.question}
+                    className={`contact-faq-item flex flex-col w-full transition-colors duration-200 ${
+                      isOpen
+                        ? 'contact-faq-open bg-[#1A1A1A] rounded-[24px] py-[20px] mb-0 md:mb-[16px] md:px-[40px] md:py-[38px]'
+                        : 'border-b border-white/10 py-[20px] md:border-b-2 md:border-white/[0.08] md:px-[40px] md:py-[30px]'
                     }`}
                   >
-                    {/* The 73.42px inner padding is applied to align the text inwards as per Figma[cite: 128] */}
-                    <div 
-                      className="flex items-center justify-between gap-[20px] cursor-pointer px-[20px] lg:px-[73.42px]"
-                      onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                    <h3 className="contact-faq-question type-038 text-white">
+                      <button
+                        type="button"
+                        aria-expanded={isOpen}
+                        aria-controls={answerId}
+                        onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                        className="flex w-full cursor-pointer items-center justify-between gap-[20px] text-left"
+                      >
+                        <span>{faq.question}</span>
+                        <span className="flex h-[32px] w-[32px] shrink-0 items-center justify-center rounded-full border border-white/30 text-white">
+                          {isOpen ? <Minus size={16} /> : <Plus size={16} />}
+                        </span>
+                      </button>
+                    </h3>
+
+                    <div
+                      id={answerId}
+                      aria-hidden={!isOpen}
+                      className="contact-faq-answer-panel overflow-hidden transition-[max-height] duration-200 ease-in-out"
+                      style={{ maxHeight: isOpen ? '220px' : '0px' }}
                     >
-                      <h3 className="contact-faq-question type-038 text-white">
-                        {faq.question}
-                      </h3>
-                      
-                      <div className="flex items-center justify-center w-[32px] h-[32px] rounded-full border border-white/30 shrink-0 text-white transition-transform">
-                        {isOpen ? <Minus size={16} /> : <Plus size={16} />}
-                      </div>
-                    </div>
-                    
-                    {isOpen && (
-                      <div className="w-full px-[20px] lg:px-[73.42px] mt-[16px]">
-                        <p className="contact-faq-answer type-088 text-[#9F9F9F]">
+                      <div className="mt-[16px]">
+                        <p className="contact-faq-answer type-088 max-w-[800px] text-[#9F9F9F]">
                           {faq.answer}
                         </p>
                       </div>
-                    )}
+                    </div>
                   </div>
                 );
               })}
