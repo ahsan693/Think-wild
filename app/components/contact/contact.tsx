@@ -77,18 +77,18 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen w-full bg-black text-white flex flex-col font-[family-name:var(--font-saans)] overflow-x-clip">
+    <main className="contact-page min-h-screen w-full bg-black text-white flex flex-col font-[family-name:var(--font-saans)] overflow-x-clip">
       <Header />
 
       {/* =========================================
           CONTACT HERO & FORM SECTION
       ========================================= */}
-      <section className="w-full flex justify-center pt-[180px] pb-[100px] px-4">
-        <div className="flex flex-col lg:flex-row items-start justify-between w-full max-w-[1280px] gap-[50px] lg:gap-[50px]">
+      <section className="contact-hero-section w-full flex justify-center pt-[180px] pb-[100px] px-4">
+        <div className="contact-hero-layout flex flex-col lg:flex-row items-start justify-between w-full max-w-[1280px] gap-[50px] lg:gap-[50px]">
           
           {/* LEFT COLUMN (Text & Avatars) */}
-          <div className="flex flex-col w-full lg:w-[615px] shrink-0">
-            <div className="flex flex-col gap-[10px] mb-[40px]">
+          <div className="contact-hero-copy flex flex-col w-full lg:w-[615px] shrink-0">
+            <div className="contact-hero-intro flex flex-col gap-[10px] mb-[40px]">
               <div className="flex items-center">
                 {CONTACT_HERO_DATA.creatorImages.map((image) => (
                   <div
@@ -103,24 +103,33 @@ export default function ContactPage() {
             </div>
 
             <h1 
-              className="type-010 flex flex-col text-white"
+              className="contact-hero-title type-010 flex flex-col text-white"
             >
               {CONTACT_HERO_DATA.headingLines.map((line) => <span key={line}>{line}</span>)}
-              <span className="inline-flex items-center justify-center bg-[#155149] text-[#8CFE79] rounded-[100px] px-[24px] pb-[8px] mt-[10px] w-max">
+              <span className="contact-hero-highlight inline-flex items-center justify-center bg-[#155149] text-[#8CFE79] rounded-[100px] px-[24px] pb-[8px] mt-[10px] w-max">
                 {CONTACT_HERO_DATA.highlight}
               </span>
             </h1>
+            <a
+              href="#contact-form"
+              className="contact-mobile-project-cta mt-[24px] md:hidden h-[52px] w-max items-center gap-[12px] rounded-full bg-[#8CFE79] py-[6px] pl-[6px] pr-[24px] text-black"
+            >
+              <span className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-black text-white">
+                <ArrowRight className="h-5 w-5" strokeWidth={2} />
+              </span>
+              <span className="type-087">Start a project</span>
+            </a>
           </div>
 
           {/* RIGHT COLUMN (Form) */}
-          <div className="flex flex-col w-full lg:w-[615px] shrink-0">
-            <div className="w-full bg-[#155149] rounded-t-[30px] px-[40px] pt-[19px] pb-[40px] -mb-[20px] z-0">
-              <h2 className="font-heading text-[24px] font-bold text-[#8CFE79]">
+          <div id="contact-form" className="contact-form-column flex flex-col w-full lg:w-[615px] shrink-0 scroll-mt-8">
+            <div className="contact-form-heading-panel w-full bg-[#155149] rounded-t-[30px] px-[40px] pt-[19px] pb-[40px] -mb-[20px] z-0">
+              <h2 className="contact-form-heading font-heading text-[24px] font-bold text-[#8CFE79]">
                 {CONTACT_FORM_DATA.heading}
               </h2>
             </div>
 
-            <div className="w-full bg-white rounded-[30px] p-[40px] z-10 relative shadow-2xl flex min-h-[1068.03px] flex-col justify-between gap-[20px] text-black">
+            <div className="contact-form-card w-full bg-white rounded-[30px] p-[40px] z-10 relative shadow-2xl flex min-h-[1068.03px] flex-col justify-between gap-[20px] text-black">
               {CONTACT_FORM_DATA.fields.map((field) => (
                 <div key={field.name} className="flex flex-col gap-[10px]">
                   <label className="type-106 text-black">{field.label}</label>
@@ -171,25 +180,25 @@ export default function ContactPage() {
       {/* =========================================
           DYNAMIC DISCOVERY CALL CALENDAR SECTION
       ========================================= */}
-      <section className="w-full flex flex-col items-center border-t border-white/10 pt-[100px] pb-[100px] px-4">
+      <section className="contact-booking-section w-full flex flex-col items-center border-t border-white/10 pt-[100px] pb-[100px] px-4">
         <div className="w-full max-w-[1200px] flex flex-col items-center">
           
-          <div className="flex flex-col items-center text-center gap-[16px] mb-[40px]">
+          <div className="contact-booking-intro flex flex-col items-center text-center gap-[16px] mb-[40px]">
             <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full border border-white/20 gap-[6px]">
               <div className="w-[6px] h-[6px] rounded-full bg-[#8CFE79] shadow-[0_0_8px_#8CFE79]"></div>
               <span className="type-139 font-bold text-white">{CONTACT_BOOKING_DATA.eyebrow}</span>
             </div>
             <h2 
-              className="type-015 text-white"
+              className="contact-section-title type-015 text-white"
             >
               {CONTACT_BOOKING_DATA.heading}
             </h2>
-            <p className="type-087 max-w-[500px] text-[#9F9F9F]">
+            <p className="contact-mobile-body type-087 max-w-[500px] text-[#9F9F9F]">
               {CONTACT_BOOKING_DATA.description}
             </p>
           </div>
 
-          <div className="flex w-full max-w-[1200px] flex-col items-center overflow-hidden rounded-[24px] bg-white px-[12px] pt-[16px] pb-[20px] lg:h-[625.78px] lg:px-0 lg:pt-[56px] lg:pb-0">
+          <div className="contact-booking-widget flex w-full max-w-[1200px] flex-col items-center overflow-hidden rounded-[24px] bg-white px-[12px] pt-[16px] pb-[20px] lg:h-[625.78px] lg:px-0 lg:pt-[56px] lg:pb-0">
           <div className="flex w-full max-w-[1040px] flex-col overflow-hidden rounded-[8px] border border-[#E5E7EB] bg-white text-black lg:h-[489.78px] lg:flex-row">
             
             {/* Col 1: Details */}
@@ -345,22 +354,22 @@ export default function ContactPage() {
           FAQ / BEFORE WE GET STARTED SECTION
       ========================================= */}
       {/* Outer section constrained to 1440px width[cite: 126] */}
-      <section className="w-full flex flex-col items-center pt-[50px] pb-[150px] px-4 overflow-x-clip border-t border-white/10">
+      <section className="contact-faq-section w-full flex flex-col items-center pt-[50px] pb-[150px] px-4 overflow-x-clip border-t border-white/10">
         <div className="w-full max-w-[1440px] flex flex-col items-center">
 
           {/* Inner container to hold the ~916.84px wide FAQ group[cite: 127] */}
-          <div className="flex flex-col w-full max-w-[916.84px] items-center">
+          <div className="contact-faq-group flex flex-col w-full max-w-[916.84px] items-center">
             
             {/* Header Block */}
-            <div className="flex flex-col items-center w-full mb-[70px]">
-              <div className="flex items-center justify-center px-[20px] py-[6px] rounded-full border border-white/20 mb-[32px]">
+            <div className="contact-faq-header flex flex-col items-center w-full mb-[70px]">
+              <div className="contact-faq-eyebrow flex items-center justify-center px-[20px] py-[6px] rounded-full border border-white/20 mb-[32px]">
                 <span className="type-113 text-white uppercase tracking-widest">
                   {CONTACT_FAQ_DATA.eyebrow}
                 </span>
               </div>
               
               <h2
-                className="type-015 text-center text-white"
+                className="contact-section-title type-015 text-center text-white"
               >
                 {CONTACT_FAQ_DATA.heading}
               </h2>
@@ -375,8 +384,8 @@ export default function ContactPage() {
                   <div
                     key={index}
                     // Height adjusts dynamically: open ~195px, closed ~94px[cite: 129]
-                    className={`flex flex-col w-full transition-all duration-300 ${
-                      isOpen ? 'bg-[#1A1A1A] rounded-[24px] py-[32px] mb-[16px]' : 'border-b border-white/10 py-[32px]'
+                    className={`contact-faq-item flex flex-col w-full transition-all duration-300 ${
+                      isOpen ? 'contact-faq-open bg-[#1A1A1A] rounded-[24px] py-[32px] mb-[16px]' : 'border-b border-white/10 py-[32px]'
                     }`}
                   >
                     {/* The 73.42px inner padding is applied to align the text inwards as per Figma[cite: 128] */}
@@ -384,7 +393,7 @@ export default function ContactPage() {
                       className="flex items-center justify-between gap-[20px] cursor-pointer px-[20px] lg:px-[73.42px]"
                       onClick={() => setOpenFaqIndex(isOpen ? null : index)}
                     >
-                      <h3 className="type-038 text-white">
+                      <h3 className="contact-faq-question type-038 text-white">
                         {faq.question}
                       </h3>
                       
@@ -395,7 +404,7 @@ export default function ContactPage() {
                     
                     {isOpen && (
                       <div className="w-full px-[20px] lg:px-[73.42px] mt-[16px]">
-                        <p className="type-088 text-[#9F9F9F]">
+                        <p className="contact-faq-answer type-088 text-[#9F9F9F]">
                           {faq.answer}
                         </p>
                       </div>

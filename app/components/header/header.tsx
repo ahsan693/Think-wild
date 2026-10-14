@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { HEADER_CTA, HEADER_LOGO, HEADER_NAVIGATION } from '@/lib/data/header';
 
@@ -13,6 +16,32 @@ type HeaderProps = {
 
 export default function Header({ arrowIconSrc }: HeaderProps = {}) {
   const CtaIcon = headerIcons[HEADER_CTA.icon];
+  const mobileMenuRef = useRef<HTMLDetailsElement>(null);
+
+  useEffect(() => {
+    const closeMenuOnOutsidePointer = (event: PointerEvent) => {
+      const menu = mobileMenuRef.current;
+      const target = event.target;
+
+      if (menu?.open && target instanceof Node && !menu.contains(target)) {
+        menu.open = false;
+      }
+    };
+
+    const closeMenuOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && mobileMenuRef.current?.open) {
+        mobileMenuRef.current.open = false;
+      }
+    };
+
+    document.addEventListener('pointerdown', closeMenuOnOutsidePointer, true);
+    document.addEventListener('keydown', closeMenuOnEscape);
+
+    return () => {
+      document.removeEventListener('pointerdown', closeMenuOnOutsidePointer, true);
+      document.removeEventListener('keydown', closeMenuOnEscape);
+    };
+  }, []);
 
   return (
     // Main wrapper limiting width to 1200px
@@ -65,11 +94,17 @@ export default function Header({ arrowIconSrc }: HeaderProps = {}) {
           </div>
         </Link>
 
-        <details className="relative md:hidden">
+        <details ref={mobileMenuRef} className="relative md:hidden">
           <summary className="flex h-[48px] w-[72px] cursor-pointer list-none items-center justify-center text-[20px] font-medium leading-[28px] text-white">
             Menu
           </summary>
           <div className="absolute right-0 top-full z-50 mt-[8px] flex w-[min(350px,calc(100vw-40px))] flex-col gap-[4px] rounded-[16px] border border-[#262626] bg-black p-[16px] shadow-xl">
+            <Link
+              href="/"
+              className="rounded-[8px] px-[12px] py-[10px] text-[16px] font-medium text-white hover:bg-white/10"
+            >
+              Home
+            </Link>
             {HEADER_NAVIGATION.map((item) => (
               <Link
                 key={item.label}
