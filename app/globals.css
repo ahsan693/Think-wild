@@ -77,6 +77,11 @@ body {
   font-family: var(--font-saans);
 }
 
+.home-hero-mask {
+  display: block;
+  overflow: hidden;
+}
+
 h1,
 h2,
 h3,
@@ -230,6 +235,16 @@ h6 {
   opacity: 0;
   transform: translateX(-50%);
   will-change: opacity, transform;
+}
+
+@media (min-width: 1600px) {
+  .process-story {
+    height: 200svh;
+  }
+
+  .process-story-cta {
+    bottom: max(5svh, calc(47svh - 344px));
+  }
 }
 
 @keyframes social-platform-marquee {

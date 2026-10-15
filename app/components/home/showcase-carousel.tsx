@@ -92,6 +92,7 @@ export default function ShowcaseCarousel({ items }: ShowcaseCarouselProps) {
               key={setIndex}
               ref={setIndex === CENTER_SET ? centerSetRef : undefined}
               aria-hidden={setIndex !== CENTER_SET}
+              data-scroll-stagger={setIndex === CENTER_SET ? '' : undefined}
               className="flex h-full shrink-0 items-center gap-[10px] pr-[10px]"
             >
               {items.map((item, index) => {
@@ -104,11 +105,12 @@ export default function ShowcaseCarousel({ items }: ShowcaseCarouselProps) {
                 return (
                   <div
                     key={`${setIndex}-${item.id}`}
+                    data-scroll-card={setIndex === CENTER_SET ? '' : undefined}
                     className={`relative flex shrink-0 flex-col overflow-hidden rounded-[24px] border border-white/10 bg-zinc-900 ${
                       isLarge ? 'h-[302px] w-[220px]' : 'h-[259.72px] w-[189.2px]'
                     } ${alignClass}`}
                   >
-                    <div className="relative w-full flex-1 overflow-hidden">
+                    <div data-image-reveal={setIndex === CENTER_SET ? '' : undefined} className="relative w-full flex-1 overflow-hidden">
                       <img src={item.imageUrl} alt={item.username} className="h-full w-full object-cover" />
                       <div className="absolute left-[12px] top-[12px] z-10 flex items-center gap-[4px]">
                         <span className="text-[13px] font-semibold tracking-tight text-white drop-shadow-md">{item.username}</span>

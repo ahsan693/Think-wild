@@ -13,7 +13,7 @@ export default function HomeFaq() {
   return (
     <section className="flex min-h-[873.5px] w-full flex-col items-center overflow-x-clip bg-black px-5 pb-[48px] pt-[48px] md:min-h-0 md:px-4 md:pb-[150px] md:pt-[135px]">
       <div className="flex w-full max-w-[1440px] flex-col items-center">
-        <h2 className="mb-[56px] w-full px-[8px] text-center font-bricolage text-[40px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] text-white md:mb-[64px] md:px-0 md:text-[70px]">
+        <h2 data-scroll-reveal className="mb-[56px] w-full px-[8px] text-center font-bricolage text-[40px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] text-white md:mb-[64px] md:px-0 md:text-[70px]">
           {HOME_FAQ.heading.map((line) => (
             <span key={line} className="block">
               {line}
@@ -21,7 +21,7 @@ export default function HomeFaq() {
           ))}
         </h2>
 
-        <div className="flex w-full max-w-[916.84px] flex-col gap-[20px] md:gap-0">
+        <div data-scroll-stagger className="flex w-full max-w-[916.84px] flex-col gap-[20px] md:gap-0">
           {HOME_FAQ.items.map((faq, index) => {
             const isOpen = openFaqIndex === index;
             const answerId = `home-faq-answer-${index}`;
@@ -29,6 +29,7 @@ export default function HomeFaq() {
             return (
               <div
                 key={faq.question}
+                data-scroll-card
                 className={`flex w-full flex-col transition-colors duration-200 ${
                   isOpen
                     ? 'rounded-[20px] bg-[#1A1A1A] p-[20px] md:mb-[16px] md:rounded-[24px] md:px-[40px] md:py-[38px]'

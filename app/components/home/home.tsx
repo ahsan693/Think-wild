@@ -3,6 +3,7 @@ import Footer from '@/app/components/footer/footer';
 import Image from 'next/image';
 import ShowcaseCarousel from '@/app/components/home/showcase-carousel';
 import ProcessStory from '@/app/components/home/process-story';
+import HomeScrollAnimations from '@/app/components/home/home-scroll-animations';
 import CtaOrbitSection from '@/app/components/home/cta-orbit-section';
 import HomeFaq from '@/app/components/home/home-faq';
 import SocialTicker from '@/app/components/social-ticker';
@@ -68,6 +69,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen w-full bg-black text-white flex flex-col overflow-x-clip font-[family-name:var(--font-saans)]">
+      <HomeScrollAnimations />
       <Header arrowIconSrc={HOME_ARROW_ICON_SRC} />
 
       <section className="mx-auto flex w-full max-w-[1381px] flex-col items-center pb-[64px] pt-[24px] md:pb-[100px] md:pt-[155px]">
@@ -76,7 +78,7 @@ export default function Home() {
             HERO SECTION
         ========================================= */}
         <div className="flex w-full max-w-[860px] flex-col items-center gap-[24px] px-[20px] md:gap-[30px] md:px-0">
-          <div className="flex h-[35px] items-center justify-center rounded-full border border-[#999999]/40 bg-[#1D1D1D] px-[20px] py-[6px]">
+          <div data-hero-support className="flex h-[35px] items-center justify-center rounded-full border border-[#999999]/40 bg-[#1D1D1D] px-[20px] py-[6px]">
             <span className="text-[14px] font-medium text-white">
               {HOME_HERO.copy.eyebrow}
             </span>
@@ -86,21 +88,25 @@ export default function Home() {
             <h1 
               className="home-hero-title type-002 flex w-full flex-col items-center text-center font-semibold tracking-[-0.06em] uppercase md:w-auto md:whitespace-nowrap"
             >
-              <span className="block whitespace-nowrap">{HOME_HERO.copy.firstLine}</span>
+              <span className="home-hero-mask block whitespace-nowrap">
+                <span data-hero-line className="block">{HOME_HERO.copy.firstLine}</span>
+              </span>
               <span className="mt-[4px] flex flex-col items-center justify-center gap-[8px] md:mt-[16px] md:flex-row md:gap-[24px]">
-                <span>{HOME_HERO.copy.secondLine}</span>
-                <span className="flex h-[64px] min-w-0 items-center justify-center rounded-full bg-[#8CFE79] px-[32px] pb-[4px] text-[#1D1D1D] md:h-[129px] md:min-w-[418px] md:rounded-[66px] md:px-[40px] md:pb-[8px]">
+                <span className="home-hero-mask">
+                  <span data-hero-line className="block">{HOME_HERO.copy.secondLine}</span>
+                </span>
+                <span data-hero-highlight className="flex h-[64px] min-w-0 items-center justify-center rounded-full bg-[#8CFE79] px-[32px] pb-[4px] text-[#1D1D1D] md:h-[129px] md:min-w-[418px] md:rounded-[66px] md:px-[40px] md:pb-[8px]">
                   {HOME_HERO.copy.highlight}
                 </span>
               </span>
             </h1>
           </div>
 
-          <p className="mt-0 w-full max-w-[860px] px-[2px] text-center text-[14px] font-medium leading-[18px] text-[#9F9F9F] md:mt-[10px] md:px-0 md:text-[17.7px] md:leading-[20.8px]">
+          <p data-hero-support className="mt-0 w-full max-w-[860px] px-[2px] text-center text-[14px] font-medium leading-[18px] text-[#9F9F9F] md:mt-[10px] md:px-0 md:text-[17.7px] md:leading-[20.8px]">
             {HOME_HERO.copy.description}
           </p>
 
-          <button className="mt-0 flex h-[50px] w-[194px] items-center justify-between gap-[12px] rounded-full bg-white py-[5px] pl-[6px] pr-[16px] transition-colors hover:bg-gray-200 md:mt-[12px] md:h-[55px] md:w-auto md:justify-start md:py-[6px] md:pr-[20px]">
+          <button data-hero-support className="mt-0 flex h-[50px] w-[194px] items-center justify-between gap-[12px] rounded-full bg-white py-[5px] pl-[6px] pr-[16px] transition-colors hover:bg-gray-200 md:mt-[12px] md:h-[55px] md:w-auto md:justify-start md:py-[6px] md:pr-[20px]">
             <div className="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#1D1D1D] text-white">
               <HomeArrowIcon />
             </div>
@@ -114,7 +120,7 @@ export default function Home() {
             VIDEO CAROUSEL SECTION
         ========================================= */}
         <div className="relative mx-auto mt-[80px] h-[441px] w-full max-w-[1381px] overflow-hidden">
-          <div className="ml-[-22px] flex h-full w-max items-start gap-[12px] md:ml-0 md:w-full md:justify-between md:gap-0">
+          <div data-scroll-stagger className="ml-[-22px] flex h-full w-max items-start gap-[12px] md:ml-0 md:w-full md:justify-between md:gap-0">
             {creatorCards.map((item, index) => {
               const isLeftEdge = index === 0;
               const isRightEdge = index === creatorCards.length - 1;
@@ -123,9 +129,11 @@ export default function Home() {
               return (
                 <div
                   key={`${item.id}-${index}`}
+                  data-scroll-card
                   className={`relative h-[407px] w-[186px] shrink-0 ${isEdgeCard ? 'md:w-[100px] md:overflow-hidden' : 'md:w-[200px]'} ${isDown ? 'mt-[20px]' : 'mt-0'}`}
                 >
                   <div
+                    data-image-reveal
                     className={`absolute left-0 top-[7px] h-[393px] w-[186px] overflow-hidden rounded-[25.6px] border border-[#262626] bg-black ${isLeftEdge ? 'md:left-[-93px]' : isRightEdge ? 'md:left-0' : 'md:left-[7px]'}`}
                   >
                     <img
@@ -177,12 +185,12 @@ export default function Home() {
             CONTENT PARAGRAPH SECTION
         ========================================= */}
         <div className="mt-[80px] flex w-full max-w-[860px] flex-col items-start px-0 md:mt-[140px]">
-          <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#1A1A1A] border border-[#333] mb-[32px]">
+          <div data-scroll-reveal className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#1A1A1A] border border-[#333] mb-[32px]">
             <span className="text-[14px] font-medium text-white/70">{HOME_INTRODUCTION.eyebrow}</span>
           </div>
-          <div className="home-introduction-copy type-026 space-y-[40px] text-white">
+          <div data-scroll-stagger className="home-introduction-copy type-026 space-y-[40px] text-white">
             {HOME_INTRODUCTION.paragraphs.map((paragraph, paragraphIndex) => (
-              <p key={paragraphIndex}>
+              <p key={paragraphIndex} data-scroll-card>
                 {paragraph.map((part, partIndex) => {
                   if (!('highlight' in part)) return part.text;
 
@@ -207,7 +215,7 @@ export default function Home() {
           <div className="flex h-auto w-full max-w-[610px] items-start gap-[12px] md:h-[463.45px] md:w-[610px] md:shrink-0 md:gap-[16px]">
             {/* Left Video */}
             <div className="relative h-[280px] min-w-0 flex-1 md:h-[390px] md:w-[297px] md:flex-none">
-              <div className="w-full h-full rounded-[30px] overflow-hidden bg-zinc-900 border border-[#333]">
+              <div data-image-reveal className="w-full h-full rounded-[30px] overflow-hidden bg-zinc-900 border border-[#333]">
                 <img
                   src={HOME_MISSION.images.creator.src}
                   alt={HOME_MISSION.copy.imageAlt}
@@ -226,7 +234,7 @@ export default function Home() {
 
             {/* Right Image */}
             <div className="relative mt-[28px] h-[300px] min-w-0 flex-1 md:mt-[50px] md:h-[413.45px] md:w-[297px] md:flex-none">
-              <div className="w-full h-full rounded-[30px] overflow-hidden bg-zinc-900 border border-[#333]">
+              <div data-image-reveal className="w-full h-full rounded-[30px] overflow-hidden bg-zinc-900 border border-[#333]">
                 <img 
                   src={HOME_MISSION.images.fashion.src}
                   alt={HOME_MISSION.images.fashion.alt}
@@ -242,17 +250,17 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex w-full max-w-[610px] flex-col items-start gap-[24px]">
-            <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#1A1A1A] border border-[#333]">
+          <div data-scroll-stagger className="flex w-full max-w-[610px] flex-col items-start gap-[24px]">
+            <div data-scroll-card className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#1A1A1A] border border-[#333]">
               <span className="text-[14px] font-medium text-white/70">{HOME_MISSION.copy.eyebrow}</span>
             </div>
-            <h2 className="home-mission-heading type-015 w-full text-white">
+            <h2 data-scroll-card className="home-mission-heading type-015 w-full text-white">
               {HOME_MISSION.copy.heading}
             </h2>
-            <p className="w-full pr-0 text-[15px] font-medium leading-[22px] text-[#9F9F9F] md:pr-[20px] md:text-[17.7px] md:leading-[24px]">
+            <p data-scroll-card className="w-full pr-0 text-[15px] font-medium leading-[22px] text-[#9F9F9F] md:pr-[20px] md:text-[17.7px] md:leading-[24px]">
               {HOME_MISSION.copy.description}
             </p>
-            <button className="flex items-center h-[55px] bg-white rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors mt-[12px]">
+            <button data-scroll-card className="flex items-center h-[55px] bg-white rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors mt-[12px]">
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
                 <HomeArrowIcon />
               </div>
@@ -268,17 +276,19 @@ export default function Home() {
         ========================================= */}
         <div className="relative mt-[clamp(8rem,18vw,12.5rem)] flex w-full flex-col items-center">
           <h2 
+            data-scroll-reveal
             className="home-services-heading type-010 mb-[clamp(3rem,8vw,6.25rem)] w-full max-w-[1280px] px-4 text-center"
           >
             {HOME_SERVICES.copy.heading}
           </h2>
 
-          <div className="flex w-full max-w-[1270px] flex-col items-center gap-[clamp(7rem,18vh,12rem)] px-4 pb-[20vh]">
+          <div data-scroll-stagger className="flex w-full max-w-[1270px] flex-col items-center gap-[clamp(7rem,18vh,12rem)] px-4 pb-[20vh]">
             {HOME_SERVICES.items.map((service, index) => {
               const topOffset = 96 + (index * 24);
               return (
                 <article
                   key={service.id}
+                  data-scroll-card
                   className="service-stack-card sticky w-full shrink-0"
                   style={{ top: `${topOffset}px`, zIndex: index + 1 }}
                 >
@@ -318,7 +328,7 @@ export default function Home() {
 
                     {/* Right Image */}
                     <div className="flex h-[240px] w-full items-center justify-end p-4 pt-0 md:h-full md:w-1/2 md:p-[24px] md:pl-0">
-                      <div className="w-full h-full rounded-[24px] overflow-hidden bg-black/10">
+                      <div data-image-reveal className="w-full h-full rounded-[24px] overflow-hidden bg-black/10">
                         <img 
                           src={service.imageUrl}
                           alt={service.title}
@@ -341,19 +351,19 @@ export default function Home() {
       <section className="flex min-h-[940px] w-full flex-col items-center overflow-x-clip bg-black pb-[64px] pt-[64px] md:min-h-0 md:pb-[120px] md:pt-[100px]">
         
         {/* Header Pill */}
-        <div className="mb-[32px] flex items-center justify-center rounded-full border border-white/20 px-[16px] py-[6px] md:mb-[32px]">
+        <div data-scroll-reveal className="mb-[32px] flex items-center justify-center rounded-full border border-white/20 px-[16px] py-[6px] md:mb-[32px]">
           <span className="text-[12px] font-bold uppercase tracking-widest text-white">
             {HOME_SHOWCASE.copy.eyebrow}
           </span>
         </div>
 
         {/* Heading */}
-        <h2 className="home-showcase-heading mb-[16px] w-full max-w-[300px] px-[20px] text-center font-bricolage text-[42px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] text-white md:mb-[24px] md:max-w-[701px] md:px-0 md:text-[70px] md:leading-[63px]">
+        <h2 data-scroll-reveal className="home-showcase-heading mb-[16px] w-full max-w-[300px] px-[20px] text-center font-bricolage text-[42px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] text-white md:mb-[24px] md:max-w-[701px] md:px-0 md:text-[70px] md:leading-[63px]">
           {HOME_SHOWCASE.copy.heading}
         </h2>
 
         {/* Subtext */}
-        <p className="mb-[40px] max-w-[330px] px-[20px] text-center text-[14px] font-medium text-[#9F9F9F] md:mb-[80px] md:max-w-[500px] md:px-0 md:text-[16px]">
+        <p data-scroll-reveal className="mb-[40px] max-w-[330px] px-[20px] text-center text-[14px] font-medium text-[#9F9F9F] md:mb-[80px] md:max-w-[500px] md:px-0 md:text-[16px]">
           {HOME_SHOWCASE.copy.description}
         </p>
 
@@ -373,14 +383,14 @@ export default function Home() {
                 {HOME_FEATURED_WORK.copy.eyebrow}
               </span>
             </div>
-            <h2 className="max-w-[240px] text-center font-bricolage text-[42px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] md:max-w-none md:text-[70px]">
+            <h2 data-scroll-reveal className="max-w-[240px] text-center font-bricolage text-[42px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] md:max-w-none md:text-[70px]">
               {HOME_FEATURED_WORK.copy.heading}
             </h2>
           </div>
 
-          <div className="flex w-full max-w-[804px] flex-col overflow-hidden rounded-[32px] bg-white text-black md:h-[387px] md:flex-row">
+          <div data-scroll-card className="flex w-full max-w-[804px] flex-col overflow-hidden rounded-[32px] bg-white text-black md:h-[387px] md:flex-row">
             
-            <div className="h-[200px] w-full shrink-0 overflow-hidden bg-zinc-100 md:h-full md:w-[49.25%]">
+            <div data-image-reveal className="h-[200px] w-full shrink-0 overflow-hidden bg-zinc-100 md:h-full md:w-[49.25%]">
               <img 
                 src={HOME_FEATURED_WORK.image.src}
                 alt={HOME_FEATURED_WORK.copy.projectName}
@@ -456,7 +466,7 @@ export default function Home() {
             <div className="flex items-center justify-center w-[202px] h-[35px] border border-black/20 rounded-full bg-transparent">
               <span className="text-[14px] font-medium text-black">{HOME_WHY_US.copy.eyebrow}</span>
             </div>
-            <h2 className="max-w-[210px] text-center font-bricolage text-[38px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] text-black md:max-w-none md:text-[70px]">
+            <h2 data-scroll-reveal className="max-w-[210px] text-center font-bricolage text-[38px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] text-black md:max-w-none md:text-[70px]">
               {HOME_WHY_US.copy.heading}
             </h2>
           </div>
@@ -465,16 +475,16 @@ export default function Home() {
 
             <div className="flex w-full flex-col pt-0 md:w-[334px] md:pt-[40px]">
               <h4 className="mb-[24px] text-[18px] font-bold text-black md:mb-[32px] md:text-[20px]">{HOME_WHY_US.copy.listHeading}</h4>
-              <div className="flex flex-col">
+              <div data-scroll-stagger className="flex flex-col">
                 {HOME_WHY_US.copy.services.map((item) => (
-                  <div key={item} className="border-t border-black/10 py-[20px] text-[14px] font-medium text-black md:py-[16px] md:text-[16px]">
+                  <div key={item} data-scroll-card className="border-t border-black/10 py-[20px] text-[14px] font-medium text-black md:py-[16px] md:text-[16px]">
                     {item}
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="flex h-auto w-full flex-col items-start justify-center rounded-[24px] bg-[#155149] p-[24px] shadow-xl md:h-[539px] md:w-[538px] md:rounded-[32px] md:p-[48px]">
+            <div data-scroll-card className="flex h-auto w-full flex-col items-start justify-center rounded-[24px] bg-[#155149] p-[24px] shadow-xl md:h-[539px] md:w-[538px] md:rounded-[32px] md:p-[48px]">
               <div className="mb-[24px] flex items-center md:mb-[48px]">
                 <Image
                   src={HEADER_LOGO.src}
@@ -645,7 +655,7 @@ export default function Home() {
         
         <div className="flex w-full max-w-[1280px] gap-[30px] h-auto lg:h-[640px] flex-col lg:flex-row">
           
-          <div className="relative w-full lg:w-[575px] h-[400px] lg:h-full rounded-[30px] overflow-hidden shrink-0">
+          <div data-image-reveal className="relative w-full lg:w-[575px] h-[400px] lg:h-full rounded-[30px] overflow-hidden shrink-0">
             <img 
               src={HOME_CAPABILITIES.image.src}
               alt={HOME_CAPABILITIES.image.alt}
@@ -659,7 +669,7 @@ export default function Home() {
             </h3>
           </div>
 
-          <div className="relative flex h-full w-full shrink-0 flex-col gap-[40px] rounded-[30px] bg-[#8CFE79] p-[30px] text-black lg:h-[640px] lg:w-[675px] lg:flex-none lg:gap-[60px] lg:p-[50px]">
+          <div data-scroll-card className="relative flex h-full w-full shrink-0 flex-col gap-[40px] rounded-[30px] bg-[#8CFE79] p-[30px] text-black lg:h-[640px] lg:w-[675px] lg:flex-none lg:gap-[60px] lg:p-[50px]">
             <div className="flex w-full flex-col items-center gap-[20px] lg:h-[188.8px] lg:justify-between lg:gap-0">
               <div className="flex h-[35px] w-[146px] items-center justify-center rounded-full bg-black">
                 <span className="text-[12px] font-medium text-white">
@@ -678,10 +688,11 @@ export default function Home() {
               </span>
             </div>
 
-            <div className="flex w-full flex-col gap-[20px] lg:h-[291px] lg:flex-none">
+            <div data-scroll-stagger className="flex w-full flex-col gap-[20px] lg:h-[291px] lg:flex-none">
               {HOME_CAPABILITIES.copy.items.map((item) => (
                 <div
                   key={item.heading}
+                  data-scroll-card
                   className="grid w-full grid-cols-[1.4fr_1fr] items-start gap-[20px] border-b border-black/10 pb-[12px] last:border-b-0 last:pb-0 lg:flex-1"
                 >
                   <h3 className="text-[20px] font-bold uppercase leading-[1] lg:text-[24px]">
