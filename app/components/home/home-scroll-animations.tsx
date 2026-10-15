@@ -18,6 +18,7 @@ export default function HomeScrollAnimations() {
     media.add(
       {
         isMobile: '(max-width: 767px)',
+        isDesktop: '(min-width: 768px)',
         reduceMotion: '(prefers-reduced-motion: reduce)',
       },
       () => {
