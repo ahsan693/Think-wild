@@ -2,6 +2,7 @@ import Header from '@/app/components/header/header';
 import Footer from '@/app/components/footer/footer';
 import SocialTicker from '@/app/components/social-ticker';
 import CtaOrbitSection from '@/app/components/home/cta-orbit-section';
+import ScrollAnimations from '@/app/components/scroll-animations';
 import { ArrowRight, BadgeCheck } from 'lucide-react';
 import {
   ABOUT_HERO_DATA,
@@ -15,6 +16,7 @@ import { CTA_ORBIT_DATA } from '@/lib/data/ctaorbitdata';
 export default function AboutPage() {
   return (
     <main className="about-page min-h-screen w-full bg-black text-white flex flex-col overflow-x-clip font-[family-name:var(--font-saans)]">
+      <ScrollAnimations />
       <Header />
 
       {/* =========================================
@@ -24,7 +26,7 @@ export default function AboutPage() {
         <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-[1280px] gap-0 md:gap-[80px]">
           
           <div className="flex flex-col items-start w-full lg:w-[600px] shrink-0">
-            <div className="flex items-center justify-center px-[12px] py-[4px] rounded-full border border-white/20 mb-[8px] md:px-[20px] md:py-[6px] md:mb-[40px]">
+            <div data-hero-support className="flex items-center justify-center px-[12px] py-[4px] rounded-full border border-white/20 mb-[8px] md:px-[20px] md:py-[6px] md:mb-[40px]">
               <span className="type-113 text-white">
                 {ABOUT_HERO_DATA.eyebrow}
               </span>
@@ -33,13 +35,17 @@ export default function AboutPage() {
             <h1 
               className="about-hero-title type-004 mb-[4px] whitespace-pre-line text-white md:mb-[12px]"
             >
-              <span className="hidden md:block">{ABOUT_HERO_DATA.heading}</span>
-              <span className="whitespace-pre-line md:hidden">
-                {ABOUT_HERO_DATA.heading.replace('BRANDS WORTH', 'BRANDS\nWORTH')}
+              <span className="scroll-text-mask hidden md:block">
+                <span data-hero-line className="block">{ABOUT_HERO_DATA.heading}</span>
+              </span>
+              <span className="scroll-text-mask block whitespace-pre-line md:hidden">
+                <span data-hero-line className="block">
+                  {ABOUT_HERO_DATA.heading.replace('BRANDS WORTH', 'BRANDS\nWORTH')}
+                </span>
               </span>
             </h1>
 
-            <div className={`about-hero-highlight-wrap flex items-center justify-center ${ABOUT_HERO_DATA.highlightBackground} w-max max-w-full h-[56px] rounded-[100px] px-[12px] mb-[8px] md:w-[460px] md:h-[120px] md:px-0 md:mb-[30px]`}>
+            <div data-hero-highlight className={`about-hero-highlight-wrap flex items-center justify-center ${ABOUT_HERO_DATA.highlightBackground} w-max max-w-full h-[56px] rounded-[100px] px-[12px] mb-[8px] md:w-[460px] md:h-[120px] md:px-0 md:mb-[30px]`}>
               <span 
                 className="about-hero-highlight type-005 translate-y-[1px] text-white md:translate-y-[4px]"
               >
@@ -47,11 +53,11 @@ export default function AboutPage() {
               </span>
             </div>
 
-            <p className="about-hero-description type-060 mb-[8px] max-w-[360px] text-[#9F9F9F] md:mb-[40px] md:max-w-[612px]">
+            <p data-hero-support className="about-hero-description type-060 mb-[8px] max-w-[360px] text-[#9F9F9F] md:mb-[40px] md:max-w-[612px]">
               {ABOUT_HERO_DATA.description}
             </p>
 
-            <button className="flex items-center h-[52px] w-[186px] bg-white rounded-full pl-[6px] pr-[24px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors">
+            <button data-hero-support className="flex items-center h-[52px] w-[186px] bg-white rounded-full pl-[6px] pr-[24px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors">
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
                 <ArrowRight className="w-5 h-5" strokeWidth={2} />
               </div>
@@ -61,18 +67,18 @@ export default function AboutPage() {
             </button>
           </div>
 
-          <div className="relative flex max-md:hidden w-full lg:w-[600px] h-[560px] shrink-0 items-center justify-center">
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[294px] h-[320px] rounded-[24px] overflow-hidden opacity-60">
+          <div data-scroll-stagger className="relative flex max-md:hidden w-full lg:w-[600px] h-[560px] shrink-0 items-center justify-center">
+            <div data-scroll-card data-image-reveal className="absolute left-0 top-1/2 -translate-y-1/2 w-[294px] h-[320px] rounded-[24px] overflow-hidden opacity-60">
               <img src={ABOUT_HERO_DATA.images.bgLeft} alt={ABOUT_HERO_DATA.images.backgroundLeftAlt} className="w-full h-full object-cover blur-[2px]" />
               <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
             </div>
 
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[294px] h-[320px] rounded-[24px] overflow-hidden opacity-60">
+            <div data-scroll-card data-image-reveal className="absolute right-0 top-1/2 -translate-y-1/2 w-[294px] h-[320px] rounded-[24px] overflow-hidden opacity-60">
               <img src={ABOUT_HERO_DATA.images.bgRight} alt={ABOUT_HERO_DATA.images.backgroundRightAlt} className="w-full h-full object-cover blur-[2px]" />
               <div className="absolute inset-0 bg-gradient-to-l from-black/80 to-transparent"></div>
             </div>
 
-            <div className="relative z-10 w-[232px] h-[484px] bg-black rounded-[41.44px] overflow-hidden border-[6px] border-[#1D1D1D] shadow-2xl shadow-black/50 flex flex-col">
+            <div data-scroll-card data-image-reveal className="relative z-10 w-[232px] h-[484px] bg-black rounded-[41.44px] overflow-hidden border-[6px] border-[#1D1D1D] shadow-2xl shadow-black/50 flex flex-col">
               <img 
                 src={ABOUT_HERO_DATA.images.phoneVideo} 
                 alt={ABOUT_HERO_DATA.images.phoneAlt}
@@ -138,7 +144,7 @@ export default function AboutPage() {
         className="flex min-h-[960px] w-full justify-center px-4 pt-[50px] pb-[50px] md:min-h-0 md:pt-0"
       >
         <div className="flex w-full max-w-[1280px] flex-col items-center gap-[40px] md:gap-[80px]">
-          <div className="flex flex-col items-center gap-[20px] text-center">
+          <div data-scroll-reveal className="flex flex-col items-center gap-[20px] text-center">
             <span className="about-team-eyebrow type-087 rounded-full border border-white/40 px-[14px] py-[4px] text-white md:px-[20px] md:py-[6px]">
               {ABOUT_TEAM_EXPERIENCE_DATA.eyebrow}
             </span>
@@ -150,10 +156,11 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div className="grid w-full grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4 md:gap-[30px]">
+          <div data-scroll-stagger className="grid w-full grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4 md:gap-[30px]">
             {ABOUT_TEAM_EXPERIENCE_DATA.cards.map((card) => (
               <div
                 key={card.value}
+                data-scroll-card
                 className={`about-team-card flex h-[160px] flex-col justify-between rounded-[20px] p-[24px] md:h-[225.59px] md:p-[30px] ${card.backgroundColor} ${card.textColor}`}
               >
                 <p className="about-team-card-label type-136">{card.label}</p>
@@ -191,14 +198,14 @@ export default function AboutPage() {
             </span>
           </div>
 
-          <div className="flex flex-col items-center text-center w-full max-w-[752px] gap-[18px] z-10 md:gap-[30px]">
+          <div data-scroll-stagger className="flex flex-col items-center text-center w-full max-w-[752px] gap-[18px] z-10 md:gap-[30px]">
             <div className="flex items-center justify-center px-[20px] py-[6px] rounded-full border border-white/20">
-              <span className="type-113 text-white">
+              <span data-scroll-card className="type-113 text-white">
                 {ABOUT_STORY_DATA.eyebrow}
               </span>
             </div>
 
-            <h2 className="about-story-heading type-015 text-white">
+            <h2 data-scroll-card className="about-story-heading type-015 text-white">
               <span className="hidden whitespace-pre-line md:block">
                 {ABOUT_STORY_DATA.heading}
               </span>
@@ -213,13 +220,13 @@ export default function AboutPage() {
 
             <div className="flex flex-col gap-[16px]">
               {ABOUT_STORY_DATA.paragraphs.map((text, idx) => (
-                <p key={idx} className="about-story-copy type-066 text-[#9F9F9F]">
+                <p key={idx} data-scroll-card className="about-story-copy type-066 text-[#9F9F9F]">
                   {text}
                 </p>
               ))}
             </div>
 
-            <button className="flex items-center justify-between h-[52px] w-[263px] bg-white rounded-full pl-[6px] pr-[32px] py-[6px] hover:bg-gray-200 transition-colors mt-[10px]">
+            <button data-scroll-card className="flex items-center justify-between h-[52px] w-[263px] bg-white rounded-full pl-[6px] pr-[32px] py-[6px] hover:bg-gray-200 transition-colors mt-[10px]">
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
                 <ArrowRight className="w-5 h-5" strokeWidth={2} />
               </div>
@@ -246,6 +253,7 @@ export default function AboutPage() {
             </div>
 
             <h2
+              data-scroll-reveal
               className="about-values-heading type-015 mb-[16px] flex flex-col items-center text-center text-white md:mb-[30px]"
             >
               {ABOUT_VALUES_DATA.headingRows.map((row, rowIndex) => (
@@ -270,13 +278,14 @@ export default function AboutPage() {
             <SocialTicker />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[15px] gap-y-[12px] md:gap-y-[17px] w-full max-w-[860px]">
+          <div data-scroll-stagger className="grid grid-cols-1 md:grid-cols-2 gap-x-[15px] gap-y-[12px] md:gap-y-[17px] w-full max-w-[860px]">
             {ABOUT_VALUES_DATA.cards.map((card, idx) => {
               const heightClass = idx < 2 ? 'md:h-[317.12px]' : 'md:h-[283.98px]';
 
               return (
                 <div
                   key={idx}
+                  data-scroll-card
                   className={`about-values-card flex h-[190px] flex-col items-center text-center justify-center w-full md:w-[422.5px] ${heightClass} py-[20px] px-[20px] rounded-[20px] md:py-[47px] md:px-[40px] md:rounded-[30px] ${card.bgColor}`}
                 >
                   <div className="w-[40px] h-[40px] bg-[#1D1D1D] rounded-[10px] flex items-center justify-center text-white mb-[16px] shrink-0 md:w-[48px] md:h-[48px] md:rounded-[12px] md:mb-[24px]">
@@ -304,21 +313,22 @@ export default function AboutPage() {
         <div className="about-partnership min-h-[885px] w-full max-w-[1200px] border-y border-[#2C2C29] px-[20px] py-[48px] flex flex-col md:min-h-0 md:flex-row items-start justify-between gap-[36px] md:px-0 md:py-[110px] md:gap-[77px]">
 
           {/* Left Block: 481px wide[cite: 119] */}
-          <div className="flex flex-col w-full md:w-[481px] shrink-0">
+          <div data-scroll-stagger className="flex flex-col w-full md:w-[481px] shrink-0">
             {/* Heading: 70px font, 63px line-height, -3% tracking[cite: 119] */}
             <h2
+              data-scroll-card
               className="about-partnership-heading type-015 mb-[16px] whitespace-pre-line text-white md:mb-[24px]"
             >
               {CREATIVE_PARTNERSHIP_DATA.heading}
             </h2>
 
             {/* Description: 17.6px font, 20.8px line-height[cite: 120] */}
-            <p className="about-partnership-description type-066 mb-[24px] text-[#9F9F9F] md:mb-[40px]">
+            <p data-scroll-card className="about-partnership-description type-066 mb-[24px] text-[#9F9F9F] md:mb-[40px]">
               {CREATIVE_PARTNERSHIP_DATA.description}
             </p>
 
             {/* Action Button */}
-            <button className="flex items-center h-[52px] bg-white rounded-full pl-[6px] pr-[24px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors w-max">
+            <button data-scroll-card className="flex items-center h-[52px] bg-white rounded-full pl-[6px] pr-[24px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors w-max">
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
                 <ArrowRight className="w-5 h-5" strokeWidth={2} />
               </div>
@@ -329,10 +339,11 @@ export default function AboutPage() {
           </div>
 
           {/* Right Block (List): 561.5px wide[cite: 120] */}
-          <div className="flex flex-col w-full md:w-[561.5px] shrink-0">
+          <div data-scroll-stagger className="flex flex-col w-full md:w-[561.5px] shrink-0">
             {CREATIVE_PARTNERSHIP_DATA.list.map((item, idx) => (
               <div
                 key={idx}
+                data-scroll-card
                 // Bottom border, 35px bottom padding, 50px left padding for the number[cite: 122]
                 className="relative flex flex-col pb-[26px] mb-[26px] border-b border-[#2C2C29] last:border-0 last:mb-0 last:pb-0 pl-[22px] md:pb-[35px] md:mb-[35px] md:pl-[50px]"
               >

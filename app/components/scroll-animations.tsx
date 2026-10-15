@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export default function HomeScrollAnimations() {
+export default function ScrollAnimations() {
   const markerRef = useRef<HTMLSpanElement>(null);
 
   useLayoutEffect(() => {

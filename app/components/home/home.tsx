@@ -3,7 +3,7 @@ import Footer from '@/app/components/footer/footer';
 import Image from 'next/image';
 import ShowcaseCarousel from '@/app/components/home/showcase-carousel';
 import ProcessStory from '@/app/components/home/process-story';
-import HomeScrollAnimations from '@/app/components/home/home-scroll-animations';
+import ScrollAnimations from '@/app/components/scroll-animations';
 import CtaOrbitSection from '@/app/components/home/cta-orbit-section';
 import HomeFaq from '@/app/components/home/home-faq';
 import SocialTicker from '@/app/components/social-ticker';
@@ -69,7 +69,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen w-full bg-black text-white flex flex-col overflow-x-clip font-[family-name:var(--font-saans)]">
-      <HomeScrollAnimations />
+      <ScrollAnimations />
       <Header arrowIconSrc={HOME_ARROW_ICON_SRC} />
 
       <section className="mx-auto flex w-full max-w-[1381px] flex-col items-center pb-[64px] pt-[24px] md:pb-[100px] md:pt-[155px]">
@@ -88,11 +88,11 @@ export default function Home() {
             <h1 
               className="home-hero-title type-002 flex w-full flex-col items-center text-center font-semibold tracking-[-0.06em] uppercase md:w-auto md:whitespace-nowrap"
             >
-              <span className="home-hero-mask block whitespace-nowrap">
+              <span className="scroll-text-mask block whitespace-nowrap">
                 <span data-hero-line className="block">{HOME_HERO.copy.firstLine}</span>
               </span>
               <span className="mt-[4px] flex flex-col items-center justify-center gap-[8px] md:mt-[16px] md:flex-row md:gap-[24px]">
-                <span className="home-hero-mask">
+                <span className="scroll-text-mask">
                   <span data-hero-line className="block">{HOME_HERO.copy.secondLine}</span>
                 </span>
                 <span data-hero-highlight className="flex h-[64px] min-w-0 items-center justify-center rounded-full bg-[#8CFE79] px-[32px] pb-[4px] text-[#1D1D1D] md:h-[129px] md:min-w-[418px] md:rounded-[66px] md:px-[40px] md:pb-[8px]">
