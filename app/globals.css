@@ -102,6 +102,29 @@ body {
   transform-origin: left center;
 }
 
+.home-creator-ticker {
+  --home-creator-edge-fade: min(24vw, 110px);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--home-creator-edge-fade),
+    #000 calc(100% - var(--home-creator-edge-fade)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--home-creator-edge-fade),
+    #000 calc(100% - var(--home-creator-edge-fade)),
+    transparent 100%
+  );
+}
+
+.home-creator-ticker-track {
+  animation: home-creator-ticker 22s linear infinite;
+  will-change: transform;
+}
+
 h1,
 h2,
 h3,
@@ -297,6 +320,12 @@ h6 {
   }
 }
 
+@keyframes home-creator-ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .service-stack-card {
     position: static;
@@ -307,7 +336,8 @@ h6 {
   }
 
   .animate-marquee,
-  .animate-marquee-right {
+  .animate-marquee-right,
+  .home-creator-ticker-track {
     animation-play-state: paused;
   }
 

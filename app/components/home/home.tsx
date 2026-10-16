@@ -57,12 +57,7 @@ function RevealWords({ text }: { text: string }) {
 }
 
 export default function Home() {
-  const creatorEdgeCard = HOME_HERO.creators[4];
-  const creatorCards = [
-    creatorEdgeCard,
-    ...HOME_HERO.creators.filter((item) => item.id !== creatorEdgeCard.id),
-    creatorEdgeCard,
-  ];
+  const creatorCards = HOME_HERO.creators;
   const capabilityIcons = {
     check: CheckCircle2,
     chart: PieChart,
@@ -132,58 +127,64 @@ export default function Home() {
         {/* =========================================
             VIDEO CAROUSEL SECTION
         ========================================= */}
-        <div data-sequence-section className="relative mx-auto mt-[80px] h-[441px] w-full max-w-[1381px] overflow-hidden">
-          <div data-sequence-item className="ml-[-22px] flex h-full w-max items-start gap-[12px] md:ml-0 md:w-full md:justify-between md:gap-0">
-            {creatorCards.map((item, index) => {
-              const isLeftEdge = index === 0;
-              const isRightEdge = index === creatorCards.length - 1;
-              const isEdgeCard = isLeftEdge || isRightEdge;
-              const isDown = index % 2 === 1;
-              return (
+        <div data-sequence-section className="home-creator-ticker relative mx-auto mt-[80px] h-[441px] w-full max-w-[1381px] overflow-hidden">
+          <div data-sequence-item className="h-full w-full">
+            <div className="home-creator-ticker-track flex h-full w-max items-start">
+              {[0, 1, 2, 3].map((copy) => (
                 <div
-                  key={`${item.id}-${index}`}
-                  className={`relative h-[407px] w-[186px] shrink-0 ${isEdgeCard ? 'md:w-[100px] md:overflow-hidden' : 'md:w-[200px]'} ${isDown ? 'mt-[20px]' : 'mt-0'}`}
+                  key={`creator-set-${copy}`}
+                  aria-hidden={copy > 0}
+                  className="flex h-full shrink-0 items-start gap-[12px] pr-[12px]"
                 >
-                  <div
-                    className={`absolute left-0 top-[7px] h-[393px] w-[186px] overflow-hidden rounded-[25.6px] border border-[#262626] bg-black ${isLeftEdge ? 'md:left-[-93px]' : isRightEdge ? 'md:left-0' : 'md:left-[7px]'}`}
-                  >
-                    <img
-                      src={item.imageUrl}
-                      alt={item.username}
-                      className="absolute inset-0 h-full w-full object-cover opacity-80"
-                    />
-                    <div className="pointer-events-none absolute inset-x-0 top-0 h-[60px] bg-gradient-to-b from-black/60 to-transparent" />
-                    <div className="absolute left-1/2 top-3 h-[16px] w-[50px] -translate-x-1/2 rounded-full bg-black" />
-                    <span className="absolute left-1/2 top-8 -translate-x-1/2 text-[10px] font-medium text-white/80">
-                      {HOME_HERO.carousel.platformLabel}
-                    </span>
-                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[120px] bg-gradient-to-t from-black/80 to-transparent" />
+                  {creatorCards.map((item, index) => {
+                    const isDown = index % 2 === 1;
+                    return (
+                      <div
+                        key={`${copy}-${item.id}`}
+                        className={`relative h-[407px] w-[186px] shrink-0 md:w-[200px] ${isDown ? 'mt-[20px]' : 'mt-0'}`}
+                      >
+                        <div className="absolute left-0 top-[7px] h-[393px] w-[186px] overflow-hidden rounded-[25.6px] border border-[#262626] bg-black md:left-[7px]">
+                          <img
+                            src={item.imageUrl}
+                            alt={copy === 0 ? item.username : ''}
+                            aria-hidden={copy > 0}
+                            className="absolute inset-0 h-full w-full object-cover opacity-80"
+                          />
+                          <div className="pointer-events-none absolute inset-x-0 top-0 h-[60px] bg-gradient-to-b from-black/60 to-transparent" />
+                          <div className="absolute left-1/2 top-3 h-[16px] w-[50px] -translate-x-1/2 rounded-full bg-black" />
+                          <span className="absolute left-1/2 top-8 -translate-x-1/2 text-[10px] font-medium text-white/80">
+                            {HOME_HERO.carousel.platformLabel}
+                          </span>
+                          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[120px] bg-gradient-to-t from-black/80 to-transparent" />
 
-                    <div className="absolute bottom-[16px] left-[12px] flex h-[35px] w-[134px] flex-col justify-end">
-                      <div className="flex items-center gap-[4px]">
-                        <span className="text-[13px] font-semibold tracking-tight text-white">{item.username}</span>
-                        <Image
-                          src="/Think-Wild-Media-Developer-Assets/Icons/desktop/home/01-hero-creator-marketing/icons/verifiedbadge--1404-15100.svg"
-                          alt=""
-                          aria-hidden="true"
-                          width={14}
-                          height={14}
-                        />
+                          <div className="absolute bottom-[16px] left-[12px] flex h-[35px] w-[134px] flex-col justify-end">
+                            <div className="flex items-center gap-[4px]">
+                              <span className="text-[13px] font-semibold tracking-tight text-white">{item.username}</span>
+                              <Image
+                                src="/Think-Wild-Media-Developer-Assets/Icons/desktop/home/01-hero-creator-marketing/icons/verifiedbadge--1404-15100.svg"
+                                alt=""
+                                aria-hidden="true"
+                                width={14}
+                                height={14}
+                              />
+                            </div>
+                            <span className="truncate text-[10px] text-white/80">
+                              {item.likes} · {HOME_HERO.carousel.originalAudioLabel}
+                            </span>
+                          </div>
+
+                          <div className="absolute bottom-[24px] right-[12px] flex h-[78px] w-[18px] flex-col items-center justify-between gap-[12px]">
+                            <Heart className="h-[18px] w-[18px] fill-red-500 text-white stroke-none" />
+                            <MessageCircle className="h-[18px] w-[18px] fill-white text-white" />
+                            <ArrowUpRight className="h-[18px] w-[18px] text-white" strokeWidth={3} />
+                          </div>
+                        </div>
                       </div>
-                      <span className="truncate text-[10px] text-white/80">
-                        {item.likes} · {HOME_HERO.carousel.originalAudioLabel}
-                      </span>
-                    </div>
-
-                    <div className="absolute bottom-[24px] right-[12px] flex h-[78px] w-[18px] flex-col items-center justify-between gap-[12px]">
-                      <Heart className="h-[18px] w-[18px] fill-red-500 text-white stroke-none" />
-                      <MessageCircle className="h-[18px] w-[18px] fill-white text-white" />
-                      <ArrowUpRight className="h-[18px] w-[18px] text-white" strokeWidth={3} />
-                    </div>
-                  </div>
+                    );
+                  })}
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </div>
 
