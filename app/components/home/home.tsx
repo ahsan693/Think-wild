@@ -297,19 +297,22 @@ export default function Home() {
 
           <div className="flex w-full max-w-[1270px] flex-col items-center gap-[clamp(7rem,18vh,12rem)] px-4 pb-[20vh]">
             {HOME_SERVICES.items.map((service, index) => {
-              const topOffset = 96 + (index * 24);
               return (
                 <article
                   key={service.id}
                   data-sequence-section
                   className="service-stack-card sticky w-full shrink-0"
-                  style={{ top: `${topOffset}px`, zIndex: index + 1 }}
+                  style={{ top: '96px', zIndex: index + 1 }}
                 >
-                  <div data-sequence-item className={`relative mx-auto flex min-h-[740px] w-full max-w-[1060px] flex-col overflow-visible rounded-[32px] shadow-2xl md:h-[638px] md:min-h-0 md:flex-row ${service.bgColor}`}>
+                  <div data-sequence-item className={`relative mx-auto flex min-h-[740px] w-full max-w-[1060px] flex-col overflow-visible rounded-[32px] ${index === 0 ? 'rounded-tl-none' : ''} ${index === HOME_SERVICES.items.length - 1 ? 'rounded-tr-none' : ''} shadow-2xl md:h-[638px] md:min-h-0 md:flex-row ${service.bgColor}`}>
                     
-                    {/* Folder Tab */}
-                    <div className={`absolute -top-[32px] ${index % 2 === 0 ? 'left-6 md:left-[40px]' : 'right-6 md:right-[40px]'} flex h-[32px] items-center justify-center rounded-t-[12px] px-5 md:px-[24px] ${service.bgColor}`}>
-                      <span className={`text-[10px] font-bold uppercase tracking-widest md:text-[12px] ${service.textColor}`}>
+                    {/* Each sticky card contributes only its own tab to the stack. */}
+                    <div
+                      aria-hidden="true"
+                      className={`absolute -top-[33px] flex h-[33px] w-1/4 items-center px-[8px] md:px-[16px] ${service.bgColor} ${index === 0 ? 'rounded-tl-[16px]' : ''} ${index === HOME_SERVICES.items.length - 1 ? 'rounded-tr-[16px]' : ''}`}
+                      style={{ left: `${index * 25}%` }}
+                    >
+                      <span className={`whitespace-nowrap text-[9px] font-medium uppercase tracking-[0.08em] md:text-[12px] ${service.textColor}`}>
                         {HOME_SERVICES.copy.tabLabel} / {service.id}
                       </span>
                     </div>
@@ -473,9 +476,9 @@ export default function Home() {
           WHY THINK WILD SECTION
       ========================================= */}
       <section data-sequence-section className="flex min-h-[1568px] w-full flex-col items-center bg-black px-5 pb-[64px] pt-[64px] md:min-h-0 md:px-4 md:pb-[100px] md:pt-[150px]">
-        <div className="flex w-full max-w-[1280px] flex-col items-center rounded-[32px] bg-[#F5F5F5] px-[20px] py-[48px] md:rounded-[48px] md:px-[80px] md:py-[80px]">
+        <div className="flex w-full max-w-[1280px] flex-col items-center rounded-[32px] bg-[#F5F5F5] px-[20px] py-[48px] md:rounded-[48px] md:px-0 md:py-[50px]">
 
-          <div className="mb-[48px] flex w-full max-w-[858px] flex-col items-center gap-[24px] md:mb-[80px] md:gap-[32px]">
+          <div className="mb-[48px] flex w-full max-w-[858px] flex-col items-center gap-[24px] md:mb-[50px] md:gap-[50px]">
             <div className="flex items-center justify-center w-[202px] h-[35px] border border-black/20 rounded-full bg-transparent">
               <span className="text-[14px] font-medium text-black">{HOME_WHY_US.copy.eyebrow}</span>
             </div>
@@ -484,9 +487,9 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="flex w-full flex-col items-stretch gap-[36px] md:flex-row md:items-start md:justify-between md:gap-0">
+          <div className="flex w-full flex-col items-stretch gap-[36px] lg:flex-row lg:items-start lg:justify-center lg:gap-0">
 
-            <div className="flex w-full flex-col pt-0 md:w-[334px] md:pt-[40px]">
+            <div className="flex w-full flex-col pt-0 lg:h-[539px] lg:w-[334px] lg:flex-none lg:pt-[40px]">
               <h4 className="mb-[24px] text-[18px] font-bold text-black md:mb-[32px] md:text-[20px]">{HOME_WHY_US.copy.listHeading}</h4>
               <div className="flex flex-col">
                 {HOME_WHY_US.copy.services.map((item) => (
@@ -497,8 +500,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div data-sequence-item className="flex h-auto w-full flex-col items-start justify-center rounded-[24px] bg-[#155149] p-[24px] shadow-xl md:h-[539px] md:w-[538px] md:rounded-[32px] md:p-[48px]">
-              <div className="mb-[24px] flex items-center md:mb-[48px]">
+            <div data-sequence-item className="flex h-auto w-full flex-col items-start justify-center rounded-[24px] bg-[#155149] p-[24px] shadow-xl lg:h-[539px] lg:w-[538px] lg:flex-none lg:rounded-[32px] lg:p-[48px]">
+              <div className="mb-[24px] flex items-center lg:mb-[48px]">
                 <Image
                   src={HEADER_LOGO.src}
                   alt={HEADER_LOGO.alt}
@@ -507,11 +510,11 @@ export default function Home() {
                 />
               </div>
 
-              <div className="flex w-full flex-col gap-[20px] md:gap-[24px]">
+              <div className="flex w-full flex-col gap-[20px] lg:gap-[24px]">
                 {HOME_WHY_US.copy.benefits.map((text) => (
                   <div key={text} data-sequence-text className="flex items-start gap-[12px] border-b border-white/20 pb-[20px] last:border-0 last:pb-0 md:pb-[20px]">
                     <Check className="w-[18px] h-[18px] text-[#8CFE79] shrink-0 mt-[2px]" strokeWidth={3} />
-                    <span className="text-[14px] font-medium leading-tight text-white md:text-[15px]">{text}</span>
+                    <span className="text-[14px] font-medium leading-tight text-white lg:text-[15px]">{text}</span>
                   </div>
                 ))}
               </div>
@@ -519,7 +522,7 @@ export default function Home() {
 
           </div>
 
-          <div className="mt-[40px] flex w-full justify-center md:mt-[60px]">
+          <div className="mt-[40px] flex w-full justify-center md:mt-[50px]">
             <button className="flex items-center w-[202px] h-[52px] bg-black rounded-full pl-[6px] pr-[24px] py-[6px] gap-[12px] hover:bg-zinc-800 transition-colors">
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-black rounded-full shrink-0">
                 <HomeArrowIcon color="black" />

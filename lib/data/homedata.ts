@@ -302,7 +302,7 @@ export const HOME_WHY_US = {
     services: [
       'Creator matching',
       'Campaign strategy',
-      'Content production',
+      'Content production', 
       'Platform fit',
       'Reporting',
       'Ongoing optimisation',
