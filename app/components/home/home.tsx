@@ -43,6 +43,19 @@ function HomeArrowIcon({ color = 'white' }: { color?: 'white' | 'black' }) {
   );
 }
 
+function RevealWords({ text }: { text: string }) {
+  const words = text.trim().split(/\s+/);
+
+  return words.map((word, index) => (
+    <span key={`${word}-${index}`}>
+      <span className="scroll-text-mask home-hero-word-mask inline-block">
+        <span data-home-hero-word className="inline-block">{word}</span>
+      </span>
+      {index < words.length - 1 ? ' ' : null}
+    </span>
+  ));
+}
+
 export default function Home() {
   const creatorEdgeCard = HOME_HERO.creators[4];
   const creatorCards = [
@@ -69,7 +82,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen w-full bg-black text-white flex flex-col overflow-x-clip font-[family-name:var(--font-saans)]">
-      <ScrollAnimations />
+      <ScrollAnimations variant="home" />
       <Header arrowIconSrc={HOME_ARROW_ICON_SRC} />
 
       <section className="mx-auto flex w-full max-w-[1381px] flex-col items-center pb-[64px] pt-[24px] md:pb-[100px] md:pt-[155px]">
@@ -78,7 +91,7 @@ export default function Home() {
             HERO SECTION
         ========================================= */}
         <div className="flex w-full max-w-[860px] flex-col items-center gap-[24px] px-[20px] md:gap-[30px] md:px-0">
-          <div data-hero-support className="flex h-[35px] items-center justify-center rounded-full border border-[#999999]/40 bg-[#1D1D1D] px-[20px] py-[6px]">
+          <div data-home-hero-support className="flex h-[35px] items-center justify-center rounded-full border border-[#999999]/40 bg-[#1D1D1D] px-[20px] py-[6px]">
             <span className="text-[14px] font-medium text-white">
               {HOME_HERO.copy.eyebrow}
             </span>
@@ -88,25 +101,25 @@ export default function Home() {
             <h1 
               className="home-hero-title type-002 flex w-full flex-col items-center text-center font-semibold tracking-[-0.06em] uppercase md:w-auto md:whitespace-nowrap"
             >
-              <span className="scroll-text-mask block whitespace-nowrap">
-                <span data-hero-line className="block">{HOME_HERO.copy.firstLine}</span>
+              <span className="block whitespace-nowrap">
+                <RevealWords text={HOME_HERO.copy.firstLine} />
               </span>
               <span className="mt-[4px] flex flex-col items-center justify-center gap-[8px] md:mt-[16px] md:flex-row md:gap-[24px]">
-                <span className="scroll-text-mask">
-                  <span data-hero-line className="block">{HOME_HERO.copy.secondLine}</span>
+                <span>
+                  <RevealWords text={HOME_HERO.copy.secondLine} />
                 </span>
-                <span data-hero-highlight className="flex h-[64px] min-w-0 items-center justify-center rounded-full bg-[#8CFE79] px-[32px] pb-[4px] text-[#1D1D1D] md:h-[129px] md:min-w-[418px] md:rounded-[66px] md:px-[40px] md:pb-[8px]">
-                  {HOME_HERO.copy.highlight}
+                <span data-home-hero-highlight className="flex h-[64px] min-w-0 items-center justify-center rounded-full bg-[#8CFE79] px-[32px] pb-[4px] text-[#1D1D1D] md:h-[129px] md:min-w-[418px] md:rounded-[66px] md:px-[40px] md:pb-[8px]">
+                  <RevealWords text={HOME_HERO.copy.highlight} />
                 </span>
               </span>
             </h1>
           </div>
 
-          <p data-hero-support className="mt-0 w-full max-w-[860px] px-[2px] text-center text-[14px] font-medium leading-[18px] text-[#9F9F9F] md:mt-[10px] md:px-0 md:text-[17.7px] md:leading-[20.8px]">
+          <p data-home-hero-support className="mt-0 w-full max-w-[860px] px-[2px] text-center text-[14px] font-medium leading-[18px] text-[#9F9F9F] md:mt-[10px] md:px-0 md:text-[17.7px] md:leading-[20.8px]">
             {HOME_HERO.copy.description}
           </p>
 
-          <button data-hero-support className="mt-0 flex h-[50px] w-[194px] items-center justify-between gap-[12px] rounded-full bg-white py-[5px] pl-[6px] pr-[16px] transition-colors hover:bg-gray-200 md:mt-[12px] md:h-[55px] md:w-auto md:justify-start md:py-[6px] md:pr-[20px]">
+          <button data-home-hero-support className="mt-0 flex h-[50px] w-[194px] items-center justify-between gap-[12px] rounded-full bg-white py-[5px] pl-[6px] pr-[16px] transition-colors hover:bg-gray-200 md:mt-[12px] md:h-[55px] md:w-auto md:justify-start md:py-[6px] md:pr-[20px]">
             <div className="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#1D1D1D] text-white">
               <HomeArrowIcon />
             </div>
@@ -119,8 +132,8 @@ export default function Home() {
         {/* =========================================
             VIDEO CAROUSEL SECTION
         ========================================= */}
-        <div className="relative mx-auto mt-[80px] h-[441px] w-full max-w-[1381px] overflow-hidden">
-          <div data-scroll-stagger className="ml-[-22px] flex h-full w-max items-start gap-[12px] md:ml-0 md:w-full md:justify-between md:gap-0">
+        <div data-sequence-section className="relative mx-auto mt-[80px] h-[441px] w-full max-w-[1381px] overflow-hidden">
+          <div data-sequence-item className="ml-[-22px] flex h-full w-max items-start gap-[12px] md:ml-0 md:w-full md:justify-between md:gap-0">
             {creatorCards.map((item, index) => {
               const isLeftEdge = index === 0;
               const isRightEdge = index === creatorCards.length - 1;
@@ -129,11 +142,9 @@ export default function Home() {
               return (
                 <div
                   key={`${item.id}-${index}`}
-                  data-scroll-card
                   className={`relative h-[407px] w-[186px] shrink-0 ${isEdgeCard ? 'md:w-[100px] md:overflow-hidden' : 'md:w-[200px]'} ${isDown ? 'mt-[20px]' : 'mt-0'}`}
                 >
                   <div
-                    data-image-reveal
                     className={`absolute left-0 top-[7px] h-[393px] w-[186px] overflow-hidden rounded-[25.6px] border border-[#262626] bg-black ${isLeftEdge ? 'md:left-[-93px]' : isRightEdge ? 'md:left-0' : 'md:left-[7px]'}`}
                   >
                     <img
@@ -184,13 +195,13 @@ export default function Home() {
         {/* =========================================
             CONTENT PARAGRAPH SECTION
         ========================================= */}
-        <div className="mt-[80px] flex w-full max-w-[860px] flex-col items-start px-0 md:mt-[140px]">
-          <div data-scroll-reveal className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#1A1A1A] border border-[#333] mb-[32px]">
+        <div data-sequence-section className="mt-[80px] flex w-full max-w-[860px] flex-col items-start px-0 md:mt-[140px]">
+          <div data-sequence-item className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#1A1A1A] border border-[#333] mb-[32px]">
             <span className="text-[14px] font-medium text-white/70">{HOME_INTRODUCTION.eyebrow}</span>
           </div>
-          <div data-scroll-stagger className="home-introduction-copy type-026 space-y-[40px] text-white">
+          <div className="home-introduction-copy type-026 space-y-[40px] text-white">
             {HOME_INTRODUCTION.paragraphs.map((paragraph, paragraphIndex) => (
-              <p key={paragraphIndex} data-scroll-card>
+              <p key={paragraphIndex} data-sequence-item>
                 {paragraph.map((part, partIndex) => {
                   if (!('highlight' in part)) return part.text;
 
@@ -211,22 +222,22 @@ export default function Home() {
         {/* =========================================
             MISSION SECTION
         ========================================= */}
-        <div className="mt-[80px] flex w-full max-w-[1280px] flex-col items-center gap-[40px] px-[20px] md:mt-[160px] md:flex-row md:gap-[60px] md:px-0">
-          <div className="flex h-auto w-full max-w-[610px] items-start gap-[12px] md:h-[463.45px] md:w-[610px] md:shrink-0 md:gap-[16px]">
+        <div data-sequence-section className="mt-[80px] flex w-full max-w-[1280px] flex-col items-center gap-[40px] px-[20px] md:mt-[160px] md:flex-row md:gap-[60px] md:px-0">
+          <div data-sequence-item className="flex h-auto w-full max-w-[610px] items-start gap-[12px] md:h-[463.45px] md:w-[610px] md:shrink-0 md:gap-[16px]">
             {/* Left Video */}
             <div className="relative h-[280px] min-w-0 flex-1 md:h-[390px] md:w-[297px] md:flex-none">
-              <div data-image-reveal className="w-full h-full rounded-[30px] overflow-hidden bg-zinc-900 border border-[#333]">
+              <div data-sequence-image className="w-full h-full rounded-[30px] overflow-hidden bg-zinc-900 border border-[#333]">
                 <img
                   src={HOME_MISSION.images.creator.src}
                   alt={HOME_MISSION.copy.imageAlt}
                   className="w-full h-full object-cover opacity-80"
                 />
               </div>
-              <div className="absolute -top-[12px] -left-[16px] w-[74px] h-[33px] bg-white rounded-full flex items-center justify-center gap-[4px] rotate-[20deg] shadow-xl z-10">
+              <div data-sequence-text className="absolute -top-[12px] -left-[16px] w-[74px] h-[33px] bg-white rounded-full flex items-center justify-center gap-[4px] rotate-[20deg] shadow-xl z-10">
                 <Heart className="w-[14px] h-[14px] text-red-500 fill-red-500" />
                 <span className="text-black font-bold text-[13px]">{HOME_MISSION.copy.imageMetrics[0]}</span>
               </div>
-              <div className="absolute bottom-[20px] -right-[16px] w-[74px] h-[33px] bg-white rounded-full flex items-center justify-center gap-[4px] rotate-[20deg] shadow-xl z-10">
+              <div data-sequence-text className="absolute bottom-[20px] -right-[16px] w-[74px] h-[33px] bg-white rounded-full flex items-center justify-center gap-[4px] rotate-[20deg] shadow-xl z-10">
                 <MessageCircle className="w-[14px] h-[14px] text-blue-500 fill-blue-500" />
                 <span className="text-black font-bold text-[13px]">{HOME_MISSION.copy.imageMetrics[1]}</span>
               </div>
@@ -234,14 +245,14 @@ export default function Home() {
 
             {/* Right Image */}
             <div className="relative mt-[28px] h-[300px] min-w-0 flex-1 md:mt-[50px] md:h-[413.45px] md:w-[297px] md:flex-none">
-              <div data-image-reveal className="w-full h-full rounded-[30px] overflow-hidden bg-zinc-900 border border-[#333]">
+              <div data-sequence-image className="w-full h-full rounded-[30px] overflow-hidden bg-zinc-900 border border-[#333]">
                 <img 
                   src={HOME_MISSION.images.fashion.src}
                   alt={HOME_MISSION.images.fashion.alt}
                   className="w-full h-full object-cover opacity-80"
                 />
               </div>
-              <div className="absolute -top-[12px] -right-[16px] w-[87px] h-[33px] bg-white rounded-full flex items-center justify-center gap-[4px] -rotate-[19deg] shadow-xl z-10">
+              <div data-sequence-text className="absolute -top-[12px] -right-[16px] w-[87px] h-[33px] bg-white rounded-full flex items-center justify-center gap-[4px] -rotate-[19deg] shadow-xl z-10">
                 <div className="w-[14px] h-[14px] rounded-full bg-orange-500 flex items-center justify-center">
                   <div className="w-[6px] h-[6px] bg-white rounded-full" />
                 </div>
@@ -250,17 +261,17 @@ export default function Home() {
             </div>
           </div>
 
-          <div data-scroll-stagger className="flex w-full max-w-[610px] flex-col items-start gap-[24px]">
-            <div data-scroll-card className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#1A1A1A] border border-[#333]">
+          <div data-sequence-item className="flex w-full max-w-[610px] flex-col items-start gap-[24px]">
+            <div data-sequence-text className="flex items-center justify-center px-[16px] py-[6px] rounded-full bg-[#1A1A1A] border border-[#333]">
               <span className="text-[14px] font-medium text-white/70">{HOME_MISSION.copy.eyebrow}</span>
             </div>
-            <h2 data-scroll-card className="home-mission-heading type-015 w-full text-white">
+            <h2 data-sequence-text className="home-mission-heading type-015 w-full text-white">
               {HOME_MISSION.copy.heading}
             </h2>
-            <p data-scroll-card className="w-full pr-0 text-[15px] font-medium leading-[22px] text-[#9F9F9F] md:pr-[20px] md:text-[17.7px] md:leading-[24px]">
+            <p data-sequence-text className="w-full pr-0 text-[15px] font-medium leading-[22px] text-[#9F9F9F] md:pr-[20px] md:text-[17.7px] md:leading-[24px]">
               {HOME_MISSION.copy.description}
             </p>
-            <button data-scroll-card className="flex items-center h-[55px] bg-white rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors mt-[12px]">
+            <button data-sequence-text className="flex items-center h-[55px] bg-white rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors mt-[12px]">
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
                 <HomeArrowIcon />
               </div>
@@ -276,23 +287,24 @@ export default function Home() {
         ========================================= */}
         <div className="relative mt-[clamp(8rem,18vw,12.5rem)] flex w-full flex-col items-center">
           <h2 
-            data-scroll-reveal
+            data-sequence-section
+            data-sequence-item
             className="home-services-heading type-010 mb-[clamp(3rem,8vw,6.25rem)] w-full max-w-[1280px] px-4 text-center"
           >
             {HOME_SERVICES.copy.heading}
           </h2>
 
-          <div data-scroll-stagger className="flex w-full max-w-[1270px] flex-col items-center gap-[clamp(7rem,18vh,12rem)] px-4 pb-[20vh]">
+          <div className="flex w-full max-w-[1270px] flex-col items-center gap-[clamp(7rem,18vh,12rem)] px-4 pb-[20vh]">
             {HOME_SERVICES.items.map((service, index) => {
               const topOffset = 96 + (index * 24);
               return (
                 <article
                   key={service.id}
-                  data-scroll-card
+                  data-sequence-section
                   className="service-stack-card sticky w-full shrink-0"
                   style={{ top: `${topOffset}px`, zIndex: index + 1 }}
                 >
-                  <div className={`relative mx-auto flex min-h-[740px] w-full max-w-[1060px] flex-col overflow-visible rounded-[32px] shadow-2xl md:h-[638px] md:min-h-0 md:flex-row ${service.bgColor}`}>
+                  <div data-sequence-item className={`relative mx-auto flex min-h-[740px] w-full max-w-[1060px] flex-col overflow-visible rounded-[32px] shadow-2xl md:h-[638px] md:min-h-0 md:flex-row ${service.bgColor}`}>
                     
                     {/* Folder Tab */}
                     <div className={`absolute -top-[32px] ${index % 2 === 0 ? 'left-6 md:left-[40px]' : 'right-6 md:right-[40px]'} flex h-[32px] items-center justify-center rounded-t-[12px] px-5 md:px-[24px] ${service.bgColor}`}>
@@ -304,23 +316,23 @@ export default function Home() {
                     {/* Left Text */}
                     <div className="flex w-full flex-1 flex-col justify-between p-7 md:h-full md:w-1/2 md:flex-none md:p-[60px]">
                       <div className="flex flex-col gap-[24px]">
-                        <h3 
+                        <h3 data-sequence-text
                           className={`home-service-card-heading type-012 whitespace-pre-line ${service.textColor}`}
                         >
                           {service.title}
                         </h3>
-                        <p className={`max-w-[400px] text-[14px] font-medium leading-[21px] md:text-[16px] md:leading-[24px] ${service.textColor}`}>
+                        <p data-sequence-text className={`max-w-[400px] text-[14px] font-medium leading-[21px] md:text-[16px] md:leading-[24px] ${service.textColor}`}>
                           {service.description}
                         </p>
-                        <p className={`mt-2 text-[12px] font-bold tracking-tight md:mt-[16px] md:text-[14px] ${service.textColor}`}>
+                        <p data-sequence-text className={`mt-2 text-[12px] font-bold tracking-tight md:mt-[16px] md:text-[14px] ${service.textColor}`}>
                           {service.tags}
                         </p>
                       </div>
                       <div className="flex flex-col">
-                        <span className={`type-012 text-[60px] leading-none tracking-[-0.04em] md:text-[80px] ${service.textColor}`}>
+                        <span data-sequence-text className={`type-012 text-[60px] leading-none tracking-[-0.04em] md:text-[80px] ${service.textColor}`}>
                           {service.stat}
                         </span>
-                        <span className={`text-[16px] font-bold ${service.textColor}`}>
+                        <span data-sequence-text className={`text-[16px] font-bold ${service.textColor}`}>
                           {service.statLabel}
                         </span>
                       </div>
@@ -328,7 +340,7 @@ export default function Home() {
 
                     {/* Right Image */}
                     <div className="flex h-[240px] w-full items-center justify-end p-4 pt-0 md:h-full md:w-1/2 md:p-[24px] md:pl-0">
-                      <div data-image-reveal className="w-full h-full rounded-[24px] overflow-hidden bg-black/10">
+                      <div data-sequence-image className="w-full h-full rounded-[24px] overflow-hidden bg-black/10">
                         <img 
                           src={service.imageUrl}
                           alt={service.title}
@@ -348,22 +360,22 @@ export default function Home() {
       {/* =========================================
           CREATOR CONTENT SHOWCASE SECTION
       ========================================= */}
-      <section className="flex min-h-[940px] w-full flex-col items-center overflow-x-clip bg-black pb-[64px] pt-[64px] md:min-h-0 md:pb-[120px] md:pt-[100px]">
+      <section data-sequence-section className="flex min-h-[940px] w-full flex-col items-center overflow-x-clip bg-black pb-[64px] pt-[64px] md:min-h-0 md:pb-[120px] md:pt-[100px]">
         
         {/* Header Pill */}
-        <div data-scroll-reveal className="mb-[32px] flex items-center justify-center rounded-full border border-white/20 px-[16px] py-[6px] md:mb-[32px]">
+        <div data-sequence-item className="mb-[32px] flex items-center justify-center rounded-full border border-white/20 px-[16px] py-[6px] md:mb-[32px]">
           <span className="text-[12px] font-bold uppercase tracking-widest text-white">
             {HOME_SHOWCASE.copy.eyebrow}
           </span>
         </div>
 
         {/* Heading */}
-        <h2 data-scroll-reveal className="home-showcase-heading mb-[16px] w-full max-w-[300px] px-[20px] text-center font-bricolage text-[42px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] text-white md:mb-[24px] md:max-w-[701px] md:px-0 md:text-[70px] md:leading-[63px]">
+        <h2 data-sequence-item className="home-showcase-heading mb-[16px] w-full max-w-[300px] px-[20px] text-center font-bricolage text-[42px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] text-white md:mb-[24px] md:max-w-[701px] md:px-0 md:text-[70px] md:leading-[63px]">
           {HOME_SHOWCASE.copy.heading}
         </h2>
 
         {/* Subtext */}
-        <p data-scroll-reveal className="mb-[40px] max-w-[330px] px-[20px] text-center text-[14px] font-medium text-[#9F9F9F] md:mb-[80px] md:max-w-[500px] md:px-0 md:text-[16px]">
+        <p data-sequence-item className="mb-[40px] max-w-[330px] px-[20px] text-center text-[14px] font-medium text-[#9F9F9F] md:mb-[80px] md:max-w-[500px] md:px-0 md:text-[16px]">
           {HOME_SHOWCASE.copy.description}
         </p>
 
@@ -374,23 +386,23 @@ export default function Home() {
       {/* =========================================
           FEATURED WORK SECTION
       ========================================= */}
-      <section className="flex min-h-[942px] w-full flex-col items-center bg-black pb-[32px] pt-[64px] text-white md:min-h-0 md:pb-[100px] md:pt-[120px]">
+      <section data-sequence-section className="flex min-h-[942px] w-full flex-col items-center bg-black pb-[32px] pt-[64px] text-white md:min-h-0 md:pb-[100px] md:pt-[120px]">
         <div className="flex w-full max-w-[860px] flex-col items-center px-[20px] md:px-0">
           
           <div className="mb-[24px] flex w-full max-w-[750px] flex-col items-center gap-[16px] md:mb-[50px] md:gap-[24px]">
-            <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full border border-white/20">
+            <div data-sequence-item className="flex items-center justify-center px-[16px] py-[6px] rounded-full border border-white/20">
               <span className="text-[12px] font-bold uppercase tracking-widest text-white">
                 {HOME_FEATURED_WORK.copy.eyebrow}
               </span>
             </div>
-            <h2 data-scroll-reveal className="max-w-[240px] text-center font-bricolage text-[42px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] md:max-w-none md:text-[70px]">
+            <h2 data-sequence-item className="max-w-[240px] text-center font-bricolage text-[42px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] md:max-w-none md:text-[70px]">
               {HOME_FEATURED_WORK.copy.heading}
             </h2>
           </div>
 
-          <div data-scroll-card className="flex w-full max-w-[804px] flex-col overflow-hidden rounded-[32px] bg-white text-black md:h-[387px] md:flex-row">
+          <div data-sequence-item className="flex w-full max-w-[804px] flex-col overflow-hidden rounded-[32px] bg-white text-black md:h-[387px] md:flex-row">
             
-            <div data-image-reveal className="h-[200px] w-full shrink-0 overflow-hidden bg-zinc-100 md:h-full md:w-[49.25%]">
+            <div data-sequence-image className="h-[200px] w-full shrink-0 overflow-hidden bg-zinc-100 md:h-full md:w-[49.25%]">
               <img 
                 src={HOME_FEATURED_WORK.image.src}
                 alt={HOME_FEATURED_WORK.copy.projectName}
@@ -401,27 +413,27 @@ export default function Home() {
             <div className="flex min-h-[306px] flex-1 flex-col justify-between px-[26px] py-[26px] md:min-h-0">
               <div className="flex flex-col gap-[20px]">
                 <div className="flex flex-col gap-[4px]">
-                  <h3 className="text-black font-semibold text-[27.3px] leading-[39.2px]">
+                  <h3 data-sequence-text className="text-black font-semibold text-[27.3px] leading-[39.2px]">
                     {HOME_FEATURED_WORK.copy.projectName}
                   </h3>
-                  <p className="text-zinc-800 text-[14px]">
+                  <p data-sequence-text className="text-zinc-800 text-[14px]">
                     {HOME_FEATURED_WORK.copy.category}
                   </p>
                 </div>
                 
                 <div className="flex flex-col gap-[8px]">
                   <div className="flex flex-col">
-                    <span className="text-black text-[14px] font-bold">{HOME_FEATURED_WORK.copy.createdLabel}</span>
-                    <span className="text-zinc-600 text-[14px] mt-[2px]">{HOME_FEATURED_WORK.copy.created}</span>
+                    <span data-sequence-text className="text-black text-[14px] font-bold">{HOME_FEATURED_WORK.copy.createdLabel}</span>
+                    <span data-sequence-text className="text-zinc-600 text-[14px] mt-[2px]">{HOME_FEATURED_WORK.copy.created}</span>
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-black text-[14px] font-bold">{HOME_FEATURED_WORK.copy.platformsLabel}</span>
-                    <span className="text-zinc-600 text-[14px] mt-[2px]">{HOME_FEATURED_WORK.copy.platforms}</span>
+                    <span data-sequence-text className="text-black text-[14px] font-bold">{HOME_FEATURED_WORK.copy.platformsLabel}</span>
+                    <span data-sequence-text className="text-zinc-600 text-[14px] mt-[2px]">{HOME_FEATURED_WORK.copy.platforms}</span>
                   </div>
                 </div>
               </div>
 
-              <button className="flex h-[52px] w-[174px] items-center gap-[10px] rounded-full bg-black py-[6px] pl-[6px] pr-[24px] transition-colors hover:bg-zinc-800">
+              <button data-sequence-text className="flex h-[52px] w-[174px] items-center gap-[10px] rounded-full bg-black py-[6px] pl-[6px] pr-[24px] transition-colors hover:bg-zinc-800">
                 <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-black rounded-full shrink-0">
                   <HomeArrowIcon color="black" />
                 </div>
@@ -440,10 +452,10 @@ export default function Home() {
           </div>
 
           <div className="mt-[12px] flex flex-col items-center gap-[16px] md:mt-[20px] md:gap-[24px]">
-            <p className="text-center text-[16px] font-medium text-[#9F9F9F] max-w-[460px]">
+            <p data-sequence-item className="text-center text-[16px] font-medium text-[#9F9F9F] max-w-[460px]">
               {HOME_FEATURED_WORK.copy.summary}
             </p>
-            <button className="flex items-center h-[55px] bg-transparent border border-white/30 rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-white/10 transition-colors">
+            <button data-sequence-item className="flex items-center h-[55px] bg-transparent border border-white/30 rounded-full pl-[6px] pr-[20px] py-[6px] gap-[12px] hover:bg-white/10 transition-colors">
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-black rounded-full shrink-0">
                 <HomeArrowIcon color="black" />
               </div>
@@ -459,14 +471,14 @@ export default function Home() {
       {/* =========================================
           WHY THINK WILD SECTION
       ========================================= */}
-      <section className="flex min-h-[1568px] w-full flex-col items-center bg-black px-5 pb-[64px] pt-[64px] md:min-h-0 md:px-4 md:pb-[100px] md:pt-[150px]">
+      <section data-sequence-section className="flex min-h-[1568px] w-full flex-col items-center bg-black px-5 pb-[64px] pt-[64px] md:min-h-0 md:px-4 md:pb-[100px] md:pt-[150px]">
         <div className="flex w-full max-w-[1280px] flex-col items-center rounded-[32px] bg-[#F5F5F5] px-[20px] py-[48px] md:rounded-[48px] md:px-[80px] md:py-[80px]">
 
           <div className="mb-[48px] flex w-full max-w-[858px] flex-col items-center gap-[24px] md:mb-[80px] md:gap-[32px]">
             <div className="flex items-center justify-center w-[202px] h-[35px] border border-black/20 rounded-full bg-transparent">
               <span className="text-[14px] font-medium text-black">{HOME_WHY_US.copy.eyebrow}</span>
             </div>
-            <h2 data-scroll-reveal className="max-w-[210px] text-center font-bricolage text-[38px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] text-black md:max-w-none md:text-[70px]">
+            <h2 data-sequence-item className="max-w-[210px] text-center font-bricolage text-[38px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] text-black md:max-w-none md:text-[70px]">
               {HOME_WHY_US.copy.heading}
             </h2>
           </div>
@@ -475,16 +487,16 @@ export default function Home() {
 
             <div className="flex w-full flex-col pt-0 md:w-[334px] md:pt-[40px]">
               <h4 className="mb-[24px] text-[18px] font-bold text-black md:mb-[32px] md:text-[20px]">{HOME_WHY_US.copy.listHeading}</h4>
-              <div data-scroll-stagger className="flex flex-col">
+              <div className="flex flex-col">
                 {HOME_WHY_US.copy.services.map((item) => (
-                  <div key={item} data-scroll-card className="border-t border-black/10 py-[20px] text-[14px] font-medium text-black md:py-[16px] md:text-[16px]">
+                  <div key={item} data-sequence-item className="border-t border-black/10 py-[20px] text-[14px] font-medium text-black md:py-[16px] md:text-[16px]">
                     {item}
                   </div>
                 ))}
               </div>
             </div>
 
-            <div data-scroll-card className="flex h-auto w-full flex-col items-start justify-center rounded-[24px] bg-[#155149] p-[24px] shadow-xl md:h-[539px] md:w-[538px] md:rounded-[32px] md:p-[48px]">
+            <div data-sequence-item className="flex h-auto w-full flex-col items-start justify-center rounded-[24px] bg-[#155149] p-[24px] shadow-xl md:h-[539px] md:w-[538px] md:rounded-[32px] md:p-[48px]">
               <div className="mb-[24px] flex items-center md:mb-[48px]">
                 <Image
                   src={HEADER_LOGO.src}
@@ -496,7 +508,7 @@ export default function Home() {
 
               <div className="flex w-full flex-col gap-[20px] md:gap-[24px]">
                 {HOME_WHY_US.copy.benefits.map((text) => (
-                  <div key={text} className="flex items-start gap-[12px] border-b border-white/20 pb-[20px] last:border-0 last:pb-0 md:pb-[20px]">
+                  <div key={text} data-sequence-text className="flex items-start gap-[12px] border-b border-white/20 pb-[20px] last:border-0 last:pb-0 md:pb-[20px]">
                     <Check className="w-[18px] h-[18px] text-[#8CFE79] shrink-0 mt-[2px]" strokeWidth={3} />
                     <span className="text-[14px] font-medium leading-tight text-white md:text-[15px]">{text}</span>
                   </div>
@@ -651,48 +663,50 @@ export default function Home() {
       {/* =========================================
           CAPABILITIES SECTION
       ========================================= */}
-      <section className="w-full flex flex-col items-center pt-[50px] gap-[40px] bg-black px-4 overflow-x-clip">
+      <section data-sequence-section className="w-full flex flex-col items-center pt-[50px] gap-[40px] bg-black px-4 overflow-x-clip">
         
         <div className="flex w-full max-w-[1280px] gap-[30px] h-auto lg:h-[640px] flex-col lg:flex-row">
           
-          <div data-image-reveal className="relative w-full lg:w-[575px] h-[400px] lg:h-full rounded-[30px] overflow-hidden shrink-0">
-            <img 
-              src={HOME_CAPABILITIES.image.src}
-              alt={HOME_CAPABILITIES.image.alt}
-              className="w-full h-full object-cover opacity-80"
-            />
+          <div data-sequence-item className="relative w-full lg:w-[575px] h-[400px] lg:h-full rounded-[30px] overflow-hidden shrink-0">
+            <div data-sequence-image className="absolute inset-0 overflow-hidden">
+              <img 
+                src={HOME_CAPABILITIES.image.src}
+                alt={HOME_CAPABILITIES.image.alt}
+                className="w-full h-full object-cover opacity-80"
+              />
+            </div>
             <div className="absolute bottom-0 inset-x-0 h-[250px] bg-gradient-to-t from-black to-transparent pointer-events-none" />
-            <h3 
+            <h3 data-sequence-text
               className="font-bricolage absolute bottom-[40px] left-[40px] right-[40px] w-auto max-w-none text-[clamp(32px,4.3vw,62px)] font-semibold leading-[1] tracking-[-0.03em] uppercase text-white lg:leading-[57px]"
             >
               {HOME_CAPABILITIES.copy.imageHeading.map((line) => <span key={line} className="block whitespace-nowrap">{line}</span>)}
             </h3>
           </div>
 
-          <div data-scroll-card className="relative flex h-full w-full shrink-0 flex-col gap-[40px] rounded-[30px] bg-[#8CFE79] p-[30px] text-black lg:h-[640px] lg:w-[675px] lg:flex-none lg:gap-[60px] lg:p-[50px]">
+          <div data-sequence-item className="relative flex h-full w-full shrink-0 flex-col gap-[40px] rounded-[30px] bg-[#8CFE79] p-[30px] text-black lg:h-[640px] lg:w-[675px] lg:flex-none lg:gap-[60px] lg:p-[50px]">
             <div className="flex w-full flex-col items-center gap-[20px] lg:h-[188.8px] lg:justify-between lg:gap-0">
-              <div className="flex h-[35px] w-[146px] items-center justify-center rounded-full bg-black">
+              <div data-sequence-text className="flex h-[35px] w-[146px] items-center justify-center rounded-full bg-black">
                 <span className="text-[12px] font-medium text-white">
                   {HOME_CAPABILITIES.copy.eyebrow}
                 </span>
               </div>
 
               <div className="flex h-[93px] w-full items-center justify-center">
-                <span className="text-[80px] font-semibold leading-[93px] tracking-[-0.04em]">
+                <span data-sequence-text className="text-[80px] font-semibold leading-[93px] tracking-[-0.04em]">
                   {HOME_CAPABILITIES.copy.metric}
                 </span>
               </div>
 
-              <span className="w-full text-center text-[14px] font-medium leading-[21.8px]">
+              <span data-sequence-text className="w-full text-center text-[14px] font-medium leading-[21.8px]">
                 {HOME_CAPABILITIES.copy.metricLabel}
               </span>
             </div>
 
-            <div data-scroll-stagger className="flex w-full flex-col gap-[20px] lg:h-[291px] lg:flex-none">
+            <div className="flex w-full flex-col gap-[20px] lg:h-[291px] lg:flex-none">
               {HOME_CAPABILITIES.copy.items.map((item) => (
                 <div
                   key={item.heading}
-                  data-scroll-card
+                  data-sequence-text
                   className="grid w-full grid-cols-[1.4fr_1fr] items-start gap-[20px] border-b border-black/10 pb-[12px] last:border-b-0 last:pb-0 lg:flex-1"
                 >
                   <h3 className="text-[20px] font-bold uppercase leading-[1] lg:text-[24px]">
@@ -758,9 +772,10 @@ export default function Home() {
       <CtaOrbitSection
         data={CTA_ORBIT_DATA.home}
         arrowIconSrc={HOME_ARROW_ICON_SRC}
+        animateSequence
       />
 
-      <Footer />
+      <Footer animateSequence />
 
     </main>
   );
