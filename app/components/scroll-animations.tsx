@@ -5,7 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 type ScrollAnimationsProps = {
-  variant?: 'default' | 'home';
+  variant?: 'default' | 'home' | 'sequence';
 };
 
 export default function ScrollAnimations({ variant = 'default' }: ScrollAnimationsProps) {
@@ -30,14 +30,31 @@ export default function ScrollAnimations({ variant = 'default' }: ScrollAnimatio
 
         const isMobile = window.matchMedia('(max-width: 767px)').matches;
         const revealDistance = isMobile ? 18 : 24;
-        if (variant === 'home') {
+        if (variant !== 'default') {
           const context = gsap.context(() => {
-            const loader = root.querySelector<HTMLElement>('[data-home-loader]');
-            const loaderProgress = root.querySelector<HTMLElement>('[data-home-loader-progress]');
-            const header = root.querySelector<HTMLElement>('header');
-            const heroWords = root.querySelectorAll<HTMLElement>('[data-home-hero-word]');
-            const heroHighlight = root.querySelector<HTMLElement>('[data-home-hero-highlight]');
-            const heroSupport = root.querySelectorAll<HTMLElement>('[data-home-hero-support]');
+            const isHome = variant === 'home';
+            const loader = isHome ? root.querySelector<HTMLElement>('[data-home-loader]') : null;
+            const loaderProgress = isHome
+              ? root.querySelector<HTMLElement>('[data-home-loader-progress]')
+              : null;
+            const header = isHome ? root.querySelector<HTMLElement>('header') : null;
+            const heroWords = isHome
+              ? Array.from(root.querySelectorAll<HTMLElement>('[data-home-hero-word]'))
+              : [];
+            const heroLines = isHome
+              ? []
+              : Array.from(root.querySelectorAll<HTMLElement>('[data-hero-line]'));
+            const heroHighlight = root.querySelector<HTMLElement>(
+              isHome ? '[data-home-hero-highlight]' : '[data-hero-highlight]',
+            );
+            const heroImage = isHome
+              ? null
+              : root.querySelector<HTMLElement>('[data-sequence-hero-image]');
+            const heroSupport = Array.from(
+              root.querySelectorAll<HTMLElement>(
+                isHome ? '[data-home-hero-support]' : '[data-hero-support]',
+              ),
+            );
 
             const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
@@ -55,6 +72,15 @@ export default function ScrollAnimations({ variant = 'default' }: ScrollAnimatio
                 { autoAlpha: 0, y: -10 },
                 { autoAlpha: 1, y: 0, duration: 0.3 },
                 loader ? '-=0.16' : 0,
+              );
+            }
+
+            if (heroLines.length > 0) {
+              intro.fromTo(
+                heroLines,
+                { yPercent: 110 },
+                { yPercent: 0, duration: 1.15, stagger: 0.14 },
+                0.12,
               );
             }
 
@@ -83,6 +109,34 @@ export default function ScrollAnimations({ variant = 'default' }: ScrollAnimatio
                 { autoAlpha: 1, y: 0, duration: 0.3, stagger: 0.055 },
                 '>-0.08',
               );
+            }
+
+            if (heroImage) {
+              intro.fromTo(
+                heroImage,
+                { autoAlpha: 0, y: 18 },
+                { autoAlpha: 1, y: 0, duration: 0.32, ease: 'power3.out' },
+                '>-0.08',
+              );
+
+              heroImage.querySelectorAll<HTMLElement>('[data-sequence-image]').forEach((frame) => {
+                intro.fromTo(
+                  frame,
+                  { clipPath: 'inset(0 0 100% 0)' },
+                  { clipPath: 'inset(0 0 0% 0)', duration: 0.42, ease: 'power2.out' },
+                  '<',
+                );
+
+                const image = frame.querySelector<HTMLElement>('img');
+                if (image) {
+                  intro.fromTo(
+                    image,
+                    { scale: 1.04 },
+                    { scale: 1, duration: 0.42, ease: 'power2.out' },
+                    '<',
+                  );
+                }
+              });
             }
 
             root.querySelectorAll<HTMLElement>('[data-sequence-section]').forEach((section) => {
@@ -149,7 +203,11 @@ export default function ScrollAnimations({ variant = 'default' }: ScrollAnimatio
                   );
                 }
 
-                position += Math.max(0.25, 0.06 + 0.2 + Math.max(0, text.length - 1) * 0.025) + 0.025;
+                position +=
+                  Math.min(
+                    0.36,
+                    Math.max(0.25, 0.06 + 0.2 + Math.max(0, text.length - 1) * 0.025),
+                  ) + 0.025;
               });
 
               ScrollTrigger.create({

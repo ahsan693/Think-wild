@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Header from '@/app/components/header/header';
 import Footer from '@/app/components/footer/footer';
+import ScrollAnimations from '@/app/components/scroll-animations';
 import { CONTACT_BOOKING_DATA, CONTACT_FAQ_DATA, CONTACT_FORM_DATA, CONTACT_HERO_DATA, CONTACT_ICONS } from '@/lib/data/contact';
 
 export default function ContactPage() {
@@ -78,6 +79,7 @@ export default function ContactPage() {
 
   return (
     <main className="contact-page min-h-screen w-full bg-black text-white flex flex-col font-[family-name:var(--font-saans)] overflow-x-clip">
+      <ScrollAnimations variant="sequence" />
       <Header />
 
       {/* =========================================
@@ -88,7 +90,7 @@ export default function ContactPage() {
           
           {/* LEFT COLUMN (Text & Avatars) */}
           <div className="contact-hero-copy flex flex-col w-full lg:w-[615px] shrink-0">
-            <div className="contact-hero-intro flex flex-col gap-[10px] mb-[40px]">
+            <div data-hero-support className="contact-hero-intro flex flex-col gap-[10px] mb-[40px]">
               <div className="flex items-center">
                 {CONTACT_HERO_DATA.creatorImages.map((image) => (
                   <div
@@ -105,12 +107,17 @@ export default function ContactPage() {
             <h1 
               className="contact-hero-title type-010 flex flex-col text-white"
             >
-              {CONTACT_HERO_DATA.headingLines.map((line) => <span key={line}>{line}</span>)}
-              <span className="contact-hero-highlight inline-flex items-center justify-center bg-[#155149] text-[#8CFE79] rounded-[100px] px-[24px] pb-[8px] mt-[10px] w-max">
+              {CONTACT_HERO_DATA.headingLines.map((line) => (
+                <span key={line} className="scroll-text-mask block">
+                  <span data-hero-line className="block">{line}</span>
+                </span>
+              ))}
+              <span data-hero-highlight className="contact-hero-highlight inline-flex items-center justify-center bg-[#155149] text-[#8CFE79] rounded-[100px] px-[24px] pb-[8px] mt-[10px] w-max">
                 {CONTACT_HERO_DATA.highlight}
               </span>
             </h1>
             <a
+              data-hero-support
               href="#contact-form"
               className="contact-mobile-project-cta mt-[24px] md:hidden h-[52px] w-max items-center gap-[12px] rounded-full bg-[#8CFE79] py-[6px] pl-[6px] pr-[24px] text-black"
             >
@@ -122,9 +129,9 @@ export default function ContactPage() {
           </div>
 
           {/* RIGHT COLUMN (Form) */}
-          <div id="contact-form" className="contact-form-column flex flex-col w-full lg:w-[615px] shrink-0 scroll-mt-8">
+          <div id="contact-form" data-sequence-section data-sequence-item className="contact-form-column flex flex-col w-full lg:w-[615px] shrink-0 scroll-mt-8">
             <div className="contact-form-heading-panel w-full bg-[#155149] rounded-t-[30px] px-[40px] pt-[19px] pb-[40px] -mb-[20px] z-0">
-              <h2 className="contact-form-heading font-heading text-[24px] font-bold text-[#8CFE79]">
+              <h2 data-sequence-text className="contact-form-heading font-heading text-[24px] font-bold text-[#8CFE79]">
                 {CONTACT_FORM_DATA.heading}
               </h2>
             </div>
@@ -132,7 +139,7 @@ export default function ContactPage() {
             <div className="contact-form-card w-full bg-white rounded-[30px] p-[40px] z-10 relative shadow-2xl flex min-h-[1068.03px] flex-col justify-between gap-[20px] text-black">
               {CONTACT_FORM_DATA.fields.map((field) => (
                 <div key={field.name} className="flex flex-col gap-[10px]">
-                  <label className="type-106 text-black">{field.label}</label>
+                  <label data-sequence-text className="type-106 text-black">{field.label}</label>
                   {field.type === 'select' ? (
                     <div className="relative">
                       <select defaultValue="" className="type-106 w-full h-[50px] rounded-[6px] border border-[#4B4B4B] bg-[#F5F5F5] py-[14px] pl-[20px] pr-[48px] text-[#4B4B4B] appearance-none focus:outline-none focus:border-black transition-colors">
@@ -159,7 +166,7 @@ export default function ContactPage() {
               ))}
 
               <div className="flex flex-col gap-[20px]">
-                <button className="flex items-center justify-between w-max h-[52px] bg-black rounded-full pl-[6px] pr-[24px] py-[6px] gap-[12px] hover:bg-zinc-800 transition-colors">
+                <button data-sequence-text className="flex items-center justify-between w-max h-[52px] bg-black rounded-full pl-[6px] pr-[24px] py-[6px] gap-[12px] hover:bg-zinc-800 transition-colors">
                   <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-black rounded-full shrink-0">
                     <ArrowRight className="w-5 h-5" strokeWidth={2} />
                   </div>
@@ -167,7 +174,7 @@ export default function ContactPage() {
                     {CONTACT_FORM_DATA.submitLabel}
                   </span>
                 </button>
-                <span className="type-136 text-black/60">
+                <span data-sequence-text className="type-136 text-black/60">
                   {CONTACT_FORM_DATA.privacyNote}
                 </span>
               </div>
@@ -180,25 +187,26 @@ export default function ContactPage() {
       {/* =========================================
           DYNAMIC DISCOVERY CALL CALENDAR SECTION
       ========================================= */}
-      <section className="contact-booking-section w-full flex flex-col items-center border-t border-white/10 pt-[100px] pb-[100px] px-4">
+      <section data-sequence-section className="contact-booking-section w-full flex flex-col items-center border-t border-white/10 pt-[100px] pb-[100px] px-4">
         <div className="w-full max-w-[1200px] flex flex-col items-center">
           
-          <div className="contact-booking-intro flex flex-col items-center text-center gap-[16px] mb-[40px]">
+          <div data-sequence-item className="contact-booking-intro flex flex-col items-center text-center gap-[16px] mb-[40px]">
             <div className="flex items-center justify-center px-[16px] py-[6px] rounded-full border border-white/20 gap-[6px]">
               <div className="w-[6px] h-[6px] rounded-full bg-[#8CFE79] shadow-[0_0_8px_#8CFE79]"></div>
-              <span className="type-139 font-bold text-white">{CONTACT_BOOKING_DATA.eyebrow}</span>
+              <span data-sequence-text className="type-139 font-bold text-white">{CONTACT_BOOKING_DATA.eyebrow}</span>
             </div>
             <h2 
+              data-sequence-text
               className="contact-section-title type-015 text-white"
             >
               {CONTACT_BOOKING_DATA.heading}
             </h2>
-            <p className="contact-mobile-body type-087 max-w-[500px] text-[#9F9F9F]">
+            <p data-sequence-text className="contact-mobile-body type-087 max-w-[500px] text-[#9F9F9F]">
               {CONTACT_BOOKING_DATA.description}
             </p>
           </div>
 
-          <div className="contact-booking-widget flex w-full max-w-[1200px] flex-col items-center overflow-hidden rounded-[24px] bg-white px-[12px] pt-[16px] pb-[20px] lg:h-[625.78px] lg:px-0 lg:pt-[56px] lg:pb-0">
+          <div data-sequence-item className="contact-booking-widget flex w-full max-w-[1200px] flex-col items-center overflow-hidden rounded-[24px] bg-white px-[12px] pt-[16px] pb-[20px] lg:h-[625.78px] lg:px-0 lg:pt-[56px] lg:pb-0">
           <div className="flex w-full max-w-[1040px] flex-col overflow-hidden rounded-[8px] border border-[#E5E7EB] bg-white text-black lg:h-[489.78px] lg:flex-row">
             
             {/* Col 1: Details */}
@@ -354,21 +362,22 @@ export default function ContactPage() {
           FAQ / BEFORE WE GET STARTED SECTION
       ========================================= */}
       {/* Outer section constrained to 1440px width[cite: 126] */}
-      <section className="contact-faq-section w-full flex flex-col items-center pt-[50px] pb-[150px] px-4 overflow-x-clip border-t border-white/10">
+      <section data-sequence-section className="contact-faq-section w-full flex flex-col items-center pt-[50px] pb-[150px] px-4 overflow-x-clip border-t border-white/10">
         <div className="w-full max-w-[1440px] flex flex-col items-center">
 
           {/* Inner container to hold the ~916.84px wide FAQ group[cite: 127] */}
           <div className="contact-faq-group flex flex-col w-full max-w-[916.84px] items-center">
             
             {/* Header Block */}
-            <div className="contact-faq-header flex flex-col items-center w-full mb-[64px]">
+            <div data-sequence-item className="contact-faq-header flex flex-col items-center w-full mb-[64px]">
               <div className="contact-faq-eyebrow flex items-center justify-center px-[20px] py-[6px] rounded-full border border-white/20 mb-[32px]">
-                <span className="type-113 text-white uppercase tracking-widest">
+                <span data-sequence-text className="type-113 text-white uppercase tracking-widest">
                   {CONTACT_FAQ_DATA.eyebrow}
                 </span>
               </div>
               
               <h2
+                data-sequence-text
                 className="contact-section-title type-015 text-center text-white"
               >
                 {CONTACT_FAQ_DATA.heading}
@@ -376,7 +385,7 @@ export default function ContactPage() {
             </div>
 
             {/* FAQs List Items */}
-            <div className="contact-faq-list flex flex-col w-full gap-[20px] md:gap-0">
+            <div data-sequence-item className="contact-faq-list flex flex-col w-full gap-[20px] md:gap-0">
               {CONTACT_FAQ_DATA.items.map((faq, index) => {
                 const isOpen = openFaqIndex === index;
                 const answerId = `contact-faq-answer-${index}`;
@@ -384,6 +393,7 @@ export default function ContactPage() {
                 return (
                   <div
                     key={faq.question}
+                    data-sequence-text
                     className={`contact-faq-item flex flex-col w-full transition-colors duration-200 ${
                       isOpen
                         ? 'contact-faq-open bg-[#1A1A1A] rounded-[24px] py-[20px] mb-0 md:mb-[16px] md:px-[40px] md:py-[38px]'
@@ -428,7 +438,7 @@ export default function ContactPage() {
       </section>
 
       {/* Put the footer as the very last item inside main */}
-      <Footer />
+      <Footer animateSequence />
     </main>
   );
 }
