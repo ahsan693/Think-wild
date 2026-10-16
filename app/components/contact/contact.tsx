@@ -1,14 +1,17 @@
 "use client";
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Header from '@/app/components/header/header';
 import Footer from '@/app/components/footer/footer';
 import ScrollAnimations from '@/app/components/scroll-animations';
 import { CONTACT_BOOKING_DATA, CONTACT_FAQ_DATA, CONTACT_FORM_DATA, CONTACT_HERO_DATA, CONTACT_ICONS } from '@/lib/data/contact';
 
+const CONTACT_ARROW_ICON_SRC =
+  '/Think-Wild-Media-Developer-Assets/Icons/desktop/about/01-about-hero/icons/icon-about-hero-01--1404-16250.svg';
+
 export default function ContactPage() {
   const {
-    ArrowRight,
     ChevronDown,
     ChevronLeft: ChevronLeftIcon,
     ChevronRight: ChevronRightIcon,
@@ -80,7 +83,7 @@ export default function ContactPage() {
   return (
     <main className="contact-page min-h-screen w-full bg-black text-white flex flex-col font-[family-name:var(--font-saans)] overflow-x-clip">
       <ScrollAnimations variant="sequence" />
-      <Header />
+      <Header arrowIconSrc={CONTACT_ARROW_ICON_SRC} />
 
       {/* =========================================
           CONTACT HERO & FORM SECTION
@@ -122,7 +125,7 @@ export default function ContactPage() {
               className="contact-mobile-project-cta mt-[24px] md:hidden h-[52px] w-max items-center gap-[12px] rounded-full bg-[#8CFE79] py-[6px] pl-[6px] pr-[24px] text-black"
             >
               <span className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-black text-white">
-                <ArrowRight className="h-5 w-5" strokeWidth={2} />
+                <Image src={CONTACT_ARROW_ICON_SRC} alt="" aria-hidden="true" width={18} height={13} />
               </span>
               <span className="type-087">Start a project</span>
             </a>
@@ -168,7 +171,14 @@ export default function ContactPage() {
               <div className="flex flex-col gap-[20px]">
                 <button data-sequence-text className="flex items-center justify-between w-max h-[52px] bg-black rounded-full pl-[6px] pr-[24px] py-[6px] gap-[12px] hover:bg-zinc-800 transition-colors">
                   <div className="flex items-center justify-center w-[40px] h-[40px] bg-white text-black rounded-full shrink-0">
-                    <ArrowRight className="w-5 h-5" strokeWidth={2} />
+                    <Image
+                      src={CONTACT_ARROW_ICON_SRC}
+                      alt=""
+                      aria-hidden="true"
+                      width={18}
+                      height={13}
+                      className="brightness-0"
+                    />
                   </div>
                   <span className="type-087 text-white">
                     {CONTACT_FORM_DATA.submitLabel}

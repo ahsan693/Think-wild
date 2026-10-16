@@ -3,7 +3,8 @@ import Footer from '@/app/components/footer/footer';
 import SocialTicker from '@/app/components/social-ticker';
 import CtaOrbitSection from '@/app/components/home/cta-orbit-section';
 import ScrollAnimations from '@/app/components/scroll-animations';
-import { ArrowRight, BadgeCheck } from 'lucide-react';
+import Image from 'next/image';
+import { BadgeCheck } from 'lucide-react';
 import {
   ABOUT_HERO_DATA,
   ABOUT_TEAM_EXPERIENCE_DATA,
@@ -13,11 +14,14 @@ import {
 } from '@/lib/data/aboutdata';
 import { CTA_ORBIT_DATA } from '@/lib/data/ctaorbitdata';
 
+const ABOUT_ARROW_ICON_SRC =
+  '/Think-Wild-Media-Developer-Assets/Icons/desktop/about/01-about-hero/icons/icon-about-hero-01--1404-16250.svg';
+
 export default function AboutPage() {
   return (
     <main className="about-page min-h-screen w-full bg-black text-white flex flex-col overflow-x-clip font-[family-name:var(--font-saans)]">
       <ScrollAnimations variant="sequence" />
-      <Header />
+      <Header arrowIconSrc={ABOUT_ARROW_ICON_SRC} />
 
       {/* =========================================
           ABOUT HERO SECTION
@@ -59,7 +63,7 @@ export default function AboutPage() {
 
             <button data-hero-support className="flex items-center h-[52px] w-[186px] bg-white rounded-full pl-[6px] pr-[24px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors">
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
-                <ArrowRight className="w-5 h-5" strokeWidth={2} />
+                <Image src={ABOUT_ARROW_ICON_SRC} alt="" aria-hidden="true" width={18} height={13} />
               </div>
               <span className="type-087 text-[#1D1D1D]">
                 {ABOUT_HERO_DATA.action}
@@ -228,7 +232,7 @@ export default function AboutPage() {
 
             <button data-sequence-text className="flex items-center justify-between h-[52px] w-[263px] bg-white rounded-full pl-[6px] pr-[32px] py-[6px] hover:bg-gray-200 transition-colors mt-[10px]">
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
-                <ArrowRight className="w-5 h-5" strokeWidth={2} />
+                <Image src={ABOUT_ARROW_ICON_SRC} alt="" aria-hidden="true" width={18} height={13} />
               </div>
               <span className="type-087 text-[#1D1D1D]">
                 {ABOUT_STORY_DATA.action}
@@ -329,7 +333,7 @@ export default function AboutPage() {
             {/* Action Button */}
             <button data-sequence-text className="flex items-center h-[52px] bg-white rounded-full pl-[6px] pr-[24px] py-[6px] gap-[12px] hover:bg-gray-200 transition-colors w-max">
               <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#1D1D1D] text-white rounded-full shrink-0">
-                <ArrowRight className="w-5 h-5" strokeWidth={2} />
+                <Image src={ABOUT_ARROW_ICON_SRC} alt="" aria-hidden="true" width={18} height={13} />
               </div>
               <span className="type-087 text-[#1D1D1D]">
                 {CREATIVE_PARTNERSHIP_DATA.action}
@@ -365,7 +369,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <CtaOrbitSection data={CTA_ORBIT_DATA.about} animateSequence />
+      <CtaOrbitSection
+        data={CTA_ORBIT_DATA.about}
+        animateSequence
+        arrowIconSrc={ABOUT_ARROW_ICON_SRC}
+      />
 
       {/* Adding Footer at the bottom */}
       <Footer animateSequence />
