@@ -309,7 +309,7 @@ export default function Home() {
                     {/* Each sticky card contributes only its own tab to the stack. */}
                     <div
                       aria-hidden="true"
-                      className={`absolute -top-[33px] flex h-[33px] w-1/4 items-center px-[8px] md:px-[16px] ${service.bgColor} ${index === 0 ? 'rounded-tl-[16px]' : ''} ${index === HOME_SERVICES.items.length - 1 ? 'rounded-tr-[16px]' : ''}`}
+                      className={`absolute -top-[33px] flex h-[33px] w-1/4 items-center rounded-t-[16px] px-[8px] md:px-[16px] ${service.bgColor}`}
                       style={{ left: `${index * 25}%` }}
                     >
                       <span className={`whitespace-nowrap text-[9px] font-medium uppercase tracking-[0.08em] md:text-[12px] ${service.textColor}`}>
