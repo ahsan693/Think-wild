@@ -14,7 +14,7 @@ export const ABOUT_HERO_DATA = {
   eyebrow: 'About us',
   heading: 'WE MAKE\nBRANDS WORTH',
   highlight: 'FOLLOWING',
-  highlightBackground: 'bg-[#8CFE79] md:bg-[#FF742E]',
+  highlightBackground: 'bg-[#FF742E]',
   description:
     'Think Wild Media is a Dublin influencer marketing and content agency creating creator campaigns, UGC and social-first content that feels relevant and worth following.',
   action: 'See our work',

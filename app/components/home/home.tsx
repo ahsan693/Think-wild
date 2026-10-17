@@ -76,7 +76,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen w-full bg-black text-white flex flex-col overflow-x-clip font-[family-name:var(--font-saans)]">
+    <main className="home-page min-h-screen w-full bg-black text-white flex flex-col overflow-x-clip font-[family-name:var(--font-saans)]">
       <ScrollAnimations variant="home" />
       <Header arrowIconSrc={HOME_ARROW_ICON_SRC} />
 
@@ -328,9 +328,23 @@ export default function Home() {
                         <p data-sequence-text className={`max-w-[400px] text-[14px] font-medium leading-[21px] md:text-[16px] md:leading-[24px] ${service.textColor}`}>
                           {service.description}
                         </p>
-                        <p data-sequence-text className={`mt-2 text-[12px] font-bold tracking-tight md:mt-[16px] md:text-[14px] ${service.textColor}`}>
-                          {service.tags}
-                        </p>
+                        <div
+                          data-sequence-text
+                          className="mt-[16px] flex w-max max-w-full flex-nowrap items-center gap-[10px] overflow-x-auto md:mt-[24px] md:max-w-[calc(100%+60px)]"
+                        >
+                          {service.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="flex h-[27px] shrink-0 items-center rounded-[31px] px-[10px] text-[16px] leading-[27px]"
+                              style={{
+                                backgroundColor: service.tagBackgroundColor,
+                                color: service.tagTextColor,
+                              }}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                       <div className="flex flex-col">
                         <span data-sequence-text className={`type-012 text-[60px] leading-none tracking-[-0.04em] md:text-[80px] ${service.textColor}`}>

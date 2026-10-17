@@ -1,0 +1,29 @@
+{
+  "emptyContainersOmitted": [
+    "1404:15281",
+    "1578:14098",
+    "1378:4484",
+    "1378:4510"
+  ],
+  "unexportableTextPictographs": [
+    {
+      "id": "1404:14995",
+      "text": "heart",
+      "reason": "Text pictograph has no exportable vector or PNG in the connected Figma renderer."
+    },
+    {
+      "id": "1404:14997",
+      "text": "comment",
+      "reason": "Text pictograph has no exportable vector or PNG in the connected Figma renderer."
+    },
+    {
+      "id": "1404:14999",
+      "text": "northeast arrow",
+      "reason": "Text pictograph has no exportable vector or PNG in the connected Figma renderer."
+    }
+  ],
+  "rasterEmbeddedSvg": [
+    "meeting-video-call.svg"
+  ],
+  "consolidation": "Repeated size variants are consolidated by visual function; retained color variants have explicit suffixes."
+}

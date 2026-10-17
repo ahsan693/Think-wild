@@ -4,7 +4,7 @@ import { Play, Camera } from 'lucide-react';
 export const PLUMPD_STUDY_DATA = {
   hero: {
     backText: "All Work",
-    title: "PLUMPD\nBEAUTY",
+    title: "PLUMP'D\nBEAUTY",
     description: "A playful beauty content concept for\nsocial-first video.",
     imageSrc: "/Think-Wild-Media-Developer-Assets/Images/desktop/case-study-plumpd-beauty/02-plumpd-story/images/originals/image-plumpd-story-02--1404-17926--source.png",
     tags: {

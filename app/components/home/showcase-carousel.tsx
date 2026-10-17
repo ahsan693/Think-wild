@@ -78,7 +78,7 @@ export default function ShowcaseCarousel({ items }: ShowcaseCarouselProps) {
       <div
         ref={viewportRef}
         data-sequence-item
-        className="relative h-[302px] w-full max-w-[100vw] overflow-hidden font-[family-name:var(--font-saans)]"
+        className="relative h-[302px] w-full max-w-[100vw] overflow-hidden"
       >
         <div
           onTransitionEnd={recenterIfNeeded}

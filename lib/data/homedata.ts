@@ -155,7 +155,9 @@ export const HOME_SERVICES = {
       title: 'CREATOR &\nINFLUENCER\nCAMPAIGNS',
       description:
         'We find creators who fit your audience and manage influencer campaigns from outreach and briefs to content delivery and reporting.',
-      tags: 'Creator sourcing · UGC · Influencer partnerships',
+      tags: ['Creator sourcing', 'UGC', 'Influencer partnerships'],
+      tagBackgroundColor: '#EC4037',
+      tagTextColor: '#FFFFFF',
       stat: '21+',
       statLabel: 'Creators activated',
       bgColor: 'bg-[#FFD6E8]',
@@ -168,7 +170,9 @@ export const HOME_SERVICES = {
       title: 'CONTENT\nPRODUCTION',
       description:
         'We produce social-first video, UGC, photography, edits, motion graphics and selected CGI creative for brands that want to stand out.',
-      tags: 'Short-form video · UGC · CGI/VFX · Social content',
+      tags: ['Short-form video', 'UGC', 'CGI/VFX', 'Social content'],
+      tagBackgroundColor: '#5F00A6',
+      tagTextColor: '#CBEBFF',
       stat: '450+',
       statLabel: 'Content assets produced',
       bgColor: 'bg-[#CBEBFF]',
@@ -181,7 +185,9 @@ export const HOME_SERVICES = {
       title: 'SOCIAL MEDIA\nMANAGEMENT',
       description:
         'We plan, publish and optimise your social content, helping your brand stay consistent, relevant and part of the conversation.',
-      tags: 'Strategy · Content planning · Publishing · Reporting',
+      tags: ['Strategy', 'Content planning', 'Publishing', 'Reporting'],
+      tagBackgroundColor: '#1A1A1A',
+      tagTextColor: '#FDF05B',
       stat: '8.4M',
       statLabel: 'Organic views generated',
       bgColor: 'bg-[#FDF05B]',
@@ -194,7 +200,9 @@ export const HOME_SERVICES = {
       title: 'SOCIAL CREATIVE\nSTRATEGY',
       description:
         'We build campaign concepts, creator briefs, hooks and content formats around your audience, brand goals and the platforms that matter.',
-      tags: 'Campaign concepts · Creative direction · Content strategy',
+      tags: ['Campaign concepts', 'Creative direction', 'Content strategy'],
+      tagBackgroundColor: '#065F46',
+      tagTextColor: '#76F773',
       stat: '42%',
       statLabel: 'Increase in Engagement',
       bgColor: 'bg-[#76F773]',

@@ -292,11 +292,11 @@ h6 {
 
 @keyframes social-platform-marquee {
   from {
-    transform: translateX(-50%);
+    transform: translateX(0);
   }
 
   to {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 
@@ -430,6 +430,23 @@ h6 {
 }
 
 @media (max-width: 767px) {
+  .home-page {
+    --home-mobile-display: "Bricolage Grotesque 24pt Condensed", sans-serif;
+    --home-mobile-sans: "Saans TRIAL", sans-serif;
+    font-family: var(--home-mobile-sans);
+  }
+
+  .home-page header,
+  .home-page footer,
+  .home-page .home-introduction-copy {
+    font-family: var(--home-mobile-sans);
+  }
+
+  .home-page :is(h1, h2, h3, h4),
+  .home-page .type-012 {
+    font-family: var(--home-mobile-display);
+  }
+
   .home-hero-title.type-002 {
     font-size: clamp(58px, 17.8vw, 66px);
     line-height: 0.787;
@@ -474,7 +491,7 @@ h6 {
   }
 
   .about-page .about-hero-highlight.type-005 {
-    color: #155149;
+    color: #fff;
     font-size: clamp(58px, 17.8vw, 66px);
     line-height: 0.787;
   }
@@ -554,6 +571,39 @@ h6 {
   .about-page .about-partnership-list-description.type-087 {
     font-size: 14px;
     line-height: 18px;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-page {
+    --about-mobile-display: "Bricolage Grotesque 24pt Condensed", sans-serif;
+    --about-mobile-sans: "Saans TRIAL", sans-serif;
+    font-family: var(--about-mobile-sans);
+  }
+
+  .about-page .about-hero-title,
+  .about-page .about-hero-highlight,
+  .about-page .about-team-heading,
+  .about-page .about-team-card-value,
+  .about-page .about-story-stat,
+  .about-page .about-story-heading,
+  .about-page .about-values-heading,
+  .about-page .about-values-card-title,
+  .about-page .about-partnership-heading,
+  .about-page .about-partnership-list-title {
+    font-family: var(--about-mobile-display);
+  }
+
+  .about-page .about-hero-description,
+  .about-page .about-team-eyebrow,
+  .about-page .about-team-card-label,
+  .about-page .about-story-stat-label,
+  .about-page .about-story-copy,
+  .about-page .about-values-card-description,
+  .about-page .about-partnership-description,
+  .about-page .about-partnership-list-description,
+  .about-page button .type-087 {
+    font-family: var(--about-mobile-sans);
   }
 }
 
@@ -695,5 +745,59 @@ h6 {
   .contact-page .contact-faq-answer.type-088 {
     font-size: 14px;
     line-height: 18px;
+  }
+}
+
+@media (max-width: 767px) {
+  .contact-page {
+    --contact-mobile-display: "Bricolage Grotesque 24pt Condensed", sans-serif;
+    --contact-mobile-sans: "Saans TRIAL", sans-serif;
+    font-family: var(--contact-mobile-sans);
+  }
+
+  .contact-page .contact-hero-title,
+  .contact-page .contact-section-title {
+    font-family: var(--contact-mobile-display);
+  }
+
+  .contact-page .contact-mobile-body,
+  .contact-page .contact-faq-answer {
+    font-family: var(--contact-mobile-sans);
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .plumpstudy-page .plumpstudy-display-title,
+  .plumpstudy-page .plumpstudy-section-heading,
+  .plumpstudy-page .plumpstudy-explore-heading,
+  .plumpstudy-page .plumpstudy-explore-card-title {
+    font-family: "Bricolage Grotesque 24pt Condensed", sans-serif;
+    text-transform: uppercase;
+  }
+
+  .plumpstudy-page .plumpstudy-display-title {
+    font-size: clamp(34px, 9vw, 40px);
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+  }
+
+  .plumpstudy-page .plumpstudy-section-heading {
+    font-size: 20px;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+
+  .plumpstudy-page .plumpstudy-explore-heading {
+    max-width: 320px;
+    font-size: 34px;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+  }
+
+  .plumpstudy-page .plumpstudy-explore-card-title {
+    font-size: 24px;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
   }
 }
