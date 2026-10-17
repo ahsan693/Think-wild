@@ -305,7 +305,7 @@ export const HOME_FEATURED_WORK = {
 export const HOME_WHY_US = {
   copy: {
     eyebrow: 'Why Think Wild Media',
-    heading: 'CREATOR CAMPAIGNS, CONTENT AND SOCIAL STRATEGY IN ONE PLACE.',
+    heading: 'CREATOR CAMPAIGNS, CONTENT & SOCIAL STRATEGY.',
     listHeading: 'What you get',
     services: [
       'Creator matching',

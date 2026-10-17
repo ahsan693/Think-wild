@@ -428,10 +428,10 @@ export default function Home() {
               />
             </div>
             
-            <div className="flex min-h-[306px] flex-1 flex-col justify-between px-[26px] py-[26px] md:min-h-0">
+            <div className="home-featured-work-copy flex min-h-[306px] flex-1 flex-col justify-between px-[26px] py-[26px] md:min-h-0">
               <div className="flex flex-col gap-[20px]">
                 <div className="flex flex-col gap-[4px]">
-                  <h3 data-sequence-text className="text-black font-semibold text-[27.3px] leading-[39.2px]">
+                  <h3 data-sequence-text className="!font-[family-name:var(--font-saans)] text-black font-semibold text-[27.3px] leading-[39.2px]">
                     {HOME_FEATURED_WORK.copy.projectName}
                   </h3>
                   <p data-sequence-text className="text-zinc-800 text-[14px]">
@@ -494,7 +494,7 @@ export default function Home() {
 
           <div className="mb-[48px] flex w-full max-w-[858px] flex-col items-center gap-[24px] md:mb-[50px] md:gap-[50px]">
             <div className="flex items-center justify-center w-[202px] h-[35px] border border-black/20 rounded-full bg-transparent">
-              <span className="text-[14px] font-medium text-black">{HOME_WHY_US.copy.eyebrow}</span>
+            <span className="type-087 text-black">{HOME_WHY_US.copy.eyebrow}</span>
             </div>
             <h2 data-sequence-item className="max-w-[210px] text-center font-bricolage text-[38px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] text-black md:max-w-none md:text-[70px]">
               {HOME_WHY_US.copy.heading}
@@ -504,10 +504,10 @@ export default function Home() {
           <div className="flex w-full flex-col items-stretch gap-[36px] lg:flex-row lg:items-start lg:justify-center lg:gap-0">
 
             <div className="flex w-full flex-col pt-0 lg:h-[539px] lg:w-[334px] lg:flex-none lg:pt-[40px]">
-              <h4 className="mb-[24px] text-[18px] font-bold text-black md:mb-[32px] md:text-[20px]">{HOME_WHY_US.copy.listHeading}</h4>
+              <h4 className="type-037 !font-[family-name:var(--font-saans)] mb-[24px] text-black md:mb-[32px]">{HOME_WHY_US.copy.listHeading}</h4>
               <div className="flex flex-col">
                 {HOME_WHY_US.copy.services.map((item) => (
-                  <div key={item} data-sequence-item className="border-t border-black/10 py-[20px] text-[14px] font-medium text-black md:py-[16px] md:text-[16px]">
+                  <div key={item} data-sequence-item className="type-065 border-t border-black/10 py-[20px] text-black md:py-[16px]">
                     {item}
                   </div>
                 ))}
@@ -528,7 +528,7 @@ export default function Home() {
                 {HOME_WHY_US.copy.benefits.map((text) => (
                   <div key={text} data-sequence-text className="flex items-start gap-[12px] border-b border-white/20 pb-[20px] last:border-0 last:pb-0 md:pb-[20px]">
                     <Check className="w-[18px] h-[18px] text-[#8CFE79] shrink-0 mt-[2px]" strokeWidth={3} />
-                    <span className="text-[14px] font-medium leading-tight text-white lg:text-[15px]">{text}</span>
+                    <span className="type-068 text-white">{text}</span>
                   </div>
                 ))}
               </div>

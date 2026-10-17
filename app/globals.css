@@ -134,6 +134,10 @@ h6 {
   font-family: "Bricolage Grotesque 24pt Condensed", sans-serif !important;
 }
 
+.home-page .home-featured-work-copy {
+  font-family: var(--font-saans) !important;
+}
+
 .social-platform-marquee {
   animation: social-platform-marquee 100s linear infinite;
 }
