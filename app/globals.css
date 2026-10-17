@@ -125,6 +125,27 @@ body {
   will-change: transform;
 }
 
+.home-capabilities-ticker::before,
+.home-capabilities-ticker::after {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  width: 44px;
+  content: "";
+  pointer-events: none;
+}
+
+.home-capabilities-ticker::before {
+  left: 0;
+  background: linear-gradient(90deg, #000 0%, rgb(0 0 0 / 80%) 45%, transparent 100%);
+}
+
+.home-capabilities-ticker::after {
+  right: 0;
+  background: linear-gradient(270deg, #000 0%, rgb(0 0 0 / 80%) 45%, transparent 100%);
+}
+
 h1,
 h2,
 h3,

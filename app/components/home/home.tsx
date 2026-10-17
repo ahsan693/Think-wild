@@ -742,7 +742,7 @@ export default function Home() {
 
         <div
           aria-label="Capabilities"
-          className="relative mx-auto mb-[40px] h-[38px] w-full max-w-[1280px] overflow-hidden"
+          className="home-capabilities-ticker relative mx-auto mb-[40px] h-[38px] w-full max-w-[1280px] overflow-hidden"
         >
           <div className="flex h-full w-max animate-marquee motion-reduce:animate-none">
             {[0, 1].map((copy) => (
@@ -769,7 +769,7 @@ export default function Home() {
                           fill={item.icon === 'zap' || item.icon === 'chart' ? 'currentColor' : undefined}
                         />
                       </span>
-                      <span className="text-[12px] font-medium leading-[18px] text-white">
+                      <span className="font-body text-[15.9px] font-normal leading-[20.8px] text-white">
                         {item.text}
                       </span>
                     </div>
