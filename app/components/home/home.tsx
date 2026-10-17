@@ -602,7 +602,7 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col text-center gap-[8px]">
-              <h3 className="text-[24px] font-bold text-black leading-tight tracking-tight">{HOME_PROCESS.steps[0].title}</h3>
+              <h3 className="!font-[family-name:var(--font-saans)] text-[24px] font-medium text-black leading-tight tracking-tight">{HOME_PROCESS.steps[0].title}</h3>
               <p className="text-[14px] font-medium text-black/80 leading-snug px-2">{HOME_PROCESS.steps[0].description}</p>
             </div>
           </div>
@@ -620,7 +620,7 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col text-center gap-[8px]">
-              <h3 className="text-[24px] font-bold text-white leading-tight tracking-tight">
+              <h3 className="!font-[family-name:var(--font-saans)] text-[24px] font-medium text-white leading-tight tracking-tight">
                 {HOME_PROCESS.steps[1].titleLines.map((line) => <span key={line} className="block">{line}</span>)}
               </h3>
               <p className="text-[14px] font-medium text-white/90 leading-snug px-2">{HOME_PROCESS.steps[1].description}</p>
@@ -640,7 +640,7 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col text-center gap-[8px]">
-              <h3 className="text-[24px] font-bold text-black leading-tight tracking-tight">{HOME_PROCESS.steps[2].title}</h3>
+              <h3 className="!font-[family-name:var(--font-saans)] text-[24px] font-medium text-black leading-tight tracking-tight">{HOME_PROCESS.steps[2].title}</h3>
               <p className="text-[14px] font-medium text-black/80 leading-snug px-2">{HOME_PROCESS.steps[2].description}</p>
             </div>
           </div>
@@ -658,7 +658,7 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col text-center gap-[8px]">
-              <h3 className="text-[24px] font-bold text-white leading-tight tracking-tight">{HOME_PROCESS.steps[3].title}</h3>
+              <h3 className="!font-[family-name:var(--font-saans)] text-[24px] font-medium text-white leading-tight tracking-tight">{HOME_PROCESS.steps[3].title}</h3>
               <p className="text-[14px] font-medium text-white/90 leading-snug px-2">{HOME_PROCESS.steps[3].description}</p>
             </div>
           </div>
