@@ -131,19 +131,23 @@ body {
   z-index: 1;
   top: 0;
   bottom: 0;
-  width: 44px;
+  width: 64px;
   content: "";
   pointer-events: none;
 }
 
 .home-capabilities-ticker::before {
   left: 0;
-  background: linear-gradient(90deg, #000 0%, rgb(0 0 0 / 80%) 45%, transparent 100%);
+  background:
+    radial-gradient(ellipse 24px 18px at 58% 50%, rgb(255 255 255 / 5%), transparent 100%),
+    linear-gradient(90deg, #000 0%, rgb(0 0 0 / 80%) 45%, transparent 100%);
 }
 
 .home-capabilities-ticker::after {
   right: 0;
-  background: linear-gradient(270deg, #000 0%, rgb(0 0 0 / 80%) 45%, transparent 100%);
+  background:
+    radial-gradient(ellipse 24px 18px at 42% 50%, rgb(255 255 255 / 5%), transparent 100%),
+    linear-gradient(270deg, #000 0%, rgb(0 0 0 / 80%) 45%, transparent 100%);
 }
 
 h1,
