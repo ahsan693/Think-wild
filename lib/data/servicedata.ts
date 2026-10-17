@@ -10,9 +10,9 @@ export const SERVICES_HERO_DATA = {
 export const SERVICE_CARDS_DATA = [
   {
     id: 1,
-    eyebrow: "Creator & Influencer Campaigns",
-    title: "GIVE EVERY\nCAMPAIGN\nA PURPOSE.",
-    description: "We plan and manage influencer marketing campaigns around your audience, brand and goals - from creator sourcing and outreach to briefs, approvals, content delivery and reporting.",
+    eyebrow: "Give every campaign a purpose.",
+    title: "CREATOR &\nINFLUENCER\nCAMPAIGNS",
+    description: "We plan and manage influencer marketing campaigns around your audience, brand and goals – from creator sourcing and outreach to briefs, approvals, content delivery and reporting.",
     listHeading: "What we bring",
     listItems: [
       "Creator sourcing and outreach",
@@ -28,8 +28,8 @@ export const SERVICE_CARDS_DATA = [
   },
   {
     id: 2,
-    eyebrow: "Social Media Management",
-    title: "KEEP THE\nCONVERSATION\nGOING.",
+    eyebrow: "Keep the conversation going.",
+    title: "SOCIAL MEDIA\nMANAGEMENT",
     description: "We manage social media strategy, content planning, publishing and community activity to help brands stay consistent, relevant and active across the platforms that matter.",
     listHeading: "What we bring",
     listItems: [
@@ -46,8 +46,8 @@ export const SERVICE_CARDS_DATA = [
   },
   {
     id: 3,
-    eyebrow: "Content Production",
-    title: "MAKE CONTENT\nWORTH SHARING.",
+    eyebrow: "Make content worth sharing.",
+    title: "CONTENT\nPRODUCTION",
     description: "We produce social-first content including short-form video, UGC, photography, editing and selected CGI/VFX for brands and creator campaigns.",
     listHeading: "What we bring",
     listItems: [
@@ -64,8 +64,8 @@ export const SERVICE_CARDS_DATA = [
   },
   {
     id: 4,
-    eyebrow: "Social Creative Strategy",
-    title: "BUILD THE IDEA\nBEFORE THE CONTENT.",
+    eyebrow: "Build The Idea Before The Content.",
+    title: "SOCIAL CREATIVE\nSTRATEGY",
     description: "We develop social media campaign concepts, creator directions, hooks and content formats around your audience, brand and platform.",
     listHeading: "What we bring:",
     listItems: [

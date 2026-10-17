@@ -104,7 +104,7 @@ export default function ServicesPage() {
                 <div className="w-full max-w-[516px] h-[400px] lg:h-[531px] rounded-[20px] overflow-hidden bg-black/5">
                   <img 
                     src={card.imageSrc} 
-                    alt={card.eyebrow} 
+                    alt={card.title.replaceAll('\n', ' ')} 
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -173,7 +173,7 @@ export default function ServicesPage() {
                   />
                 </div>
                 <div className="flex flex-col max-w-[365px] gap-[12px]">
-                  <h3 className="text-[24px] font-bold text-white leading-tight tracking-tight">
+                  <h3 className="!font-[family-name:var(--font-saans)] text-[24px] font-bold text-white leading-tight tracking-tight">
                     {item.title}
                   </h3>
                   <p className="text-[#9F9F9F] text-[15px] font-medium leading-[22px]">
@@ -216,7 +216,7 @@ export default function ServicesPage() {
                       className="flex items-center justify-between gap-[20px] cursor-pointer"
                       onClick={() => setOpenFaqIndex(isOpen ? null : index)}
                     >
-                      <h3 className="type-038 text-white">
+                      <h3 className="type-038 !font-[family-name:var(--font-saans)] text-white">
                         {faq.question}
                       </h3>
                       
@@ -227,7 +227,7 @@ export default function ServicesPage() {
                     
                     {isOpen && (
                       <div className="w-full max-w-[836.84px] mt-[16px]">
-                        <p className="type-088 text-[#9F9F9F]">
+                        <p className="type-088 !font-[family-name:var(--font-saans)] text-[#9F9F9F]">
                           {faq.answer}
                         </p>
                       </div>
