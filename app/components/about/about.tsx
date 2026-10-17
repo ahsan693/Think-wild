@@ -294,10 +294,10 @@ export default function AboutPage() {
                   <div className="w-[40px] h-[40px] bg-[#1D1D1D] rounded-[10px] flex items-center justify-center text-white mb-[16px] shrink-0 md:w-[48px] md:h-[48px] md:rounded-[12px] md:mb-[24px]">
                     <card.icon size={20} strokeWidth={2.5} />
                   </div>
-                  <h3 data-sequence-text className="about-values-card-title font-heading mb-[8px] text-[20px] font-bold leading-[1] text-black md:mb-[12px] md:text-[28px]">
+                  <h3 data-sequence-text className="about-values-card-title !font-[family-name:var(--font-saans)] mb-[8px] text-[20px] font-medium leading-[1] text-black md:mb-[12px] md:text-[28px]">
                     {card.title}
                   </h3>
-                  <p data-sequence-text className="about-values-card-description type-101 max-w-[280px] text-black/80">
+                  <p data-sequence-text className="about-values-card-description type-101 !font-[family-name:var(--font-saans)] max-w-[280px] text-black/80">
                     {card.desc}
                   </p>
                 </div>
