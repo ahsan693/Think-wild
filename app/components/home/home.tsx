@@ -710,7 +710,7 @@ export default function Home() {
               </div>
 
               <div className="flex h-[93px] w-full items-center justify-center">
-                <span data-sequence-text className="text-[80px] font-semibold leading-[93px] tracking-[-0.04em]">
+                <span data-sequence-text className="font-heading text-[80px] font-semibold leading-[93px] tracking-[-0.04em]">
                   {HOME_CAPABILITIES.copy.metric}
                 </span>
               </div>
@@ -725,12 +725,12 @@ export default function Home() {
                 <div
                   key={item.heading}
                   data-sequence-text
-                  className="grid w-full grid-cols-[1.4fr_1fr] items-start gap-[20px] border-b border-black/10 pb-[12px] last:border-b-0 last:pb-0 lg:flex-1"
+                  className="grid w-full grid-cols-[1.4fr_1fr] items-start gap-[20px] border-b border-black/10 pb-[12px] last:border-b-0 last:pb-0 lg:flex lg:flex-1 lg:justify-between"
                 >
-                  <h3 className="text-[20px] font-bold uppercase leading-[1] lg:text-[24px]">
+                  <h3 className="font-heading text-[20px] font-semibold uppercase leading-[1] lg:w-[206px] lg:text-[42px] lg:leading-[33px] lg:tracking-[-0.05em]">
                     {item.heading}
                   </h3>
-                  <p className="text-[14px] font-medium leading-[18px]">
+                  <p className="font-body text-[14px] font-medium leading-[18px] lg:w-[224px] lg:text-[16.7px] lg:leading-[20.8px] lg:tracking-[-0.01em]">
                     {item.description}
                   </p>
                 </div>
