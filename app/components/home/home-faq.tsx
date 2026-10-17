@@ -11,9 +11,9 @@ export default function HomeFaq() {
   });
 
   return (
-    <section data-sequence-section className="flex min-h-[873.5px] w-full flex-col items-center overflow-x-clip bg-black px-5 pb-[48px] pt-[48px] md:min-h-0 md:px-4 md:pb-[150px] md:pt-[135px]">
+    <section data-sequence-section className="flex min-h-[873.5px] w-full flex-col items-center overflow-x-clip bg-black px-5 pb-[48px] pt-[48px] font-[family-name:var(--font-saans)] md:min-h-0 md:px-4 md:pb-[150px] md:pt-[135px]">
       <div className="flex w-full max-w-[1440px] flex-col items-center">
-        <h2 data-sequence-item className="mb-[56px] w-full px-[8px] text-center font-bricolage text-[40px] font-semibold uppercase leading-[0.9] tracking-[-0.03em] text-white md:mb-[64px] md:px-0 md:text-[70px]">
+        <h2 data-sequence-item className="!font-[family-name:var(--font-saans)] mb-[56px] w-full px-[8px] text-center text-[40px] font-medium uppercase leading-[0.9] tracking-[-0.03em] text-white md:mb-[64px] md:px-0 md:text-[70px]">
           {HOME_FAQ.heading.map((line) => (
             <span key={line} className="block">
               {line}
@@ -36,7 +36,11 @@ export default function HomeFaq() {
                     : 'border-b border-white/10 py-[32px] md:border-b-2 md:border-white/[0.08] md:px-[40px] md:py-[30px]'
                 }`}
               >
-                <h3 data-sequence-text className="w-full text-[18px] font-bold leading-tight tracking-tight text-white md:text-[24px]">
+                <h3
+                  data-sequence-text
+                  className="!font-[family-name:var(--font-saans)] w-full text-[18px] font-normal leading-tight tracking-tight text-white md:text-[24px]"
+                  style={{ fontVariationSettings: '"MONO" 0, "ital" 0, "wght" 400' }}
+                >
                   <button
                     type="button"
                     aria-expanded={isOpen}
@@ -62,7 +66,7 @@ export default function HomeFaq() {
                     maxHeight: isOpen ? '220px' : '0px',
                   }}
                 >
-                  <p data-sequence-text className="mt-[12px] max-w-[800px] text-[14px] font-medium text-[#9F9F9F] md:mt-[16px] md:text-[16px]">
+                  <p data-sequence-text className="mt-[12px] max-w-[800px] text-[14px] font-normal text-[#9F9F9F] md:mt-[16px] md:text-[16px]">
                     {faq.answer}
                   </p>
                 </div>
