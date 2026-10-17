@@ -762,12 +762,49 @@ export default function Home() {
                       className="flex h-[38px] shrink-0 items-center gap-[6px] rounded-full bg-[#373737]/[0.49] py-[4px] pl-[4px] pr-[16px]"
                     >
                       <span className="flex h-[14px] w-[14px] shrink-0 items-center justify-center">
-                        <Icon
-                          size={14}
-                          strokeWidth={2}
-                          className={iconClassName}
-                          fill={item.icon === 'zap' || item.icon === 'chart' ? 'currentColor' : undefined}
-                        />
+                        {item.icon === 'zap' ? (
+                          <Image
+                            src="/icons/svg/capability-lightning-white.svg"
+                            alt=""
+                            aria-hidden="true"
+                            width={13}
+                            height={18}
+                            className="h-[14px] w-auto"
+                          />
+                        ) : item.icon === 'chart' ? (
+                          <Image
+                            src="/icons/svg/capability-pie-chart-white.svg"
+                            alt=""
+                            aria-hidden="true"
+                            width={21}
+                            height={18}
+                            className="h-[12px] w-[14px]"
+                          />
+                        ) : item.icon === 'rocket' ? (
+                          <Image
+                            src="/icons/svg/capability-rocket-white.svg"
+                            alt=""
+                            aria-hidden="true"
+                            width={20}
+                            height={18}
+                            className="h-[13px] w-[14px] object-contain"
+                          />
+                        ) : item.icon === 'refresh' ? (
+                          <Image
+                            src="/icons/svg/capability-refresh-white.svg"
+                            alt=""
+                            aria-hidden="true"
+                            width={22}
+                            height={18}
+                            className="h-[12px] w-[14px]"
+                          />
+                        ) : (
+                          <Icon
+                            size={14}
+                            strokeWidth={2}
+                            className={iconClassName}
+                          />
+                        )}
                       </span>
                       <span className="font-body text-[15.9px] font-normal leading-[20.8px] text-white">
                         {item.text}
